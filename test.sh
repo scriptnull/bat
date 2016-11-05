@@ -10,9 +10,11 @@ setupTestEnv() {
 #  popd
 
   pushd /build/IN/$RES_PARAMS
-  jq -r '.version.propertyBag.params.secure' params > avi.txt
-  . avi.txt
-  echo $API_URL
+  cat params | jq -r '.version.propertyBag.params.secure'
+  jq -r '.version.propertyBag.params.secure' params
+  #params > avi.txt
+  #. avi.txt
+  #echo $API_URL
   popd
   echo "Completed Testing Env setup" $RES_REPO
 }
