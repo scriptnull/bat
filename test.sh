@@ -10,7 +10,6 @@ setupTestEnv() {
 #  popd
 
   pushd /build/IN/$RES_PARAMS
-  ls -al
   export $(jq -r '.version.propertyBag.params.secure' params)
   echo $API_URL
   popd
