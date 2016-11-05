@@ -12,6 +12,7 @@ setupTestEnv() {
   pushd /build/IN/$RES_PARAMS
   ls -al
   cat version.json
+  cat params
   popd
 
   echo "Completed Testing Env setup" $RES_REPO
