@@ -1,0 +1,32 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2016-11-07T17:05:05.158Z",
+    "end": "2016-11-07T17:05:05.186Z",
+    "duration": 28
+  },
+  "tests": [
+    {
+      "title": "Should create an empty testAccounts object",
+      "fullTitle": "0.1 - Setup empty testAccounts objects Should create an empty testAccounts object",
+      "duration": 3,
+      "currentRetry": 0,
+      "err": {}
+    }
+  ],
+  "pending": [],
+  "failures": [],
+  "passes": [
+    {
+      "title": "Should create an empty testAccounts object",
+      "fullTitle": "0.1 - Setup empty testAccounts objects Should create an empty testAccounts object",
+      "duration": 3,
+      "currentRetry": 0,
+      "err": {}
+    }
+  ]
+}
