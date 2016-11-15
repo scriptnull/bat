@@ -10,17 +10,20 @@ var testSuiteDesc = 'Setup empty testAccounts objects';
 var adapter = require('../../_common/shippable/github/Adapter.js');
 
 chai.use(chaiHttp);
+var assert = chai.assert;
 
 describe(util.format('%s1 - %s', testSuiteNum, testSuiteDesc),
   function () {
-    var assert = chai.assert;
-    start = new start();
 
-    nconf.argv().env().file({
-        file: '../config.json', format: nconf.formats.json
-      }
-    );
-    nconf.load();
+    before(function(done) {
+      start = new start();
+      nconf.argv().env().file({
+          file: '../config.json', format: nconf.formats.json
+        }
+      );
+      nconf.load();
+      return done();
+    });
 
     it('Should create an empty testAccounts object',
       function (done) {
