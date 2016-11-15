@@ -4,8 +4,12 @@ var start = require('../../test.js');
 var mocha = require('mocha');
 var nconf = require('nconf');
 var chai = require('chai');
+var chaiHttp = require('chai-http');
 var testSuiteNum = '0.';
 var testSuiteDesc = 'Setup empty testAccounts objects';
+var adapter = require('../../_common/shippable/github/Adapter.js');
+
+chai.use(chaiHttp);
 
 describe(util.format('%s1 - %s', testSuiteNum, testSuiteDesc),
   function () {
@@ -25,6 +29,22 @@ describe(util.format('%s1 - %s', testSuiteNum, testSuiteDesc),
         assert.notProperty(nconf.get('testAccounts'), 'shipayeone');
 
         return done();
+      }
+    );
+
+    it('Get Accounts',
+      function (done) {
+        var apiToken = util.format('apiToken %s', config.apiToken);
+        chai.request(config.apiUrl)
+          .get('/accounts')
+          .set('Authorization', apiToken)
+          .end(function(err, res){
+             logger.debug("res is::", util.inspect(res.body,{depth:null}));
+             if (res.status<200 || res.status>=299)
+               logger.warn("status is::",res.status);
+             return done();
+          }
+        );
       }
     );
   }
