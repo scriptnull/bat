@@ -9,13 +9,14 @@ var testSuiteNum = '0.';
 var testSuiteDesc = 'Setup empty testAccounts objects';
 var adapter = require('../../_common/shippable/github/Adapter.js');
 
-chai.use(chaiHttp);
 var assert = chai.assert;
 
 describe(util.format('%s1 - %s', testSuiteNum, testSuiteDesc),
   function () {
 
     before(function(done) {
+      // runs before all tests in this block
+      chai.use(chaiHttp);
       start = new start();
       nconf.argv().env().file({
           file: '../config.json', format: nconf.formats.json

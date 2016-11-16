@@ -4,7 +4,7 @@
   "description": "Shippable Build Acceptance Tests",
   "main": "app.js",
   "scripts": {
-    "start":"app.js",
+    "start": "app.js",
     "test": "./node_modules/mocha/bin/mocha -R mocha-multi tests/**/**/*",
     "test-core": "./node_modules/mocha/bin/mocha -R mocha-multi tests/core/*.js",
     "test-daily": "./node_modules/mocha/bin/mocha -R mocha-multi tests/daily/**/*.js",
@@ -55,5 +55,8 @@
     "predef": [
       "logger"
     ]
+  },
+  "devDependencies": {
+    "selenium-webdriver": "^3.0.1"
   }
 }
