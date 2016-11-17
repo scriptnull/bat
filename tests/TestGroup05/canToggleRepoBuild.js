@@ -1,13 +1,12 @@
 'use strict';
 /* global describe, it, before */
 var mocha = require('mocha'),
-    Shippable = require('../../lib/shippable/shippable.js'),
+    Shippable = require('../../_common/shippable/Adapter.js'),
     nconf = require('nconf'),
     async = require('async'),
     assert = require('assert'),
     _ = require('underscore'),
-    bunyan = require('bunyan'),
-    logger = bunyan.createLogger({ name: 'canToggleRepoBuild' });
+    start = require('../../test.js');
 
 describe('Enable/disable project auto build', function() {
   var allSubscriptions = [],
@@ -15,84 +14,80 @@ describe('Enable/disable project auto build', function() {
       shippable = null;
 
   before(function(done) {
-    nconf.argv().env();
     this.timeout(0);
-    shippable = new Shippable(nconf.get('apiEndpoint'), nconf.get('apiToken'));
+    start = new start();
+    nconf.argv().env();
+
+    shippable = new Shippable(config.apiToken);
     async.series([
-      loadAllSubscriptions,
-      loadProjectsInShippableSamplesSubscription
+      _loadAllSubscriptions,
+      _loadProjectsInShippableSubscription
    ], function(err) {
-     done(err);
+     return done(err);
    });
   });
 
-  function loadAllSubscriptions(next) {
+  function _loadAllSubscriptions(next) {
     logger.info('Loading all subscriptions');
-    shippable.getAccountIds(function(err, accountIds) {
-      if (err) throw new Error('Error getting account ids: ' + err);
-      // Assuming we only get one account ID for now
-      shippable.getAccount(accountIds[0], function(err, account) {
-        account.getSubscriptions(function(err, subs) {
+    shippable.getSubscriptions('',
+      function(err, subs) {
+        if (err) {
+          logger.warn(who, util.format('Failed to get subscriptions'), err);
+          return next(true);
+        } else {
           allSubscriptions = subs;
-          if (err) {
-            err = new Error('Error getting subscriptions for account. ' + err);
-          }
-          return next(err);
-        });
-      });
+          return next();
+        }
     });
   }
 
-  function loadProjectsInShippableSamplesSubscription(next) {
-    logger.info('Looking for shippableSamples subscription');
-    var shippableSamplesSubscription = _.find(allSubscriptions, function(sub) {
-      return sub.orgName === 'shippableSamples';
+  function _loadProjectsInShippableSubscription(next) {
+    logger.info('Looking for Shippable subscription');
+    var shippableSubscription = _.find(allSubscriptions, function(sub) {
+      return sub.orgName === 'Shippable';
     });
 
-    if (!shippableSamplesSubscription) {
-      throw new Error('Cannot find shippableSamples subscription');
+    if (!shippableSubscription) {
+      throw new Error('Cannot find Shippable subscription');
     }
 
-    logger.info('Loading all projects in shippableSamples subscription');
-    shippableSamplesSubscription.getProjects(function(err, projects) {
-      sampleProjects = projects;
-      if (err) {
-        err = new Error('Error getting projects for subscription' + err);
+    logger.debug('Loading all projects in Shippable subscription');
+
+    var query = util.format('subscriptionIds=%s',shippableSubscription.id);
+    shippable.getProjects(query,
+      function(err, projs) {
+        if (err) {
+          logger.warn(who, util.format('Failed to get projects'), err);
+          return next(true);
+        } else {
+          sampleProjects = projs;
+          return next();
+        }
       }
-      return next(err);
-    });
+    );
   }
 
   it('can enable auto build for a project', function(done) {
     this.timeout(0);
     var someDisabledProject = _.find(sampleProjects, function(project) {
-      return project.autoBuild === false;
+      return project.autoBuild === null;
     });
+
     if (!someDisabledProject) {
-      throw new Error('No disabled projects found in shippableSamples!');
+      throw new Error('No disabled projects found in Shippable!');
     }
+
     logger.info('Enabling project', someDisabledProject.fullName,
       someDisabledProject.id);
-    someDisabledProject.enableBuilds(function(err) {
-      assert(err === null);
-      done();
-    });
+    var body = {
+      projectId: someDisabledProject.projectId,
+      type: 'ci'
+    };
+    shippable.enableProjectById(someDisabledProject.projectId, body,
+      function(err) {
+        assert(err === null);
+        return done();
+      }
+    );
   });
-
-  it('can disable auto build for a project', function(done) {
-    this.timeout(0);
-    var someEnabledProject = _.find(sampleProjects, function(project) {
-      return project.autoBuild === true;
-    });
-    if (!someEnabledProject) {
-      throw new Error('No enabled projects found in shippableSamples!');
-    }
-    logger.info('Disabling project', someEnabledProject.fullName,
-      someEnabledProject.id);
-    someEnabledProject.disableBuilds(function(err) {
-      assert(err === null);
-      done();
-    });
-  });
-
 });
