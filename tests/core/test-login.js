@@ -6,7 +6,7 @@ var driver;
 
 test.describe('Login workflow',
   function() {
-    this.timeout(150000);
+    this.timeout(0);
 
     test.beforeEach(
       function(done) {
@@ -31,16 +31,12 @@ test.describe('Login workflow',
 
     test.it('Login',
       function(done) {
-        this.timeout(150000);
-        setTimeout(done, 150000);
         driver.findElement(webdriver.By.linkText('LOGIN')).click();
         return done();
     });
 
     test.it('Get Started',
       function(done) {
-        this.timeout(150000);
-        setTimeout(done, 150000);
         driver.findElement(webdriver.By.linkText('Get Started')).click();
         return done();
     });
