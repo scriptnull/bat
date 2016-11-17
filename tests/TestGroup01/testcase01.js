@@ -15,7 +15,7 @@ describe('GET /accounts API', function() {
   });
 
   it('gets an account with a valid token', function(done) {
-    shippable = new Shippable(config.apiToken);
+    shippable = new Shippable(nconf.get("apiToken"));
     shippable.getAccounts('',
       function(err, accounts) {
         assert.equal(err, null);

@@ -18,7 +18,7 @@ describe('Enable/disable project auto build', function() {
     start = new start();
     nconf.argv().env();
 
-    shippable = new Shippable(config.apiToken);
+    shippable = new Shippable(nconf.get("apiToken"));
     async.series([
       _loadAllSubscriptions,
       _loadProjectsInShippableSubscription

@@ -29,7 +29,7 @@ describe('Get shippable token',
           console.log("Failed");
         } else {
           bag.body = body;
-          nconf.set('user',body);
+          nconf.set('apiToken',body.apiToken);
           nconf.save(function(err){
             if (err)
               console.log("Failed");
@@ -42,7 +42,6 @@ describe('Get shippable token',
       function (done) {
         nconf.set('testAccounts', {});
         assert.notProperty(nconf.get('testAccounts'), 'shipayeone');
-
         return done();
       }
     );

@@ -38,7 +38,7 @@ describe(util.format('%s1 - %s', testSuiteNum, testSuiteDesc),
     it('Get /accounts',
       function (done) {
         this.timeout(0);
-        var shippable = new Shippable(config.apiToken);
+        var shippable = new Shippable(nconf.get("apiToken"));
         shippable.getAccounts('',
           function(err, res) {
             if (err) {
