@@ -33,5 +33,6 @@ function setupMS(params) {
 //  global.config.apiToken = process.env.SHIPPABLE_API_TOKEN;
 
   global.config.apiUrl = 'https://alphaapi.shippable.com';
+  global.config.apiToken = params.apiToken;
   global.config.githubUrl = 'https://api.github.com';
 }
