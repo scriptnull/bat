@@ -429,6 +429,13 @@ ShippableAdapter.prototype.syncProjectById =
       callback
     );
   };
+ShippableAdapter.prototype.forceSyncAccountById =
+  function (accountId, callback) {
+    this.get(
+      util.format('/accounts/%s/sync?force=true', accountId),
+      callback
+    );
+  };
 
 //#######################  DELETE  by alphabetical order  ######################
 ShippableAdapter.prototype.deleteClusterNodeById =

@@ -5,14 +5,14 @@ var mocha = require('mocha');
 var nconf = require('nconf');
 var chai = require('chai');
 var testSuiteNum = '0.';
-var testSuiteDesc = 'Setup empty testAccounts objects';
+var testSuiteDesc = 'Sync Account';
 var adapter = require('../../_common/shippable/github/Adapter.js');
 var Shippable = require('../../_common/shippable/Adapter.js');
 var _ = require('underscore');
 
 var assert = chai.assert;
 
-describe(util.format('%s1 - %s', testSuiteNum, testSuiteDesc),
+describe(util.format('%s2 - %s', testSuiteNum, testSuiteDesc),
   function () {
 
     before(function(done) {
@@ -26,25 +26,15 @@ describe(util.format('%s1 - %s', testSuiteNum, testSuiteDesc),
       return done();
     });
 
-    it('Should create an empty testAccounts object',
-      function (done) {
-        logger.info('Creating an empty testAccounts object');
-        nconf.set('testAccounts', {});
-        assert.notProperty(nconf.get('testAccounts'), 'shipayeone');
-
-        return done();
-      }
-    );
-
-    it('Get /accounts',
+    it('Sync account',
       function (done) {
         this.timeout(0);
         var shippable = new Shippable(config.apiToken);
-        shippable.getAccounts('',
+        shippable.forceSyncAccountById(nconf.get("accountId"),
           function(err, res) {
             if (err) {
               var bag = {
-                testSuite: 'Get /accounts',
+                testSuite: 'Sync Account',
                 error: err
               }
               async.series([
@@ -65,11 +55,6 @@ describe(util.format('%s1 - %s', testSuiteNum, testSuiteDesc),
               logger.debug("res is::", util.inspect(res,{depth:null}));
               if (res.status<200 || res.status>=299)
                 logger.warn("status is::",res.status);
-              nconf.set('accountId',_.first(res).id);
-              nconf.save(function(err){
-                if (err)
-                  console.log("Failed");
-              });
               return done();
             }
           }
