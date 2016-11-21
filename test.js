@@ -8,14 +8,15 @@ var setupMS = require('./_common/setupMS.js');
 var microWorker = require('./microWorker.js');
 var ms = require('./_common/micro/MicroService.js');
 
-function start() {
+function start(apiToken) {
   var msParams = {
     checkHealth: checkHealth,
     microWorker: microWorker
   };
 
   var params = {
-    msName: 'bat'
+    msName: 'bat',
+    apiToken: apiToken
   };
 
   var who = util.format('msName:%s', params.msName);
