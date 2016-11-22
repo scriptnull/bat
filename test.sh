@@ -15,10 +15,7 @@ setupTestEnv() {
   popd
 
   pushd /build/IN/$RES_REPO/gitRepo
-  export location=$(pwd)
-  echo $location
-  export ls=$(ls)
-  echo $ls
+  npm run test-roles --API_URL $API_URL
   popd
   echo "Completed Testing Env setup" $RES_REPO
 }
