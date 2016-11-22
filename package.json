@@ -8,7 +8,8 @@
     "test": "./node_modules/mocha/bin/mocha -R mocha-multi tests/**/**/*",
     "test-core": "./node_modules/mocha/bin/mocha -R mocha-multi tests/core/*.js",
     "test-daily": "./node_modules/mocha/bin/mocha -R mocha-multi tests/daily/**/*.js",
-    "test-weekly": "./node_modules/mocha/bin/mocha -R mocha-multi tests/weekly/**/*.js"
+    "test-weekly": "./node_modules/mocha/bin/mocha -R mocha-multi tests/weekly/**/*.js",
+    "test-roles": "./node_modules/mocha/bin/mocha tests/core/testNconf.js"
   },
   "author": "Avi Cavale <avi@shippable.com> (http://shippable.com/)",
   "dependencies": {
