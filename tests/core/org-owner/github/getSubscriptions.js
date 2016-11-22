@@ -1,13 +1,13 @@
 'use strict';
 
-var start = require('../../test.js');
+var start = require('../../../../test.js');
 var mocha = require('mocha');
 var nconf = require('nconf');
 var chai = require('chai');
-var testSuiteNum = '0.';
-var testSuiteDesc = 'Setup empty testAccounts objects';
-var adapter = require('../../_common/shippable/github/Adapter.js');
-var Shippable = require('../../_common/shippable/Adapter.js');
+var testSuiteNum = '1.';
+var testSuiteDesc = 'Get Subscriptions of Organization owner';
+var adapter = require('../../../../_common/shippable/github/Adapter.js');
+var Shippable = require('../../../../_common/shippable/Adapter.js');
 var _ = require('underscore');
 
 var assert = chai.assert;
@@ -18,7 +18,7 @@ describe(util.format('%s1 - %s', testSuiteNum, testSuiteDesc),
     before(function(done) {
       // runs before all tests in this block
       nconf.argv().env().file({
-          file: '../config.json', format: nconf.formats.json
+          file: '../../../config.json', format: nconf.formats.json
         }
       );
       nconf.load();
@@ -26,25 +26,15 @@ describe(util.format('%s1 - %s', testSuiteNum, testSuiteDesc),
       return done();
     });
 
-    it('Should create an empty testAccounts object',
-      function (done) {
-        logger.info('Creating an empty testAccounts object');
-        nconf.set('testAccounts', {});
-        assert.notProperty(nconf.get('testAccounts'), 'shipayeone');
-
-        return done();
-      }
-    );
-
-    it('Get /accounts',
+    it('Get /subscriptions',
       function (done) {
         this.timeout(0);
         var shippable = new Shippable(config.apiToken);
-        shippable.getAccounts('',
-          function(err, res) {
+        shippable.getSubscriptions('',
+          function(err, subscriptions) {
             if (err) {
               var bag = {
-                testSuite: 'Get /accounts',
+                testSuite: 'Get /subscriptions of Organization owner',
                 error: err
               }
               async.series([
@@ -62,14 +52,9 @@ describe(util.format('%s1 - %s', testSuiteNum, testSuiteDesc),
                 }
               );
             } else {
-              logger.debug("res is::", util.inspect(res,{depth:null}));
-              if (res.status<200 || res.status>=299)
-                logger.warn("status is::",res.status);
-              nconf.set('sub-o-org-o:accountId',_.first(res).id);
-              nconf.save(function(err){
-                if (err)
-                  console.log("Failed");
-              });
+              logger.debug("subscriptions length is::",subscriptions.length);
+              if (subscriptions.status<200 || subscriptions.status>=299)
+                logger.warn("status is::",subscriptions.status);
               return done();
             }
           }
