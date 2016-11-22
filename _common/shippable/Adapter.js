@@ -719,6 +719,14 @@ ShippableAdapter.prototype.triggerNewBuildByProjectId =
     );
   };
 
+ShippableAdapter.prototype.deleteAccountById =
+  function (accountId, callback) {
+    this.delete(
+      util.format('/accounts/%s', accountId),
+      callback
+    );
+  };
+
 //#######################  PUT  by alphabetical order  ########################
 
 ShippableAdapter.prototype.putAccountById =
