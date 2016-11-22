@@ -69,7 +69,8 @@ describe(testSuite,
 function _createIssue(bag,next) {
   var githubAdapter = new adapter(config.githubToken, config.githubUrl);
   var title = util.format('Failed test case %s', bag.testSuite);
-  var body = util.format('Failed with error: %s', bag.error);
+  var body = util.format('Failed test case %s, with error: %s',  bag.testSuite,
+    bag.error);
   var data = {
     title: title,
     body: body

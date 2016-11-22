@@ -4,15 +4,15 @@ var start = require('../../../../test.js');
 var mocha = require('mocha');
 var nconf = require('nconf');
 var chai = require('chai');
-var testSuiteNum = '2.';
-var testSuiteDesc = 'Individual-Owner-github-getSubscriptions';
+var testSuiteNum = '3.';
+var testSuiteDesc = 'Individual-Member-github-getProjects';
 var adapter = require('../../../../_common/shippable/github/Adapter.js');
 var Shippable = require('../../../../_common/shippable/Adapter.js');
 var _ = require('underscore');
 
 var assert = chai.assert;
 
-var testSuite = util.format('%s1 - %s', testSuiteNum, testSuiteDesc);
+var testSuite = util.format('%s2 - %s', testSuiteNum, testSuiteDesc);
 
 describe(testSuite,
   function () {
@@ -24,17 +24,18 @@ describe(testSuite,
         }
       );
       nconf.load();
-      start = new start(nconf.get("shiptest-github-owner:apiToken"),
-                nconf.get("shiptest-github-owner:accessToken"));
+      start = new start(nconf.get("shiptest-github-member:apiToken"),
+                nconf.get("shiptest-github-member:accessToken"));
       return done();
     });
 
-    it('Individual-Owner-github-getSubscriptions',
+    it('Individual-Member-github-getProjects',
       function (done) {
         this.timeout(0);
         var shippable = new Shippable(config.apiToken);
-        shippable.getSubscriptions('',
-          function(err, subscriptions) {
+        var query = util.format("subscriptionIds=%s",nconf.get("shiptest-github-member:owner-subId-gh"));
+        shippable.getProjects(query,
+          function(err, res) {
             if (err) {
               var bag = {
                 testSuite: testSuite,
@@ -55,9 +56,9 @@ describe(testSuite,
                 }
               );
             } else {
-              logger.debug("subscriptions length is::",subscriptions.length);
-              if (subscriptions.status<200 || subscriptions.status>=299)
-                logger.warn("status is::",subscriptions.status);
+              logger.debug("res is::", util.inspect(res.length,{depth:null}));
+              if (res.status<200 || res.status>=299)
+                logger.warn("status is::",res.status);
               return done();
             }
           }
