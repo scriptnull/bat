@@ -12,6 +12,8 @@ setupTestEnv() {
   pushd /build/IN/$RES_PARAMS
   export $(jq -r '.version.propertyBag.params.secure' version.json)
   echo $API_URL
+  export temp=$(cat version.json)
+  echo $temp
   popd
   echo "Completed Testing Env setup" $RES_REPO
 }
