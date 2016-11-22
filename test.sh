@@ -14,6 +14,10 @@ setupTestEnv() {
   echo $API_URL
   export temp=$(cat version.json)
   echo $temp
+  export location=$(pwd)
+  echo $location
+  export ls=$(ls)
+  echo $ls
   popd
   echo "Completed Testing Env setup" $RES_REPO
 }
