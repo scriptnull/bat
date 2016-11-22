@@ -22,7 +22,7 @@ describe(util.format('%s1 - %s', testSuiteNum, testSuiteDesc),
         }
       );
       nconf.load();
-      start = new start(nconf.get("sub-o-org-o:apiToken"));
+      start = new start(nconf.get("shiptest-github-owner:apiToken"));
       return done();
     });
 
@@ -65,7 +65,7 @@ describe(util.format('%s1 - %s', testSuiteNum, testSuiteDesc),
               logger.debug("res is::", util.inspect(res,{depth:null}));
               if (res.status<200 || res.status>=299)
                 logger.warn("status is::",res.status);
-              nconf.set('sub-o-org-o:accountId',_.first(res).id);
+              nconf.set('shiptest-github-owner:accountId',_.first(res).id);
               nconf.save(function(err){
                 if (err)
                   console.log("Failed");

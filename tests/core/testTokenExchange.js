@@ -18,10 +18,10 @@ describe('Get shippable token',
       );
       nconf.load();
       request({
-        url: 'https://alphaapi.shippable.com/accounts/auth/' + nconf.get("sub-o-org-o:githubSysIntId"),
+        url: 'https://alphaapi.shippable.com/accounts/auth/' + nconf.get("shiptest-github-owner:githubSysIntId"),
         method: 'POST',
         json: {
-          "accessToken": nconf.get("sub-o-org-o:accessToken")
+          "accessToken": nconf.get("shiptest-github-owner:accessToken")
         }
       },
       function (err, res, body) {
@@ -29,7 +29,7 @@ describe('Get shippable token',
           console.log("Failed");
         } else {
           bag.body = body;
-          nconf.set('sub-o-org-o:apiToken',body.apiToken);
+          nconf.set('shiptest-github-owner:apiToken',body.apiToken);
           nconf.save(function(err){
             if (err)
               console.log("Failed");

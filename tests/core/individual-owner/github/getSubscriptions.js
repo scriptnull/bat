@@ -22,7 +22,7 @@ describe(util.format('%s1 - %s', testSuiteNum, testSuiteDesc),
         }
       );
       nconf.load();
-      start = new start(nconf.get("sub-o-org-o:apiToken"));
+      start = new start(nconf.get("shiptest-github-owner:apiToken"));
       return done();
     });
 

@@ -22,7 +22,7 @@ describe(util.format('%s2 - %s', testSuiteNum, testSuiteDesc),
         }
       );
       nconf.load();
-      start = new start(nconf.get("sub-o-org-o:apiToken"));
+      start = new start(nconf.get("shiptest-github-owner:apiToken"));
       return done();
     });
 
@@ -30,7 +30,7 @@ describe(util.format('%s2 - %s', testSuiteNum, testSuiteDesc),
       function (done) {
         this.timeout(0);
         var shippable = new Shippable(config.apiToken);
-        shippable.forceSyncAccountById(nconf.get("sub-o-org-o:accountId"),
+        shippable.forceSyncAccountById(nconf.get("shiptest-github-owner:accountId"),
           function(err, res) {
             if (err) {
               var bag = {
