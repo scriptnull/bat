@@ -5,7 +5,7 @@ var mocha = require('mocha');
 var nconf = require('nconf');
 var chai = require('chai');
 var testSuiteNum = '1.';
-var testSuiteDesc = 'Get Subscriptions of Organization owner';
+var testSuiteDesc = 'Get Subscriptions of Individual owner';
 var adapter = require('../../../../_common/shippable/github/Adapter.js');
 var Shippable = require('../../../../_common/shippable/Adapter.js');
 var _ = require('underscore');
@@ -22,7 +22,7 @@ describe(util.format('%s1 - %s', testSuiteNum, testSuiteDesc),
         }
       );
       nconf.load();
-      start = new start(nconf.get("sub-o-org-o:apiToken"));
+      start = new start(nconf.get("shiptest-github-owner:apiToken"));
       return done();
     });
 
@@ -34,7 +34,7 @@ describe(util.format('%s1 - %s', testSuiteNum, testSuiteDesc),
           function(err, subscriptions) {
             if (err) {
               var bag = {
-                testSuite: 'Get /subscriptions of Organization owner',
+                testSuite: 'Get /subscriptions of Individual owner',
                 error: err
               }
               async.series([

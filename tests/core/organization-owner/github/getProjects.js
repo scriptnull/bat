@@ -22,7 +22,7 @@ describe(util.format('%s1 - %s', testSuiteNum, testSuiteDesc),
         }
       );
       nconf.load();
-      start = new start(nconf.get("sub-o-org-o:apiToken"));
+      start = new start(nconf.get("shiptest-github-owner:apiToken"));
       return done();
     });
 
@@ -30,7 +30,7 @@ describe(util.format('%s1 - %s', testSuiteNum, testSuiteDesc),
       function (done) {
         this.timeout(0);
         var shippable = new Shippable(config.apiToken);
-        var query = util.format("subscriptionIds=%s",nconf.get("sub-o-org-o:org-o-subId-gh"));
+        var query = util.format("subscriptionIds=%s",nconf.get("shiptest-github-owner:org-o-subId-gh"));
         shippable.getProjects(query,
           function(err, res) {
             if (err) {
