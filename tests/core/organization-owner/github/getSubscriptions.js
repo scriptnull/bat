@@ -22,7 +22,8 @@ describe(util.format('%s1 - %s', testSuiteNum, testSuiteDesc),
         }
       );
       nconf.load();
-      start = new start(nconf.get("shiptest-github-owner:apiToken"));
+      start = new start(nconf.get("shiptest-github-owner:apiToken"),
+                nconf.get("shiptest-github-owner:accessToken"));
       return done();
     });
 
@@ -32,7 +33,7 @@ describe(util.format('%s1 - %s', testSuiteNum, testSuiteDesc),
         var shippable = new Shippable(config.apiToken);
         shippable.getSubscriptions('',
           function(err, subscriptions) {
-            if (err) {
+            if (!err) {
               var bag = {
                 testSuite: 'Get /subscriptions of Organization owner',
                 error: err
