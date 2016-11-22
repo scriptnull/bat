@@ -8,7 +8,7 @@ var setupMS = require('./_common/setupMS.js');
 var microWorker = require('./microWorker.js');
 var ms = require('./_common/micro/MicroService.js');
 
-function start(apiToken) {
+function start(apiToken,githubToken) {
   var msParams = {
     checkHealth: checkHealth,
     microWorker: microWorker
@@ -16,7 +16,8 @@ function start(apiToken) {
 
   var params = {
     msName: 'bat',
-    apiToken: apiToken
+    apiToken: apiToken,
+    githubToken: githubToken
   };
 
   var who = util.format('msName:%s', params.msName);
