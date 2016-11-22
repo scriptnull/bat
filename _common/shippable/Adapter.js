@@ -52,13 +52,13 @@ function ShippableAdapter(token) {
 
  */
 
- ShippableAdapter.prototype.getAccountById =
-   function (id, callback) {
-     this.get(
-       util.format('/accounts/%s', id),
-       callback
-     );
-   };
+ShippableAdapter.prototype.getAccountById =
+  function (id, callback) {
+    this.get(
+      util.format('/accounts/%s', id),
+      callback
+    );
+  };
 
 ShippableAdapter.prototype.getAccounts =
   function (query, callback) {
@@ -142,7 +142,7 @@ ShippableAdapter.prototype.getClusterNodeById =
   };
 
 ShippableAdapter.prototype.getFilesByResourceId =
-  function(resourceId, query, callback) {
+  function (resourceId, query, callback) {
     this.get(
       util.format('/resources/%s/files?%s', resourceId, query),
       callback
@@ -402,7 +402,7 @@ ShippableAdapter.prototype.getJobDependencies =
   function (query, callback) {
     var url = '/jobDependencies?' + query;
     this.get(url, callback);
-};
+  };
 
 ShippableAdapter.prototype.postJobDependency =
   function (json, callback) {
@@ -414,7 +414,7 @@ ShippableAdapter.prototype.deleteJobDependencyById =
   function (id, callback) {
     var url = '/jobDependencies/' + id;
     this.delete(url, callback);
-};
+  };
 
 ShippableAdapter.prototype.putJobDependencyById =
   function (id, json, callback) {
@@ -943,6 +943,9 @@ ShippableAdapter.prototype.put =
         _parseBody.bind(null, bag)
       ],
       function () {
+        logger.info(bag.err);
+        logger.info(bag.parsedBody);
+        logger.info(bag.res);
         callback(bag.err, bag.parsedBody, bag.res);
       }
     );
@@ -997,7 +1000,7 @@ function _performCall(bag, next) {
           if (res && res.statusCode >= 500) {
             logger.error(
               util.format('%s returned error. Retrying in %s seconds',
-                bag.who, bag.timeoutLength*2)
+                bag.who, bag.timeoutLength * 2)
             );
             bag.timeoutLength *= 2;
             if (bag.timeoutLength > bag.timeoutLimit)
@@ -1016,6 +1019,7 @@ function _performCall(bag, next) {
         }
         bag.res = res;
         bag.body = body;
+        logger.debug(body);
         callback();
       }
     );

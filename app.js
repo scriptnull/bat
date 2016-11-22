@@ -1,25 +1,31 @@
 'use strict';
+var checkHealth = require('./checkHealth.js');
+var setupMS = require('./_common/setupMS.js');
+//var shippableAdapter = require('./_common/shippable/Adapter.js');
+var microWorker = require('./microWorker.js');
+var ms = require('./_common/micro/MicroService.js');
 
-global.util = require('util');
-global._ = require('underscore');
-global.async = require('async');
 
-var who = util.format('BAT');
-logger.info(util.format('Starting %s', who));
+var msParams = {
+  checkHealth: checkHealth,
+  microWorker: microWorker
+};
 
-global.msName = who;
-process.title = who;
-global.config = {};
+var params = {
+  msName: 'bat'
+};
 
-global.config.apiUrl = process.env.API_URL;
-global.config.apiToken = process.env.API_TOKEN;
+var who = util.format('msName:%s', params.msName);
 
 var consoleErrors = [];
+setupMS(params);
 
-if (!global.config.apiUrl)
+logger.info(util.format('Starting %s', who));
+
+if (!config.apiUrl)
   consoleErrors.push(util.format('%s is missing env var: API_URL', who));
 
-if (!global.config.apiToken)
+if (!config.apiToken)
   consoleErrors.push(util.format('%s is missing env var: API_TOKEN', who));
 
 if (consoleErrors.length > 0) {
@@ -33,9 +39,4 @@ if (consoleErrors.length > 0) {
 
 logger.info(util.format('system config checks for %s succeeded', who));
 
-var shippableAdapter = new Adapter(config.apiToken);
-shippableAdapter.getAccounts(
-  function (err, accounts) {
-  logger.info(accounts);
-  }
-);
+ms = new ms(msParams);
