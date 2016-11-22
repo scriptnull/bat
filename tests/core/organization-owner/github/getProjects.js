@@ -5,14 +5,15 @@ var mocha = require('mocha');
 var nconf = require('nconf');
 var chai = require('chai');
 var testSuiteNum = '1.';
-var testSuiteDesc = 'Get Projects of Organization owner';
+var testSuiteDesc = 'Organization-Owner-github-getProjects';
 var adapter = require('../../../../_common/shippable/github/Adapter.js');
 var Shippable = require('../../../../_common/shippable/Adapter.js');
 var _ = require('underscore');
 
 var assert = chai.assert;
 
-describe(util.format('%s1 - %s', testSuiteNum, testSuiteDesc),
+var testSuite = util.format('%s1 - %s', testSuiteNum, testSuiteDesc);
+describe(testSuite,
   function () {
 
     before(function(done) {
@@ -27,7 +28,7 @@ describe(util.format('%s1 - %s', testSuiteNum, testSuiteDesc),
       return done();
     });
 
-    it('Get /projects',
+    it('Organization-Owner-github-getProjects',
       function (done) {
         this.timeout(0);
         var shippable = new Shippable(config.apiToken);
@@ -36,7 +37,7 @@ describe(util.format('%s1 - %s', testSuiteNum, testSuiteDesc),
           function(err, res) {
             if (err) {
               var bag = {
-                testSuite: 'Get /projects of Organization owner',
+                testSuite: testSuite,
                 error: err
               }
               async.series([
