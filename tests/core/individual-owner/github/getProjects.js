@@ -12,7 +12,7 @@ var _ = require('underscore');
 
 var assert = chai.assert;
 
-var testSuite = util.format('%s1 - %s', testSuiteNum, testSuiteDesc);
+var testSuite = util.format('%s2 - %s', testSuiteNum, testSuiteDesc);
 
 describe(testSuite,
   function () {
@@ -33,7 +33,7 @@ describe(testSuite,
       function (done) {
         this.timeout(0);
         var shippable = new Shippable(config.apiToken);
-        var query = util.format("subscriptionIds=%s",nconf.get("shiptest-github-owner:org-o-subId-gh"));
+        var query = util.format("subscriptionIds=%s",nconf.get("shiptest-github-owner:owner-subId-gh"));
         shippable.getProjects(query,
           function(err, res) {
             if (err) {
@@ -71,7 +71,8 @@ describe(testSuite,
 function _createIssue(bag,next) {
   var githubAdapter = new adapter(config.githubToken, config.githubUrl);
   var title = util.format('Failed test case %s', bag.testSuite);
-  var body = util.format('Failed with error: %s', bag.error);
+  var body = util.format('Failed test case %s, with error: %s',  bag.testSuite,
+    bag.error);
   var data = {
     title: title,
     body: body

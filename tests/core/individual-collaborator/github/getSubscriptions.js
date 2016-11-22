@@ -4,8 +4,8 @@ var start = require('../../../../test.js');
 var mocha = require('mocha');
 var nconf = require('nconf');
 var chai = require('chai');
-var testSuiteNum = '2.';
-var testSuiteDesc = 'Individual-Owner-github-getSubscriptions';
+var testSuiteNum = '3.';
+var testSuiteDesc = 'Individual-Member-github-getSubscriptions';
 var adapter = require('../../../../_common/shippable/github/Adapter.js');
 var Shippable = require('../../../../_common/shippable/Adapter.js');
 var _ = require('underscore');
@@ -24,12 +24,12 @@ describe(testSuite,
         }
       );
       nconf.load();
-      start = new start(nconf.get("shiptest-github-owner:apiToken"),
-                nconf.get("shiptest-github-owner:accessToken"));
+      start = new start(nconf.get("shiptest-github-member:apiToken"),
+                nconf.get("shiptest-github-member:accessToken"));
       return done();
     });
 
-    it('Individual-Owner-github-getSubscriptions',
+    it('Individual-Member-github-getSubscriptions',
       function (done) {
         this.timeout(0);
         var shippable = new Shippable(config.apiToken);
