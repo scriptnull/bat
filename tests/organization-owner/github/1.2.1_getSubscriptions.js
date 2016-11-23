@@ -25,7 +25,6 @@ describe(testSuite,
         }
       );
       nconf.load(function (err) {
-        console.log("nconf",nconf);
         start = new start(nconf.get("shiptest-github-owner:apiToken"),
                   nconf.get("GITHUB_ACCESS_TOKEN_OWNER"));
         return done();
