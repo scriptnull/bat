@@ -1,6 +1,8 @@
 'use strict';
 
+var start = require('../../../../test.js');
 var mocha = require('mocha');
+var nconf = require('nconf');
 var chai = require('chai');
 var testSuiteNum = '1.';
 var testSuiteDesc = 'Organization-Owner-github-getSubscriptions';
@@ -13,6 +15,18 @@ var assert = chai.assert;
 var testSuite = util.format('%s1 - %s', testSuiteNum, testSuiteDesc);
 describe(testSuite,
   function () {
+
+    before(function(done) {
+      // runs before all tests in this block
+      nconf.argv().env().file({
+          file: '../../../config.json', format: nconf.formats.json
+        }
+      );
+      nconf.load();
+      start = new start(nconf.get("shiptest-github-owner:apiToken"),
+                nconf.get("shiptest-github-owner:accessToken"));
+      return done();
+    });
 
     it('Organization-Owner-github-getSubscriptions',
       function (done) {
