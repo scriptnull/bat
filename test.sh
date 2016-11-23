@@ -11,7 +11,6 @@ setupTestEnv() {
   popd
 
   pushd /build/IN/$RES_REPO/gitRepo
-  export -p
   npm install
   npm run test-tokenExchange
   npm run test-getAccounts
@@ -20,7 +19,7 @@ setupTestEnv() {
   popd
 
   pushd /build/IN/$RES_REPO/gitRepo/tests
-  echo "$(ls)"
+  echo "$(cat config.json)"
   popd
   echo "Completed Testing Env setup" $RES_REPO
 }
