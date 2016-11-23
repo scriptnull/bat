@@ -9,6 +9,7 @@ var testSuiteDesc = 'Organization-Owner-github-getSubscriptions';
 var adapter = require('../../../_common/shippable/github/Adapter.js');
 var Shippable = require('../../../_common/shippable/Adapter.js');
 var _ = require('underscore');
+var fs = require('fs');
 
 var assert = chai.assert;
 
@@ -22,10 +23,13 @@ describe(testSuite,
           file: '../../config.json', format: nconf.formats.json
         }
       );
-      nconf.load();
-      start = new start(nconf.get("shiptest-github-owner:apiToken"),
-                nconf.get("shiptest-github-owner:accessToken"));
-      return done();
+      nconf.load(function (err) {
+        var text = fs.readFileSync('../config.json')
+        console.log (text);
+        start = new start(nconf.get("shiptest-github-owner:apiToken"),
+                  nconf.get("shiptest-github-owner:accessToken"));
+        return done();
+      });
     });
 
     it('Organization-Owner-github-getSubscriptions',
