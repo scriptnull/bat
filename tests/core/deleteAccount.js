@@ -41,38 +41,45 @@ describe(util.format('%s1 - %s', testSuiteNum, testSuiteDesc),
             "apiToken": nconf.get("shiptest-github-member:apiToken")
           }
         }
-        _.each(accountIds, function(accountObj) {
+        async.each(accountIds,
+          function(accountObj, nextObj) {
             var shippable = new Shippable(accountObj.apiToken);
             shippable.deleteAccountById(accountObj.id,
-            function(err, res) {
-              if (err) {
-                var bag = {
-                  testSuite: util.format('delete Account with id: %s',accountObj.id),
-                  error: err
-                }
-                async.series([
-                    _createIssue.bind(null, bag)
-                  ],
-                  function (err) {
-                    if (err) {
-                      logger.warn('Failed');
-                      return done();
-                    }
-                    else {
-                      logger.debug('Issue Created');
-                      return done();
-                    }
+              function(err, res) {
+                if (err) {
+                  var bag = {
+                    testSuite: util.format('%s1 - delete Account with id: %s',
+                                 testSuiteNum, accountObj.id),
+                    error: err
                   }
-                );
-              } else {
-                logger.debug("res is::", util.inspect(res,{depth:null}));
-                if (res.status<200 || res.status>=299)
-                  logger.warn("status is::",res.status);
-                return done();
+                  async.series([
+                      _createIssue.bind(null, bag)
+                    ],
+                    function (err) {
+                      if (err) {
+                        logger.warn('Failed');
+                        return nextObj();
+                      }
+                      else {
+                        logger.debug('Issue Created');
+                        return nextObj();
+                      }
+                    }
+                  );
+                } else {
+                  logger.debug("res is::", util.inspect(res,{depth:null}));
+                  if (res.status<200 || res.status>=299)
+                    logger.warn("status is::",res.status);
+                  return nextObj();
+                }
               }
-            }
-          );
-        });
+            );
+          },
+          function (err) {
+            logger.warn("Failed");
+            return done();
+          }
+        );
       }
     );
   }
