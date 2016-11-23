@@ -22,10 +22,13 @@ describe(testSuite,
           file: '../../../config.json', format: nconf.formats.json
         }
       );
-      nconf.load();
-      start = new start(nconf.get("shiptest-github-owner:apiToken"),
-                nconf.get("shiptest-github-owner:accessToken"));
-      return done();
+      nconf.load(function (err) {
+        if (err)
+          return done(err);
+        start = new start(nconf.get("shiptest-github-owner:apiToken"),
+                  nconf.get("shiptest-github-owner:accessToken"));
+        return done();
+      });
     });
 
     it('Organization-Owner-github-getSubscriptions',
