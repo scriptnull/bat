@@ -64,12 +64,13 @@ describe('Get shippable token',
       function (done) {
         nconf.set('shiptest-github-owner:apiToken',tokens.owner.apiToken);
         nconf.set('shiptest-github-member:apiToken',tokens.member.apiToken);
-        nconf.save(function(err){
+        nconf.save(function (err) {
           if (err)
             console.log("Failed");
-        fs.readFile('./config.json', function (err, data) {
+        fs.readFile('../config.json', function (err, data) {
+          if(data)
             console.dir(JSON.parse(data.toString()));
-            return done();
+          return done();
           });
         });
       }
