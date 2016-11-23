@@ -4,6 +4,7 @@ var mocha = require('mocha');
 var nconf = require('nconf');
 var chai = require('chai');
 var async = require('async');
+var fs = require('fs');
 
 var assert = chai.assert;
 var request = require('request');
@@ -66,6 +67,9 @@ describe('Get shippable token',
         nconf.save(function(err){
           if (err)
             console.log("Failed");
+          fs.readFile('../config.json', function (err, data) {
+            console.dir(JSON.parse(data.toString()))
+          });
         });
         return done();
       }
