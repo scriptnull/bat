@@ -19,15 +19,17 @@ describe(testSuite,
   function () {
     before(function(done) {
       // runs before all tests in this block
+
+      var pathToJson = path.resolve(__dirname, '../config.json');
+      console.log("path is::",pathToJson);
       nconf.argv().env().file({
           file: './config.json', format: nconf.formats.json
         }
       );
-      nconf.load(function (err) {
-        start = new start(nconf.get("shiptest-github-owner:apiToken"),
-                  nconf.get("GITHUB_ACCESS_TOKEN_OWNER"));
-        return done();
-      });
+      nconf.load();
+      start = new start(nconf.get("shiptest-github-owner:apiToken"),
+                nconf.get("GITHUB_ACCESS_TOKEN_OWNER"));
+      return done();
     });
 
     it('Organization-Owner-github-getSubscriptions',
