@@ -58,7 +58,7 @@ describe(util.format('%s1 - %s', testSuiteNum, testSuiteDesc),
                     function (err) {
                       if (err) {
                         logger.warn('Failed');
-                        return nextToken();
+                        return nextToken(err);
                       }
                       else {
                         logger.debug('Issue Created');
@@ -79,7 +79,7 @@ describe(util.format('%s1 - %s', testSuiteNum, testSuiteDesc),
           function (err) {
             if (err)
               console.log("Failed");
-            return done();
+            return done(err);
           }
         );
       }
