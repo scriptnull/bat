@@ -16,18 +16,24 @@ var testSuite = util.format('%s1 - %s', testSuiteNum, testSuiteDesc);
 describe(testSuite,
   function () {
 
-    before(function(done) {
+    nconf.argv().env().file({
+        file: '../../../config.json', format: nconf.formats.json
+      }
+    );
+    nconf.load();
+    console.log("shiptest-github-owner:apiToken",nconf.get("shiptest-github-owner:apiToken"));
+//    before(function(done) {
       // runs before all tests in this block
-      nconf.argv().env().file({
-          file: '../../../config.json', format: nconf.formats.json
-        }
-      );
-      nconf.load();
-      console.log("shiptest-github-owner:apiToken",nconf.get("shiptest-github-owner:apiToken"));
+//      nconf.argv().env().file({
+//          file: '../../../config.json', format: nconf.formats.json
+//        }
+//      );
+//      nconf.load();
+//      console.log("shiptest-github-owner:apiToken",nconf.get("shiptest-github-owner:apiToken"));
 //      start = new start(nconf.get("shiptest-github-owner:apiToken"),
 //                nconf.get("shiptest-github-owner:accessToken"));
-      return done();
-    });
+//      return done();
+//    });
 
 //    it('Organization-Owner-github-getSubscriptions',
 //      function (done) {
