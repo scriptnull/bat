@@ -18,8 +18,14 @@ describe(testSuite,
   function () {
     before(function(done) {
       // runs before all tests in this block
-      nconf.argv().env();
+      nconf.argv().env().file({
+          file: '../../config.json', format: nconf.formats.json
+        }
+      );
       nconf.load(function (err) {
+        console.log(__filename);
+        console.log(nconf.get("GITHUB_ACCESS_TOKEN_OWNER"), "********");
+        console.log(process.env.GITHUB_ACCESS_TOKEN_OWNER, '^^^^^^^^^^^');
         start = new start(nconf.get("shiptest-github-owner:apiToken"),
                   nconf.get("shiptest-github-owner:accessToken"));
         return done();
