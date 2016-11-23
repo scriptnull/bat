@@ -24,8 +24,7 @@ describe(testSuite,
         }
       );
       nconf.load(function (err) {
-        console.log("token is1::",process.env.OWNER_API_TOKEN);
-        start = new start(process.env.OWNER_API_TOKEN,
+        start = new start(nconf.get("shiptest-github-owner:apiToken"),
                   nconf.get("GITHUB_ACCESS_TOKEN_OWNER"));
         return done();
       });
