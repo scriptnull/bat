@@ -31,7 +31,8 @@
     "chai-http": "^3.0.0",
     "util": "0.10.3",
     "winston": "2.2.0",
-    "fs": "*"
+    "fs": "*",
+    "path": "*"
   },
   "jshintConfig": {
     "node": true,
