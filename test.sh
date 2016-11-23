@@ -11,29 +11,22 @@ setupTestEnv() {
 
   pushd /build/IN/$RES_PARAMS
   export $(jq -r '.version.propertyBag.params.secure' version.json)
-  echo $GITHUB_ACCESS_TOKEN_OWNER
+  export VERSION_JSON=$(cat version.json)
+  echo $VERSION_JSON
   popd
-  echo "Completed Testing Env setup" $RES_REPO
-}
 
-runTests() {
-  echo "Starting to run test cases"
   pushd /build/IN/$RES_REPO/gitRepo
   npm run test-tokenExchange
   npm run test-getAccounts
   npm run test-deleteAccounts
+  export CONFIG_FILE=$(cat tests/config.json)
+  echo $CONFIG_FILE
   popd
-
-  pushd /build/IN/$RES_REPO/gitRepo/tests
-  export CONFIG_CONTENT=$(cat config.json)
-  echo $CONFIG_CONTENT
-  popd
-  echo "Successfully ran the test cases"
+  echo "Completed Testing Env setup" $RES_REPO
 }
 
 main() {
   setupTestEnv
-  runTests
 }
 
 main
