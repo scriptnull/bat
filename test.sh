@@ -15,7 +15,8 @@ setupTestEnv() {
   popd
 
   pushd /build/IN/$RES_REPO/gitRepo
-  npm run test-roles --API_URL $API_URL --GITHUB_ACCESS_TOKEN_OWNER $GITHUB_ACCESS_TOKEN_OWNER --GITHUB_ACCESS_TOKEN_MEMBER $GITHUB_ACCESS_TOKEN_MEMBER --GITHUB_SYSINTS_ID $GITHUB_SYSINTS_ID
+  npm run test-roles
+  cat ./tests/config.json
   popd
   echo "Completed Testing Env setup" $RES_REPO
 }
