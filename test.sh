@@ -17,10 +17,6 @@ setupTestEnv() {
 #  npm run test-organizationOwner
   npm run test-deleteAccounts
   popd
-
-  pushd /build/IN/$RES_REPO/gitRepo/tests
-  echo "$(cat config.json)"
-  popd
   echo "Completed Testing Env setup" $RES_REPO
 }
 
