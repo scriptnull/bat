@@ -12,22 +12,25 @@ var bag = {};
 describe('Get shippable token',
   function () {
     this.timeout(0);
-    before(function(done) {
-      nconf.argv().env().file({
-          file: '../config.json', format: nconf.formats.json
-        }
-      );
-      nconf.load();
-      var tokens = {
-        "owner": {
-          "githubToken": nconf.get("GITHUB_ACCESS_TOKEN_OWNER"),
-          "apiToken": ""
-        },
-        "member": {
-          "githubToken": nconf.get("GITHUB_ACCESS_TOKEN_MEMBER"),
-          "apiToken": ""
-        }
+
+    nconf.argv().env().file({
+        file: '../config.json', format: nconf.formats.json
       }
+    );
+    nconf.load();
+
+    var tokens = {
+      "owner": {
+        "githubToken": nconf.get("GITHUB_ACCESS_TOKEN_OWNER"),
+        "apiToken": ""
+      },
+      "member": {
+        "githubToken": nconf.get("GITHUB_ACCESS_TOKEN_MEMBER"),
+        "apiToken": ""
+      }
+    };
+
+    before(function(done) {
       async.each(tokens,
         function(token, nextToken) {
           request({
@@ -55,6 +58,7 @@ describe('Get shippable token',
         }
       );
     });
+
     it('Should create an empty testAccounts object',
       function (done) {
         nconf.set('shiptest-github-owner:apiToken',tokens.owner.apiToken);
