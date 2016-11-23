@@ -18,6 +18,8 @@ describe('Get shippable token',
         }
       );
       nconf.load();
+      console.log("owner:",GITHUB_ACCESS_TOKEN_OWNER);
+      console.log("member:",GITHUB_ACCESS_TOKEN_MEMBER);
       var tokens = {
         "owner": {
           "githubToken": nconf.get("GITHUB_ACCESS_TOKEN_OWNER"),
