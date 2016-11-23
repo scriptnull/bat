@@ -42,6 +42,7 @@ describe(util.format('%s1 - %s', testSuiteNum, testSuiteDesc),
       function (done) {
         this.timeout(0);
 
+        console.log("config.apiToken is::",config.apiToken);
         async.each(tokens,
           function(token, nextToken) {
             var shippable = new Shippable(token.apiToken);
