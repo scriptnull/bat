@@ -9,10 +9,10 @@
     "test-core": "./node_modules/mocha/bin/mocha -R mocha-multi tests/core/*.js",
     "test-daily": "./node_modules/mocha/bin/mocha -R mocha-multi tests/daily/**/*.js",
     "test-weekly": "./node_modules/mocha/bin/mocha -R mocha-multi tests/weekly/**/*.js",
-    "test-tokenExchange": "./node_modules/mocha/bin/mocha tests/core/testTokenExchange.js",
-    "test-getAccounts": "./node_modules/mocha/bin/mocha tests/core/0.js",
-    "test-deleteAccounts": "./node_modules/mocha/bin/mocha tests/core/deleteAccount.js",
-    "test-organizationOwner": "./node_modules/mocha/bin/mocha tests/core/organization-owner/github/1.2.1_getSubscriptions.js"
+    "test-tokenExchange": "./node_modules/mocha/bin/mocha tests/testTokenExchange.js",
+    "test-getAccounts": "./node_modules/mocha/bin/mocha tests/0.js",
+    "test-deleteAccounts": "./node_modules/mocha/bin/mocha tests/deleteAccount.js",
+    "test-organizationOwner": "./node_modules/mocha/bin/mocha tests/organization-owner/github/1.2.1_getSubscriptions.js"
   },
   "author": "Avi Cavale <avi@shippable.com> (http://shippable.com/)",
   "dependencies": {

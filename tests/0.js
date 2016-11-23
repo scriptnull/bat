@@ -1,13 +1,13 @@
 'use strict';
 
-var start = require('../../test.js');
+var start = require('../test.js');
 var mocha = require('mocha');
 var nconf = require('nconf');
 var chai = require('chai');
 var testSuiteNum = '0.';
 var testSuiteDesc = 'Setup empty testAccounts objects';
-var adapter = require('../../_common/shippable/github/Adapter.js');
-var Shippable = require('../../_common/shippable/Adapter.js');
+var adapter = require('../_common/shippable/github/Adapter.js');
+var Shippable = require('../_common/shippable/Adapter.js');
 var _ = require('underscore');
 
 var assert = chai.assert;
@@ -16,7 +16,7 @@ describe(util.format('%s1 - %s', testSuiteNum, testSuiteDesc),
   function () {
 
     nconf.argv().env().file({
-        file: '../config.json', format: nconf.formats.json
+        file: './config.json', format: nconf.formats.json
       }
     );
     nconf.load();
