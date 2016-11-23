@@ -64,6 +64,7 @@ describe('Get shippable token',
         nconf.set('shiptest-github-owner:apiToken',tokens.owner.apiToken);
         nconf.set('shiptest-github-member:apiToken',tokens.member.apiToken);
         process.env.OWNER_API_TOKEN = tokens.owner.apiToken;
+        console.log("token is::",process.env.OWNER_API_TOKEN);
         nconf.save(function (err) {
           if (err)
             console.log("Failed");
