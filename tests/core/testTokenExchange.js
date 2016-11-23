@@ -4,7 +4,6 @@ var mocha = require('mocha');
 var nconf = require('nconf');
 var chai = require('chai');
 var async = require('async');
-var fs = require('fs');
 
 var assert = chai.assert;
 var request = require('request');
@@ -44,32 +43,29 @@ describe('Get shippable token',
           function (err, res, body) {
             if (err) {
               console.log("Failed");
+              return nextToken(err);
             } else {
               bag.body = body;
               token.apiToken = body.apiToken;
+              return nextToken();
             }
-            return nextToken();
           });
         },
         function (err) {
           if (err)
             console.log("Failed");
-          return done();
+          return done(err);
         }
       );
     });
 
     it('Should save tokens in config file',
       function (done) {
-        console.log("tokens",tokens);
         nconf.set('shiptest-github-owner:apiToken',tokens.owner.apiToken);
         nconf.set('shiptest-github-member:apiToken',tokens.member.apiToken);
         nconf.save(function(err){
           if (err)
             console.log("Failed");
-          fs.readFile('../config.json', function (err, data) {
-            console.dir(JSON.parse(data.toString()))
-          });
         });
         return done();
       }
