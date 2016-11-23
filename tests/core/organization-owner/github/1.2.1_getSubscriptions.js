@@ -23,46 +23,47 @@ describe(testSuite,
         }
       );
       nconf.load();
-      start = new start(nconf.get("shiptest-github-owner:apiToken"),
-                nconf.get("shiptest-github-owner:accessToken"));
+      console.log("shiptest-github-owner:apiToken",nconf.get("shiptest-github-owner:apiToken"));
+//      start = new start(nconf.get("shiptest-github-owner:apiToken"),
+//                nconf.get("shiptest-github-owner:accessToken"));
       return done();
     });
 
-    it('Organization-Owner-github-getSubscriptions',
-      function (done) {
-        this.timeout(0);
-        var shippable = new Shippable(config.apiToken);
-        shippable.getSubscriptions('',
-          function(err, subscriptions) {
-            if (err) {
-              var bag = {
-                testSuite: testSuite,
-                error: err
-              }
-              async.series([
-                  _createIssue.bind(null, bag)
-                ],
-                function (err) {
-                  if (err) {
-                    logger.warn('Failed');
-                    return done();
-                  }
-                  else {
-                    logger.debug('Issue Created');
-                    return done();
-                  }
-                }
-              );
-            } else {
-              logger.debug("subscriptions length is::",subscriptions.length);
-              if (subscriptions.status<200 || subscriptions.status>=299)
-                logger.warn("status is::",subscriptions.status);
-              return done();
-            }
-          }
-        );
-      }
-    );
+//    it('Organization-Owner-github-getSubscriptions',
+//      function (done) {
+//        this.timeout(0);
+//        var shippable = new Shippable(config.apiToken);
+//        shippable.getSubscriptions('',
+//          function(err, subscriptions) {
+//            if (err) {
+//              var bag = {
+//                testSuite: testSuite,
+//                error: err
+//              }
+//              async.series([
+//                  _createIssue.bind(null, bag)
+//                ],
+//                function (err) {
+//                  if (err) {
+//                    logger.warn('Failed');
+//                    return done();
+//                  }
+//                  else {
+//                    logger.debug('Issue Created');
+//                    return done();
+//                  }
+//                }
+//              );
+//            } else {
+//              logger.debug("subscriptions length is::",subscriptions.length);
+//              if (subscriptions.status<200 || subscriptions.status>=299)
+//                logger.warn("status is::",subscriptions.status);
+//              return done();
+//            }
+//          }
+//        );
+//      }
+//    );
   }
 );
 
