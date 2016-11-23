@@ -24,7 +24,7 @@ describe(testSuite,
       console.log("path is::",pathToJson);
 
       nconf.argv().env().file({
-          file: pathToJson, format: nconf.formats.json
+          file: './config.json', format: nconf.formats.json
         }
       );
       nconf.load();
