@@ -23,11 +23,8 @@ describe(testSuite,
         }
       );
       nconf.load(function (err) {
-        console.log(__filename);
-        console.log(nconf.get("GITHUB_ACCESS_TOKEN_OWNER"), "********");
-        console.log(process.env.GITHUB_ACCESS_TOKEN_OWNER, '^^^^^^^^^^^');
-        start = new start(nconf.get("shiptest-github-owner:apiToken"),
-                  nconf.get("shiptest-github-owner:accessToken"));
+        start = new start(process.env.OWNER_API_TOKEN,
+                  nconf.get("GITHUB_ACCESS_TOKEN_OWNER"));
         return done();
       });
     });
