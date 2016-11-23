@@ -21,7 +21,7 @@ describe(testSuite,
       // runs before all tests in this block
       console.log('***********', __dirname, '^^^^^^^^^^^^', __filename);
       nconf.argv().env().file({
-          file: path.join(__dirname, "../", "config.json"), format: nconf.formats.json
+          file: './config.json', format: nconf.formats.json
         }
       );
       nconf.load(function (err) {
