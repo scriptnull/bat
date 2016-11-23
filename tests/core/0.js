@@ -15,66 +15,86 @@ var assert = chai.assert;
 describe(util.format('%s1 - %s', testSuiteNum, testSuiteDesc),
   function () {
 
+    nconf.argv().env().file({
+        file: '../config.json', format: nconf.formats.json
+      }
+    );
+    nconf.load();
+    var tokens = {
+      "owner": {
+        "id": "",
+        "apiToken": nconf.get("shiptest-github-owner:apiToken")
+      },
+      "member": {
+        "id": "",
+        "apiToken": nconf.get("shiptest-github-member:apiToken")
+      }
+    };
+
     before(function(done) {
       // runs before all tests in this block
-      nconf.argv().env().file({
-          file: '../config.json', format: nconf.formats.json
-        }
-      );
-      nconf.load();
       start = new start(nconf.get("shiptest-github-owner:apiToken"),
                 nconf.get("shiptest-github-owner:accessToken"));
       return done();
     });
 
-    it('Should create an empty testAccounts object',
-      function (done) {
-        logger.info('Creating an empty testAccounts object');
-        nconf.set('testAccounts', {});
-        assert.notProperty(nconf.get('testAccounts'), 'shipayeone');
-
-        return done();
-      }
-    );
-
     it('Get /accounts',
       function (done) {
         this.timeout(0);
-        var shippable = new Shippable(config.apiToken);
-        shippable.getAccounts('',
-          function(err, res) {
-            if (err) {
-              var bag = {
-                testSuite: 'Get /accounts',
-                error: err
-              }
-              async.series([
-                  _createIssue.bind(null, bag)
-                ],
-                function (err) {
-                  if (err) {
-                    logger.warn('Failed');
-                    return done();
+
+        async.each(tokens,
+          function(token, nextToken) {
+            var shippable = new Shippable(token.apiToken);
+            shippable.getAccounts('',
+              function(err, res) {
+                if (err) {
+                  var bag = {
+                    testSuite: 'Get /accounts',
+                    error: err
                   }
-                  else {
-                    logger.debug('Issue Created');
-                    return done();
-                  }
+                  async.series([
+                      _createIssue.bind(null, bag)
+                    ],
+                    function (err) {
+                      if (err) {
+                        logger.warn('Failed');
+                        return nextToken();
+                      }
+                      else {
+                        logger.debug('Issue Created');
+                        return nextToken();
+                      }
+                    }
+                  );
+                } else {
+                  logger.debug("res is::", util.inspect(res,{depth:null}));
+                  if (res.status<200 || res.status>=299)
+                    logger.warn("status is::",res.status);
+                  token.id = _.first(res).id;
+                  return nextToken();
                 }
-              );
-            } else {
-              logger.debug("res is::", util.inspect(res,{depth:null}));
-              if (res.status<200 || res.status>=299)
-                logger.warn("status is::",res.status);
-              nconf.set('shiptest-github-owner:accountId',_.first(res).id);
-              nconf.save(function(err){
-                if (err)
-                  console.log("Failed");
-              });
-              return done();
-            }
+              }
+            );
+          }
+          function (err) {
+            if (err)
+              console.log("Failed");
+            return done();
           }
         );
+      }
+    );
+
+    it('Should save accountIds to config file',
+      function (done) {
+        nconf.set('shiptest-github-owner:accountId',tokens.owner.id);
+        nconf.set('shiptest-github-member:accountId',tokens.member.id);
+        nconf.save(function(err){
+          if (err)
+            console.log("Failed");
+        });
+
+        return done();
       }
     );
   }
