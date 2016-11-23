@@ -59,7 +59,7 @@ describe('Get shippable token',
       );
     });
 
-    it('Should create an empty testAccounts object',
+    it('Should save tokens in config file',
       function (done) {
         nconf.set('shiptest-github-owner:apiToken',tokens.owner.apiToken);
         nconf.set('shiptest-github-member:apiToken',tokens.member.apiToken);
@@ -67,7 +67,6 @@ describe('Get shippable token',
           if (err)
             console.log("Failed");
         });
-        assert.notProperty(nconf.get('testAccounts'), 'shipayeone');
         return done();
       }
     );
