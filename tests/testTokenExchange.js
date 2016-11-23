@@ -45,6 +45,7 @@ describe('Get shippable token',
               return nextToken(err);
             } else {
               bag.body = body;
+              console.log("body is::",body);
               token.apiToken = body.apiToken;
               return nextToken();
             }
