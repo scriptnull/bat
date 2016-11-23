@@ -30,7 +30,8 @@
     "chai": "^3.5.0",
     "chai-http": "^3.0.0",
     "util": "0.10.3",
-    "winston": "2.2.0"
+    "winston": "2.2.0",
+    "fs": "0.0.1-security"
   },
   "jshintConfig": {
     "node": true,
