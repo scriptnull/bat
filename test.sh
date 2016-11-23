@@ -17,8 +17,10 @@ setupTestEnv() {
   npm run test-getAccounts
 #  npm run test-organizationOwner
   npm run test-deleteAccounts
-  export CONFIG_FILE=$(cat tests/config.json)
-  echo $CONFIG_FILE
+  popd
+
+  pushd /build/IN/$RES_REPO/gitRepo/tests
+  echo "$(ls)"
   popd
   echo "Completed Testing Env setup" $RES_REPO
 }
