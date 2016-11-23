@@ -3,6 +3,7 @@
 var mocha = require('mocha');
 var nconf = require('nconf');
 var chai = require('chai');
+var async = require('async');
 
 var assert = chai.assert;
 var request = require('request');
