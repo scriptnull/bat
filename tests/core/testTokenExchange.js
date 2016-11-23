@@ -29,7 +29,7 @@ describe('Get shippable token',
         "apiToken": ""
       }
     };
-
+    console.log("GITHUB_ACCESS_TOKEN_OWNER",nconf.get("GITHUB_ACCESS_TOKEN_OWNER"));
     before(function(done) {
       async.each(tokens,
         function(token, nextToken) {
