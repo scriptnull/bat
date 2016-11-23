@@ -9,6 +9,7 @@ var testSuiteDesc = 'Setup empty testAccounts objects';
 var adapter = require('../../_common/shippable/github/Adapter.js');
 var Shippable = require('../../_common/shippable/Adapter.js');
 var _ = require('underscore');
+var fs = require('fs');
 
 var assert = chai.assert;
 
@@ -92,7 +93,10 @@ describe(util.format('%s1 - %s', testSuiteNum, testSuiteDesc),
         nconf.save(function(err){
           if (err)
             console.log("Failed");
-          return done();
+          fs.readFile('../config.json', function (err, data) {
+            console.dir(JSON.parse(data.toString()));
+            return done();
+          });
         });
       }
     );

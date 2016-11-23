@@ -16,8 +16,6 @@ setupTestEnv() {
   npm run test-getAccounts
 #  npm run test-organizationOwner
   npm run test-deleteAccounts
-  echo "$(cat ./tests/config.json)"
-  popd
   echo "Completed Testing Env setup" $RES_REPO
 }
 
