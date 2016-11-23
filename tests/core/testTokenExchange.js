@@ -43,6 +43,7 @@ describe('Get shippable token',
             } else {
               bag.body = body;
               console.log("apiToken is:",body.apiToken);
+              token.apiToken = body.apiToken;
             }
             return nextToken();
           });
@@ -56,7 +57,12 @@ describe('Get shippable token',
     });
     it('Should create an empty testAccounts object',
       function (done) {
-        nconf.set('testAccounts', {});
+        nconf.set('shiptest-github-owner:apiToken',tokens.owner.apiToken);
+        nconf.set('shiptest-github-member:apiToken',tokens.member.apiToken);
+        nconf.save(function(err){
+          if (err)
+            console.log("Failed");
+        });
         assert.notProperty(nconf.get('testAccounts'), 'shipayeone');
         return done();
       }
