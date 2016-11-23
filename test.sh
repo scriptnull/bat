@@ -19,7 +19,7 @@ setupTestEnv() {
   popd
 
   echo "Completed Testing Env setup" $RES_REPO
-  popd
+
 }
 
 main() {
