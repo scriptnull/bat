@@ -17,26 +17,40 @@ describe('Get shippable token',
         }
       );
       nconf.load();
-      request({
-        url: 'https://alphaapi.shippable.com/accounts/auth/' + nconf.get("shiptest-github-owner:githubSysIntId"),
-        method: 'POST',
-        json: {
-          "accessToken": nconf.get("shiptest-github-owner:accessToken")
+      var tokens = {
+        "owner": {
+          "githubToken": nconf.get("GITHUB_ACCESS_TOKEN_OWNER"),
+          "apiToken": ""
+        },
+        "member": {
+          "githubToken": nconf.get("GITHUB_ACCESS_TOKEN_MEMBER"),
+          "apiToken": ""
         }
-      },
-      function (err, res, body) {
-        if (err) {
-          console.log("Failed");
-        } else {
-          bag.body = body;
-          nconf.set('shiptest-github-owner:apiToken',body.apiToken);
-          nconf.save(function(err){
-            if (err)
+      }
+      async.each(tokens,
+        function(token, nextToken) {
+          request({
+            url: 'https://alphaapi.shippable.com/accounts/auth/' + nconf.get("GITHUB_SYSINTS_ID"),
+            method: 'POST',
+            json: {
+              "accessToken": token.githubToken
+            }
+          },
+          function (err, res, body) {
+            if (err) {
               console.log("Failed");
+            } else {
+              bag.body = body;
+              console.log("apiToken is:",body.apiToken);
+            }
+            return nextToken();
           });
+        },
+        function (err) {
+          logger.warn("Failed");
+          return done();
         }
-        return done();
-      });
+      );
     });
     it('Should create an empty testAccounts object',
       function (done) {
