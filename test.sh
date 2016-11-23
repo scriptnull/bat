@@ -18,7 +18,7 @@ setupTestEnv() {
   npm run test-tokenExchange
   npm run test-getAccounts
   npm run test-deleteAccounts
-  export CONFIG_FILE = $(cat ./tests/config.json)
+  export CONFIG_FILE=$(cat ./tests/config.json)
   echo $CONFIG_FILE
   popd
   echo "Completed Testing Env setup" $RES_REPO
