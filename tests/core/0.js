@@ -75,7 +75,7 @@ describe(util.format('%s1 - %s', testSuiteNum, testSuiteDesc),
                 }
               }
             );
-          }
+          },
           function (err) {
             if (err)
               console.log("Failed");
