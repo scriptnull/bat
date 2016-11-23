@@ -15,8 +15,8 @@ setupTestEnv() {
   npm install
   npm run test-tokenExchange
   npm run test-getAccounts
+#  npm run test-organizationOwner
   npm run test-deleteAccounts
-  npm run test-organizationOwner
   export CONFIG_FILE=$(cat tests/config.json)
   echo $CONFIG_FILE
   popd
