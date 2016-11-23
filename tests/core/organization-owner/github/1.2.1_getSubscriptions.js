@@ -1,8 +1,6 @@
 'use strict';
 
-var start = require('../../../../test.js');
 var mocha = require('mocha');
-var nconf = require('nconf');
 var chai = require('chai');
 var testSuiteNum = '1.';
 var testSuiteDesc = 'Organization-Owner-github-getSubscriptions';
@@ -16,60 +14,41 @@ var testSuite = util.format('%s1 - %s', testSuiteNum, testSuiteDesc);
 describe(testSuite,
   function () {
 
-    nconf.argv().env().file({
-        file: '../../../config.json', format: nconf.formats.json
+    it('Organization-Owner-github-getSubscriptions',
+      function (done) {
+        this.timeout(0);
+        var shippable = new Shippable(config.apiToken);
+        shippable.getSubscriptions('',
+          function(err, subscriptions) {
+            if (err) {
+              var bag = {
+                testSuite: testSuite,
+                error: err
+              }
+              async.series([
+                  _createIssue.bind(null, bag)
+                ],
+                function (err) {
+                  if (err) {
+                    logger.warn('Failed');
+                    return done();
+                  }
+                  else {
+                    logger.debug('Issue Created');
+                    return done();
+                  }
+                }
+              );
+            } else {
+              logger.debug("subscriptions length is::",subscriptions.length);
+              if (subscriptions.status<200 || subscriptions.status>=299)
+                logger.warn("status is::",subscriptions.status);
+              return done();
+            }
+          }
+        );
       }
     );
-    nconf.load();
-    console.log("shiptest-github-owner:apiToken",nconf.get("shiptest-github-owner:apiToken"));
-//    before(function(done) {
-      // runs before all tests in this block
-//      nconf.argv().env().file({
-//          file: '../../../config.json', format: nconf.formats.json
-//        }
-//      );
-//      nconf.load();
-//      console.log("shiptest-github-owner:apiToken",nconf.get("shiptest-github-owner:apiToken"));
-//      start = new start(nconf.get("shiptest-github-owner:apiToken"),
-//                nconf.get("shiptest-github-owner:accessToken"));
-//      return done();
-//    });
-
-//    it('Organization-Owner-github-getSubscriptions',
-//      function (done) {
-//        this.timeout(0);
-//        var shippable = new Shippable(config.apiToken);
-//        shippable.getSubscriptions('',
-//          function(err, subscriptions) {
-//            if (err) {
-//              var bag = {
-//                testSuite: testSuite,
-//                error: err
-//              }
-//              async.series([
-//                  _createIssue.bind(null, bag)
-//                ],
-//                function (err) {
-//                  if (err) {
-//                    logger.warn('Failed');
-//                    return done();
-//                  }
-//                  else {
-//                    logger.debug('Issue Created');
-//                    return done();
-//                  }
-//                }
-//              );
-//            } else {
-//              logger.debug("subscriptions length is::",subscriptions.length);
-//              if (subscriptions.status<200 || subscriptions.status>=299)
-//                logger.warn("status is::",subscriptions.status);
-//              return done();
-//            }
-//          }
-//        );
-//      }
-//    );
   }
 );
 
