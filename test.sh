@@ -8,11 +8,10 @@ setupTestEnv() {
 
   pushd /build/IN/$RES_PARAMS
   export $(jq -r '.version.propertyBag.params.secure' version.json)
-  export VERSION_JSON=$(cat version.json)
-  echo $VERSION_JSON
   popd
 
   pushd /build/IN/$RES_REPO/gitRepo
+  export -p
   npm install
   npm run test-tokenExchange
   npm run test-getAccounts
