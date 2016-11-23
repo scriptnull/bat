@@ -24,8 +24,7 @@ describe(testSuite,
         }
       );
       nconf.load(function (err) {
-        var text = fs.readFileSync('../../config.json');
-        console.log(text);
+        console.log(__filename);
         start = new start(nconf.get("shiptest-github-owner:apiToken"),
                   nconf.get("shiptest-github-owner:accessToken"));
         return done();
