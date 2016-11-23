@@ -93,9 +93,8 @@ describe(util.format('%s1 - %s', testSuiteNum, testSuiteDesc),
         nconf.save(function(err){
           if (err)
             console.log("Failed");
+          return done();
         });
-
-        return done();
       }
     );
   }

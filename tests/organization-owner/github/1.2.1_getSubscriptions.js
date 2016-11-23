@@ -19,7 +19,7 @@ describe(testSuite,
     before(function(done) {
       // runs before all tests in this block
       nconf.file({
-          file: '../config.json'
+          file: '../../config.json', format: nconf.formats.json
         }
       );
       nconf.load();
