@@ -29,7 +29,7 @@ describe('Get shippable token',
         "apiToken": ""
       }
     };
-    console.log("GITHUB_ACCESS_TOKEN_OWNER",nconf.get("GITHUB_ACCESS_TOKEN_OWNER"));
+
     before(function(done) {
       async.each(tokens,
         function(token, nextToken) {
@@ -45,8 +45,6 @@ describe('Get shippable token',
               console.log("Failed");
             } else {
               bag.body = body;
-              console.log("body is:",body);
-              console.log("apiToken is:",body.apiToken);
               token.apiToken = body.apiToken;
             }
             return nextToken();
