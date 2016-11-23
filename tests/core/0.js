@@ -34,7 +34,7 @@ describe(util.format('%s1 - %s', testSuiteNum, testSuiteDesc),
     before(function(done) {
       // runs before all tests in this block
       start = new start(nconf.get("shiptest-github-owner:apiToken"),
-                nconf.get("shiptest-github-owner:accessToken"));
+                nconf.get("GITHUB_ACCESS_TOKEN_OWNER"));
       return done();
     });
 

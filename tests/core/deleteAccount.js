@@ -23,7 +23,7 @@ describe(util.format('%s1 - %s', testSuiteNum, testSuiteDesc),
       );
       nconf.load();
       start = new start(nconf.get("shiptest-github-owner:apiToken"),
-                nconf.get("shiptest-github-owner:accessToken"));
+                nconf.get("GITHUB_ACCESS_TOKEN_OWNER"));
       return done();
     });
 
