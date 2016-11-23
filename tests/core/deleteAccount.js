@@ -76,7 +76,8 @@ describe(util.format('%s1 - %s', testSuiteNum, testSuiteDesc),
             );
           },
           function (err) {
-            logger.warn("Failed");
+            if (err)
+              console.log("Failed");
             return done();
           }
         );

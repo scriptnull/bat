@@ -48,7 +48,8 @@ describe('Get shippable token',
           });
         },
         function (err) {
-          logger.warn("Failed");
+          if (err)
+            console.log("Failed");
           return done();
         }
       );
