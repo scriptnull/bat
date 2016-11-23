@@ -11,7 +11,7 @@ setupTestEnv() {
 
   pushd /build/IN/$RES_PARAMS
   export $(jq -r '.version.propertyBag.params.secure' version.json)
-  echo $API_URL
+  echo $GITHUB_ACCESS_TOKEN_OWNER
   popd
 
   pushd /build/IN/$RES_REPO/gitRepo
