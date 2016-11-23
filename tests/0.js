@@ -9,12 +9,10 @@ var testSuiteDesc = 'Setup empty testAccounts objects';
 var adapter = require('../_common/shippable/github/Adapter.js');
 var Shippable = require('../_common/shippable/Adapter.js');
 var _ = require('underscore');
-var config = require('./config.json');
 var assert = chai.assert;
 
 describe(util.format('%s1 - %s', testSuiteNum, testSuiteDesc),
   function () {
-    console.log('**********', config);
     nconf.argv().env().file({
         file: './config.json', format: nconf.formats.json
       }
