@@ -19,7 +19,7 @@ describe(testSuite,
     before(function(done) {
       // runs before all tests in this block
       nconf.argv().env().file({
-          file: '../../config.json', format: nconf.formats.json
+          file: path.join(__dirname, "../../", "config.json"), format: nconf.formats.json
         }
       );
       nconf.load(function (err) {
