@@ -8,7 +8,6 @@ var async = require('async');
 var assert = chai.assert;
 var request = require('request');
 var bag = {};
-var fs = require('fs');
 
 describe('Get shippable token',
   function () {
@@ -67,11 +66,7 @@ describe('Get shippable token',
         nconf.save(function (err) {
           if (err)
             console.log("Failed");
-        fs.readFile('../config.json', function (err, data) {
-          if(data)
-            console.dir(JSON.parse(data.toString()));
           return done();
-          });
         });
       }
     );
