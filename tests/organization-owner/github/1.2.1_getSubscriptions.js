@@ -10,7 +10,6 @@ var adapter = require('../../../_common/shippable/github/Adapter.js');
 var Shippable = require('../../../_common/shippable/Adapter.js');
 var _ = require('underscore');
 var fs = require('fs');
-var config = require('../../config.json');
 
 var assert = chai.assert;
 
@@ -18,14 +17,9 @@ var testSuite = util.format('%s1 - %s', testSuiteNum, testSuiteDesc);
 describe(testSuite,
   function () {
     before(function(done) {
-      console.log("**********",config);
       // runs before all tests in this block
-      nconf.file({
-          file: '../../config.json', format: nconf.formats.json
-        }
-      );
+      nconf.argv().env();
       nconf.load(function (err) {
-        console.log(__filename);
         start = new start(nconf.get("shiptest-github-owner:apiToken"),
                   nconf.get("shiptest-github-owner:accessToken"));
         return done();

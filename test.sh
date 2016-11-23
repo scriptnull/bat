@@ -17,6 +17,7 @@ setupTestEnv() {
   npm run test-organizationOwner
   npm run test-deleteAccounts
   echo "Completed Testing Env setup" $RES_REPO
+  popd
 }
 
 main() {
