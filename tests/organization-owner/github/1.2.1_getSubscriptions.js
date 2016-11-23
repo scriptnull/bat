@@ -1,13 +1,13 @@
 'use strict';
 
-var start = require('../../../../test.js');
+var start = require('../../../test.js');
 var mocha = require('mocha');
 var nconf = require('nconf');
 var chai = require('chai');
 var testSuiteNum = '1.';
 var testSuiteDesc = 'Organization-Owner-github-getSubscriptions';
-var adapter = require('../../../../_common/shippable/github/Adapter.js');
-var Shippable = require('../../../../_common/shippable/Adapter.js');
+var adapter = require('../../../_common/shippable/github/Adapter.js');
+var Shippable = require('../../../_common/shippable/Adapter.js');
 var _ = require('underscore');
 
 var assert = chai.assert;
@@ -19,16 +19,13 @@ describe(testSuite,
     before(function(done) {
       // runs before all tests in this block
       nconf.file({
-          file: '../../../config.json', format: nconf.formats.json
+          file: '../config.json'
         }
       );
-      nconf.load(function (err) {
-        if (err)
-          return done(err);
-        start = new start(nconf.get("shiptest-github-owner:apiToken"),
-                  nconf.get("shiptest-github-owner:accessToken"));
-        return done();
-      });
+      nconf.load();
+      start = new start(nconf.get("shiptest-github-owner:apiToken"),
+                nconf.get("shiptest-github-owner:accessToken"));
+      return done();
     });
 
     it('Organization-Owner-github-getSubscriptions',

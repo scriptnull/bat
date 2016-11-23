@@ -14,7 +14,7 @@ describe('Get shippable token',
     this.timeout(0);
 
     nconf.argv().env().file({
-        file: '../config.json', format: nconf.formats.json
+        file: './config.json', format: nconf.formats.json
       }
     );
     nconf.load();
