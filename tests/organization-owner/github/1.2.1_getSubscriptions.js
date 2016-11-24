@@ -23,7 +23,7 @@ describe(testSuite,
       var pathToJson = path.resolve(__dirname, '../../../config.json');
       console.log("path is::",pathToJson);
 
-      nconf.argv().env().file({file: './config.json'});
+      nconf.argv().env().file({file: pathToJson});
       nconf.load();
       console.log("nconf",nconf);
       console.log("process.cwd",process.cwd());
