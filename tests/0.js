@@ -13,8 +13,9 @@ var assert = chai.assert;
 
 describe(util.format('%s1 - %s', testSuiteNum, testSuiteDesc),
   function () {
+    var pathToJson = process.cwd() + '/config.json';
     nconf.argv().env().file({
-        file: './config.json', format: nconf.formats.json
+        file: pathToJson, format: nconf.formats.json
       }
     );
     nconf.load();
