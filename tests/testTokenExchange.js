@@ -54,7 +54,7 @@ describe('Get shippable token',
         function (err) {
           if (err)
             console.log("Failed");
-          return done(err);
+          return done();
         }
       );
     });
