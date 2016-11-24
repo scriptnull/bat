@@ -2,6 +2,8 @@
 
 var testSuiteNum = '1.';
 var testSuiteDesc = 'Sync Account for organization owner';
+var adapter = require('../../../../_common/shippable/github/Adapter.js');
+var Shippable = require('../../../../_common/shippable/Adapter.js');
 
 var testSuite = util.format('%s2_sync_accountByid - %s',
                   testSuiteNum, testSuiteDesc);
