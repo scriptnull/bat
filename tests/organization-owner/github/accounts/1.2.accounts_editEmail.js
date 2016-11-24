@@ -522,7 +522,7 @@ describe('Edit email with valid email address',
                       }
                     }
                   );
-                  assert.notEqual(err, null);
+                  assert.notEqual(err, undefined);
                   return done();
                 }
               }
