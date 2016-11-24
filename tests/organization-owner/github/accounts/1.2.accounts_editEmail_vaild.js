@@ -76,7 +76,6 @@ function _createIssue(bag,next) {
   }
   githubAdapter.pushRespositoryIssue('deepikasl', 'VT1', data,
     function(err, res) {
-      logger.debug("response is::",res.status);
       if (err)
         logger.warn("Creating Issue failed with error: ", err);
       return next();
