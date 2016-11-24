@@ -23,9 +23,10 @@ describe(testSuite,
       var pathToJson = path.resolve(__dirname, './config.json');
       console.log("path is::",pathToJson);
 
-      nconf.argv().env().file({file: pathToJson});
+      nconf.argv().env().file({file: './config.json'});
       nconf.load();
       console.log("nconf",nconf);
+      console.log("process.cwd",process.cwd());
       start = new start(nconf.get("shiptest-github-owner:apiToken"),
                 nconf.get("GITHUB_ACCESS_TOKEN_OWNER"));
       return done();
@@ -35,7 +36,8 @@ describe(testSuite,
       function (done) {
         this.timeout(0);
         var shippable = new Shippable(config.apiToken);
-        var query = 'orgNames=shiptest-github-organization-1,shiptest-github-org-no-members';
+        var query = util.format('orgNames=%s,%s',nconf.get("GITHUB_ORG_1"),
+                      nconf.get("GITHUB_ORG_2"));
         shippable.getSubscriptions(query,
           function(err, subscriptions) {
             if (err) {
