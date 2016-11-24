@@ -37,7 +37,8 @@ describe(testSuite,
       function (done) {
         this.timeout(0);
         var shippable = new Shippable(config.apiToken);
-        shippable.getSubscriptions('',
+        var query = 'orgNames=shiptest-github-organization-1,shiptest-github-org-no-members';
+        shippable.getSubscriptions(query,
           function(err, subscriptions) {
             if (err) {
               var bag = {
