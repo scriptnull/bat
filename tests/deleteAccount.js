@@ -47,7 +47,7 @@ describe(util.format('%s1 - %s', testSuiteNum, testSuiteDesc),
             var shippable = new Shippable(accountObj.apiToken);
             shippable.deleteAccountById(accountObj.id,
               function(err, res) {
-                if (err) {
+                if (err && err.status !== 404) {
                   var bag = {
                     testSuite: util.format('%s1 - delete Account with id: %s',
                                  testSuiteNum, accountObj.id),
