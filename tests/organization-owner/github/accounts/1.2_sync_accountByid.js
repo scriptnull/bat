@@ -27,8 +27,8 @@ describe(testSuite,
         }
       );
       nconf.load();
-      start = new start(nconf.get("shiptest-github-owner:apiToken"),
-                nconf.get("GITHUB_ACCESS_TOKEN_OWNER"));
+//      start = new start(nconf.get("shiptest-github-owner:apiToken"),
+//                nconf.get("GITHUB_ACCESS_TOKEN_OWNER"));
       return done();
     });
 
