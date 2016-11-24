@@ -20,7 +20,7 @@ describe(testSuite,
     before(function(done) {
       // runs before all tests in this block
 
-      var pathToJson = path.resolve(__dirname, './config.json');
+      var pathToJson = path.resolve(__dirname, '../../../config.json');
       console.log("path is::",pathToJson);
 
       nconf.argv().env().file({file: './config.json'});
