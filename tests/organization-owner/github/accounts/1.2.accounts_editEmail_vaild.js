@@ -1,13 +1,13 @@
 'use strict';
 
-var start = require('../../../test.js');
+var start = require('../../../../test.js');
 var mocha = require('mocha');
 var nconf = require('nconf');
 var chai = require('chai');
 var testSuiteNum = '1.';
 var testSuiteDesc = 'Edit email with valid email address';
-var adapter = require('../../../_common/shippable/github/Adapter.js');
-var Shippable = require('../../../_common/shippable/Adapter.js');
+var adapter = require('../../../../_common/shippable/github/Adapter.js');
+var Shippable = require('../../../../_common/shippable/Adapter.js');
 var _ = require('underscore');
 
 var assert = chai.assert;
