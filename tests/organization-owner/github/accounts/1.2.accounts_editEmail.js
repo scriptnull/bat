@@ -9,6 +9,7 @@ var testSuiteNum = '1.';
 var testSuiteDesc = 'Edit email with valid email address';
 var adapter = require('../../../../_common/shippable/github/Adapter.js');
 var Shippable = require('../../../../_common/shippable/Adapter.js');
+var should = require("should");
 
 var testSuite = util.format('%s2.accounts_editEmail - %s', testSuiteNum,
                   testSuiteDesc);
@@ -522,7 +523,7 @@ describe('Edit email with valid email address',
                       }
                     }
                   );
-                  assert.notEqual(err, undefined);
+                  err.should.exsist();
                   return done();
                 }
               }
