@@ -26,6 +26,7 @@ describe(testSuite,
       nconf.argv().env().file(
          path.resolve(__dirname, '../config.json'));
       nconf.load();
+      console.log("nconf",nconf);
       start = new start(nconf.get("shiptest-github-owner:apiToken"),
                 nconf.get("GITHUB_ACCESS_TOKEN_OWNER"));
       return done();
