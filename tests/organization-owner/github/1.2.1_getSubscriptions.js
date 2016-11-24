@@ -23,10 +23,8 @@ describe(testSuite,
       var pathToJson = path.resolve(__dirname, '../config.json');
       console.log("path is::",pathToJson);
 
-      nconf.argv().env().file({
-          file: './config.json', format: nconf.formats.json
-        }
-      );
+      nconf.argv().env().file(
+         path.resolve(__dirname, '../config.json'));
       nconf.load();
       start = new start(nconf.get("shiptest-github-owner:apiToken"),
                 nconf.get("GITHUB_ACCESS_TOKEN_OWNER"));
