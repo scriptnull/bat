@@ -15,7 +15,7 @@ function setupMS(params) {
     global.config.inputQueue = params.inputQueue;
 
   //global.config.runMode = process.env.RUN_MODE;
-  global.config.runMode='dev';
+  global.config.runMode='production';
 
   global.config.logLevel = 'info';
   if (config.runMode === 'dev')

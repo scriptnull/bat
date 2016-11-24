@@ -22,7 +22,10 @@ describe(testSuite,
 
       var pathToJson = process.cwd() + '/config.json';
 
-      nconf.argv().env().file({file: pathToJson});
+      nconf.argv().env().file({
+          file: pathToJson, format: nconf.formats.json
+        }
+      );
       nconf.load();
       start = new start(nconf.get("shiptest-github-owner:apiToken"),
                 nconf.get("GITHUB_ACCESS_TOKEN_OWNER"));
