@@ -34,7 +34,7 @@ describe(testSuite,
         var shippable = new Shippable(config.apiToken);
 
         shippable.putAccountById(nconf.get("shiptest-github-owner:accountId"),
-          { defaultEmail : 'test@gmail.com' },
+          '', { defaultEmail : 'test@gmail.com' },
           function(err) {
             if (err) {
               var bag = {
