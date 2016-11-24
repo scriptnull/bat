@@ -523,7 +523,8 @@ describe('Edit email with valid email address',
                       }
                     }
                   );
-                  err.should.exsist();
+                  var errMsg = 'No error';
+                  errMsg.should.not.be.equal("No error");
                   return done();
                 }
               }
