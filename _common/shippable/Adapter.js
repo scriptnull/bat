@@ -960,7 +960,7 @@ ShippableAdapter.prototype.put =
       function () {
         logger.info(bag.err);
         logger.info(bag.parsedBody);
-        logger.info(bag.res);
+        //logger.info(bag.res);
         callback(bag.err, bag.parsedBody, bag.res);
       }
     );
