@@ -16,7 +16,13 @@ describe('Setup for accounts',
 
     nconf.argv().env().file({file: pathToJson});
     nconf.load();
-    start = new start(nconf.get("shiptest-github-owner:apiToken"),
-              nconf.get("GITHUB_ACCESS_TOKEN_OWNER"));
+
+    it('Should start setup',
+      function (done) {
+        start = new start(nconf.get("shiptest-github-owner:apiToken"),
+                  nconf.get("GITHUB_ACCESS_TOKEN_OWNER"));
+        logger.debug("setup is done");
+      }
+    );
   }
 );
