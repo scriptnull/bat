@@ -1112,7 +1112,7 @@ describe('Edit email with valid email address',
 
 function _createIssue(bag,next) {
   var githubAdapter = new adapter(config.githubToken, config.githubUrl);
-  var title = util.format('Failed test case %s', bag.testCase);
+  var title = util.format('Failed test case %s', bag.testSuite);
   var body = util.format('Failed test suite %s, test case %s, with error: %s',
                bag.testSuite, bag.testCase, bag.error);
   var data = {
