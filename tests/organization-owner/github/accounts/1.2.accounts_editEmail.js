@@ -503,6 +503,7 @@ describe('Edit email with valid email address',
               function(err) {
                 if (err) {
                   logger.debug('Failed to update emailId Missing @ sign and domain: plainaddress');
+                  return done();
                 } else {
                   var bag = {
                     testSuite: testSuite,
@@ -521,9 +522,9 @@ describe('Edit email with valid email address',
                       }
                     }
                   );
+                  assert.notEqual(err, null);
                   return done();
                 }
-                return done();
               }
             );
           }
