@@ -1,5 +1,10 @@
 'use strict';
 
+var mocha = require('mocha');
+var nconf = require('nconf');
+var chai = require('chai');
+var _ = require('underscore');
+var assert = chai.assert;
 var testSuiteNum = '1.';
 var testSuiteDesc = 'Edit email with valid email address';
 var adapter = require('../../../../_common/shippable/github/Adapter.js');
