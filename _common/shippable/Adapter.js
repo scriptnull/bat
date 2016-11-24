@@ -958,9 +958,6 @@ ShippableAdapter.prototype.put =
         _parseBody.bind(null, bag)
       ],
       function () {
-        logger.info(bag.err);
-        logger.info(bag.parsedBody);
-        //logger.info(bag.res);
         callback(bag.err, bag.parsedBody, bag.res);
       }
     );
@@ -1034,7 +1031,6 @@ function _performCall(bag, next) {
         }
         bag.res = res;
         bag.body = body;
-        logger.debug(body);
         callback();
       }
     );
