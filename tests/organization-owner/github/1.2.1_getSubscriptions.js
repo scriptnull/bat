@@ -21,7 +21,6 @@ describe(testSuite,
       // runs before all tests in this block
 
       var pathToJson = process.cwd() + '/config.json';
-      console.log("path is::",pathToJson);
 
       nconf.argv().env().file({file: pathToJson});
       nconf.load();
