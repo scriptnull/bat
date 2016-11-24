@@ -29,7 +29,7 @@ describe(testSuite,
             } else {
               var bag = {
                 testSuite: testSuite,
-                error: "Updates account with invalid mailId"
+                error: "Updates account with invalid mailId: testatgmail.com"
               }
               async.series([
                   _createIssue.bind(null, bag)
@@ -40,7 +40,6 @@ describe(testSuite,
                     return done(err);
                   } else {
                     logger.debug('Issue Created');
-                    return done();
                   }
                 }
               );
