@@ -2,6 +2,8 @@
 
 var testSuiteNum = '1.';
 var testSuiteDesc = 'Edit email with valid email address';
+var adapter = require('../../../../_common/shippable/github/Adapter.js');
+var Shippable = require('../../../../_common/shippable/Adapter.js');
 
 var testSuite = util.format('%s2.accounts_editEmail_valid - %s', testSuiteNum,
                   testSuiteDesc);
