@@ -1,36 +1,13 @@
 'use strict';
 
-var start = require('../../../../test.js');
-var mocha = require('mocha');
-var nconf = require('nconf');
-var chai = require('chai');
 var testSuiteNum = '1.';
 var testSuiteDesc = 'Sync Account for organization owner';
-var adapter = require('../../../../_common/shippable/github/Adapter.js');
-var Shippable = require('../../../../_common/shippable/Adapter.js');
-var _ = require('underscore');
-
-var assert = chai.assert;
 
 var testSuite = util.format('%s2_sync_accountByid - %s',
                   testSuiteNum, testSuiteDesc);
 
 describe(testSuite,
   function () {
-
-    before(function(done) {
-      // runs before all tests in this block
-      var pathToJson = process.cwd() + '/config.json';
-
-      nconf.argv().env().file({
-          file: pathToJson, format: nconf.formats.json
-        }
-      );
-      nconf.load();
-//      start = new start(nconf.get("shiptest-github-owner:apiToken"),
-//                nconf.get("GITHUB_ACCESS_TOKEN_OWNER"));
-      return done();
-    });
 
     it('Sync Account for organization owner',
       function (done) {
