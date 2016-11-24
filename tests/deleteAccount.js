@@ -17,8 +17,9 @@ describe(util.format('%s1 - %s', testSuiteNum, testSuiteDesc),
 
     before(function(done) {
       // runs before all tests in this block
+      var pathToJson = process.cwd() + '/config.json';
       nconf.argv().env().file({
-          file: './config.json', format: nconf.formats.json
+          file: pathToJson, format: nconf.formats.json
         }
       );
       nconf.load();

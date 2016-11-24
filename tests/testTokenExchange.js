@@ -13,8 +13,9 @@ describe('Get shippable token',
   function () {
     this.timeout(0);
 
+    var pathToJson = process.cwd() + '/config.json';
     nconf.argv().env().file({
-        file: './config.json', format: nconf.formats.json
+        file: pathToJson, format: nconf.formats.json
       }
     );
     nconf.load();
