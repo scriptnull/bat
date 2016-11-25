@@ -741,6 +741,7 @@ describe('Edit email with valid and invalid email address',
           function (done) {
             this.timeout(0);
             if (isTestFailed) {
+              console.log("You are here");
               var githubAdapter = new adapter(config.githubToken, config.githubUrl);
               var title = util.format('Failed test suite %s', bag.testSuite);
               var body = util.format('Failed test cases are:%s',testCaseErrors);
@@ -748,6 +749,7 @@ describe('Edit email with valid and invalid email address',
                 title: title,
                 body: body
               };
+              console.log("You are here1");
               githubAdapter.pushRespositoryIssue('deepikasl', 'VT1', data,
                 function(err, res) {
                   if (err)
