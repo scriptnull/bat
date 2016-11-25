@@ -15,7 +15,7 @@ var testSuite = util.format('%s2.accounts_editEmail - %s', testSuiteNum,
 
 var isTestFailed = false;
 var testCaseErrors = [];
-describe('Edit email with valid email address',
+describe('Edit email with valid and invalid email address',
   function () {
 
     describe(testSuite,
