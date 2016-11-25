@@ -36,7 +36,7 @@ describe('Get shippable token',
       async.each(tokens,
         function(token, nextToken) {
           request({
-            url: config.apiUrl + '/accounts/auth/' + nconf.get("GITHUB_SYSINTS_ID"),
+            url: process.env.API_URL + '/accounts/auth/' + nconf.get("GITHUB_SYSINTS_ID"),
             method: 'POST',
             json: {
               "accessToken": token.githubToken
