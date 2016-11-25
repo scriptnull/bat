@@ -488,6 +488,15 @@ ShippableAdapter.prototype.deleteVersionById =
 
 //#######################  POST  by alphabetical order  ########################
 
+ShippableAdapter.prototype.postLinkAuth =
+  function (sysIntId, body, callback) {
+    this.post(
+      util.format('/accounts/auth/%s/link',sysIntId),
+      body,
+      callback
+    );
+  };
+
 ShippableAdapter.prototype.postBuild =
   function (json, callback) {
     this.post(

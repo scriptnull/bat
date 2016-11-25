@@ -22,10 +22,12 @@ describe('Get shippable token',
     var tokens = {
       "owner": {
         "githubToken": nconf.get("GITHUB_ACCESS_TOKEN_OWNER"),
+        "bitbucketToken": nconf.get("BITBUCKET_ACCESS_TOKEN_OWNER"),
         "apiToken": ""
       },
       "member": {
         "githubToken": nconf.get("GITHUB_ACCESS_TOKEN_MEMBER"),
+        "bitbucketToken": nconf.get("BITBUCKET_ACCESS_TOKEN_MEMBER"),
         "apiToken": ""
       }
     };
@@ -34,7 +36,7 @@ describe('Get shippable token',
       async.each(tokens,
         function(token, nextToken) {
           request({
-            url: 'https://alphaapi.shippable.com/accounts/auth/' + nconf.get("GITHUB_SYSINTS_ID"),
+            url: config.apiUrl + '/accounts/auth/' + nconf.get("GITHUB_SYSINTS_ID"),
             method: 'POST',
             json: {
               "accessToken": token.githubToken

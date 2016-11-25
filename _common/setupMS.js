@@ -14,8 +14,7 @@ function setupMS(params) {
   if (_.has(params, 'inputQueue'))
     global.config.inputQueue = params.inputQueue;
 
-  //global.config.runMode = process.env.RUN_MODE;
-  global.config.runMode='production';
+  global.config.runMode = process.env.RUN_MODE;
 
   global.config.logLevel = 'info';
   if (config.runMode === 'dev')
@@ -32,7 +31,7 @@ function setupMS(params) {
 //  global.config.apiUrl = process.env.SHIPPABLE_API_URL;
 //  global.config.apiToken = process.env.SHIPPABLE_API_TOKEN;
 
-  global.config.apiUrl = 'https://alphaapi.shippable.com';
+  global.config.apiUrl = process.env.API_URL;
   global.config.apiToken = params.apiToken;
   global.config.githubUrl = 'https://api.github.com';
   global.config.githubToken = params.githubToken;
