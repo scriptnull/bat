@@ -32,6 +32,7 @@ describe('Add Tokens with different name',
                     util.format('\n- [ ] %s: Fails to add token with token name with 150 characters: %s',
                       testSuite, name);
                   testCaseErrors.push(testCase);
+                  assert.equal(err, null);
                   return done();
                 } else {
                   logger.debug('Adds token with token name with 150 characters');
@@ -41,6 +42,7 @@ describe('Add Tokens with different name',
             );
           }
         );
+
         it('Enter token name with less than 150 characters',
           function (done) {
             this.timeout(0);
@@ -54,6 +56,7 @@ describe('Add Tokens with different name',
                     util.format('\n- [ ] %s: Fails to add token name with less than 150 characters %s',
                       testSuite, name);
                   testCaseErrors.push(testCase);
+                  assert.equal(err, null);
                   return done();
                 } else {
                   logger.debug('Adds token with token name with less than 150 characters');
@@ -63,6 +66,7 @@ describe('Add Tokens with different name',
             );
           }
         );
+
         it('Enter a - z; A - Z;',
           function (done) {
             this.timeout(0);
@@ -76,6 +80,7 @@ describe('Add Tokens with different name',
                     util.format('\n- [ ] %s: Fails to add token with token name with a - z; A - Z;: %s',
                       testSuite, name);
                   testCaseErrors.push(testCase);
+                  assert.equal(err, null);
                   return done();
                 } else {
                   logger.debug('Adds token with token name with a - z; A - Z;');
@@ -85,6 +90,7 @@ describe('Add Tokens with different name',
             );
           }
         );
+
         it('Enter numbers',
           function (done) {
             this.timeout(0);
@@ -98,6 +104,7 @@ describe('Add Tokens with different name',
                     util.format('\n- [ ] %s: Fails to add token with token name with numbers: %s',
                       testSuite, name);
                   testCaseErrors.push(testCase);
+                  assert.equal(err, null);
                   return done();
                 } else {
                   logger.debug('Adds token with token name with numbers');
@@ -107,6 +114,7 @@ describe('Add Tokens with different name',
             );
           }
         );
+
         it('Enter special characters',
           function (done) {
             this.timeout(0);
@@ -120,6 +128,7 @@ describe('Add Tokens with different name',
                     util.format('\n- [ ] %s: Fails to add token with token name with special characters: %s',
                       testSuite, name);
                   testCaseErrors.push(testCase);
+                  assert.equal(err, null);
                   return done();
                 } else {
                   logger.debug('Adds token with token name with special characters');
@@ -129,6 +138,7 @@ describe('Add Tokens with different name',
             );
           }
         );
+
         it('Enter Alphanumeric values',
           function (done) {
             this.timeout(0);
@@ -142,6 +152,7 @@ describe('Add Tokens with different name',
                     util.format('\n- [ ] %s: Fails to add token with token name with Alphanumeric values: %s',
                       testSuite, name);
                   testCaseErrors.push(testCase);
+                  assert.equal(err, null);
                   return done();
                 } else {
                   logger.debug('Adds token with token name with Alphanumeric values');
@@ -151,6 +162,7 @@ describe('Add Tokens with different name',
             );
           }
         );
+
         it('Enter the name with blank spaces',
           function (done) {
             this.timeout(0);
@@ -164,6 +176,7 @@ describe('Add Tokens with different name',
                     util.format('\n- [ ] %s: Fails to add token with token name with blank spaces: %s',
                       testSuite, name);
                   testCaseErrors.push(testCase);
+                  assert.equal(err, null);
                   return done();
                 } else {
                   logger.debug('Adds token with token name with blank spaces');
@@ -173,6 +186,7 @@ describe('Add Tokens with different name',
             );
           }
         );
+
         it('Enter special characters,numbers,alphabets',
           function (done) {
             this.timeout(0);
@@ -186,6 +200,7 @@ describe('Add Tokens with different name',
                     util.format('\n- [ ] %s: Fails to add token with token name with special characters,numbers,alphabets: %s',
                       testSuite, name);
                   testCaseErrors.push(testCase);
+                  assert.equal(err, null);
                   return done();
                 } else {
                   logger.debug('Adds token with token name with special characters,numbers,alphabets');
@@ -216,6 +231,7 @@ describe('Add Tokens with different name',
                     util.format('\n- [ ] %s: Adds token with token name with more than 150 characters: %s',
                       testSuite, name);
                   testCaseErrors.push(testCase);
+                  assert.notEqual(err, null);
                   return done();
                 }
               }
@@ -238,6 +254,7 @@ describe('Add Tokens with different name',
                     util.format('\n- [ ] %s: Adds token with token name already exists: %s',
                       testSuite, name);
                   testCaseErrors.push(testCase);
+                  assert.notEqual(err, null);
                   return done();
                 }
               }

@@ -33,12 +33,12 @@ describe(testSuite,
                 function (err) {
                   if (err) {
                     logger.warn('Failed');
-                    return done(err);
                   }
                   else {
                     logger.debug('Issue Created');
-                    return done();
                   }
+                  assert.equal(err, null);
+                  return done();
                 }
               );
             } else {
