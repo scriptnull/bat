@@ -74,6 +74,11 @@ describe(testSuite,
                     }
                   }
                 );
+              },
+              function (err) {
+                if (err)
+                  console.log("Failed");
+                return done();
               }
             );
           }
