@@ -32,7 +32,7 @@ describe('Edit email with valid and invalid email address',
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('- [ ] %s: test@gmail.com failed with error: %s\n',
+                    util.format('\n- [ ] %s: test@gmail.com failed with error: %s',
                       testSuite, err);
                   testCaseErrors.push(testCase);
                   return done();
@@ -55,7 +55,7 @@ describe('Edit email with valid and invalid email address',
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('- [ ] %s: test.testt@gmail.com failed with error: %s\n',
+                    util.format('\n- [ ] %s: test.testt@gmail.com failed with error: %s',
                       testSuite, err);
                   testCaseErrors.push(testCase);
                   return done();
@@ -78,7 +78,7 @@ describe('Edit email with valid and invalid email address',
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('- [ ] %s: test@google.co.in failed with error: %s\n',
+                    util.format('\n- [ ] %s: test@google.co.in failed with error: %s',
                       testSuite, err);
                   testCaseErrors.push(testCase);
                   return done();
@@ -101,7 +101,7 @@ describe('Edit email with valid and invalid email address',
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('- [ ] %s: test+testing@google.co.in failed with error: %s\n',
+                    util.format('\n- [ ] %s: test+testing@google.co.in failed with error: %s',
                       testSuite, err);
                   testCaseErrors.push(testCase);
                   return done();
@@ -124,7 +124,7 @@ describe('Edit email with valid and invalid email address',
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('- [ ] %s: test+testing@123.123.123.123 failed with error: %s\n',
+                    util.format('\n- [ ] %s: test+testing@123.123.123.123 failed with error: %s',
                       testSuite, err);
                   testCaseErrors.push(testCase);
                   return done();
@@ -147,7 +147,7 @@ describe('Edit email with valid and invalid email address',
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('- [ ] %s: test+testing@[123.123.123.123] failed with error: %s\n',
+                    util.format('\n- [ ] %s: test+testing@[123.123.123.123] failed with error: %s',
                       testSuite, err);
                   testCaseErrors.push(testCase);
                   return done();
@@ -170,7 +170,7 @@ describe('Edit email with valid and invalid email address',
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('- [ ] %s: \"test"\@gmail.com failed with error: %s\n',
+                    util.format('\n- [ ] %s: \"test"\@gmail.com failed with error: %s',
                       testSuite, err);
                   testCaseErrors.push(testCase);
                   return done();
@@ -193,7 +193,7 @@ describe('Edit email with valid and invalid email address',
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('- [ ] %s: test12345@gmail.com failed with error: %s\n',
+                    util.format('\n- [ ] %s: test12345@gmail.com failed with error: %s',
                       testSuite, err);
                   testCaseErrors.push(testCase);
                   return done();
@@ -216,7 +216,7 @@ describe('Edit email with valid and invalid email address',
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('- [ ] %s: test12345@google-co.in failed with error: %s\n',
+                    util.format('\n- [ ] %s: test12345@google-co.in failed with error: %s',
                       testSuite, err);
                   testCaseErrors.push(testCase);
                   return done();
@@ -239,7 +239,7 @@ describe('Edit email with valid and invalid email address',
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('- [ ] %s: test_12345@yahoo.in failed with error: %s\n',
+                    util.format('\n- [ ] %s: test_12345@yahoo.in failed with error: %s',
                       testSuite, err);
                   testCaseErrors.push(testCase);
                   return done();
@@ -262,7 +262,7 @@ describe('Edit email with valid and invalid email address',
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('- [ ] %s: test_12345@rediff.mail failed with error: %s\n',
+                    util.format('\n- [ ] %s: test_12345@rediff.mail failed with error: %s',
                       testSuite, err);
                   testCaseErrors.push(testCase);
                   return done();
@@ -285,7 +285,7 @@ describe('Edit email with valid and invalid email address',
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('- [ ] %s: test_12345@google.co.in failed with error: %s\n',
+                    util.format('\n- [ ] %s: test_12345@google.co.in failed with error: %s',
                       testSuite, err);
                   testCaseErrors.push(testCase);
                   return done();
@@ -308,7 +308,7 @@ describe('Edit email with valid and invalid email address',
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('- [ ] %s: test-12345@google.co.in failed with error: %s\n',
+                    util.format('\n- [ ] %s: test-12345@google.co.in failed with error: %s',
                       testSuite, err);
                   testCaseErrors.push(testCase);
                   return done();
@@ -340,7 +340,7 @@ describe('Edit email with valid and invalid email address',
                 } else {
                   isTestFailed = true;
                   var testCase =
-                    util.format('- [ ] %s: plainaddress test case failed\n',
+                    util.format('\n- [ ] %s: plainaddress test case failed',
                       testSuite);
                   testCaseErrors.push(testCase);
                   return done();
@@ -364,7 +364,7 @@ describe('Edit email with valid and invalid email address',
                 } else {
                   isTestFailed = true;
                   var testCase =
-                    util.format('- [ ] %s: #@%^%#$@#$@#.com test case failed\n',
+                    util.format('\n- [ ] %s: #@%^%#$@#$@#.com test case failed',
                       testSuite);
                   testCaseErrors.push(testCase);
                   return done();
@@ -388,7 +388,7 @@ describe('Edit email with valid and invalid email address',
                 } else {
                   isTestFailed = true;
                   var testCase =
-                    util.format('- [ ] %s: @domain.com test case failed\n',
+                    util.format('\n- [ ] %s: @domain.com test case failed',
                       testSuite);
                   testCaseErrors.push(testCase);
                   return done();
@@ -412,7 +412,7 @@ describe('Edit email with valid and invalid email address',
                 } else {
                   isTestFailed = true;
                   var testCase =
-                    util.format('- [ ] %s: Joe Smith <email@domain.com> test case failed\n',
+                    util.format('\n- [ ] %s: Joe Smith <email@domain.com> test case failed',
                       testSuite);
                   testCaseErrors.push(testCase);
                   return done();
@@ -436,7 +436,7 @@ describe('Edit email with valid and invalid email address',
                 } else {
                   isTestFailed = true;
                   var testCase =
-                    util.format('- [ ] %s: email.domain.com test case failed\n',
+                    util.format('\n- [ ] %s: email.domain.com test case failed',
                       testSuite);
                   testCaseErrors.push(testCase);
                   return done();
@@ -460,7 +460,7 @@ describe('Edit email with valid and invalid email address',
                 } else {
                   isTestFailed = true;
                   var testCase =
-                    util.format('- [ ] %s: email@domain@domain.com test case failed\n',
+                    util.format('\n- [ ] %s: email@domain@domain.com test case failed',
                       testSuite);
                   testCaseErrors.push(testCase);
                   return done();
@@ -484,7 +484,7 @@ describe('Edit email with valid and invalid email address',
                 } else {
                   isTestFailed = true;
                   var testCase =
-                    util.format('- [ ] %s: .email@domain.com test case failed\n',
+                    util.format('\n- [ ] %s: .email@domain.com test case failed',
                       testSuite);
                   testCaseErrors.push(testCase);
                   return done();
@@ -508,7 +508,7 @@ describe('Edit email with valid and invalid email address',
                 } else {
                   isTestFailed = true;
                   var testCase =
-                    util.format('- [ ] %s: email.@domain.com test case failed\n',
+                    util.format('\n- [ ] %s: email.@domain.com test case failed',
                       testSuite);
                   testCaseErrors.push(testCase);
                   return done();
@@ -532,7 +532,7 @@ describe('Edit email with valid and invalid email address',
                 } else {
                   isTestFailed = true;
                   var testCase =
-                    util.format('- [ ] %s: email..email@domain.com test case failed\n',
+                    util.format('\n- [ ] %s: email..email@domain.com test case failed',
                       testSuite);
                   testCaseErrors.push(testCase);
                   return done();
@@ -556,7 +556,7 @@ describe('Edit email with valid and invalid email address',
                 } else {
                   isTestFailed = true;
                   var testCase =
-                    util.format('- [ ] %s: あいうえお@domain.com test case failed\n',
+                    util.format('\n- [ ] %s: あいうえお@domain.com test case failed',
                       testSuite);
                   testCaseErrors.push(testCase);
                   return done();
@@ -580,7 +580,7 @@ describe('Edit email with valid and invalid email address',
                 } else {
                   isTestFailed = true;
                   var testCase =
-                    util.format('- [ ] %s: email@domain.com (Joe Smith) test case failed\n',
+                    util.format('\n- [ ] %s: email@domain.com (Joe Smith) test case failed',
                       testSuite);
                   testCaseErrors.push(testCase);
                   return done();
@@ -604,7 +604,7 @@ describe('Edit email with valid and invalid email address',
                 } else {
                   isTestFailed = true;
                   var testCase =
-                    util.format('- [ ] %s: email@domain test case failed\n',
+                    util.format('\n- [ ] %s: email@domain test case failed',
                       testSuite);
                   testCaseErrors.push(testCase);
                   return done();
@@ -628,7 +628,7 @@ describe('Edit email with valid and invalid email address',
                 } else {
                   isTestFailed = true;
                   var testCase =
-                    util.format('- [ ] %s: email@-domain.com test case failed\n',
+                    util.format('\n- [ ] %s: email@-domain.com test case failed',
                       testSuite);
                   testCaseErrors.push(testCase);
                   return done();
@@ -652,7 +652,7 @@ describe('Edit email with valid and invalid email address',
                 } else {
                   isTestFailed = true;
                   var testCase =
-                    util.format('- [ ] %s: email@domain.web test case failed\n',
+                    util.format('\n- [ ] %s: email@domain.web test case failed',
                       testSuite);
                   testCaseErrors.push(testCase);
                   return done();
@@ -676,7 +676,7 @@ describe('Edit email with valid and invalid email address',
                 } else {
                   isTestFailed = true;
                   var testCase =
-                    util.format('- [ ] %s: email@111.222.333.44444 test case failed\n',
+                    util.format('\n- [ ] %s: email@111.222.333.44444 test case failed',
                       testSuite);
                   testCaseErrors.push(testCase);
                   return done();
@@ -700,7 +700,7 @@ describe('Edit email with valid and invalid email address',
                 } else {
                   isTestFailed = true;
                   var testCase =
-                    util.format('- [ ] %s: email@111.222.333.44444 test case failed\n',
+                    util.format('\n- [ ] %s: email@111.222.333.44444 test case failed',
                       testSuite);
                   testCaseErrors.push(testCase);
                   return done();
@@ -725,7 +725,7 @@ describe('Edit email with valid and invalid email address',
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('- [ ] %s: with actual email address failed with error: %s\n',
+                    util.format('\n- [ ] %s: with actual email address failed with error: %s',
                       testSuite, err);
                   testCaseErrors.push(testCase);
                   return done();
@@ -743,7 +743,7 @@ describe('Edit email with valid and invalid email address',
             if (isTestFailed) {
               var githubAdapter = new adapter(config.githubToken, config.githubUrl);
               var title = util.format('Failed test suite %s', testSuite);
-              var body = util.format('Failed test cases are:%s',testCaseErrors);
+              var body = util.format('Failed test cases are:\n%s',testCaseErrors);
               var data = {
                 title: title,
                 body: body
