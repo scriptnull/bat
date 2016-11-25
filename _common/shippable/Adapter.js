@@ -727,6 +727,14 @@ ShippableAdapter.prototype.deleteAccountById =
     );
   };
 
+ShippableAdapter.prototype.deleteAccountToken =
+  function (tokenId, callback) {
+    this.delete(
+      util.format('/accountTokens/%s', tokenId),
+      callback
+    );
+  };
+
 //#######################  PUT  by alphabetical order  ########################
 
 ShippableAdapter.prototype.putAccountById =

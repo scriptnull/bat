@@ -6,11 +6,11 @@ var chai = require('chai');
 var _ = require('underscore');
 var assert = chai.assert;
 var testSuiteNum = '1.';
-var testSuiteDesc = 'Getting list of ApiTokens';
+var testSuiteDesc = 'ApiTokens';
 var adapter = require('../../../../_common/shippable/github/Adapter.js');
 var Shippable = require('../../../../_common/shippable/Adapter.js');
 
-var testSuite = util.format('%s2.list of API Tokens - %s', testSuiteNum,
+var testSuite = util.format('%s2.API Tokens - %s', testSuiteNum,
                   testSuiteDesc);
 
 var isTestFailed = false;
@@ -19,6 +19,7 @@ var testCaseErrors = [];
 describe(testSuite,
   function () {
 
+    var apiTokenIds = [];
     describe('Getting list of ApiTokens',
       function () {
         it('Get List of API Tokens',
@@ -27,7 +28,7 @@ describe(testSuite,
             var shippable = new Shippable(config.apiToken);
 
             shippable.getAccountTokens('',
-              function(err) {
+              function(err, apiTokens) {
                 if (err) {
                   isTestFailed = true;
                   var testCase =
@@ -36,8 +37,43 @@ describe(testSuite,
                   testCaseErrors.push(testCase);
                   return done();
                 } else {
+                  _.each(apiTokens,
+                    function (apiToken) {
+                      apiTokenIds.push(apiToken.id);
+                    }
+                  );
                   return done();
                 }
+              }
+            );
+          }
+        );
+      }
+    );
+
+    describe('delete ApiTokens',
+      function () {
+        it('delete ApiTokens',
+          function (done) {
+            this.timeout(0);
+            var shippable = new Shippable(config.apiToken);
+
+            async.each(apiTokenIds,
+              function(tokenId, nextTokenId) {
+                shippable.deleteAccountToken(tokenId,
+                  function(err) {
+                    if (err && err.status !== 404) {
+                      isTestFailed = true;
+                      var testCase =
+                        util.format('\n- [ ] %s: delete ApiTokens failed with error: %s',
+                          testSuite, err);
+                      testCaseErrors.push(testCase);
+                      return nextTokenId();
+                    } else {
+                      return nextTokenId();
+                    }
+                  }
+                );
               }
             );
           }
