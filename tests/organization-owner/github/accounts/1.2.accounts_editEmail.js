@@ -6,13 +6,15 @@ var chai = require('chai');
 var _ = require('underscore');
 var assert = chai.assert;
 var testSuiteNum = '1.';
-var testSuiteDesc = 'Edit email with valid email address';
+var testSuiteDesc = 'Edit email in accounts page';
 var adapter = require('../../../../_common/shippable/github/Adapter.js');
 var Shippable = require('../../../../_common/shippable/Adapter.js');
 
 var testSuite = util.format('%s2.accounts_editEmail - %s', testSuiteNum,
                   testSuiteDesc);
 
+var isTestFailed = false;
+var testCaseErrors = [];
 describe('Edit email with valid email address',
   function () {
 
@@ -28,25 +30,12 @@ describe('Edit email with valid email address',
               '', { defaultEmail : 'test@gmail.com' },
               function(err) {
                 if (err) {
-                  var bag = {
-                    testSuite: testSuite,
-                    error: err,
-                    testCase: 'Edit email with valid email address: test@gmail.com'
-                  }
-                  async.series([
-                      _createIssue.bind(null, bag)
-                    ],
-                    function (err) {
-                      if (err) {
-                        logger.warn('Failed');
-                        return done(err);
-                      }
-                      else {
-                        logger.debug('Issue Created');
-                        return done();
-                      }
-                    }
-                  );
+                  isTestFailed = true;
+                  var testCase =
+                    util.format('%s: test@gmail.com failed with error: %s',
+                      testSuite, err);
+                  testCaseErrors.push(testCase);
+                  return done();
                 } else {
                   return done();
                 }
@@ -64,25 +53,12 @@ describe('Edit email with valid email address',
               '', { defaultEmail : 'test.testt@gmail.com' },
               function(err) {
                 if (err) {
-                  var bag = {
-                    testSuite: testSuite,
-                    error: err,
-                    testCase: 'Edit email contains dot in the address field: test.testt@gmail.com'
-                  }
-                  async.series([
-                      _createIssue.bind(null, bag)
-                    ],
-                    function (err) {
-                      if (err) {
-                        logger.warn('Failed');
-                        return done(err);
-                      }
-                      else {
-                        logger.debug('Issue Created');
-                        return done();
-                      }
-                    }
-                  );
+                  isTestFailed = true;
+                  var testCase =
+                    util.format('%s: test.testt@gmail.com failed with error: %s',
+                      testSuite, err);
+                  testCaseErrors.push(testCase);
+                  return done();
                 } else {
                   return done();
                 }
@@ -100,25 +76,12 @@ describe('Edit email with valid email address',
               '', { defaultEmail : 'test@google.co.in' },
               function(err) {
                 if (err) {
-                  var bag = {
-                    testSuite: testSuite,
-                    error: err,
-                    testCase: 'Edit Email contains dot with subdomain: test@google.co.in'
-                  }
-                  async.series([
-                      _createIssue.bind(null, bag)
-                    ],
-                    function (err) {
-                      if (err) {
-                        logger.warn('Failed');
-                        return done(err);
-                      }
-                      else {
-                        logger.debug('Issue Created');
-                        return done();
-                      }
-                    }
-                  );
+                  isTestFailed = true;
+                  var testCase =
+                    util.format('%s: test@google.co.in failed with error: %s',
+                      testSuite, err);
+                  testCaseErrors.push(testCase);
+                  return done();
                 } else {
                   return done();
                 }
@@ -136,25 +99,12 @@ describe('Edit email with valid email address',
               '', { defaultEmail : 'test+testing@google.co.in' },
               function(err) {
                 if (err) {
-                  var bag = {
-                    testSuite: testSuite,
-                    error: err,
-                    testCase: 'Plus sign is considered valid character: test+testing@google.co.in'
-                  }
-                  async.series([
-                      _createIssue.bind(null, bag)
-                    ],
-                    function (err) {
-                      if (err) {
-                        logger.warn('Failed');
-                        return done(err);
-                      }
-                      else {
-                        logger.debug('Issue Created');
-                        return done();
-                      }
-                    }
-                  );
+                  isTestFailed = true;
+                  var testCase =
+                    util.format('%s: test+testing@google.co.in failed with error: %s',
+                      testSuite, err);
+                  testCaseErrors.push(testCase);
+                  return done();
                 } else {
                   return done();
                 }
@@ -172,25 +122,12 @@ describe('Edit email with valid email address',
               '', { defaultEmail : 'test+testing@123.123.123.123' },
               function(err) {
                 if (err) {
-                  var bag = {
-                    testSuite: testSuite,
-                    error: err,
-                    testCase: 'Domain is valid IP address: test+testing@123.123.123.123'
-                  }
-                  async.series([
-                      _createIssue.bind(null, bag)
-                    ],
-                    function (err) {
-                      if (err) {
-                        logger.warn('Failed');
-                        return done(err);
-                      }
-                      else {
-                        logger.debug('Issue Created');
-                        return done();
-                      }
-                    }
-                  );
+                  isTestFailed = true;
+                  var testCase =
+                    util.format('%s: test+testing@123.123.123.123 failed with error: %s',
+                      testSuite, err);
+                  testCaseErrors.push(testCase);
+                  return done();
                 } else {
                   return done();
                 }
@@ -208,25 +145,12 @@ describe('Edit email with valid email address',
               '', { defaultEmail : 'test+testing@[123.123.123.123]' },
               function(err) {
                 if (err) {
-                  var bag = {
-                    testSuite: testSuite,
-                    error: err,
-                    testCase: 'Square bracket around IP address is considered valid: test+testing@[123.123.123.123]'
-                  }
-                  async.series([
-                      _createIssue.bind(null, bag)
-                    ],
-                    function (err) {
-                      if (err) {
-                        logger.warn('Failed');
-                        return done(err);
-                      }
-                      else {
-                        logger.debug('Issue Created');
-                        return done();
-                      }
-                    }
-                  );
+                  isTestFailed = true;
+                  var testCase =
+                    util.format('%s: test+testing@[123.123.123.123] failed with error: %s',
+                      testSuite, err);
+                  testCaseErrors.push(testCase);
+                  return done();
                 } else {
                   return done();
                 }
@@ -244,25 +168,12 @@ describe('Edit email with valid email address',
               '', { defaultEmail : '\"test"\@gmail.com' },
               function(err) {
                 if (err) {
-                  var bag = {
-                    testSuite: testSuite,
-                    error: err,
-                    testCase: 'Quotes around email is considered valid: \"test"\@gmail.com'
-                  }
-                  async.series([
-                      _createIssue.bind(null, bag)
-                    ],
-                    function (err) {
-                      if (err) {
-                        logger.warn('Failed');
-                        return done(err);
-                      }
-                      else {
-                        logger.debug('Issue Created');
-                        return done();
-                      }
-                    }
-                  );
+                  isTestFailed = true;
+                  var testCase =
+                    util.format('%s: \"test"\@gmail.com failed with error: %s',
+                      testSuite, err);
+                  testCaseErrors.push(testCase);
+                  return done();
                 } else {
                   return done();
                 }
@@ -280,25 +191,12 @@ describe('Edit email with valid email address',
               '', { defaultEmail : 'test12345@gmail.com' },
               function(err) {
                 if (err) {
-                  var bag = {
-                    testSuite: testSuite,
-                    error: err,
-                    testCase: 'Digits in address are valid: test12345@gmail.com'
-                  }
-                  async.series([
-                      _createIssue.bind(null, bag)
-                    ],
-                    function (err) {
-                      if (err) {
-                        logger.warn('Failed');
-                        return done(err);
-                      }
-                      else {
-                        logger.debug('Issue Created');
-                        return done();
-                      }
-                    }
-                  );
+                  isTestFailed = true;
+                  var testCase =
+                    util.format('%s: test12345@gmail.com failed with error: %s',
+                      testSuite, err);
+                  testCaseErrors.push(testCase);
+                  return done();
                 } else {
                   return done();
                 }
@@ -316,25 +214,12 @@ describe('Edit email with valid email address',
               '', { defaultEmail : 'test12345@google-co.in' },
               function(err) {
                 if (err) {
-                  var bag = {
-                    testSuite: testSuite,
-                    error: err,
-                    testCase: 'Dash in domain name is valid: test12345@google-co.in'
-                  }
-                  async.series([
-                      _createIssue.bind(null, bag)
-                    ],
-                    function (err) {
-                      if (err) {
-                        logger.warn('Failed');
-                        return done(err);
-                      }
-                      else {
-                        logger.debug('Issue Created');
-                        return done();
-                      }
-                    }
-                  );
+                  isTestFailed = true;
+                  var testCase =
+                    util.format('%s: test12345@google-co.in failed with error: %s',
+                      testSuite, err);
+                  testCaseErrors.push(testCase);
+                  return done();
                 } else {
                   return done();
                 }
@@ -352,25 +237,12 @@ describe('Edit email with valid email address',
               '', { defaultEmail : 'test_12345@yahoo.in' },
               function(err) {
                 if (err) {
-                  var bag = {
-                    testSuite: testSuite,
-                    error: err,
-                    testCase: 'Underscore in the address field is valid: test_12345@yahoo.in'
-                  }
-                  async.series([
-                      _createIssue.bind(null, bag)
-                    ],
-                    function (err) {
-                      if (err) {
-                        logger.warn('Failed');
-                        return done(err);
-                      }
-                      else {
-                        logger.debug('Issue Created');
-                        return done();
-                      }
-                    }
-                  );
+                  isTestFailed = true;
+                  var testCase =
+                    util.format('%s: test_12345@yahoo.in failed with error: %s',
+                      testSuite, err);
+                  testCaseErrors.push(testCase);
+                  return done();
                 } else {
                   return done();
                 }
@@ -388,25 +260,12 @@ describe('Edit email with valid email address',
               '', { defaultEmail : 'test_12345@rediff.mail' },
               function(err) {
                 if (err) {
-                  var bag = {
-                    testSuite: testSuite,
-                    error: err,
-                    testCase: '.name is valid Top Level Domain name: test_12345@rediff.mail'
-                  }
-                  async.series([
-                      _createIssue.bind(null, bag)
-                    ],
-                    function (err) {
-                      if (err) {
-                        logger.warn('Failed');
-                        return done(err);
-                      }
-                      else {
-                        logger.debug('Issue Created');
-                        return done();
-                      }
-                    }
-                  );
+                  isTestFailed = true;
+                  var testCase =
+                    util.format('%s: test_12345@rediff.mail failed with error: %s',
+                      testSuite, err);
+                  testCaseErrors.push(testCase);
+                  return done();
                 } else {
                   return done();
                 }
@@ -424,25 +283,12 @@ describe('Edit email with valid email address',
               '', { defaultEmail : 'test_12345@google.co.in' },
               function(err) {
                 if (err) {
-                  var bag = {
-                    testSuite: testSuite,
-                    error: err,
-                    testCase: 'Dot in Top Level Domain name also considered valid: test_12345@google.co.in'
-                  }
-                  async.series([
-                      _createIssue.bind(null, bag)
-                    ],
-                    function (err) {
-                      if (err) {
-                        logger.warn('Failed');
-                        return done(err);
-                      }
-                      else {
-                        logger.debug('Issue Created');
-                        return done();
-                      }
-                    }
-                  );
+                  isTestFailed = true;
+                  var testCase =
+                    util.format('%s: test_12345@google.co.in failed with error: %s',
+                      testSuite, err);
+                  testCaseErrors.push(testCase);
+                  return done();
                 } else {
                   return done();
                 }
@@ -460,25 +306,12 @@ describe('Edit email with valid email address',
               '', { defaultEmail : 'test-12345@google.co.in' },
               function(err) {
                 if (err) {
-                  var bag = {
-                    testSuite: testSuite,
-                    error: err,
-                    testCase: 'Dash in address field is valid: test-12345@google.co.in'
-                  }
-                  async.series([
-                      _createIssue.bind(null, bag)
-                    ],
-                    function (err) {
-                      if (err) {
-                        logger.warn('Failed');
-                        return done(err);
-                      }
-                      else {
-                        logger.debug('Issue Created');
-                        return done();
-                      }
-                    }
-                  );
+                  isTestFailed = true;
+                  var testCase =
+                    util.format('%s: test-12345@google.co.in failed with error: %s',
+                      testSuite, err);
+                  testCaseErrors.push(testCase);
+                  return done();
                 } else {
                   return done();
                 }
@@ -505,24 +338,11 @@ describe('Edit email with valid email address',
                   logger.debug('Failed to update emailId Missing @ sign and domain: plainaddress');
                   return done();
                 } else {
-                  var bag = {
-                    testSuite: testSuite,
-                    error: err,
-                    testCase: "Missing @ sign and domain: plainaddress"
-                  }
-                  async.series([
-                      _createIssue.bind(null, bag)
-                    ],
-                    function (err) {
-                      if (err) {
-                        logger.warn('Failed');
-                        return done(err);
-                      } else {
-                        logger.debug('Issue Created');
-                      }
-                    }
-                  );
-                  logger.error('Missing @ sign and domain testCase failed');
+                  isTestFailed = true;
+                  var testCase =
+                    util.format('%s: plainaddress test case failed',
+                      testSuite);
+                  testCaseErrors.push(testCase);
                   return done();
                 }
               }
@@ -540,27 +360,15 @@ describe('Edit email with valid email address',
               function(err) {
                 if (err) {
                   logger.debug('Failed to update emailId Garbage: #@%^%#$@#$@#.com');
+                  return done();
                 } else {
-                  var bag = {
-                    testSuite: testSuite,
-                    error: err,
-                    testCase: "Garbage: #@%^%#$@#$@#.com"
-                  }
-                  async.series([
-                      _createIssue.bind(null, bag)
-                    ],
-                    function (err) {
-                      if (err) {
-                        logger.warn('Failed');
-                        return done(err);
-                      } else {
-                        logger.debug('Issue Created');
-                      }
-                    }
-                  );
+                  isTestFailed = true;
+                  var testCase =
+                    util.format('%s: #@%^%#$@#$@#.com test case failed',
+                      testSuite);
+                  testCaseErrors.push(testCase);
                   return done();
                 }
-                return done();
               }
             );
           }
@@ -576,27 +384,15 @@ describe('Edit email with valid email address',
               function(err) {
                 if (err) {
                   logger.debug('Failed to update emailId Missing username: @domain.com');
+                  return done();
                 } else {
-                  var bag = {
-                    testSuite: testSuite,
-                    error: err,
-                    testCase: "Missing username: @domain.com"
-                  }
-                  async.series([
-                      _createIssue.bind(null, bag)
-                    ],
-                    function (err) {
-                      if (err) {
-                        logger.warn('Failed');
-                        return done(err);
-                      } else {
-                        logger.debug('Issue Created');
-                      }
-                    }
-                  );
+                  isTestFailed = true;
+                  var testCase =
+                    util.format('%s: @domain.com test case failed',
+                      testSuite);
+                  testCaseErrors.push(testCase);
                   return done();
                 }
-                return done();
               }
             );
           }
@@ -612,27 +408,15 @@ describe('Edit email with valid email address',
               function(err) {
                 if (err) {
                   logger.debug('Failed to update emailId Encoded html within email is invalid: Joe Smith <email@domain.com>');
+                  return done();
                 } else {
-                  var bag = {
-                    testSuite: testSuite,
-                    error: err,
-                    testCase: "Encoded html within email is invalid: Joe Smith <email@domain.com>"
-                  }
-                  async.series([
-                      _createIssue.bind(null, bag)
-                    ],
-                    function (err) {
-                      if (err) {
-                        logger.warn('Failed');
-                        return done(err);
-                      } else {
-                        logger.debug('Issue Created');
-                      }
-                    }
-                  );
+                  isTestFailed = true;
+                  var testCase =
+                    util.format('%s: Joe Smith <email@domain.com> test case failed',
+                      testSuite);
+                  testCaseErrors.push(testCase);
                   return done();
                 }
-                return done();
               }
             );
           }
@@ -648,27 +432,15 @@ describe('Edit email with valid email address',
               function(err) {
                 if (err) {
                   logger.debug('Failed to update emailId Missing @: email.domain.com');
+                  return done();
                 } else {
-                  var bag = {
-                    testSuite: testSuite,
-                    error: err,
-                    testCase: "Missing @: email.domain.com"
-                  }
-                  async.series([
-                      _createIssue.bind(null, bag)
-                    ],
-                    function (err) {
-                      if (err) {
-                        logger.warn('Failed');
-                        return done(err);
-                      } else {
-                        logger.debug('Issue Created');
-                      }
-                    }
-                  );
+                  isTestFailed = true;
+                  var testCase =
+                    util.format('%s: email.domain.com test case failed',
+                      testSuite);
+                  testCaseErrors.push(testCase);
                   return done();
                 }
-                return done();
               }
             );
           }
@@ -684,27 +456,15 @@ describe('Edit email with valid email address',
               function(err) {
                 if (err) {
                   logger.debug('Failed to update emailId Two @ sign: email@domain@domain.com');
+                  return done();
                 } else {
-                  var bag = {
-                    testSuite: testSuite,
-                    error: err,
-                    testCase: "Two @ sign: email@domain@domain.com"
-                  }
-                  async.series([
-                      _createIssue.bind(null, bag)
-                    ],
-                    function (err) {
-                      if (err) {
-                        logger.warn('Failed');
-                        return done(err);
-                      } else {
-                        logger.debug('Issue Created');
-                      }
-                    }
-                  );
+                  isTestFailed = true;
+                  var testCase =
+                    util.format('%s: email@domain@domain.com test case failed',
+                      testSuite);
+                  testCaseErrors.push(testCase);
                   return done();
                 }
-                return done();
               }
             );
           }
@@ -720,27 +480,15 @@ describe('Edit email with valid email address',
               function(err) {
                 if (err) {
                   logger.debug('Failed to update emailId Leading dot in address is not allowed: .email@domain.com');
+                  return done();
                 } else {
-                  var bag = {
-                    testSuite: testSuite,
-                    error: err,
-                    testCase: "Leading dot in address is not allowed: .email@domain.com"
-                  }
-                  async.series([
-                      _createIssue.bind(null, bag)
-                    ],
-                    function (err) {
-                      if (err) {
-                        logger.warn('Failed');
-                        return done(err);
-                      } else {
-                        logger.debug('Issue Created');
-                      }
-                    }
-                  );
+                  isTestFailed = true;
+                  var testCase =
+                    util.format('%s: .email@domain.com test case failed',
+                      testSuite);
+                  testCaseErrors.push(testCase);
                   return done();
                 }
-                return done();
               }
             );
           }
@@ -756,27 +504,15 @@ describe('Edit email with valid email address',
               function(err) {
                 if (err) {
                   logger.debug('Failed to update emailId Trailing dot in address is not allowed: email.@domain.com');
+                  return done();
                 } else {
-                  var bag = {
-                    testSuite: testSuite,
-                    error: err,
-                    testCase: "Trailing dot in address is not allowed: email.@domain.com"
-                  }
-                  async.series([
-                      _createIssue.bind(null, bag)
-                    ],
-                    function (err) {
-                      if (err) {
-                        logger.warn('Failed');
-                        return done(err);
-                      } else {
-                        logger.debug('Issue Created');
-                      }
-                    }
-                  );
+                  isTestFailed = true;
+                  var testCase =
+                    util.format('%s: email.@domain.com test case failed',
+                      testSuite);
+                  testCaseErrors.push(testCase);
                   return done();
                 }
-                return done();
               }
             );
           }
@@ -792,27 +528,15 @@ describe('Edit email with valid email address',
               function(err) {
                 if (err) {
                   logger.debug('Failed to update emailId Multiple dots: email..email@domain.com');
+                  return done();
                 } else {
-                  var bag = {
-                    testSuite: testSuite,
-                    error: err,
-                    testCase: "Multiple dots: email..email@domain.com"
-                  }
-                  async.series([
-                      _createIssue.bind(null, bag)
-                    ],
-                    function (err) {
-                      if (err) {
-                        logger.warn('Failed');
-                        return done(err);
-                      } else {
-                        logger.debug('Issue Created');
-                      }
-                    }
-                  );
+                  isTestFailed = true;
+                  var testCase =
+                    util.format('%s: email..email@domain.com test case failed',
+                      testSuite);
+                  testCaseErrors.push(testCase);
                   return done();
                 }
-                return done();
               }
             );
           }
@@ -828,27 +552,15 @@ describe('Edit email with valid email address',
               function(err) {
                 if (err) {
                   logger.debug('Failed to update emailId Unicode char as address: あいうえお@domain.com');
+                  return done();
                 } else {
-                  var bag = {
-                    testSuite: testSuite,
-                    error: err,
-                    testCase: "Unicode char as address: あいうえお@domain.com"
-                  }
-                  async.series([
-                      _createIssue.bind(null, bag)
-                    ],
-                    function (err) {
-                      if (err) {
-                        logger.warn('Failed');
-                        return done(err);
-                      } else {
-                        logger.debug('Issue Created');
-                      }
-                    }
-                  );
+                  isTestFailed = true;
+                  var testCase =
+                    util.format('%s: あいうえお@domain.com test case failed',
+                      testSuite);
+                  testCaseErrors.push(testCase);
                   return done();
                 }
-                return done();
               }
             );
           }
@@ -864,27 +576,15 @@ describe('Edit email with valid email address',
               function(err) {
                 if (err) {
                   logger.debug('Failed to update emailId Text followed email is not allowed: email@domain.com (Joe Smith)');
+                  return done();
                 } else {
-                  var bag = {
-                    testSuite: testSuite,
-                    error: err,
-                    testCase: "Text followed email is not allowed: email@domain.com (Joe Smith)"
-                  }
-                  async.series([
-                      _createIssue.bind(null, bag)
-                    ],
-                    function (err) {
-                      if (err) {
-                        logger.warn('Failed');
-                        return done(err);
-                      } else {
-                        logger.debug('Issue Created');
-                      }
-                    }
-                  );
+                  isTestFailed = true;
+                  var testCase =
+                    util.format('%s: email@domain.com (Joe Smith) test case failed',
+                      testSuite);
+                  testCaseErrors.push(testCase);
                   return done();
                 }
-                return done();
               }
             );
           }
@@ -900,27 +600,15 @@ describe('Edit email with valid email address',
               function(err) {
                 if (err) {
                   logger.debug('Failed to update emailId Missing top level domain (.com/.net/.org/etc): email@domain');
+                  return done();
                 } else {
-                  var bag = {
-                    testSuite: testSuite,
-                    error: err,
-                    testCase: "Missing top level domain (.com/.net/.org/etc): email@domain"
-                  }
-                  async.series([
-                      _createIssue.bind(null, bag)
-                    ],
-                    function (err) {
-                      if (err) {
-                        logger.warn('Failed');
-                        return done(err);
-                      } else {
-                        logger.debug('Issue Created');
-                      }
-                    }
-                  );
+                  isTestFailed = true;
+                  var testCase =
+                    util.format('%s: email@domain test case failed',
+                      testSuite);
+                  testCaseErrors.push(testCase);
                   return done();
                 }
-                return done();
               }
             );
           }
@@ -936,27 +624,15 @@ describe('Edit email with valid email address',
               function(err) {
                 if (err) {
                   logger.debug('Failed to update emailId Leading dash in front of domain is invalid: email@-domain.com');
+                  return done();
                 } else {
-                  var bag = {
-                    testSuite: testSuite,
-                    error: err,
-                    testCase: "Leading dash in front of domain is invalid: email@-domain.com"
-                  }
-                  async.series([
-                      _createIssue.bind(null, bag)
-                    ],
-                    function (err) {
-                      if (err) {
-                        logger.warn('Failed');
-                        return done(err);
-                      } else {
-                        logger.debug('Issue Created');
-                      }
-                    }
-                  );
+                  isTestFailed = true;
+                  var testCase =
+                    util.format('%s: email@-domain.com test case failed',
+                      testSuite);
+                  testCaseErrors.push(testCase);
                   return done();
                 }
-                return done();
               }
             );
           }
@@ -972,27 +648,15 @@ describe('Edit email with valid email address',
               function(err) {
                 if (err) {
                   logger.debug('Failed to update emailId .web is not a valid top level domain: email@domain.web');
+                  return done();
                 } else {
-                  var bag = {
-                    testSuite: testSuite,
-                    error: err,
-                    testCase: ".web is not a valid top level domain: email@domain.web"
-                  }
-                  async.series([
-                      _createIssue.bind(null, bag)
-                    ],
-                    function (err) {
-                      if (err) {
-                        logger.warn('Failed');
-                        return done(err);
-                      } else {
-                        logger.debug('Issue Created');
-                      }
-                    }
-                  );
+                  isTestFailed = true;
+                  var testCase =
+                    util.format('%s: email@domain.web test case failed',
+                      testSuite);
+                  testCaseErrors.push(testCase);
                   return done();
                 }
-                return done();
               }
             );
           }
@@ -1008,27 +672,15 @@ describe('Edit email with valid email address',
               function(err) {
                 if (err) {
                   logger.debug('Failed to update emailId Invalid IP format: email@111.222.333.44444');
+                  return done();
                 } else {
-                  var bag = {
-                    testSuite: testSuite,
-                    error: err,
-                    testCase: "Invalid IP format: email@111.222.333.44444"
-                  }
-                  async.series([
-                      _createIssue.bind(null, bag)
-                    ],
-                    function (err) {
-                      if (err) {
-                        logger.warn('Failed');
-                        return done(err);
-                      } else {
-                        logger.debug('Issue Created');
-                      }
-                    }
-                  );
+                  isTestFailed = true;
+                  var testCase =
+                    util.format('%s: email@111.222.333.44444 test case failed',
+                      testSuite);
+                  testCaseErrors.push(testCase);
                   return done();
                 }
-                return done();
               }
             );
           }
@@ -1043,28 +695,16 @@ describe('Edit email with valid email address',
               '', { defaultEmail : 'email@domain..com' },
               function(err) {
                 if (err) {
-                  logger.debug('Failed to update emailId Multiple dot in the domain portion is invalid: email@domain..com');
+                  logger.debug('Failed to update emailId Invalid IP format: email@111.222.333.44444');
+                  return done();
                 } else {
-                  var bag = {
-                    testSuite: testSuite,
-                    error: err,
-                    testCase: "Multiple dot in the domain portion is invalid: email@domain..com"
-                  }
-                  async.series([
-                      _createIssue.bind(null, bag)
-                    ],
-                    function (err) {
-                      if (err) {
-                        logger.warn('Failed');
-                        return done(err);
-                      } else {
-                        logger.debug('Issue Created');
-                      }
-                    }
-                  );
+                  isTestFailed = true;
+                  var testCase =
+                    util.format('%s: email@111.222.333.44444 test case failed',
+                      testSuite);
+                  testCaseErrors.push(testCase);
                   return done();
                 }
-                return done();
               }
             );
           }
@@ -1081,25 +721,12 @@ describe('Edit email with valid email address',
           '', { defaultEmail : 'shippabletowner+sub-o-org-o@gmail.com' },
           function(err) {
             if (err) {
-              var bag = {
-                testSuite: testSuite,
-                error: err,
-                testCase: 'give actual email address'
-              }
-              async.series([
-                  _createIssue.bind(null, bag)
-                ],
-                function (err) {
-                  if (err) {
-                    logger.warn('Failed');
-                    return done(err);
-                  }
-                  else {
-                    logger.debug('Issue Created');
-                    return done();
-                  }
-                }
-              );
+              isTestFailed = true;
+              var testCase =
+                util.format('%s: with actual email address failed with error: %s',
+                  testSuite, err);
+              testCaseErrors.push(testCase);
+              return done();
             } else {
               return done();
             }
@@ -1108,23 +735,29 @@ describe('Edit email with valid email address',
       }
     );
 
+    it('Creating Github Issue if test cases failed',
+      function (done) {
+        this.timeout(0);
+        if (isTestFailed) {
+          var githubAdapter = new adapter(config.githubToken, config.githubUrl);
+          var title = util.format('Failed test suite %s', bag.testSuite);
+          var body = util.format('Failed test cases are:%s',testCaseErrors);
+          var data = {
+            title: title,
+            body: body
+          };
+          githubAdapter.pushRespositoryIssue('deepikasl', 'VT1', data,
+            function(err, res) {
+              if (err)
+                logger.warn("Creating Issue failed with error: ", err);
+              return done();
+            }
+          );
+        } else {
+          return done();
+        }
+      }
+    );
+
   }
 );
-
-function _createIssue(bag,next) {
-  var githubAdapter = new adapter(config.githubToken, config.githubUrl);
-  var title = util.format('Failed test case %s', bag.testSuite);
-  var body = util.format('Failed test suite %s, test case %s, with error: %s',
-               bag.testSuite, bag.testCase, bag.error);
-  var data = {
-    title: title,
-    body: body
-  }
-  githubAdapter.pushRespositoryIssue('deepikasl', 'VT1', data,
-    function(err, res) {
-      if (err)
-        logger.warn("Creating Issue failed with error: ", err);
-      return next();
-    }
-  );
-}
