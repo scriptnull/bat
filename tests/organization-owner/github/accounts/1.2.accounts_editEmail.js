@@ -117,54 +117,6 @@ describe('Edit email with valid and invalid email address',
           }
         );
 
-        it('Domain is valid IP address',
-          function (done) {
-            this.timeout(0);
-            var shippable = new Shippable(config.apiToken);
-
-            shippable.putAccountById(nconf.get("shiptest-github-owner:accountId"),
-              '', { defaultEmail : 'test+testing@123.123.123.123' },
-              function(err) {
-                if (err) {
-                  isTestFailed = true;
-                  var testCase =
-                    util.format('\n- [ ] %s: test+testing@123.123.123.123 failed with error: %s',
-                      testSuite, err);
-                  testCaseErrors.push(testCase);
-                  assert.equal(err, null);
-                  return done();
-                } else {
-                  return done();
-                }
-              }
-            );
-          }
-        );
-
-        it('Square bracket around IP address is considered valid',
-          function (done) {
-            this.timeout(0);
-            var shippable = new Shippable(config.apiToken);
-
-            shippable.putAccountById(nconf.get("shiptest-github-owner:accountId"),
-              '', { defaultEmail : 'test+testing@[123.123.123.123]' },
-              function(err) {
-                if (err) {
-                  isTestFailed = true;
-                  var testCase =
-                    util.format('\n- [ ] %s: test+testing@[123.123.123.123] failed with error: %s',
-                      testSuite, err);
-                  testCaseErrors.push(testCase);
-                  assert.equal(err, null);
-                  return done();
-                } else {
-                  return done();
-                }
-              }
-            );
-          }
-        );
-
         it('Quotes around email is considered valid',
           function (done) {
             this.timeout(0);
@@ -309,6 +261,54 @@ describe('Edit email with valid and invalid email address',
           }
         );
 
+        it('Unicode char as address',
+          function (done) {
+            this.timeout(0);
+            var shippable = new Shippable(config.apiToken);
+
+            shippable.putAccountById(nconf.get("shiptest-github-owner:accountId"),
+              '', { defaultEmail : 'あいうえお@domain.com' },
+              function(err) {
+                if (err) {
+                  isTestFailed = true;
+                  var testCase =
+                    util.format('\n- [ ] %s: あいうえお@domain.com failed with error: %s',
+                      testSuite, err);
+                  testCaseErrors.push(testCase);
+                  assert.equal(err, null);
+                  return done();
+                } else {
+                  return done();
+                }
+              }
+            );
+          }
+        );
+
+        it('.web is not a valid top level domain',
+          function (done) {
+            this.timeout(0);
+            var shippable = new Shippable(config.apiToken);
+
+            shippable.putAccountById(nconf.get("shiptest-github-owner:accountId"),
+              '', { defaultEmail : 'email@domain.web' },
+              function(err) {
+                if (err) {
+                  isTestFailed = true;
+                  var testCase =
+                    util.format('\n- [ ] %s: email@domain.web failed with error: %s',
+                      testSuite, err);
+                  testCaseErrors.push(testCase);
+                  assert.equal(err, null);
+                  return done();
+                } else {
+                  return done();
+                }
+              }
+            );
+          }
+        );
+
         it('Dash in address field is valid',
           function (done) {
             this.timeout(0);
@@ -354,6 +354,56 @@ describe('Edit email with valid and invalid email address',
                   isTestFailed = true;
                   var testCase =
                     util.format('\n- [ ] %s: plainaddress test case failed',
+                      testSuite);
+                  testCaseErrors.push(testCase);
+                  assert.notEqual(err, null);
+                  return done();
+                }
+              }
+            );
+          }
+        );
+
+        it('Domain is valid IP address',
+          function (done) {
+            this.timeout(0);
+            var shippable = new Shippable(config.apiToken);
+
+            shippable.putAccountById(nconf.get("shiptest-github-owner:accountId"),
+              '', { defaultEmail : 'test+testing@123.123.123.123' },
+              function(err) {
+                if (err) {
+                  logger.debug('Failed to update emailId Missing @ sign and domain: test+testing@123.123.123.123');
+                  return done();
+                } else {
+                  isTestFailed = true;
+                  var testCase =
+                    util.format('\n- [ ] %s: test+testing@123.123.123.123 test case failed',
+                      testSuite);
+                  testCaseErrors.push(testCase);
+                  assert.notEqual(err, null);
+                  return done();
+                }
+              }
+            );
+          }
+        );
+
+        it('Square bracket around IP address is considered valid',
+          function (done) {
+            this.timeout(0);
+            var shippable = new Shippable(config.apiToken);
+
+            shippable.putAccountById(nconf.get("shiptest-github-owner:accountId"),
+              '', { defaultEmail : 'test+testing@[123.123.123.123]' },
+              function(err) {
+                if (err) {
+                  logger.debug('Failed to update emailId Missing @ sign and domain: test+testing@[123.123.123.123]');
+                  return done();
+                } else {
+                  isTestFailed = true;
+                  var testCase =
+                    util.format('\n- [ ] %s: test+testing@[123.123.123.123] test case failed',
                       testSuite);
                   testCaseErrors.push(testCase);
                   assert.notEqual(err, null);
@@ -564,31 +614,6 @@ describe('Edit email with valid and invalid email address',
           }
         );
 
-        it('Unicode char as address',
-          function (done) {
-            this.timeout(0);
-            var shippable = new Shippable(config.apiToken);
-
-            shippable.putAccountById(nconf.get("shiptest-github-owner:accountId"),
-              '', { defaultEmail : 'あいうえお@domain.com' },
-              function(err) {
-                if (err) {
-                  logger.debug('Failed to update emailId Unicode char as address: あいうえお@domain.com');
-                  return done();
-                } else {
-                  isTestFailed = true;
-                  var testCase =
-                    util.format('\n- [ ] %s: あいうえお@domain.com test case failed',
-                      testSuite);
-                  testCaseErrors.push(testCase);
-                  assert.notEqual(err, null);
-                  return done();
-                }
-              }
-            );
-          }
-        );
-
         it('Text followed email is not allowed',
           function (done) {
             this.timeout(0);
@@ -654,31 +679,6 @@ describe('Edit email with valid and invalid email address',
                   isTestFailed = true;
                   var testCase =
                     util.format('\n- [ ] %s: email@-domain.com test case failed',
-                      testSuite);
-                  testCaseErrors.push(testCase);
-                  assert.notEqual(err, null);
-                  return done();
-                }
-              }
-            );
-          }
-        );
-
-        it('.web is not a valid top level domain',
-          function (done) {
-            this.timeout(0);
-            var shippable = new Shippable(config.apiToken);
-
-            shippable.putAccountById(nconf.get("shiptest-github-owner:accountId"),
-              '', { defaultEmail : 'email@domain.web' },
-              function(err) {
-                if (err) {
-                  logger.debug('Failed to update emailId .web is not a valid top level domain: email@domain.web');
-                  return done();
-                } else {
-                  isTestFailed = true;
-                  var testCase =
-                    util.format('\n- [ ] %s: email@domain.web test case failed',
                       testSuite);
                   testCaseErrors.push(testCase);
                   assert.notEqual(err, null);

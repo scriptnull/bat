@@ -58,12 +58,12 @@ describe(util.format('%s1 - %s', testSuiteNum, testSuiteDesc),
                     function (err) {
                       if (err) {
                         logger.warn('Failed');
-                        return nextToken(err);
                       }
                       else {
                         logger.debug('Issue Created');
-                        return nextToken();
                       }
+                      assert.equal(err, null);
+                      return nextToken();
                     }
                   );
                 } else {
