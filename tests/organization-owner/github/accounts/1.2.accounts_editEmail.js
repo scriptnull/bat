@@ -712,7 +712,7 @@ describe('Edit email with valid and invalid email address',
       }
     );
 
-    describe('Should run after above test suites'
+    describe('Should run after above test suites',
       function () {
         it('Edit email with actual email address',
           function (done) {
