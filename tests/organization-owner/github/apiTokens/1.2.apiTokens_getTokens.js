@@ -35,6 +35,7 @@ describe(testSuite,
                     util.format('\n- [ ] %s: Get List of API Tokens failed with error: %s',
                       testSuite, err);
                   testCaseErrors.push(testCase);
+                  assert.equal(err, null);
                   return done();
                 } else {
                   _.each(apiTokens,
@@ -68,6 +69,7 @@ describe(testSuite,
                         util.format('\n- [ ] %s: delete ApiTokens failed with error: %s',
                           testSuite, err);
                       testCaseErrors.push(testCase);
+                      assert.equal(err, null);
                       return nextTokenId();
                     } else {
                       return nextTokenId();
