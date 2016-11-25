@@ -229,7 +229,7 @@ describe('Add Tokens with different name',
             var name = "abcABC";
             shippable.postAccountTokens(name, nconf.get("shiptest-github-owner:accountId"),
               function(err) {
-                if (!err) {
+                if (err) {
                   logger.debug('Fails to add token with token name already exists');
                   return done();
                 } else {
