@@ -712,52 +712,56 @@ describe('Edit email with valid and invalid email address',
       }
     );
 
-    it('Edit email with actual email address',
-      function (done) {
-        this.timeout(0);
-        var shippable = new Shippable(config.apiToken);
+    describe('Should run after above test suites'
+      function () {
+        it('Edit email with actual email address',
+          function (done) {
+            this.timeout(0);
+            var shippable = new Shippable(config.apiToken);
 
-        shippable.putAccountById(nconf.get("shiptest-github-owner:accountId"),
-          '', { defaultEmail : 'shippabletowner+sub-o-org-o@gmail.com' },
-          function(err) {
-            if (err) {
-              isTestFailed = true;
-              var testCase =
-                util.format('%s: with actual email address failed with error: %s',
-                  testSuite, err);
-              testCaseErrors.push(testCase);
-              return done();
+            shippable.putAccountById(nconf.get("shiptest-github-owner:accountId"),
+              '', { defaultEmail : 'shippabletowner+sub-o-org-o@gmail.com' },
+              function(err) {
+                if (err) {
+                  isTestFailed = true;
+                  var testCase =
+                    util.format('%s: with actual email address failed with error: %s',
+                      testSuite, err);
+                  testCaseErrors.push(testCase);
+                  return done();
+                } else {
+                  return done();
+                }
+              }
+            );
+          }
+        );
+
+        it('Creating Github Issue if test cases failed',
+          function (done) {
+            this.timeout(0);
+            if (isTestFailed) {
+              var githubAdapter = new adapter(config.githubToken, config.githubUrl);
+              var title = util.format('Failed test suite %s', bag.testSuite);
+              var body = util.format('Failed test cases are:%s',testCaseErrors);
+              var data = {
+                title: title,
+                body: body
+              };
+              githubAdapter.pushRespositoryIssue('deepikasl', 'VT1', data,
+                function(err, res) {
+                  if (err)
+                    logger.warn("Creating Issue failed with error: ", err);
+                  return done();
+                }
+              );
             } else {
               return done();
             }
           }
         );
+
       }
     );
-
-    it('Creating Github Issue if test cases failed',
-      function (done) {
-        this.timeout(0);
-        if (isTestFailed) {
-          var githubAdapter = new adapter(config.githubToken, config.githubUrl);
-          var title = util.format('Failed test suite %s', bag.testSuite);
-          var body = util.format('Failed test cases are:%s',testCaseErrors);
-          var data = {
-            title: title,
-            body: body
-          };
-          githubAdapter.pushRespositoryIssue('deepikasl', 'VT1', data,
-            function(err, res) {
-              if (err)
-                logger.warn("Creating Issue failed with error: ", err);
-              return done();
-            }
-          );
-        } else {
-          return done();
-        }
-      }
-    );
-
   }
 );
