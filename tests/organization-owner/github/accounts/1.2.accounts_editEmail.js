@@ -742,7 +742,7 @@ describe('Edit email with valid and invalid email address',
             this.timeout(0);
             if (isTestFailed) {
               var githubAdapter = new adapter(config.githubToken, config.githubUrl);
-              var title = util.format('Failed test suite %s', bag.testSuite);
+              var title = util.format('Failed test suite %s', testSuite);
               var body = util.format('Failed test cases are:%s',testCaseErrors);
               var data = {
                 title: title,
