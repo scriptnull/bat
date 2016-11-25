@@ -285,7 +285,7 @@ describe('Edit email with valid and invalid email address',
           }
         );
 
-        it('.web is not a valid top level domain',
+        it('.web is a valid top level domain',
           function (done) {
             this.timeout(0);
             var shippable = new Shippable(config.apiToken);
@@ -364,7 +364,7 @@ describe('Edit email with valid and invalid email address',
           }
         );
 
-        it('Domain is valid IP address',
+        it('Domain is invalid IP address',
           function (done) {
             this.timeout(0);
             var shippable = new Shippable(config.apiToken);
@@ -389,7 +389,7 @@ describe('Edit email with valid and invalid email address',
           }
         );
 
-        it('Square bracket around IP address is considered valid',
+        it('Square bracket around IP address is considered invalid',
           function (done) {
             this.timeout(0);
             var shippable = new Shippable(config.apiToken);
