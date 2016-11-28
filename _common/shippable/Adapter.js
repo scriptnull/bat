@@ -641,6 +641,15 @@ ShippableAdapter.prototype.postSubscriptionAccounts =
     );
   };
 
+ShippableAdapter.prototype.postSubscriptionIntegration =
+  function (json, callback) {
+    this.post(
+      '/subscriptionIntegrations',
+      json,
+      callback
+    );
+  };
+
 ShippableAdapter.prototype.postSystemNodeStatus =
   function (systemNodeId, status, callback) {
     this.post(
