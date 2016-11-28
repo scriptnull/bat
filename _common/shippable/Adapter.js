@@ -510,6 +510,15 @@ ShippableAdapter.prototype.postAccountTokens =
     );
   };
 
+ShippableAdapter.prototype.postAccountIntegration =
+  function (json, callback) {
+    this.post(
+      util.format('/accountIntegrations'),
+      json,
+      callback
+    );
+  };
+
 ShippableAdapter.prototype.postBuild =
   function (json, callback) {
     this.post(
