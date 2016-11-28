@@ -28,7 +28,7 @@ describe('Add Account Integrations',
             var url = "https://gitlab.com/api/v3";
             var body = {
               "masterDisplayName": "GitLab",
-              "masterIntegrationId": "5728e13b3d93990c000fd8e4",
+              "masterIntegrationId": nconf.get("GITLAB_MASTINT_ID"),
               "masterName": "gitlab",
               "masterType": "scm",
               "formJSONValues": [
