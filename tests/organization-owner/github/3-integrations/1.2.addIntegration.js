@@ -32,6 +32,7 @@ describe('Add Integrations',
               "masterIntegrationId": "5728e13b3d93990c000fd8e4",
               "masterName": "gitlab",
               "masterType": "scm",
+              "name": name,
               "formJSONValues": [
                 {
                   "label": "token",
