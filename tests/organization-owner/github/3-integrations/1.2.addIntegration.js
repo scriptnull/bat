@@ -127,6 +127,9 @@ describe('Add Integrations',
                     }
                   }
                 );
+              },
+              function (err) {
+                return done();
               }
             );
           }
