@@ -21,6 +21,7 @@ describe('Add Integrations',
 
     describe(testSuite,
       function () {
+
         it('Add Gitlab AccountIntegration',
           function (done) {
             this.timeout(0);
@@ -51,6 +52,45 @@ describe('Add Integrations',
                   isTestFailed = true;
                   var testCase =
                     util.format('\n- [ ] %s: Add gitlab integration: %s, failed with error: %s',
+                      name, err);
+                  testCaseErrors.push(testCase);
+                  assert.equal(err, null);
+                  return done();
+                } else {
+                  logger.debug('Added integration');
+                  accountIntegrations.push(res);
+                  return done();
+                }
+              }
+            );
+          }
+        );
+
+        it('Add Slack AccountIntegration',
+          function (done) {
+            this.timeout(0);
+            var shippable = new Shippable(config.apiToken);
+            var name = "OrgOwner-slack";
+            var WebhookUrl = "https://hooks.slack.com/services/url";
+            var body = {
+              "masterDisplayName": "Slack",
+              "masterIntegrationId": "55bba7932c6c780b00e4426c",
+              "masterName": "Slack",
+              "masterType": "notification",
+              "name": name,
+              "formJSONValues": [
+                {
+                  "label": "webhookUrl",
+                  "value": WebhookUrl
+                }
+              ]
+            };
+            shippable.postAccountIntegration(body,
+              function(err,res) {
+                if (err) {
+                  isTestFailed = true;
+                  var testCase =
+                    util.format('\n- [ ] %s: Add slack integration: %s, failed with error: %s',
                       name, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
@@ -96,7 +136,7 @@ describe('Add Integrations',
           }
         );
 
-        it('Add Gitlab subscriptionIntegration',
+        it('Add subscriptionIntegrations',
           function (done) {
             this.timeout(0);
             var shippable = new Shippable(config.apiToken);
@@ -127,6 +167,7 @@ describe('Add Integrations',
                     }
                   }
                 );
+                console.log("Added subscriptionIntegration: ", body.name);
               },
               function (err) {
                 return done();
