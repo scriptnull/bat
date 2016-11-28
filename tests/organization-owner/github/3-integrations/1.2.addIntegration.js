@@ -14,7 +14,7 @@ var testSuite = util.format('%s2 - %s', testSuiteNum,
 var isTestFailed = false;
 var testCaseErrors = [];
 
-var accountIntegrationId = '';
+var accountIntegrations = [];
 var subscriptionId = '';
 describe('Add Integrations',
   function () {
@@ -57,7 +57,7 @@ describe('Add Integrations',
                   return done();
                 } else {
                   logger.debug('Added integration');
-                  accountIntegrationId = res.id;
+                  accountIntegrations.push(res);
                   return done();
                 }
               }
@@ -100,32 +100,34 @@ describe('Add Integrations',
           function (done) {
             this.timeout(0);
             var shippable = new Shippable(config.apiToken);
-            var name = "OrgOwner-gitlab";
-            var body = {
-              "accountIntegrationId": accountIntegrationId,
-              "subscriptionId": subscriptionId,
-              "name": name,
-              "propertyBag": {
-                "enabledByUserName": nconf.get("GITHUB_ORG_1"),
-                "accountIntegrationName": name
-              }
-            };
-            shippable.postSubscriptionIntegration(body,
-              function(err,res) {
-                if (err) {
-                  isTestFailed = true;
-                  var testCase =
-                    util.format('\n- [ ] %s: Add gitlab subscription integration: %s, failed with error: %s',
-                      name, err);
-                  testCaseErrors.push(testCase);
-                  assert.equal(err, null);
-                  return done();
-                } else {
-                  logger.debug('Added subscription integration');
-                  return done();
-                }
-              }
-            );
+            async.each(accountIntegrations,
+              function (accInt, nextAccInt) {
+                var body = {
+                  "accountIntegrationId": accInt.id,
+                  "subscriptionId": subscriptionId,
+                  "name": accInt.name,
+                  "propertyBag": {
+                    "enabledByUserName": nconf.get("GITHUB_ORG_1"),
+                    "accountIntegrationName": accInt.name
+                  }
+                };
+                shippable.postSubscriptionIntegration(body,
+                  function(err,res) {
+                    if (err) {
+                      isTestFailed = true;
+                      var testCase =
+                        util.format('\n- [ ] %s: Add gitlab subscription integration: %s, failed with error: %s',
+                          name, err);
+                      testCaseErrors.push(testCase);
+                      assert.equal(err, null);
+                      return nextAccInt();
+                    } else {
+                      logger.debug('Added subscription integration');
+                      return nextAccInt();
+                    }
+                  }
+                );
+            });
           }
         );
       }
