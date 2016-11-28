@@ -85,6 +85,42 @@ describe(testSuite,
       }
     );
 
+    describe('delete AccountIntegrations With Dependencies',
+      function () {
+        it('delete AccountIntegrations',
+          function (done) {
+            this.timeout(0);
+            var shippable = new Shippable(config.apiToken);
+
+            async.each(accountIntegrationIds,
+              function(accIntId, nextAccIntId) {
+                shippable.deleteAccountIntegrationById(accIntId,
+                  function(err) {
+                    if (err) {
+                      return nextAccIntId();
+                    } else {
+                      isTestFailed = true;
+                      var testCase =
+                        util.format('\n- [ ] %s: delete AccountIntegrations With Dependencies failed',
+                          testSuite, accIntId);
+                      testCaseErrors.push(testCase);
+                      assert.notEqual(err, null);
+                      return nextAccIntId();
+                    }
+                  }
+                );
+              },
+              function (err) {
+                if (err)
+                  console.log("Failed");
+                return done();
+              }
+            );
+          }
+        );
+      }
+    );
+
     describe('Create GitHub issue if failed',
       function () {
         it('Creating Github Issue if test cases failed',
