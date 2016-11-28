@@ -16,8 +16,98 @@ var testCaseErrors = [];
 
 var accountIntegrations = [];
 var subscriptionId = '';
+var githubAccountIntId = '';
 describe('Add Integrations',
   function () {
+
+    describe('create github Subscription Integration',
+      function () {
+
+        it('Organization-Owner-github-getSubscription',
+          function (done) {
+            this.timeout(0);
+            var shippable = new Shippable(config.apiToken);
+            var query = util.format('orgNames=%s',nconf.get("GITHUB_ORG_1"));
+            shippable.getSubscriptions(query,
+              function(err, subscriptions) {
+                if (err) {
+                  isTestFailed = true;
+                  var testCase =
+                    util.format('\n- [ ] %s: Get subscriptions, failed with error: %s',
+                      name, err);
+                  testCaseErrors.push(testCase);
+                  assert.equal(err, null);
+                  return done();
+                } else {
+                  if (subscriptions.status<200 || subscriptions.status>=299)
+                    logger.warn("status is::",subscriptions.status);
+                  subscriptionId = _.first(subscriptions).id;
+                  return done();
+                }
+              }
+            );
+          }
+        );
+
+        it('Get github AccountIntegartion',
+          function (done) {
+            this.timeout(0);
+            var shippable = new Shippable(config.apiToken);
+
+            shippable.getAccountIntegrations('',
+              function(err, accInts) {
+                if (err) {
+                  isTestFailed = true;
+                  var testCase =
+                    util.format('\n- [ ] %s: Get github of AccountIntegartion failed with error: %s',
+                      testSuite, err);
+                  testCaseErrors.push(testCase);
+                  assert.equal(err, null);
+                  return done();
+                } else {
+                  githubAccountIntId = _.first(accInts).id;
+                  return done();
+                }
+              }
+            );
+          }
+        );
+
+        it('Add github subscriptionIntegration',
+          function (done) {
+            this.timeout(0);
+            var shippable = new Shippable(config.apiToken);
+            var name = "OrgOwner-github";
+            var body = {
+              "accountIntegrationId": githubAccountIntId,
+              "subscriptionId": subscriptionId,
+              "name": name,
+              "propertyBag": {
+                "enabledByUserName": nconf.get("GITHUB_ORG_1"),
+                "accountIntegrationName": name
+              }
+            };
+            shippable.postSubscriptionIntegration(body,
+              function(err,res) {
+                if (err) {
+                  isTestFailed = true;
+                  var testCase =
+                    util.format('\n- [ ] %s: Add github subscription integration: %s, failed with error: %s',
+                      name, err);
+                  testCaseErrors.push(testCase);
+                  assert.equal(err, null);
+                  return done();
+                } else {
+                  logger.debug('Added subscription integration');
+                  return done();
+                }
+              }
+            );
+          }
+        );
+
+      }
+    );
 
     describe(testSuite,
       function () {
@@ -109,32 +199,6 @@ describe('Add Integrations',
 
     describe(testSuite,
       function () {
-
-        it('Organization-Owner-github-getSubscription',
-          function (done) {
-            this.timeout(0);
-            var shippable = new Shippable(config.apiToken);
-            var query = util.format('orgNames=%s',nconf.get("GITHUB_ORG_1"));
-            shippable.getSubscriptions(query,
-              function(err, subscriptions) {
-                if (err) {
-                  isTestFailed = true;
-                  var testCase =
-                    util.format('\n- [ ] %s: Get subscriptions, failed with error: %s',
-                      name, err);
-                  testCaseErrors.push(testCase);
-                  assert.equal(err, null);
-                  return done();
-                } else {
-                  if (subscriptions.status<200 || subscriptions.status>=299)
-                    logger.warn("status is::",subscriptions.status);
-                  subscriptionId = _.first(subscriptions).id;
-                  return done();
-                }
-              }
-            );
-          }
-        );
 
         it('Add subscriptionIntegrations',
           function (done) {
