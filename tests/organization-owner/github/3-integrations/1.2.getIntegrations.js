@@ -96,6 +96,7 @@ describe(testSuite,
                 shippable.deleteAccountIntegrationById(accIntId,
                   function(err) {
                     if (err) {
+                      console.log('Error is::',err);
                       return nextAccIntId();
                     } else {
                       isTestFailed = true;
