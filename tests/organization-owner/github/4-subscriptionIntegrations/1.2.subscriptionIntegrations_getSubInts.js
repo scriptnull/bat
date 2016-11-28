@@ -51,7 +51,7 @@ describe(testSuite,
       }
     );
 
-    describe('Delete subscriptionIntegrations',
+    /*describe('Delete subscriptionIntegrations',
       function () {
         it('Delete SubscriptionIntegrations',
           function (done) {
@@ -85,7 +85,7 @@ describe(testSuite,
           }
         );
       }
-    );
+    );*/
 
     describe('Create GitHub issue if failed',
       function () {
