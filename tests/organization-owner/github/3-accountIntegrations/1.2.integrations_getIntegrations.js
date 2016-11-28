@@ -52,41 +52,41 @@ describe(testSuite,
       }
     );
 
-    describe('delete AccountIntegrations',
-      function () {
-        it('delete AccountIntegrations',
-          function (done) {
-            this.timeout(0);
-            var shippable = new Shippable(config.apiToken);
-
-            async.each(accountIntegrationIds,
-              function(accIntId, nextAccIntId) {
-                shippable.deleteAccountIntegrationById(accIntId,
-                  function(err) {
-                    if (err && err.status !== 404) {
-                      isTestFailed = true;
-                      var testCase =
-                        util.format('\n- [ ] %s: delete AccountIntegration for id: %s failed with error: %s',
-                          testSuite, accIntId, err);
-                      testCaseErrors.push(testCase);
-                      assert.equal(err, null);
-                      return nextAccIntId();
-                    } else {
-                      return nextAccIntId();
-                    }
-                  }
-                );
-              },
-              function (err) {
-                if (err)
-                  console.log("Failed");
-                return done();
-              }
-            );
-          }
-        );
-      }
-    );
+//    describe('delete AccountIntegrations',
+//      function () {
+//        it('delete AccountIntegrations',
+//          function (done) {
+//            this.timeout(0);
+//            var shippable = new Shippable(config.apiToken);
+//
+//            async.each(accountIntegrationIds,
+//              function(accIntId, nextAccIntId) {
+//                shippable.deleteAccountIntegrationById(accIntId,
+//                  function(err) {
+//                    if (err && err.status !== 404) {
+//                      isTestFailed = true;
+//                      var testCase =
+//                        util.format('\n- [ ] %s: delete AccountIntegration for id: %s failed with error: %s',
+//                          testSuite, accIntId, err);
+//                      testCaseErrors.push(testCase);
+//                      assert.equal(err, null);
+//                      return nextAccIntId();
+//                    } else {
+//                      return nextAccIntId();
+//                    }
+//                  }
+//                );
+//              },
+//              function (err) {
+//                if (err)
+//                  console.log("Failed");
+//                return done();
+//              }
+//            );
+//          }
+//        );
+//      }
+//    );
 
     describe('Create GitHub issue if failed',
       function () {
