@@ -19,7 +19,7 @@ var testCaseErrors = [];
 describe(testSuite,
   function () {
 
-    var accountIntegrations = [];
+    var accountIntegrationIds = [];
     describe('Getting list of AccountIntegartions',
       function () {
         it('Get List of AccountIntegartions',
@@ -40,11 +40,47 @@ describe(testSuite,
                 } else {
                   _.each(accInts,
                     function (accInt) {
-                      accountIntegrations.push(accInt.id);
+                      accountIntegrationIds.push(accInt.id);
                     }
                   );
                   return done();
                 }
+              }
+            );
+          }
+        );
+      }
+    );
+
+    describe('delete AccountIntegrations',
+      function () {
+        it('delete AccountIntegrations',
+          function (done) {
+            this.timeout(0);
+            var shippable = new Shippable(config.apiToken);
+
+            async.each(accountIntegrationIds,
+              function(accIntId, nextAccIntId) {
+                shippable.deleteAccountIntegrationById(accIntId,
+                  function(err) {
+                    if (err && err.status !== 404) {
+                      isTestFailed = true;
+                      var testCase =
+                        util.format('\n- [ ] %s: delete AccountIntegration for id: %s failed with error: %s',
+                          testSuite, accIntId, err);
+                      testCaseErrors.push(testCase);
+                      assert.equal(err, null);
+                      return nextAccIntId();
+                    } else {
+                      return nextAccIntId();
+                    }
+                  }
+                );
+              },
+              function (err) {
+                if (err)
+                  console.log("Failed");
+                return done();
               }
             );
           }
