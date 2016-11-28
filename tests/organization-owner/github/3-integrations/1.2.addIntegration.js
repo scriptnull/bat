@@ -45,8 +45,8 @@ describe('Add Integrations',
               ]
             };
             shippable.postAccountIntegration(body,
-              function(err) {
-                if (err,res) {
+              function(err,res) {
+                if (err) {
                   isTestFailed = true;
                   var testCase =
                     util.format('\n- [ ] %s: Add gitlab integration: %s, failed with error: %s',
