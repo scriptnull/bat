@@ -76,6 +76,7 @@ describe(testSuite,
                       subIntegrationIds.push(subInt.id);
                     }
                   );
+                  return done();
                 }
               }
             );
