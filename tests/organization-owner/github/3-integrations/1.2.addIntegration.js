@@ -121,7 +121,7 @@ describe('Add Integrations',
                   assert.equal(err, null);
                   return done();
                 } else {
-                  console.log('Added subscription integration',util.inspect(res,{depth:null}));
+                  logger.debug('Added subscription integration');
                   return done();
                 }
               }
