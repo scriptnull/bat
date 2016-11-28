@@ -14,12 +14,12 @@ var testSuite = util.format('%s2 - %s', testSuiteNum,
 var isTestFailed = false;
 var testCaseErrors = [];
 
-describe('Add Tokens with different name',
+describe('Add Account Integrations',
   function () {
 
     describe(testSuite,
       function () {
-        it('Enter token name with 150 characters',
+        it('Add Gitlab AccountIntegration',
           function (done) {
             this.timeout(0);
             var shippable = new Shippable(config.apiToken);
@@ -47,7 +47,7 @@ describe('Add Tokens with different name',
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: Add integration: %s, failed with error: %s',
+                    util.format('\n- [ ] %s: Add gitlab integration: %s, failed with error: %s',
                       name, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
