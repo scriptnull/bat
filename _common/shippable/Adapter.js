@@ -478,6 +478,14 @@ ShippableAdapter.prototype.deleteSubscriptionAccountById =
     );
   };
 
+ShippableAdapter.prototype.deleteSubscriptionIntegrationById =
+  function (subscriptionIntegrationId, callback) {
+    this.delete(
+      util.format('/subscriptionIntegrations/%s', subscriptionIntegrationId),
+      callback
+    );
+  };
+
 ShippableAdapter.prototype.deleteVersionById =
   function (versionId, callback) {
     this.delete(
