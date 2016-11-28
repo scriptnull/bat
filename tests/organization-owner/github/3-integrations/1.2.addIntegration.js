@@ -167,7 +167,6 @@ describe('Add Integrations',
                     }
                   }
                 );
-                console.log("Added subscriptionIntegration: ", body.name);
               },
               function (err) {
                 return done();
