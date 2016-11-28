@@ -100,6 +100,7 @@ describe(testSuite,
                       console.log('Error is::',err);
                       return nextAccIntId();
                     } else {
+                      console.log("you are in else");
                       isTestFailed = true;
                       var testCase =
                         util.format('\n- [ ] %s: delete AccountIntegrations With Dependencies failed',
