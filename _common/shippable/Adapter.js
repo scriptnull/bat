@@ -479,7 +479,7 @@ ShippableAdapter.prototype.deleteSubscriptionAccountById =
   };
 
 ShippableAdapter.prototype.deleteSubscriptionIntegrationById =
-  function (accountIntegrationId, callback) {
+  function (subscriptionIntegrationId, callback) {
     this.delete(
       util.format('/subscriptionIntegrations/%s', subscriptionIntegrationId),
       callback

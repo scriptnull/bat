@@ -6,7 +6,7 @@ var chai = require('chai');
 var _ = require('underscore');
 var assert = chai.assert;
 var testSuiteNum = '1.';
-var testSuiteDesc = 'Account Integrations';
+var testSuiteDesc = 'Subscription Integrations';
 var adapter = require('../../../../_common/shippable/github/Adapter.js');
 var Shippable = require('../../../../_common/shippable/Adapter.js');
 
@@ -65,7 +65,7 @@ describe(testSuite,
                     if (err && err.status !== 404) {
                       isTestFailed = true;
                       var testCase =
-                        util.format('\n- [ ] %s: delete AccountIntegration for id: %s failed with error: %s',
+                        util.format('\n- [ ] %s: delete SubscriptionIntegration for id: %s failed with error: %s',
                           testSuite, accIntId, err);
                       testCaseErrors.push(testCase);
                       assert.equal(err, null);
