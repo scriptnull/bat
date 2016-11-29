@@ -18,6 +18,7 @@ var testCaseErrors = [];
 var accountIntegrationIds = [];
 var subIntegrationIds = [];
 var accountIntegrations = [];
+var subscriptionIntegrations = [];
 
 describe(testSuite,
   function () {
@@ -72,7 +73,7 @@ describe(testSuite,
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: Get Edit Gitlab Account Intgeration failed with error: %s',
+                    util.format('\n- [ ] %s: Edit Gitlab Account Intgeration failed with error: %s',
                       testSuite, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
@@ -101,7 +102,7 @@ describe(testSuite,
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: Get Edit AWS Account Intgeration failed with error: %s',
+                    util.format('\n- [ ] %s: Edit AWS Account Intgeration failed with error: %s',
                       testSuite, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
@@ -130,7 +131,7 @@ describe(testSuite,
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: Get Edit Amazon ECR Account Intgeration failed with error: %s',
+                    util.format('\n- [ ] %s: Edit Amazon ECR Account Intgeration failed with error: %s',
                       testSuite, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
@@ -159,7 +160,7 @@ describe(testSuite,
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: Get Edit ACS Account Intgeration failed with error: %s',
+                    util.format('\n- [ ] %s: Edit ACS Account Intgeration failed with error: %s',
                       testSuite, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
@@ -188,7 +189,7 @@ describe(testSuite,
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: Get Edit bitbucket Account Intgeration failed with error: %s',
+                    util.format('\n- [ ] %s: Edit bitbucket Account Intgeration failed with error: %s',
                       testSuite, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
@@ -217,7 +218,7 @@ describe(testSuite,
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: Get Edit ddc Account Intgeration failed with error: %s',
+                    util.format('\n- [ ] %s: Edit ddc Account Intgeration failed with error: %s',
                       testSuite, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
@@ -246,7 +247,7 @@ describe(testSuite,
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: Get Edit docker Account Intgeration failed with error: %s',
+                    util.format('\n- [ ] %s: Edit docker Account Intgeration failed with error: %s',
                       testSuite, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
@@ -275,7 +276,7 @@ describe(testSuite,
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: Get Edit Email Account Intgeration failed with error: %s',
+                    util.format('\n- [ ] %s: Edit Email Account Intgeration failed with error: %s',
                       testSuite, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
@@ -304,7 +305,7 @@ describe(testSuite,
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: Get Edit event trigger Account Intgeration failed with error: %s',
+                    util.format('\n- [ ] %s: Edit event trigger Account Intgeration failed with error: %s',
                       testSuite, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
@@ -333,7 +334,7 @@ describe(testSuite,
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: Get Edit gcr Account Intgeration failed with error: %s',
+                    util.format('\n- [ ] %s: Edit gcr Account Intgeration failed with error: %s',
                       testSuite, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
@@ -362,7 +363,7 @@ describe(testSuite,
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: Get Edit gke Account Intgeration failed with error: %s',
+                    util.format('\n- [ ] %s: Edit gke Account Intgeration failed with error: %s',
                       testSuite, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
@@ -391,7 +392,7 @@ describe(testSuite,
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: Get Edit hipchat Account Intgeration failed with error: %s',
+                    util.format('\n- [ ] %s: Edit hipchat Account Intgeration failed with error: %s',
                       testSuite, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
@@ -420,7 +421,7 @@ describe(testSuite,
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: Get Edit private docker registry Account Intgeration failed with error: %s',
+                    util.format('\n- [ ] %s: Edit private docker registry Account Intgeration failed with error: %s',
                       testSuite, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
@@ -449,7 +450,7 @@ describe(testSuite,
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: Get Edit generic webhook Account Intgeration failed with error: %s',
+                    util.format('\n- [ ] %s: Edit generic webhook Account Intgeration failed with error: %s',
                       testSuite, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
@@ -478,7 +479,7 @@ describe(testSuite,
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: Get Edit slack Account Intgeration failed with error: %s',
+                    util.format('\n- [ ] %s: Edit slack Account Intgeration failed with error: %s',
                       testSuite, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
@@ -507,7 +508,7 @@ describe(testSuite,
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: Get Edit AWS_IAM Account Intgeration failed with error: %s',
+                    util.format('\n- [ ] %s: Edit AWS_IAM Account Intgeration failed with error: %s',
                       testSuite, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
@@ -536,7 +537,7 @@ describe(testSuite,
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: Get Edit Docker_Cloud Account Intgeration failed with error: %s',
+                    util.format('\n- [ ] %s: Edit Docker_Cloud Account Intgeration failed with error: %s',
                       testSuite, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
@@ -565,7 +566,7 @@ describe(testSuite,
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: Get Edit Docker_trusted_registry Account Intgeration failed with error: %s',
+                    util.format('\n- [ ] %s: Edit Docker_trusted_registry Account Intgeration failed with error: %s',
                       testSuite, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
@@ -594,7 +595,7 @@ describe(testSuite,
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: Get Edit Github-Enterprise Account Intgeration failed with error: %s',
+                    util.format('\n- [ ] %s: Edit Github-Enterprise Account Intgeration failed with error: %s',
                       testSuite, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
@@ -623,7 +624,7 @@ describe(testSuite,
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: Get Edit Joyent-Triton-Public-Cloud Account Intgeration failed with error: %s',
+                    util.format('\n- [ ] %s: Edit Joyent-Triton-Public-Cloud Account Intgeration failed with error: %s',
                       testSuite, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
@@ -652,7 +653,7 @@ describe(testSuite,
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: Get Edit PEM-Key Account Intgeration failed with error: %s',
+                    util.format('\n- [ ] %s: Edit PEM-Key Account Intgeration failed with error: %s',
                       testSuite, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
@@ -681,7 +682,7 @@ describe(testSuite,
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: Get Edit Quay.io Account Intgeration failed with error: %s',
+                    util.format('\n- [ ] %s: Edit Quay.io Account Intgeration failed with error: %s',
                       testSuite, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
@@ -710,7 +711,7 @@ describe(testSuite,
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: Get Edit SSH-Key Account Intgeration failed with error: %s',
+                    util.format('\n- [ ] %s: Edit SSH-Key Account Intgeration failed with error: %s',
                       testSuite, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
@@ -750,12 +751,48 @@ describe(testSuite,
                       subIntegrationIds.push(subInt.id);
                     }
                   );
+                  subscriptionIntegrations = subInts;
                   return done();
                 }
               }
             );
           }
         );
+      }
+    );
+
+    describe('Edit subscription Integration',
+      function () {
+
+        it('Edit all subscription Intgerations',
+          function (done) {
+            this.timeout(0);
+            var shippable = new Shippable(config.apiToken);
+
+            async.each(subscriptionIntegrations,
+              function (subInt, nextSubInt) {
+                subInt.name = subInt.name + 'edited';
+                shippable.putSubscriptionIntegration(subInt.id, subInt,
+                  function(err, res) {
+                    if (err) {
+                      isTestFailed = true;
+                      var testCase =
+                        util.format('\n- [ ] %s: Edit subscription Intgeration failed with error: %s',
+                          testSuite, err);
+                      testCaseErrors.push(testCase);
+                      assert.equal(err, null);
+                      return done();
+                    } else {
+                      logger.debug('Edited Integration');
+                      return done();
+                    }
+                  }
+                );
+              }
+            );
+          }
+        );
+
       }
     );
 
