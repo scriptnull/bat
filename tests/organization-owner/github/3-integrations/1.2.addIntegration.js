@@ -16,8 +16,6 @@ var testCaseErrors = [];
 
 var accountIntegrations = [];
 var subscriptionId = '';
-var shippable = new Shippable(config.apiToken);
-
 describe('Add Integrations',
   function () {
 
@@ -27,6 +25,7 @@ describe('Add Integrations',
         it('Organization-Owner-github-getSubscription',
           function (done) {
             this.timeout(0);
+            var shippable = new Shippable(config.apiToken);
             var query = util.format('orgNames=%s',nconf.get("GITHUB_ORG_1"));
             shippable.getSubscriptions(query,
               function(err, subscriptions) {
@@ -52,6 +51,7 @@ describe('Add Integrations',
         it('Get github AccountIntegartion',
           function (done) {
             this.timeout(0);
+            var shippable = new Shippable(config.apiToken);
 
             shippable.getAccountIntegrations('',
               function(err, accInts) {
@@ -81,6 +81,7 @@ describe('Add Integrations',
         it('Add Gitlab AccountIntegration',
           function (done) {
             this.timeout(0);
+            var shippable = new Shippable(config.apiToken);
             var name = "OrgOwner-gitlab";
             var token = nconf.get("GITLAB_ACCESS_TOKEN");
             var url = "https://gitlab.com/api/v3";
@@ -124,6 +125,7 @@ describe('Add Integrations',
         it('Add Amazon ECR AccountIntegration',
           function (done) {
             this.timeout(0);
+            var shippable = new Shippable(config.apiToken);
             var name = "OrgOwner-ecr";
             var body = {
               "masterDisplayName": "Amazon ECR",
@@ -165,6 +167,7 @@ describe('Add Integrations',
         it('Add AWS AccountIntegration',
           function (done) {
             this.timeout(0);
+            var shippable = new Shippable(config.apiToken);
             var name = "OrgOwner-aws";
             var body = {
               "masterDisplayName": "AWS",
@@ -210,6 +213,7 @@ describe('Add Integrations',
         it('Add ACS AccountIntegration',
           function (done) {
             this.timeout(0);
+            var shippable = new Shippable(config.apiToken);
             var name = "OrgOwner-acs";
             var body = {
               "masterDisplayName": "Azure Container Service",
@@ -251,6 +255,7 @@ describe('Add Integrations',
         it('Add bitbucket AccountIntegration',
           function (done) {
             this.timeout(0);
+            var shippable = new Shippable(config.apiToken);
             var name = "OrgOwner-bitbucket";
             var body = {
               "masterDisplayName": "BitBucket",
@@ -292,6 +297,7 @@ describe('Add Integrations',
         it('Add ddc AccountIntegration',
           function (done) {
             this.timeout(0);
+            var shippable = new Shippable(config.apiToken);
             var name = "OrgOwner-ddc";
             var body = {
               "masterDisplayName": "Docker DataCenter",
@@ -337,6 +343,7 @@ describe('Add Integrations',
         it('Add docker AccountIntegration',
           function (done) {
             this.timeout(0);
+            var shippable = new Shippable(config.apiToken);
             var name = "OrgOwner-docker";
             var body = {
               "masterDisplayName": "Docker",
@@ -382,6 +389,7 @@ describe('Add Integrations',
         it('Add Email AccountIntegration',
           function (done) {
             this.timeout(0);
+            var shippable = new Shippable(config.apiToken);
             var name = "OrgOwner-Email";
             var body = {
               "masterDisplayName": "Email",
@@ -419,6 +427,7 @@ describe('Add Integrations',
         it('Add event trigger AccountIntegration',
           function (done) {
             this.timeout(0);
+            var shippable = new Shippable(config.apiToken);
             var name = "OrgOwner-event-trigger";
             var body = {
               "masterDisplayName": "Event Trigger",
@@ -476,6 +485,7 @@ describe('Add Integrations',
         it('Add gcr AccountIntegration',
           function (done) {
             this.timeout(0);
+            var shippable = new Shippable(config.apiToken);
             var name = "OrgOwner-gcr";
             var body = {
               "masterDisplayName": "GCR",
@@ -513,6 +523,7 @@ describe('Add Integrations',
         it('Add gke AccountIntegration',
           function (done) {
             this.timeout(0);
+            var shippable = new Shippable(config.apiToken);
             var name = "OrgOwner-gke";
             var body = {
               "masterDisplayName": "Google Container Engine",
@@ -554,6 +565,7 @@ describe('Add Integrations',
         it('Add hipchat AccountIntegration',
           function (done) {
             this.timeout(0);
+            var shippable = new Shippable(config.apiToken);
             var name = "OrgOwner-hipchat";
             var body = {
               "masterDisplayName": "HipChat",
@@ -591,6 +603,7 @@ describe('Add Integrations',
         it('Add private docker registry AccountIntegration',
           function (done) {
             this.timeout(0);
+            var shippable = new Shippable(config.apiToken);
             var name = "OrgOwner-private-docker-registry";
             var body = {
               "masterDisplayName": "Private Docker Registry",
@@ -640,6 +653,7 @@ describe('Add Integrations',
         it('Add generic webhook registry AccountIntegration',
           function (done) {
             this.timeout(0);
+            var shippable = new Shippable(config.apiToken);
             var name = "OrgOwner-generic-webhook";
             var body = {
               "masterDisplayName": "Event Trigger",
@@ -697,6 +711,7 @@ describe('Add Integrations',
         it('Add Slack AccountIntegration',
           function (done) {
             this.timeout(0);
+            var shippable = new Shippable(config.apiToken);
             var name = "OrgOwner-slack";
             var WebhookUrl = "https://hooks.slack.com/services/url";
             var body = {
@@ -735,6 +750,7 @@ describe('Add Integrations',
         it('Add AWS_IAM AccountIntegration',
           function (done) {
             this.timeout(0);
+            var shippable = new Shippable(config.apiToken);
             var name = "OrgOwner-AWS_IAM";
             var body = {
               "masterDisplayName": "Amazon Web Services (IAM)",
@@ -788,6 +804,7 @@ describe('Add Integrations',
         it('Add Docker Cloud AccountIntegration',
           function (done) {
             this.timeout(0);
+            var shippable = new Shippable(config.apiToken);
             var name = "OrgOwner-Docker_Cloud";
             var body = {
               "masterDisplayName": "Docker Cloud",
@@ -833,6 +850,7 @@ describe('Add Integrations',
         it('Add Docker Trusted Registry AccountIntegration',
           function (done) {
             this.timeout(0);
+            var shippable = new Shippable(config.apiToken);
             var name = "OrgOwner-Docker_trusted_registry";
             var body = {
               "masterDisplayName": "Docker Trusted Registry",
@@ -882,6 +900,7 @@ describe('Add Integrations',
         it('Add Github Enterprise AccountIntegration',
           function (done) {
             this.timeout(0);
+            var shippable = new Shippable(config.apiToken);
             var name = "OrgOwner-Github Enterprise";
             var body = {
               "masterDisplayName": "Github Enterprise",
@@ -923,6 +942,7 @@ describe('Add Integrations',
         it('Add Joyent Triton Public Cloud AccountIntegration',
           function (done) {
             this.timeout(0);
+            var shippable = new Shippable(config.apiToken);
             var name = "OrgOwner-Joyent Triton Public Cloud";
             var body = {
               "masterDisplayName": "Joyent Triton Public Cloud",
@@ -980,6 +1000,7 @@ describe('Add Integrations',
         it('Add PEM Key AccountIntegration',
           function (done) {
             this.timeout(0);
+            var shippable = new Shippable(config.apiToken);
             var name = "OrgOwner-PEM Key";
             var body = {
               "masterDisplayName": "PEM Key",
@@ -1017,6 +1038,7 @@ describe('Add Integrations',
         it('Add Quay.io AccountIntegration',
           function (done) {
             this.timeout(0);
+            var shippable = new Shippable(config.apiToken);
             var name = "OrgOwner-Quay.io";
             var body = {
               "masterDisplayName": "Quay.io",
@@ -1070,6 +1092,7 @@ describe('Add Integrations',
         it('Add SSH Key AccountIntegration',
           function (done) {
             this.timeout(0);
+            var shippable = new Shippable(config.apiToken);
             var name = "OrgOwner-SSH Key";
             var body = {
               "masterDisplayName": "SSH Key",
@@ -1116,6 +1139,7 @@ describe('Add Integrations',
         it('Add subscriptionIntegrations',
           function (done) {
             this.timeout(0);
+            var shippable = new Shippable(config.apiToken);
             async.each(accountIntegrations,
               function (accInt, nextAccInt) {
                 var body = {
