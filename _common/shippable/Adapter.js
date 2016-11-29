@@ -783,6 +783,14 @@ ShippableAdapter.prototype.deleteAccountById =
     );
   };
 
+ShippableAdapter.prototype.deleteAccountCardById =
+  function (cardId, callback) {
+    this.delete(
+      util.format('/accountCards/%s', cardId),
+      callback
+    );
+  };
+
 ShippableAdapter.prototype.deleteAccountToken =
   function (tokenId, callback) {
     this.delete(
