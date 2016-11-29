@@ -1130,6 +1130,45 @@ describe('Add Integrations',
             );
           }
         );
+
+        it('Add invalid Slack AccountIntegration',
+          function (done) {
+            this.timeout(0);
+            var shippable = new Shippable(config.apiToken);
+            var name = "OrgOwner-slack-invalid-name-in-account-integration-that-is-with-more-than-eighty-characters";
+            var WebhookUrl = "https://hooks.slack.com/services/url1";
+            var body = {
+              "masterDisplayName": "Slack",
+              "masterIntegrationId": "55bba7932c6c780b00e4426c",
+              "masterName": "Slack",
+              "masterType": "notification",
+              "name": name,
+              "formJSONValues": [
+                {
+                  "label": "webhookUrl",
+                  "value": WebhookUrl
+                }
+              ]
+            };
+            shippable.postAccountIntegration(body,
+              function(err,res) {
+                if (err) {
+                  logger.debug('Cannot Add integration,test passed');
+                  return done();
+                } else {
+                  isTestFailed = true;
+                  var testCase =
+                    util.format('\n- [ ] %s: Added invalid slack integration: %s, testcase failed',
+                      testSuiteDesc, name);
+                  testCaseErrors.push(testCase);
+                  assert.notEqual(err, null);
+                  return done();
+                }
+              }
+            );
+          }
+        );
+
       }
     );
 
