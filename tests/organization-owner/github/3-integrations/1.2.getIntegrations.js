@@ -781,13 +781,16 @@ describe(testSuite,
                           testSuite, err);
                       testCaseErrors.push(testCase);
                       assert.equal(err, null);
-                      return done();
+                      return nextSubInt();
                     } else {
                       logger.debug('Edited Integration');
-                      return done();
+                      return nextSubInt();
                     }
                   }
                 );
+              },
+              function (err) {
+                return done();
               }
             );
           }
