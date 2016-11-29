@@ -15,12 +15,13 @@ var testSuite = util.format('%s2 - %s', testSuiteNum,
 
 var isTestFailed = false;
 var testCaseErrors = [];
+var accountIntegrationIds = [];
+var subIntegrationIds = [];
+var accountIntegrations = [];
 
 describe(testSuite,
   function () {
 
-    var accountIntegrationIds = [];
-    var subIntegrationIds = [];
     describe('Getting list of AccountIntegartions',
       function () {
         it('Get List of AccountIntegartions',
@@ -44,6 +45,38 @@ describe(testSuite,
                       accountIntegrationIds.push(accInt.id);
                     }
                   );
+                  accountIntegrations = accInts;
+                  return done();
+                }
+              }
+            );
+          }
+        );
+      }
+    );
+
+    describe('Edit account Integrations',
+      function () {
+        it('Edit Gitlab Account Intgeration',
+          function (done) {
+            this.timeout(0);
+            var shippable = new Shippable(config.apiToken);
+
+            var body = _.findWhere(accountIntegrations, {name:"OrgOwner-gitlab"});
+            __setFormJSONValue(body.formJSONValues, 'token', 'token');
+
+            shippable.putAccountIntegration(body.id, body,
+              function(err, res) {
+                if (err) {
+                  isTestFailed = true;
+                  var testCase =
+                    util.format('\n- [ ] %s: Get Edit Gitlab Account Intgeration failed with error: %s',
+                      testSuite, err);
+                  testCaseErrors.push(testCase);
+                  assert.equal(err, null);
+                  return done();
+                } else {
+                  console.log('Edited Integration', res);
                   return done();
                 }
               }
@@ -223,3 +256,15 @@ describe(testSuite,
 
   }
 );
+
+function __setFormJSONValue(formJSONArray, label, value) {
+  var formJSONObj = _.findWhere(formJSONArray,
+    { label : label });
+  if (!formJSONObj)
+    formJSONArray.push({
+      label : label,
+      value : value
+    });
+  else
+    formJSONObj.value = value;
+}
