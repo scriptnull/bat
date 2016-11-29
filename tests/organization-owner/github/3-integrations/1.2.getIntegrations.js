@@ -260,6 +260,470 @@ describe(testSuite,
           }
         );
 
+        it('Edit Email Account Intgeration',
+          function (done) {
+            this.timeout(0);
+            var shippable = new Shippable(config.apiToken);
+
+            var body = _.findWhere(accountIntegrations, {name:"OrgOwner-Email"});
+            __setFormJSONValue(body.formJSONValues, 'Email address', 'test');
+
+            body.isValid = true;
+
+            shippable.putAccountIntegration(body.id, body,
+              function(err, res) {
+                if (err) {
+                  isTestFailed = true;
+                  var testCase =
+                    util.format('\n- [ ] %s: Get Edit Email Account Intgeration failed with error: %s',
+                      testSuite, err);
+                  testCaseErrors.push(testCase);
+                  assert.equal(err, null);
+                  return done();
+                } else {
+                  logger.debug('Edited Integration');
+                  return done();
+                }
+              }
+            );
+          }
+        );
+
+        it('Edit event trigger Account Intgeration',
+          function (done) {
+            this.timeout(0);
+            var shippable = new Shippable(config.apiToken);
+
+            var body = _.findWhere(accountIntegrations, {name:"OrgOwner-event-trigger"});
+            __setFormJSONValue(body.formJSONValues, 'webhookURL', 'test');
+
+            body.isValid = true;
+
+            shippable.putAccountIntegration(body.id, body,
+              function(err, res) {
+                if (err) {
+                  isTestFailed = true;
+                  var testCase =
+                    util.format('\n- [ ] %s: Get Edit event trigger Account Intgeration failed with error: %s',
+                      testSuite, err);
+                  testCaseErrors.push(testCase);
+                  assert.equal(err, null);
+                  return done();
+                } else {
+                  logger.debug('Edited Integration');
+                  return done();
+                }
+              }
+            );
+          }
+        );
+
+        it('Edit gcr Account Intgeration',
+          function (done) {
+            this.timeout(0);
+            var shippable = new Shippable(config.apiToken);
+
+            var body = _.findWhere(accountIntegrations, {name:"OrgOwner-gcr"});
+            __setFormJSONValue(body.formJSONValues, 'JSON_key', 'test');
+
+            body.isValid = true;
+
+            shippable.putAccountIntegration(body.id, body,
+              function(err, res) {
+                if (err) {
+                  isTestFailed = true;
+                  var testCase =
+                    util.format('\n- [ ] %s: Get Edit gcr Account Intgeration failed with error: %s',
+                      testSuite, err);
+                  testCaseErrors.push(testCase);
+                  assert.equal(err, null);
+                  return done();
+                } else {
+                  logger.debug('Edited Integration');
+                  return done();
+                }
+              }
+            );
+          }
+        );
+
+        it('Edit gke Account Intgeration',
+          function (done) {
+            this.timeout(0);
+            var shippable = new Shippable(config.apiToken);
+
+            var body = _.findWhere(accountIntegrations, {name:"OrgOwner-gke"});
+            __setFormJSONValue(body.formJSONValues, 'JSON_key', 'test');
+
+            body.isValid = true;
+
+            shippable.putAccountIntegration(body.id, body,
+              function(err, res) {
+                if (err) {
+                  isTestFailed = true;
+                  var testCase =
+                    util.format('\n- [ ] %s: Get Edit gke Account Intgeration failed with error: %s',
+                      testSuite, err);
+                  testCaseErrors.push(testCase);
+                  assert.equal(err, null);
+                  return done();
+                } else {
+                  logger.debug('Edited Integration');
+                  return done();
+                }
+              }
+            );
+          }
+        );
+
+        it('Edit hipchat Account Intgeration',
+          function (done) {
+            this.timeout(0);
+            var shippable = new Shippable(config.apiToken);
+
+            var body = _.findWhere(accountIntegrations, {name:"OrgOwner-hipchat"});
+            __setFormJSONValue(body.formJSONValues, 'token', 'test');
+
+            body.isValid = true;
+
+            shippable.putAccountIntegration(body.id, body,
+              function(err, res) {
+                if (err) {
+                  isTestFailed = true;
+                  var testCase =
+                    util.format('\n- [ ] %s: Get Edit hipchat Account Intgeration failed with error: %s',
+                      testSuite, err);
+                  testCaseErrors.push(testCase);
+                  assert.equal(err, null);
+                  return done();
+                } else {
+                  logger.debug('Edited Integration');
+                  return done();
+                }
+              }
+            );
+          }
+        );
+
+        it('Edit private docker registry Account Intgeration',
+          function (done) {
+            this.timeout(0);
+            var shippable = new Shippable(config.apiToken);
+
+            var body = _.findWhere(accountIntegrations, {name:"OrgOwner-private-docker-registry"});
+            __setFormJSONValue(body.formJSONValues, 'url', 'test');
+
+            body.isValid = true;
+
+            shippable.putAccountIntegration(body.id, body,
+              function(err, res) {
+                if (err) {
+                  isTestFailed = true;
+                  var testCase =
+                    util.format('\n- [ ] %s: Get Edit private docker registry Account Intgeration failed with error: %s',
+                      testSuite, err);
+                  testCaseErrors.push(testCase);
+                  assert.equal(err, null);
+                  return done();
+                } else {
+                  logger.debug('Edited Integration');
+                  return done();
+                }
+              }
+            );
+          }
+        );
+
+        it('Edit generic webhook event trigger Account Intgeration',
+          function (done) {
+            this.timeout(0);
+            var shippable = new Shippable(config.apiToken);
+
+            var body = _.findWhere(accountIntegrations, {name:"OrgOwner-generic-webhook"});
+            __setFormJSONValue(body.formJSONValues, 'webhookURL', 'testing');
+
+            body.isValid = true;
+
+            shippable.putAccountIntegration(body.id, body,
+              function(err, res) {
+                if (err) {
+                  isTestFailed = true;
+                  var testCase =
+                    util.format('\n- [ ] %s: Get Edit generic webhook Account Intgeration failed with error: %s',
+                      testSuite, err);
+                  testCaseErrors.push(testCase);
+                  assert.equal(err, null);
+                  return done();
+                } else {
+                  logger.debug('Edited Integration');
+                  return done();
+                }
+              }
+            );
+          }
+        );
+
+        it('Edit slack Account Intgeration',
+          function (done) {
+            this.timeout(0);
+            var shippable = new Shippable(config.apiToken);
+
+            var body = _.findWhere(accountIntegrations, {name:"OrgOwner-slack"});
+            __setFormJSONValue(body.formJSONValues, 'webhookURL', 'test');
+
+            body.isValid = true;
+
+            shippable.putAccountIntegration(body.id, body,
+              function(err, res) {
+                if (err) {
+                  isTestFailed = true;
+                  var testCase =
+                    util.format('\n- [ ] %s: Get Edit slack Account Intgeration failed with error: %s',
+                      testSuite, err);
+                  testCaseErrors.push(testCase);
+                  assert.equal(err, null);
+                  return done();
+                } else {
+                  logger.debug('Edited Integration');
+                  return done();
+                }
+              }
+            );
+          }
+        );
+
+        it('Edit AWS_IAM Account Intgeration',
+          function (done) {
+            this.timeout(0);
+            var shippable = new Shippable(config.apiToken);
+
+            var body = _.findWhere(accountIntegrations, {name:"OrgOwner-AWS_IAM"});
+            __setFormJSONValue(body.formJSONValues, 'url', 'test');
+
+            body.isValid = true;
+
+            shippable.putAccountIntegration(body.id, body,
+              function(err, res) {
+                if (err) {
+                  isTestFailed = true;
+                  var testCase =
+                    util.format('\n- [ ] %s: Get Edit AWS_IAM Account Intgeration failed with error: %s',
+                      testSuite, err);
+                  testCaseErrors.push(testCase);
+                  assert.equal(err, null);
+                  return done();
+                } else {
+                  logger.debug('Edited Integration');
+                  return done();
+                }
+              }
+            );
+          }
+        );
+
+        it('Edit Docker_Cloud Account Intgeration',
+          function (done) {
+            this.timeout(0);
+            var shippable = new Shippable(config.apiToken);
+
+            var body = _.findWhere(accountIntegrations, {name:"OrgOwner-Docker_Cloud"});
+            __setFormJSONValue(body.formJSONValues, 'url', 'test');
+
+            body.isValid = true;
+
+            shippable.putAccountIntegration(body.id, body,
+              function(err, res) {
+                if (err) {
+                  isTestFailed = true;
+                  var testCase =
+                    util.format('\n- [ ] %s: Get Edit Docker_Cloud Account Intgeration failed with error: %s',
+                      testSuite, err);
+                  testCaseErrors.push(testCase);
+                  assert.equal(err, null);
+                  return done();
+                } else {
+                  logger.debug('Edited Integration');
+                  return done();
+                }
+              }
+            );
+          }
+        );
+
+        it('Edit Docker_trusted_registry Account Intgeration',
+          function (done) {
+            this.timeout(0);
+            var shippable = new Shippable(config.apiToken);
+
+            var body = _.findWhere(accountIntegrations, {name:"OrgOwner-Docker_trusted_registry"});
+            __setFormJSONValue(body.formJSONValues, 'url', 'test');
+
+            body.isValid = true;
+
+            shippable.putAccountIntegration(body.id, body,
+              function(err, res) {
+                if (err) {
+                  isTestFailed = true;
+                  var testCase =
+                    util.format('\n- [ ] %s: Get Edit Docker_trusted_registry Account Intgeration failed with error: %s',
+                      testSuite, err);
+                  testCaseErrors.push(testCase);
+                  assert.equal(err, null);
+                  return done();
+                } else {
+                  logger.debug('Edited Integration');
+                  return done();
+                }
+              }
+            );
+          }
+        );
+
+        it('Edit Github-Enterprise Account Intgeration',
+          function (done) {
+            this.timeout(0);
+            var shippable = new Shippable(config.apiToken);
+
+            var body = _.findWhere(accountIntegrations, {name:"OrgOwner-Github-Enterprise"});
+            __setFormJSONValue(body.formJSONValues, 'url', 'testing');
+
+            body.isValid = true;
+
+            shippable.putAccountIntegration(body.id, body,
+              function(err, res) {
+                if (err) {
+                  isTestFailed = true;
+                  var testCase =
+                    util.format('\n- [ ] %s: Get Edit Github-Enterprise Account Intgeration failed with error: %s',
+                      testSuite, err);
+                  testCaseErrors.push(testCase);
+                  assert.equal(err, null);
+                  return done();
+                } else {
+                  logger.debug('Edited Integration');
+                  return done();
+                }
+              }
+            );
+          }
+        );
+
+        it('Edit Joyent-Triton-Public-Cloud Account Intgeration',
+          function (done) {
+            this.timeout(0);
+            var shippable = new Shippable(config.apiToken);
+
+            var body = _.findWhere(accountIntegrations, {name:"OrgOwner-Joyent-Triton-Public-Cloud"});
+            __setFormJSONValue(body.formJSONValues, 'url', 'testing');
+
+            body.isValid = true;
+
+            shippable.putAccountIntegration(body.id, body,
+              function(err, res) {
+                if (err) {
+                  isTestFailed = true;
+                  var testCase =
+                    util.format('\n- [ ] %s: Get Edit Joyent-Triton-Public-Cloud Account Intgeration failed with error: %s',
+                      testSuite, err);
+                  testCaseErrors.push(testCase);
+                  assert.equal(err, null);
+                  return done();
+                } else {
+                  logger.debug('Edited Integration');
+                  return done();
+                }
+              }
+            );
+          }
+        );
+
+        it('Edit PEM-Key Account Intgeration',
+          function (done) {
+            this.timeout(0);
+            var shippable = new Shippable(config.apiToken);
+
+            var body = _.findWhere(accountIntegrations, {name:"OrgOwner-PEM-Key"});
+            __setFormJSONValue(body.formJSONValues, 'key', 'testing');
+
+            body.isValid = true;
+
+            shippable.putAccountIntegration(body.id, body,
+              function(err, res) {
+                if (err) {
+                  isTestFailed = true;
+                  var testCase =
+                    util.format('\n- [ ] %s: Get Edit PEM-Key Account Intgeration failed with error: %s',
+                      testSuite, err);
+                  testCaseErrors.push(testCase);
+                  assert.equal(err, null);
+                  return done();
+                } else {
+                  logger.debug('Edited Integration');
+                  return done();
+                }
+              }
+            );
+          }
+        );
+
+        it('Edit Quay.io Account Intgeration',
+          function (done) {
+            this.timeout(0);
+            var shippable = new Shippable(config.apiToken);
+
+            var body = _.findWhere(accountIntegrations, {name:"OrgOwner-Quay.io"});
+            __setFormJSONValue(body.formJSONValues, 'url', 'testing');
+
+            body.isValid = true;
+
+            shippable.putAccountIntegration(body.id, body,
+              function(err, res) {
+                if (err) {
+                  isTestFailed = true;
+                  var testCase =
+                    util.format('\n- [ ] %s: Get Edit Quay.io Account Intgeration failed with error: %s',
+                      testSuite, err);
+                  testCaseErrors.push(testCase);
+                  assert.equal(err, null);
+                  return done();
+                } else {
+                  logger.debug('Edited Integration');
+                  return done();
+                }
+              }
+            );
+          }
+        );
+
+        it('Edit SSH-Key Account Intgeration',
+          function (done) {
+            this.timeout(0);
+            var shippable = new Shippable(config.apiToken);
+
+            var body = _.findWhere(accountIntegrations, {name:"OrgOwner-SSH-Key"});
+            __setFormJSONValue(body.formJSONValues, 'publicKey', 'testing');
+
+            body.isValid = true;
+
+            shippable.putAccountIntegration(body.id, body,
+              function(err, res) {
+                if (err) {
+                  isTestFailed = true;
+                  var testCase =
+                    util.format('\n- [ ] %s: Get Edit SSH-Key Account Intgeration failed with error: %s',
+                      testSuite, err);
+                  testCaseErrors.push(testCase);
+                  assert.equal(err, null);
+                  return done();
+                } else {
+                  logger.debug('Edited Integration');
+                  return done();
+                }
+              }
+            );
+          }
+        );
+
       }
     );
 

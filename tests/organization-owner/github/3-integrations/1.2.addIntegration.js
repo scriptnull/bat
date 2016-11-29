@@ -650,7 +650,7 @@ describe('Add Integrations',
           }
         );
 
-        it('Add generic webhook registry AccountIntegration',
+        it('Add generic webhook AccountIntegration',
           function (done) {
             this.timeout(0);
             var shippable = new Shippable(config.apiToken);
@@ -901,7 +901,7 @@ describe('Add Integrations',
           function (done) {
             this.timeout(0);
             var shippable = new Shippable(config.apiToken);
-            var name = "OrgOwner-Github Enterprise";
+            var name = "OrgOwner-Github-Enterprise";
             var body = {
               "masterDisplayName": "Github Enterprise",
               "masterIntegrationId": "563347d6046d220c002a3474",
@@ -943,7 +943,7 @@ describe('Add Integrations',
           function (done) {
             this.timeout(0);
             var shippable = new Shippable(config.apiToken);
-            var name = "OrgOwner-Joyent Triton Public Cloud";
+            var name = "OrgOwner-Joyent-Triton-Public-Cloud";
             var body = {
               "masterDisplayName": "Joyent Triton Public Cloud",
               "masterIntegrationId": "576ce63321333398d11a35ab",
@@ -1001,7 +1001,7 @@ describe('Add Integrations',
           function (done) {
             this.timeout(0);
             var shippable = new Shippable(config.apiToken);
-            var name = "OrgOwner-PEM Key";
+            var name = "OrgOwner-PEM-Key";
             var body = {
               "masterDisplayName": "PEM Key",
               "masterIntegrationId": "568aa74cd43b0d0c004fec91",
@@ -1093,7 +1093,7 @@ describe('Add Integrations',
           function (done) {
             this.timeout(0);
             var shippable = new Shippable(config.apiToken);
-            var name = "OrgOwner-SSH Key";
+            var name = "OrgOwner-SSH-Key";
             var body = {
               "masterDisplayName": "SSH Key",
               "masterIntegrationId": "568aa7c3368a090c006da702",
