@@ -33,7 +33,7 @@ describe('Add Integrations',
                   isTestFailed = true;
                   var testCase =
                     util.format('\n- [ ] %s: Get subscriptions, failed with error: %s',
-                      name, err);
+                      testSuiteDesc, name, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
                   return done();
@@ -108,7 +108,7 @@ describe('Add Integrations',
                   isTestFailed = true;
                   var testCase =
                     util.format('\n- [ ] %s: Add gitlab integration: %s, failed with error: %s',
-                      name, err);
+                      testSuiteDesc, name, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
                   return done();
@@ -150,7 +150,7 @@ describe('Add Integrations',
                   isTestFailed = true;
                   var testCase =
                     util.format('\n- [ ] %s: Add Amazon ECR integration: %s, failed with error: %s',
-                      name, err);
+                      testSuiteDesc, name, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
                   return done();
@@ -196,7 +196,7 @@ describe('Add Integrations',
                   isTestFailed = true;
                   var testCase =
                     util.format('\n- [ ] %s: Add AWS integration: %s, failed with error: %s',
-                      name, err);
+                      testSuiteDesc, name, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
                   return done();
@@ -238,7 +238,7 @@ describe('Add Integrations',
                   isTestFailed = true;
                   var testCase =
                     util.format('\n- [ ] %s: Add ACS integration: %s, failed with error: %s',
-                      name, err);
+                      testSuiteDesc, name, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
                   return done();
@@ -280,7 +280,7 @@ describe('Add Integrations',
                   isTestFailed = true;
                   var testCase =
                     util.format('\n- [ ] %s: Add bitbucket integration: %s, failed with error: %s',
-                      name, err);
+                      testSuiteDesc, name, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
                   return done();
@@ -326,7 +326,7 @@ describe('Add Integrations',
                   isTestFailed = true;
                   var testCase =
                     util.format('\n- [ ] %s: Add ddc integration: %s, failed with error: %s',
-                      name, err);
+                      testSuiteDesc, name, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
                   return done();
@@ -372,7 +372,7 @@ describe('Add Integrations',
                   isTestFailed = true;
                   var testCase =
                     util.format('\n- [ ] %s: Add docker integration: %s, failed with error: %s',
-                      name, err);
+                      testSuiteDesc, name, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
                   return done();
@@ -410,7 +410,7 @@ describe('Add Integrations',
                   isTestFailed = true;
                   var testCase =
                     util.format('\n- [ ] %s: Add Email integration: %s, failed with error: %s',
-                      name, err);
+                      testSuiteDesc, name, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
                   return done();
@@ -468,7 +468,7 @@ describe('Add Integrations',
                   isTestFailed = true;
                   var testCase =
                     util.format('\n- [ ] %s: Add event trigger integration: %s, failed with error: %s',
-                      name, err);
+                      testSuiteDesc, name, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
                   return done();
@@ -506,7 +506,7 @@ describe('Add Integrations',
                   isTestFailed = true;
                   var testCase =
                     util.format('\n- [ ] %s: Add gcr integration: %s, failed with error: %s',
-                      name, err);
+                      testSuiteDesc, name, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
                   return done();
@@ -548,7 +548,7 @@ describe('Add Integrations',
                   isTestFailed = true;
                   var testCase =
                     util.format('\n- [ ] %s: Add gke integration: %s, failed with error: %s',
-                      name, err);
+                      testSuiteDesc, name, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
                   return done();
@@ -586,7 +586,7 @@ describe('Add Integrations',
                   isTestFailed = true;
                   var testCase =
                     util.format('\n- [ ] %s: Add hipchat integration: %s, failed with error: %s',
-                      name, err);
+                      testSuiteDesc, name, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
                   return done();
@@ -636,7 +636,7 @@ describe('Add Integrations',
                   isTestFailed = true;
                   var testCase =
                     util.format('\n- [ ] %s: Add private docker registry integration: %s, failed with error: %s',
-                      name, err);
+                      testSuiteDesc, name, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
                   return done();
@@ -694,7 +694,7 @@ describe('Add Integrations',
                   isTestFailed = true;
                   var testCase =
                     util.format('\n- [ ] %s: Add generic webhook integration: %s, failed with error: %s',
-                      name, err);
+                      testSuiteDesc, name, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
                   return done();
@@ -733,7 +733,7 @@ describe('Add Integrations',
                   isTestFailed = true;
                   var testCase =
                     util.format('\n- [ ] %s: Add slack integration: %s, failed with error: %s',
-                      name, err);
+                      testSuiteDesc, name, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
                   return done();
@@ -787,7 +787,7 @@ describe('Add Integrations',
                   isTestFailed = true;
                   var testCase =
                     util.format('\n- [ ] %s: Add AWS_IAM integration: %s, failed with error: %s',
-                      name, err);
+                      testSuiteDesc, name, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
                   return done();
@@ -833,7 +833,7 @@ describe('Add Integrations',
                   isTestFailed = true;
                   var testCase =
                     util.format('\n- [ ] %s: Add Docker_Cloud integration: %s, failed with error: %s',
-                      name, err);
+                      testSuiteDesc, name, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
                   return done();
@@ -883,7 +883,7 @@ describe('Add Integrations',
                   isTestFailed = true;
                   var testCase =
                     util.format('\n- [ ] %s: Add Docker Trusted Registry integration: %s, failed with error: %s',
-                      name, err);
+                      testSuiteDesc, name, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
                   return done();
@@ -904,7 +904,7 @@ describe('Add Integrations',
             var name = "OrgOwner-Github Enterprise";
             var body = {
               "masterDisplayName": "Github Enterprise",
-              "masterIntegrationId": "57110b987ed9d269c9d71ac1",
+              "masterIntegrationId": "563347d6046d220c002a3474",
               "masterName": "ghe",
               "masterType": "scm",
               "name": name,
@@ -925,7 +925,7 @@ describe('Add Integrations',
                   isTestFailed = true;
                   var testCase =
                     util.format('\n- [ ] %s: Add Github Enterprise integration: %s, failed with error: %s',
-                      name, err);
+                      testSuiteDesc, name, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
                   return done();
@@ -983,7 +983,7 @@ describe('Add Integrations',
                   isTestFailed = true;
                   var testCase =
                     util.format('\n- [ ] %s: Add Joyent Triton Public Cloud integration: %s, failed with error: %s',
-                      name, err);
+                      testSuiteDesc, name, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
                   return done();
@@ -1021,7 +1021,7 @@ describe('Add Integrations',
                   isTestFailed = true;
                   var testCase =
                     util.format('\n- [ ] %s: Add PEM Key integration: %s, failed with error: %s',
-                      name, err);
+                      testSuiteDesc, name, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
                   return done();
@@ -1075,7 +1075,7 @@ describe('Add Integrations',
                   isTestFailed = true;
                   var testCase =
                     util.format('\n- [ ] %s: Add Quay.io integration: %s, failed with error: %s',
-                      name, err);
+                      testSuiteDesc, name, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
                   return done();
@@ -1117,7 +1117,7 @@ describe('Add Integrations',
                   isTestFailed = true;
                   var testCase =
                     util.format('\n- [ ] %s: Add SSH Key integration: %s, failed with error: %s',
-                      name, err);
+                      testSuiteDesc, name, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
                   return done();
@@ -1157,7 +1157,7 @@ describe('Add Integrations',
                       isTestFailed = true;
                       var testCase =
                         util.format('\n- [ ] %s: Add gitlab subscription integration: %s, failed with error: %s',
-                          name, err);
+                          testSuiteDesc, name, err);
                       testCaseErrors.push(testCase);
                       assert.equal(err, null);
                       return nextAccInt();
