@@ -903,6 +903,15 @@ ShippableAdapter.prototype.putSubscriptionById =
     );
   };
 
+ShippableAdapter.prototype.putSubscriptionIntegration =
+  function (id, json, callback) {
+    this.put(
+      util.format('/subscriptionIntegrations/%s', id),
+      json,
+      callback
+    );
+  };
+
 ShippableAdapter.prototype.putSystemIntegrationById =
   function (id, query, json, callback) {
     this.put(
