@@ -60,6 +60,14 @@ ShippableAdapter.prototype.getAccountById =
     );
   };
 
+ShippableAdapter.prototype.getAccountCards =
+  function (query, callback) {
+    this.get(
+      util.format('/accountCards?' + query),
+      callback
+    );
+  };
+
 ShippableAdapter.prototype.getAccounts =
   function (query, callback) {
     this.get(
