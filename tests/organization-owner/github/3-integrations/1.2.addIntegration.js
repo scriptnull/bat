@@ -1131,7 +1131,7 @@ describe('Add Integrations',
           }
         );
 
-        it('Add invalid Slack AccountIntegration',
+        /*it('Add invalid Slack AccountIntegration',
           function (done) {
             this.timeout(0);
             var shippable = new Shippable(config.apiToken);
@@ -1167,7 +1167,7 @@ describe('Add Integrations',
               }
             );
           }
-        );
+        );*/
 
       }
     );
