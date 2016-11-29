@@ -6,7 +6,7 @@ var chai = require('chai');
 var _ = require('underscore');
 var assert = chai.assert;
 var testSuiteNum = '1.';
-var testSuiteDesc = 'Get Account Cards';
+var testSuiteDesc = 'Account Cards';
 var adapter = require('../../../../_common/shippable/github/Adapter.js');
 var Shippable = require('../../../../_common/shippable/Adapter.js');
 
@@ -45,6 +45,42 @@ describe(testSuite,
                   );
                   return done();
                 }
+              }
+            );
+          }
+        );
+      }
+    );
+
+    describe('delete AccountCards',
+      function () {
+        it('delete AccountCards',
+          function (done) {
+            this.timeout(0);
+            var shippable = new Shippable(config.apiToken);
+
+            async.each(accountCardIds,
+              function(accountCardId, nextAccountCardId) {
+                shippable.deleteAccountCardById(accountCardId,
+                  function(err) {
+                    if (err && err.status !== 404) {
+                      isTestFailed = true;
+                      var testCase =
+                        util.format('\n- [ ] %s: delete AccountCard for id: %s failed with error: %s',
+                          testSuite, accountCardId, err);
+                      testCaseErrors.push(testCase);
+                      assert.equal(err, null);
+                      return nextAccountCardId();
+                    } else {
+                      return nextAccountCardId();
+                    }
+                  }
+                );
+              },
+              function (err) {
+                if (err)
+                  console.log("Failed");
+                return done();
               }
             );
           }
