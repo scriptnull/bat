@@ -65,6 +65,8 @@ describe(testSuite,
             var body = _.findWhere(accountIntegrations, {name:"OrgOwner-gitlab"});
             __setFormJSONValue(body.formJSONValues, 'token', 'token');
 
+            body.isValid = true;
+
             shippable.putAccountIntegration(body.id, body,
               function(err, res) {
                 if (err) {
