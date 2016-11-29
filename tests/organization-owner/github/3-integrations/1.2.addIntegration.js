@@ -746,6 +746,390 @@ describe('Add Integrations',
             );
           }
         );
+
+        it('Add AWS_IAM AccountIntegration',
+          function (done) {
+            this.timeout(0);
+            var shippable = new Shippable(config.apiToken);
+            var name = "OrgOwner-AWS_IAM";
+            var body = {
+              "masterDisplayName": "Amazon Web Services (IAM)",
+              "masterIntegrationId": "571032a897aadea0ee186900",
+              "masterName": "AWS_IAM",
+              "masterType": "deploy",
+              "name": name,
+              "formJSONValues": [
+                {
+                  "label": "assumeRoleARN",
+                  "value": "test"
+                },
+                {
+                  "label": "awsAccountId",
+                  "value": "null"
+                },
+                {
+                  "label": "externalId",
+                  "value": "5822dfe0e154f00e006950c3"
+                },
+                {
+                  "label": "output",
+                  "value": "text"
+                },
+                {
+                  "label": "url",
+                  "value": "https://api.aws.com"
+                }
+              ]
+            };
+            shippable.postAccountIntegration(body,
+              function(err,res) {
+                if (err) {
+                  isTestFailed = true;
+                  var testCase =
+                    util.format('\n- [ ] %s: Add AWS_IAM integration: %s, failed with error: %s',
+                      name, err);
+                  testCaseErrors.push(testCase);
+                  assert.equal(err, null);
+                  return done();
+                } else {
+                  logger.debug('Added integration');
+                  accountIntegrations.push(res);
+                  return done();
+                }
+              }
+            );
+          }
+        );
+
+        it('Add Docker Cloud AccountIntegration',
+          function (done) {
+            this.timeout(0);
+            var shippable = new Shippable(config.apiToken);
+            var name = "OrgOwner-Docker_Cloud";
+            var body = {
+              "masterDisplayName": "Docker Cloud",
+              "masterIntegrationId": "570651b5f028a50b008bd955",
+              "masterName": "DCL",
+              "masterType": "deploy",
+              "name": name,
+              "formJSONValues": [
+                {
+                  "label": "token",
+                  "value": "qwertyuiop"
+                },
+                {
+                  "label": "url",
+                  "value": "https://cloud.docker.com"
+                },
+                {
+                  "label": "username",
+                  "value": "test"
+                }
+              ]
+            };
+            shippable.postAccountIntegration(body,
+              function(err,res) {
+                if (err) {
+                  isTestFailed = true;
+                  var testCase =
+                    util.format('\n- [ ] %s: Add Docker_Cloud integration: %s, failed with error: %s',
+                      name, err);
+                  testCaseErrors.push(testCase);
+                  assert.equal(err, null);
+                  return done();
+                } else {
+                  logger.debug('Added integration');
+                  accountIntegrations.push(res);
+                  return done();
+                }
+              }
+            );
+          }
+        );
+
+        it('Add Docker Trusted Registry AccountIntegration',
+          function (done) {
+            this.timeout(0);
+            var shippable = new Shippable(config.apiToken);
+            var name = "OrgOwner-Docker_trusted_registry";
+            var body = {
+              "masterDisplayName": "Docker Trusted Registry",
+              "masterIntegrationId": "57110b987ed9d269c9d71ac1",
+              "masterName": "Docker Trusted Registry",
+              "masterType": "hub",
+              "name": name,
+              "formJSONValues": [
+                {
+                  "label": "email",
+                  "value": "test"
+                },
+                {
+                  "label": "password",
+                  "value": "test"
+                },
+                {
+                  "label": "url",
+                  "value": "http://test"
+                },
+                {
+                  "label": "username",
+                  "value": "test"
+                }
+              ]
+            };
+            shippable.postAccountIntegration(body,
+              function(err,res) {
+                if (err) {
+                  isTestFailed = true;
+                  var testCase =
+                    util.format('\n- [ ] %s: Add Docker Trusted Registry integration: %s, failed with error: %s',
+                      name, err);
+                  testCaseErrors.push(testCase);
+                  assert.equal(err, null);
+                  return done();
+                } else {
+                  logger.debug('Added integration');
+                  accountIntegrations.push(res);
+                  return done();
+                }
+              }
+            );
+          }
+        );
+
+        it('Add Github Enterprise AccountIntegration',
+          function (done) {
+            this.timeout(0);
+            var shippable = new Shippable(config.apiToken);
+            var name = "OrgOwner-Github Enterprise";
+            var body = {
+              "masterDisplayName": "Github Enterprise",
+              "masterIntegrationId": "57110b987ed9d269c9d71ac1",
+              "masterName": "ghe",
+              "masterType": "scm",
+              "name": name,
+              "formJSONValues": [
+                {
+                  "label": "token",
+                  "value": "test"
+                },
+                {
+                  "label": "url",
+                  "value": "test"
+                }
+              ]
+            };
+            shippable.postAccountIntegration(body,
+              function(err,res) {
+                if (err) {
+                  isTestFailed = true;
+                  var testCase =
+                    util.format('\n- [ ] %s: Add Github Enterprise integration: %s, failed with error: %s',
+                      name, err);
+                  testCaseErrors.push(testCase);
+                  assert.equal(err, null);
+                  return done();
+                } else {
+                  logger.debug('Added integration');
+                  accountIntegrations.push(res);
+                  return done();
+                }
+              }
+            );
+          }
+        );
+
+        it('Add Joyent Triton Public Cloud AccountIntegration',
+          function (done) {
+            this.timeout(0);
+            var shippable = new Shippable(config.apiToken);
+            var name = "OrgOwner-Joyent Triton Public Cloud";
+            var body = {
+              "masterDisplayName": "Joyent Triton Public Cloud",
+              "masterIntegrationId": "576ce63321333398d11a35ab",
+              "masterName": "TRIPUB",
+              "masterType": "deploy",
+              "name": name,
+              "formJSONValues": [
+                {
+                  "label": "certificates",
+                  "value": "{\"cert.pem\":\"-----BEGIN CERTIFICATE-----\\nMIICmjCCAYICCQD2+2isvZCRvDANBgkqhkiG9w0BAQsFADAPMQ0wCwYDVQQDDAR0\\nZXN0MB4XDTE2MT0V/fchHbY04JYHhazmscq3Yc+EHmBT\\ncb0iDVYCZYMvhnYQQCXBDq+76rTGlxgVj4wutnGNLwtwhNdgoYBKa+af78x9sg==\\n-----END CERTIFICATE-----\\n\"}"
+                },
+                {
+                  "label": "privateKey",
+                  "value": "-----BEGIN RSA PRIVATE KEY-----\nMIIEowIBAAKCAQEA0ODeF1+1dJsuzMkLZ5e4yKG199kEUHAloIT9Nc+jbeaYvG+M\n2IirwZwPxKNbzaO3ZLkOuR7VMRPAWWTi72LVd5UPXJXRwSYdc7tU4nGl9jkiJ/YX\nqudpZqOMKVyhzvV07EkLNC0mJe653ZN4YWDGoRzz2q839CVIl1N2MUkN/SiJ1M4l\nF9Zvk0HNdl7RY4IIRFxOeM5NSAU0VKNcyvwiLk27hFkY3HaXhMI/THJ4MgUxOLyA\nGAUv76K3RVaTjL03IrfnHaUYr4C+nHMqX61BBjopGdSNt+zX3p3D2n8z3bjIhqen\nSXN+xAnsdSv4tOVn\nNLtK4MAENv2ThVfYe/gy+/lnE5D1OAQUbGRTbjUmPAg0x+OoigdQp/oKeTx9dr8+\n8CStWQKBgGWMNh/BBVBNFJTyXDKALFTKKOIHBq8/fSRr0O4W3BmhohHEplaXqp2Z\nm5I1OzQmDnO4NboB8i+RgGDA26zSuYNA2eMB8IG8Y6bV0eVdjj5pP8M1VPjXPBAs\noGZu0YDBmU009v5R3pyXwXq4eAnEuzhVCAIIi62HWRpi+kBK86jd\n-----END RSA PRIVATE KEY-----\n"
+                },
+                {
+                  "label": "publicKey",
+                  "value": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDQ4N4XX7V0my7MyQtnl7jIobX32QRQcCWghP01z6Nt5pi8b4zYiKvBnA/Eo1vNo7dkuQ65HtUxE8BZvIAYBS/vordFVpOMvTcit+cdpRivgL6ccypfrUEGOikZ1I237NfencPafzPduMiGp6dJc37ECex1K9qQDbKIPFF0ZaxhRHWY8VDyqG71 \n"
+                },
+                {
+                  "label": "url",
+                  "value": "https://api.joyentcloud.com"
+                },
+                {
+                  "label": "username",
+                  "value": "test"
+                },
+                {
+                  "label": "validityPeriod",
+                  "value": "123"
+                }
+              ]
+            };
+            shippable.postAccountIntegration(body,
+              function(err,res) {
+                if (err) {
+                  isTestFailed = true;
+                  var testCase =
+                    util.format('\n- [ ] %s: Add Joyent Triton Public Cloud integration: %s, failed with error: %s',
+                      name, err);
+                  testCaseErrors.push(testCase);
+                  assert.equal(err, null);
+                  return done();
+                } else {
+                  logger.debug('Added integration');
+                  accountIntegrations.push(res);
+                  return done();
+                }
+              }
+            );
+          }
+        );
+
+        it('Add PEM Key AccountIntegration',
+          function (done) {
+            this.timeout(0);
+            var shippable = new Shippable(config.apiToken);
+            var name = "OrgOwner-PEM Key";
+            var body = {
+              "masterDisplayName": "PEM Key",
+              "masterIntegrationId": "568aa74cd43b0d0c004fec91",
+              "masterName": "pem-key",
+              "masterType": "key",
+              "name": name,
+              "formJSONValues": [
+                {
+                  "label": "key",
+                  "value": "test"
+                }
+              ]
+            };
+            shippable.postAccountIntegration(body,
+              function(err,res) {
+                if (err) {
+                  isTestFailed = true;
+                  var testCase =
+                    util.format('\n- [ ] %s: Add PEM Key integration: %s, failed with error: %s',
+                      name, err);
+                  testCaseErrors.push(testCase);
+                  assert.equal(err, null);
+                  return done();
+                } else {
+                  logger.debug('Added integration');
+                  accountIntegrations.push(res);
+                  return done();
+                }
+              }
+            );
+          }
+        );
+
+        it('Add Quay.io AccountIntegration',
+          function (done) {
+            this.timeout(0);
+            var shippable = new Shippable(config.apiToken);
+            var name = "OrgOwner-Quay.io";
+            var body = {
+              "masterDisplayName": "Quay.io",
+              "masterIntegrationId": "559eab320a31140d00a15d3a",
+              "masterName": "Quay.io",
+              "masterType": "hub",
+              "name": name,
+              "formJSONValues": [
+                {
+                  "label": "accessToken",
+                  "value": "test"
+                },
+                {
+                  "label": "email",
+                  "value": "test"
+                },
+                {
+                  "label": "password",
+                  "value": "test"
+                },
+                {
+                  "label": "url",
+                  "value": "quay.io"
+                },
+                {
+                  "label": "username",
+                  "value": "test"
+                }
+              ]
+            };
+            shippable.postAccountIntegration(body,
+              function(err,res) {
+                if (err) {
+                  isTestFailed = true;
+                  var testCase =
+                    util.format('\n- [ ] %s: Add Quay.io integration: %s, failed with error: %s',
+                      name, err);
+                  testCaseErrors.push(testCase);
+                  assert.equal(err, null);
+                  return done();
+                } else {
+                  logger.debug('Added integration');
+                  accountIntegrations.push(res);
+                  return done();
+                }
+              }
+            );
+          }
+        );
+
+        it('Add SSH Key AccountIntegration',
+          function (done) {
+            this.timeout(0);
+            var shippable = new Shippable(config.apiToken);
+            var name = "OrgOwner-SSH Key";
+            var body = {
+              "masterDisplayName": "SSH Key",
+              "masterIntegrationId": "568aa7c3368a090c006da702",
+              "masterName": "ssh-key",
+              "masterType": "key",
+              "name": name,
+              "formJSONValues": [
+                {
+                  "label": "privateKey",
+                  "value": "test"
+                },
+                {
+                  "label": "publicKey",
+                  "value": "test"
+                }
+              ]
+            };
+            shippable.postAccountIntegration(body,
+              function(err,res) {
+                if (err) {
+                  isTestFailed = true;
+                  var testCase =
+                    util.format('\n- [ ] %s: Add SSH Key integration: %s, failed with error: %s',
+                      name, err);
+                  testCaseErrors.push(testCase);
+                  assert.equal(err, null);
+                  return done();
+                } else {
+                  logger.debug('Added integration');
+                  accountIntegrations.push(res);
+                  return done();
+                }
+              }
+            );
+          }
+        );
       }
     );
 
