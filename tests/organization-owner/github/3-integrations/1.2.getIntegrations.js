@@ -85,6 +85,181 @@ describe(testSuite,
             );
           }
         );
+
+        it('Edit AWS Account Intgeration',
+          function (done) {
+            this.timeout(0);
+            var shippable = new Shippable(config.apiToken);
+
+            var body = _.findWhere(accountIntegrations, {name:"OrgOwner-aws"});
+            __setFormJSONValue(body.formJSONValues, 'aws_access_key_id', 'key');
+
+            body.isValid = true;
+
+            shippable.putAccountIntegration(body.id, body,
+              function(err, res) {
+                if (err) {
+                  isTestFailed = true;
+                  var testCase =
+                    util.format('\n- [ ] %s: Get Edit AWS Account Intgeration failed with error: %s',
+                      testSuite, err);
+                  testCaseErrors.push(testCase);
+                  assert.equal(err, null);
+                  return done();
+                } else {
+                  console.log('Edited Integration', res);
+                  return done();
+                }
+              }
+            );
+          }
+        );
+
+        it('Edit Amazon ECR Account Intgeration',
+          function (done) {
+            this.timeout(0);
+            var shippable = new Shippable(config.apiToken);
+
+            var body = _.findWhere(accountIntegrations, {name:"OrgOwner-ecr"});
+            __setFormJSONValue(body.formJSONValues, 'aws_access_key_id', 'key');
+
+            body.isValid = true;
+
+            shippable.putAccountIntegration(body.id, body,
+              function(err, res) {
+                if (err) {
+                  isTestFailed = true;
+                  var testCase =
+                    util.format('\n- [ ] %s: Get Edit Amazon ECR Account Intgeration failed with error: %s',
+                      testSuite, err);
+                  testCaseErrors.push(testCase);
+                  assert.equal(err, null);
+                  return done();
+                } else {
+                  console.log('Edited Integration', res);
+                  return done();
+                }
+              }
+            );
+          }
+        );
+
+        it('Edit ACS Account Intgeration',
+          function (done) {
+            this.timeout(0);
+            var shippable = new Shippable(config.apiToken);
+
+            var body = _.findWhere(accountIntegrations, {name:"OrgOwner-acs"});
+            __setFormJSONValue(body.formJSONValues, 'url', 'key');
+
+            body.isValid = true;
+
+            shippable.putAccountIntegration(body.id, body,
+              function(err, res) {
+                if (err) {
+                  isTestFailed = true;
+                  var testCase =
+                    util.format('\n- [ ] %s: Get Edit ACS Account Intgeration failed with error: %s',
+                      testSuite, err);
+                  testCaseErrors.push(testCase);
+                  assert.equal(err, null);
+                  return done();
+                } else {
+                  console.log('Edited Integration', res);
+                  return done();
+                }
+              }
+            );
+          }
+        );
+
+        it('Edit bitbucket Account Intgeration',
+          function (done) {
+            this.timeout(0);
+            var shippable = new Shippable(config.apiToken);
+
+            var body = _.findWhere(accountIntegrations, {name:"OrgOwner-bitbucket"});
+            __setFormJSONValue(body.formJSONValues, 'url', 'key');
+
+            body.isValid = true;
+
+            shippable.putAccountIntegration(body.id, body,
+              function(err, res) {
+                if (err) {
+                  isTestFailed = true;
+                  var testCase =
+                    util.format('\n- [ ] %s: Get Edit bitbucket Account Intgeration failed with error: %s',
+                      testSuite, err);
+                  testCaseErrors.push(testCase);
+                  assert.equal(err, null);
+                  return done();
+                } else {
+                  console.log('Edited Integration', res);
+                  return done();
+                }
+              }
+            );
+          }
+        );
+
+        it('Edit ddc Account Intgeration',
+          function (done) {
+            this.timeout(0);
+            var shippable = new Shippable(config.apiToken);
+
+            var body = _.findWhere(accountIntegrations, {name:"OrgOwner-ddc"});
+            __setFormJSONValue(body.formJSONValues, 'url', 'key');
+
+            body.isValid = true;
+
+            shippable.putAccountIntegration(body.id, body,
+              function(err, res) {
+                if (err) {
+                  isTestFailed = true;
+                  var testCase =
+                    util.format('\n- [ ] %s: Get Edit ddc Account Intgeration failed with error: %s',
+                      testSuite, err);
+                  testCaseErrors.push(testCase);
+                  assert.equal(err, null);
+                  return done();
+                } else {
+                  console.log('Edited Integration', res);
+                  return done();
+                }
+              }
+            );
+          }
+        );
+
+        it('Edit docker Account Intgeration',
+          function (done) {
+            this.timeout(0);
+            var shippable = new Shippable(config.apiToken);
+
+            var body = _.findWhere(accountIntegrations, {name:"OrgOwner-docker"});
+            __setFormJSONValue(body.formJSONValues, 'email', 'test@gmail.com');
+
+            body.isValid = true;
+
+            shippable.putAccountIntegration(body.id, body,
+              function(err, res) {
+                if (err) {
+                  isTestFailed = true;
+                  var testCase =
+                    util.format('\n- [ ] %s: Get Edit docker Account Intgeration failed with error: %s',
+                      testSuite, err);
+                  testCaseErrors.push(testCase);
+                  assert.equal(err, null);
+                  return done();
+                } else {
+                  console.log('Edited Integration', res);
+                  return done();
+                }
+              }
+            );
+          }
+        );
+
       }
     );
 
