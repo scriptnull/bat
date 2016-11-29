@@ -16,11 +16,10 @@ var testCaseErrors = [];
 
 var accountIntegrations = [];
 var subscriptionId = '';
-var githubAccountIntId = '';
 describe('Add Integrations',
   function () {
 
-    describe('create github Subscription Integration',
+    describe('Get github Account Integration',
       function () {
 
         it('Organization-Owner-github-getSubscription',
@@ -65,40 +64,7 @@ describe('Add Integrations',
                   assert.equal(err, null);
                   return done();
                 } else {
-                  githubAccountIntId = _.first(accInts).id;
-                  return done();
-                }
-              }
-            );
-          }
-        );
-
-        it('Add github subscriptionIntegration',
-          function (done) {
-            this.timeout(0);
-            var shippable = new Shippable(config.apiToken);
-            var name = "OrgOwner-github";
-            var body = {
-              "accountIntegrationId": githubAccountIntId,
-              "subscriptionId": subscriptionId,
-              "name": name,
-              "propertyBag": {
-                "enabledByUserName": nconf.get("GITHUB_ORG_1"),
-                "accountIntegrationName": name
-              }
-            };
-            shippable.postSubscriptionIntegration(body,
-              function(err,res) {
-                if (err) {
-                  isTestFailed = true;
-                  var testCase =
-                    util.format('\n- [ ] %s: Add github subscription integration: %s, failed with error: %s',
-                      name, err);
-                  testCaseErrors.push(testCase);
-                  assert.equal(err, null);
-                  return done();
-                } else {
-                  logger.debug('Added subscription integration');
+                  accountIntegrations.push(_.first(accInts));
                   return done();
                 }
               }
