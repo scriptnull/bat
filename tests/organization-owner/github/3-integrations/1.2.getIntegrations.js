@@ -78,7 +78,7 @@ describe(testSuite,
                   assert.equal(err, null);
                   return done();
                 } else {
-                  console.log('Edited Integration', res);
+                  logger.debug('Edited Integration');
                   return done();
                 }
               }
@@ -107,7 +107,7 @@ describe(testSuite,
                   assert.equal(err, null);
                   return done();
                 } else {
-                  console.log('Edited Integration', res);
+                  logger.debug('Edited Integration');
                   return done();
                 }
               }
@@ -136,7 +136,7 @@ describe(testSuite,
                   assert.equal(err, null);
                   return done();
                 } else {
-                  console.log('Edited Integration', res);
+                  logger.debug('Edited Integration');
                   return done();
                 }
               }
@@ -165,7 +165,7 @@ describe(testSuite,
                   assert.equal(err, null);
                   return done();
                 } else {
-                  console.log('Edited Integration', res);
+                  logger.debug('Edited Integration');
                   return done();
                 }
               }
@@ -194,7 +194,7 @@ describe(testSuite,
                   assert.equal(err, null);
                   return done();
                 } else {
-                  console.log('Edited Integration', res);
+                  logger.debug('Edited Integration');
                   return done();
                 }
               }
@@ -223,7 +223,7 @@ describe(testSuite,
                   assert.equal(err, null);
                   return done();
                 } else {
-                  console.log('Edited Integration', res);
+                  logger.debug('Edited Integration');
                   return done();
                 }
               }
@@ -252,7 +252,7 @@ describe(testSuite,
                   assert.equal(err, null);
                   return done();
                 } else {
-                  console.log('Edited Integration', res);
+                  logger.debug('Edited Integration');
                   return done();
                 }
               }
