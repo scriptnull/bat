@@ -10,6 +10,7 @@ var testSuiteNum = '1.';
 var testSuiteDesc = 'Add Account Cards';
 var adapter = require('../../../../_common/shippable/github/Adapter.js');
 var Shippable = require('../../../../_common/shippable/Adapter.js');
+var braintreeAdapter = require('../../../../_common/shippable/braintreeAdapter.js');
 
 var testSuite = util.format('%s2 - %s', testSuiteNum,
   testSuiteDesc);
@@ -26,7 +27,7 @@ describe('Add Account Cards',
         before(function (done) {
           this.timeout(0);
           var bag = {
-            gateway: ''
+            braintreeAdapter: ''
           };
           async.series([
             _createBraintreeConnection.bind(null, bag),
@@ -117,19 +118,17 @@ describe('Add Account Cards',
 );
 
 function _createBraintreeConnection(bag, next) {
-  bag.gateway = braintree.connect(
-    {
-      environment: nconf.get("BRAINTREE_ENVIRONMENT"),
-      merchantId: nconf.get("BRAINTREE_MERCHANT_ID"),
-      publicKey: nconf.get("BRAINTREE_PUBLIC_KEY"),
-      privateKey: nconf.get("BRAINTREE_PRIVATE_KEY")
-    }
+  bag.braintreeAdapter = new braintreeAdapter(
+    nconf.get("BRAINTREE_MERCHANT_ID"),
+    nconf.get("BRAINTREE_PUBLIC_KEY"),
+    nconf.get("BRAINTREE_PRIVATE_KEY"),
+    nconf.get("BRAINTREE_ENVIRONMENT")
   );
   return next();
 }
 
 function _createBraintreeToken(bag, next) {
-  bag.gateway.clientToken.generate({},
+  bag.braintreeAdapter.clientToken.generate({},
     function (err, res) {
       braintreeClient = new gateway.api.Client({
         clientToken: res.clientToken
