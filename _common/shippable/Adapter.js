@@ -414,6 +414,24 @@ ShippableAdapter.prototype.postVersion =
     );
   };
 
+ShippableAdapter.prototype.encryptBySubscriptionId =
+  function (subscriptionId, json, callback) {
+    this.post(
+      util.format('/subscriptions/%s/encrypt', subscriptionId),
+      json,
+      callback
+    );
+  };
+
+ShippableAdapter.prototype.decryptBySubscriptionId =
+  function (subscriptionId, json, callback) {
+    this.post(
+      util.format('/subscriptions/%s/decrypt', subscriptionId),
+      json,
+      callback
+    );
+  };
+
 // jobDependencies
 ShippableAdapter.prototype.getJobDependencies =
   function (query, callback) {
