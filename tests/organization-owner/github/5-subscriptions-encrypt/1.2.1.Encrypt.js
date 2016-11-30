@@ -58,7 +58,7 @@ describe(testSuite,
               clearText : 'ThisIsToTestEncryptionOfJustAlphabets'
             };
 
-            shippable.encryptBySubscriptionId(subscriptionId,
+            shippable.encryptBySubscriptionId(subscriptionId, body,
               function(err, encryptedText) {
                 if (err) {
                   isTestFailed = true;
