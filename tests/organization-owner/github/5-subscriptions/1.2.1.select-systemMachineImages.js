@@ -28,7 +28,8 @@ describe(testSuite,
             this.timeout(0);
             var shippable = new Shippable(config.apiToken);
 
-            shippable.getMachineImages('',
+            var query = 'isAvailable=true';
+            shippable.getMachineImages(query,
               function(err, machineImages) {
                 if (err) {
                   isTestFailed = true;
