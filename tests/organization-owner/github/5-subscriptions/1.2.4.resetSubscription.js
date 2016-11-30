@@ -48,30 +48,31 @@ describe('Reset in subscription settings page',
             );
           }
         );
-      }
 
-      it('Reset subscription from subscription settings pages',
-        function (done) {
-          this.timeout(0);
-          var shippable = new Shippable(config.apiToken);
-          shippable.resetSubscriptionById(subscriptionId,
-            function (err, resetSub) {
-              if (err || !resetSub) {
-                isTestFailed = true;
-                var testCase =
-                  util.format('\n - [ ] %s resetSubscriptionById, failed with error: %s',
-                    testSuiteDesc, err);
-                testCaseErrors.push(testCase);
-                assert.equal(err, null);
-                return done();
-              } else {
-                return done();
+        it('Reset subscription from subscription settings pages',
+          function (done) {
+            this.timeout(0);
+            var shippable = new Shippable(config.apiToken);
+            shippable.resetSubscriptionById(subscriptionId,
+              function (err, resetSub) {
+                if (err || !resetSub) {
+                  isTestFailed = true;
+                  var testCase =
+                    util.format('\n - [ ] %s resetSubscriptionById, failed with error: %s',
+                      testSuiteDesc, err);
+                  testCaseErrors.push(testCase);
+                  assert.equal(err, null);
+                  return done();
+                } else {
+                  return done();
+                }
               }
-            }
-          );
-        }
-      );
+            );
+          }
+        );
+      }
     );
+
     describe('Should run after above test suites',
       function () {
 
