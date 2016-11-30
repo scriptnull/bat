@@ -676,6 +676,14 @@ ShippableAdapter.prototype.postSubscriptionAccounts =
     );
   };
 
+ShippableAdapter.prototype.resetSubscriptionById =
+  function (subId, callback) {
+    this.post(
+      util.format('/subscriptions/%s/reset', subId),
+      callback
+    );
+  };
+
 ShippableAdapter.prototype.postSubscriptionIntegration =
   function (json, callback) {
     this.post(
