@@ -1160,8 +1160,6 @@ function _parseBody(bag, next) {
   if (bag.body) {
     if (typeof bag.body === 'object') {
       bag.parsedBody = bag.body;
-    } else if (typeof bag.body === 'string') {
-      bag.parsedBody = JSON.stringify(bag.body);
     } else {
       try {
         bag.parsedBody = JSON.parse(bag.body);
