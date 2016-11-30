@@ -31,7 +31,7 @@
     "chai-http": "^3.0.0",
     "util": "0.10.3",
     "winston": "2.2.0",
-    "should": "*"
+    "braintree": "1.40.0"
   },
   "jshintConfig": {
     "node": true,

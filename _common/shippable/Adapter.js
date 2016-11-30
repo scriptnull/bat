@@ -117,6 +117,15 @@ ShippableAdapter.prototype.postAccountProfile =
     );
   };
 
+ShippableAdapter.prototype.postAccountCardWithCardNonce =
+  function (json, callback) {
+    this.post(
+      util.format('/accountCards'),
+      json,
+      callback
+    );
+  };
+
 ShippableAdapter.prototype.getBuildJobById =
   function (id, callback) {
     this.get(
