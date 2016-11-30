@@ -128,8 +128,7 @@ function _createBraintreeConnection(bag, next) {
 }
 
 function _createBraintreeToken(bag, next) {
-  bag.braintreeAdapter.clientToken.generate({},
-    function (err, res) {
+  bag.braintreeAdapter.generateClientToken(function (err, res) {
       braintreeClient = new braintree.api.Client({
         clientToken: res.clientToken
       });
