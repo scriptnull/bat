@@ -119,7 +119,7 @@ describe('Add Account Cards',
 function _createBraintreeConnection(bag, next) {
   bag.gateway = braintree.connect(
     {
-      environment: braintree.Environment.SandBox,
+      environment: nconf.get("BRAINTREE_ENVIRONMENT"),
       merchantId: nconf.get("BRAINTREE_MERCHANT_ID"),
       publicKey: nconf.get("BRAINTREE_PUBLIC_KEY"),
       privateKey: nconf.get("BRAINTREE_PRIVATE_KEY")
