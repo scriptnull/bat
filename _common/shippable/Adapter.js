@@ -990,6 +990,14 @@ ShippableAdapter.prototype.getSystemIntegrationById =
     );
   };
 
+ShippableAdapter.prototype.getMachineImages =
+  function (query, callback) {
+    this.get(
+      util.format('/systemMachineImages?%s', query),
+      callback
+    );
+  };
+
 ShippableAdapter.prototype.getSystemIntegrations =
   function (query, callback) {
     this.get(
