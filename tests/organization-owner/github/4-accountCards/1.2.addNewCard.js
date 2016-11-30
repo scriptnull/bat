@@ -1,4 +1,4 @@
-'use strict';
+/*'use strict';
 
 var mocha = require('mocha');
 var nconf = require('nconf');
@@ -135,3 +135,4 @@ function _createBraintreeToken(bag, next) {
       return next();
   });
 }
+*/
