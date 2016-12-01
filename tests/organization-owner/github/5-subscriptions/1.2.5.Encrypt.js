@@ -20,7 +20,7 @@ var subscriptionId = '';
 describe(testSuite,
   function () {
 
-    describe('Encrypt',
+    describe('Encrypt and Decrypt',
       function () {
 
         it('Organization-Owner-github-getSubscription',
