@@ -69,8 +69,9 @@ describe('Enable Project',
                   assert.equal(err, null);
                   return done();
                 } else {
-                  projectId = _.first(projects).id;
-                  console.log("id is::",projectId);
+                  var project = {};
+                  project = _.findWhere(projects, {isPrivateRepository: false});
+                  projectId = project.id;
                   nconf.set('shiptest-GITHUB_ORG_1:projectId',projectId);
                   nconf.save(function (err) {
                     if (err)
