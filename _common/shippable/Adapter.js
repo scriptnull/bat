@@ -1165,6 +1165,7 @@ function _performCall(bag, next) {
         bag.res = res;
         var temp = {};
         if (bag.opts.json && (bag.opts.json.clearText || bag.opts.json.value)) {
+          console.log("body is::", body);
           temp.encryptText = body;
           body = temp;
         }
