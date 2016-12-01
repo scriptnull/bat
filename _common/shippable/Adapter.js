@@ -1163,8 +1163,10 @@ function _performCall(bag, next) {
           }
         }
         bag.res = res;
+        var temp = {};
         if (body.length === 344) {
-          console.log("body******", body);
+          temp.encryptText = body;
+          body = temp;
         }
         bag.body = body;
         callback();
