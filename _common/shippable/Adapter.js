@@ -1179,7 +1179,7 @@ function _parseBody(bag, next) {
       bag.parsedBody = bag.body;
     } else {
       try {
-        bag.parsedBody = JSON.parse(bag.body);
+        bag.parsedBody = JSON.stringify(bag.body);
       } catch (e) {
         logger.error('Unable to parse bag.body', bag.body, e);
         bag.err = e;
