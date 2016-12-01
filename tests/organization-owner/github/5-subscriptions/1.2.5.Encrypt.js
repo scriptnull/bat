@@ -52,26 +52,45 @@ describe(testSuite,
         it('Enter encrypt value with alphabets and encrypt',
           function (done) {
             this.timeout(0);
-            var shippable = new Shippable(config.apiToken);
 
-            var body = {
-              clearText : 'ThisIsToTestEncryptionOfJustAlphabets'
+            var bag = {
+              body: {
+                clearText : 'ThisIsToTestEncryptionOfJustAlphabets'
+              },
+              json : {
+                value : '',
+              },
+              testCase : 'encrypt value with alphabets',
+              decryptedText: ''
             };
 
-            shippable.encryptBySubscriptionId(subscriptionId, body,
-              function(err, encryptedText) {
+            async.series([
+                _encryptText.bind(null, bag),
+                _decryptText.bind(null, bag)
+              ],
+              function (err) {
                 if (err) {
+                  logger.error('Failed', err);
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: with alphabets failed with error: %s',
-                      testSuite, err);
+                    util.format('\n- [ ] %s: %s failed with error: %s',
+                      testSuite, bag.testCase, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
-                  return done();
-                } else {
-                  console.log('Encrypted',encryptedText);
-                  return done();
+                } else if (bag.decryptedText !== bag.body.clearText) {
+                  logger.error('Failed');
+                  isTestFailed = true;
+                  var testCase =
+                    util.format(
+                      '\n- [ ] %s: clearText and decrypted value not equal: %s',
+                      testSuite, bag.body.clearText, err);
+                  testCaseErrors.push(testCase);
+                  assert.equal(bag.decryptedText, bag.body.clearText);
                 }
+                else
+                  logger.verbose('Successful');
+
+                return callback(err);
               }
             );
           }
@@ -109,3 +128,39 @@ describe(testSuite,
 
   }
 );
+
+function _encryptText(bag, next) {
+  var shippable = new Shippable(config.apiToken);
+
+  shippable.encryptBySubscriptionId(subscriptionId, bag.body,
+    function(err, encryptedText) {
+      if (err) {
+        logger.warn('Encrypt failed for:', bag.body.clearText);
+        return next();
+      } else {
+        console.log('Encrypted',encryptedText);
+        bag.json.value = encryptedText;
+        return next();
+      }
+    }
+  );
+
+}
+
+function _decryptText(bag, next) {
+  var shippable = new Shippable(config.apiToken);
+
+  shippable.decryptBySubscriptionId(subscriptionId, bag.json,
+    function(err, decryptedText) {
+      if (err) {
+        logger.warn('Decrypt failed for:', bag.body.clearText);
+        return next();
+      } else {
+        console.log('Decrypted',decryptedText);
+        bag.decryptedText = decryptedText;
+        return next();
+      }
+    }
+  );
+
+}
