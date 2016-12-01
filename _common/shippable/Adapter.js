@@ -1163,6 +1163,9 @@ function _performCall(bag, next) {
           }
         }
         bag.res = res;
+        if (body.length === 344) {
+          console.log("body******", body);
+        }
         bag.body = body;
         callback();
       }
