@@ -26,13 +26,15 @@ describe('Edit email with valid and invalid email address',
             this.timeout(0);
             var shippable = new Shippable(config.apiToken);
 
-            shippable.putAccountById(nconf.get("shiptest-github-owner:accountId"),
+            shippable.putAccountById(
+              nconf.get("shiptest-github-owner:accountId"),
               '', { defaultEmail : 'test@gmail.com' },
               function(err) {
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: test@gmail.com failed with error: %s',
+                    util.format(
+                      '\n- [ ] %s: test@gmail.com failed with error: %s',
                       testSuite, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
@@ -50,13 +52,15 @@ describe('Edit email with valid and invalid email address',
             this.timeout(0);
             var shippable = new Shippable(config.apiToken);
 
-            shippable.putAccountById(nconf.get("shiptest-github-owner:accountId"),
+            shippable.putAccountById(
+              nconf.get("shiptest-github-owner:accountId"),
               '', { defaultEmail : 'test.testt@gmail.com' },
               function(err) {
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: test.testt@gmail.com failed with error: %s',
+                    util.format(
+                      '\n- [ ] %s: test.testt@gmail.com failed with error: %s',
                       testSuite, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
@@ -74,13 +78,15 @@ describe('Edit email with valid and invalid email address',
             this.timeout(0);
             var shippable = new Shippable(config.apiToken);
 
-            shippable.putAccountById(nconf.get("shiptest-github-owner:accountId"),
+            shippable.putAccountById(
+              nconf.get("shiptest-github-owner:accountId"),
               '', { defaultEmail : 'test@google.co.in' },
               function(err) {
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: test@google.co.in failed with error: %s',
+                    util.format(
+                      '\n- [ ] %s: test@google.co.in failed with error: %s',
                       testSuite, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
@@ -98,13 +104,15 @@ describe('Edit email with valid and invalid email address',
             this.timeout(0);
             var shippable = new Shippable(config.apiToken);
 
-            shippable.putAccountById(nconf.get("shiptest-github-owner:accountId"),
-              '', { defaultEmail : 'test+testing@google.co.in' },
+            shippable.putAccountById(
+              nconf.get("shiptest-github-owner:accountId"),
+              '', { defaultEmail : 'test+test@google.co.in' },
               function(err) {
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: test+testing@google.co.in failed with error: %s',
+                    util.format(
+                      '\n- [ ] %s: test+test@google.co.in fails with error: %s',
                       testSuite, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
@@ -122,13 +130,15 @@ describe('Edit email with valid and invalid email address',
             this.timeout(0);
             var shippable = new Shippable(config.apiToken);
 
-            shippable.putAccountById(nconf.get("shiptest-github-owner:accountId"),
+            shippable.putAccountById(
+              nconf.get("shiptest-github-owner:accountId"),
               '', { defaultEmail : '\"test"\@gmail.com' },
               function(err) {
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: \"test"\@gmail.com failed with error: %s',
+                    util.format(
+                      '\n- [ ] %s: \"test"\@gmail.com failed with error: %s',
                       testSuite, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
@@ -146,13 +156,15 @@ describe('Edit email with valid and invalid email address',
             this.timeout(0);
             var shippable = new Shippable(config.apiToken);
 
-            shippable.putAccountById(nconf.get("shiptest-github-owner:accountId"),
+            shippable.putAccountById(
+              nconf.get("shiptest-github-owner:accountId"),
               '', { defaultEmail : 'test12345@gmail.com' },
               function(err) {
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: test12345@gmail.com failed with error: %s',
+                    util.format(
+                      '\n- [ ] %s: test12345@gmail.com failed with error: %s',
                       testSuite, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
@@ -170,13 +182,15 @@ describe('Edit email with valid and invalid email address',
             this.timeout(0);
             var shippable = new Shippable(config.apiToken);
 
-            shippable.putAccountById(nconf.get("shiptest-github-owner:accountId"),
+            shippable.putAccountById(
+              nconf.get("shiptest-github-owner:accountId"),
               '', { defaultEmail : 'test12345@google-co.in' },
               function(err) {
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: test12345@google-co.in failed with error: %s',
+                    util.format(
+                      '\n- [ ] %s: test12345@google-co.in fails with error: %s',
                       testSuite, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
@@ -194,13 +208,15 @@ describe('Edit email with valid and invalid email address',
             this.timeout(0);
             var shippable = new Shippable(config.apiToken);
 
-            shippable.putAccountById(nconf.get("shiptest-github-owner:accountId"),
+            shippable.putAccountById(
+              nconf.get("shiptest-github-owner:accountId"),
               '', { defaultEmail : 'test_12345@yahoo.in' },
               function(err) {
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: test_12345@yahoo.in failed with error: %s',
+                    util.format(
+                      '\n- [ ] %s: test_12345@yahoo.in failed with error: %s',
                       testSuite, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
@@ -218,13 +234,15 @@ describe('Edit email with valid and invalid email address',
             this.timeout(0);
             var shippable = new Shippable(config.apiToken);
 
-            shippable.putAccountById(nconf.get("shiptest-github-owner:accountId"),
+            shippable.putAccountById(
+              nconf.get("shiptest-github-owner:accountId"),
               '', { defaultEmail : 'test_12345@rediff.mail' },
               function(err) {
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: test_12345@rediff.mail failed with error: %s',
+                    util.format(
+                      '\n- [ ] %s: test_12345@rediff.mail fails with error: %s',
                       testSuite, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
@@ -242,13 +260,15 @@ describe('Edit email with valid and invalid email address',
             this.timeout(0);
             var shippable = new Shippable(config.apiToken);
 
-            shippable.putAccountById(nconf.get("shiptest-github-owner:accountId"),
-              '', { defaultEmail : 'test_12345@google.co.in' },
+            shippable.putAccountById(
+              nconf.get("shiptest-github-owner:accountId"),
+              '', { defaultEmail : 'test_1234@google.co.in' },
               function(err) {
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: test_12345@google.co.in failed with error: %s',
+                    util.format(
+                      '\n- [ ] %s: test_1234@google.co.in fails with error: %s',
                       testSuite, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
@@ -266,13 +286,15 @@ describe('Edit email with valid and invalid email address',
             this.timeout(0);
             var shippable = new Shippable(config.apiToken);
 
-            shippable.putAccountById(nconf.get("shiptest-github-owner:accountId"),
+            shippable.putAccountById(
+              nconf.get("shiptest-github-owner:accountId"),
               '', { defaultEmail : 'あいうえお@domain.com' },
               function(err) {
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: あいうえお@domain.com failed with error: %s',
+                    util.format(
+                      '\n- [ ] %s: あいうえお@domain.com failed with error: %s',
                       testSuite, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
@@ -290,13 +312,15 @@ describe('Edit email with valid and invalid email address',
             this.timeout(0);
             var shippable = new Shippable(config.apiToken);
 
-            shippable.putAccountById(nconf.get("shiptest-github-owner:accountId"),
+            shippable.putAccountById(
+              nconf.get("shiptest-github-owner:accountId"),
               '', { defaultEmail : 'email@domain.web' },
               function(err) {
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: email@domain.web failed with error: %s',
+                    util.format(
+                      '\n- [ ] %s: email@domain.web failed with error: %s',
                       testSuite, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
@@ -314,13 +338,15 @@ describe('Edit email with valid and invalid email address',
             this.timeout(0);
             var shippable = new Shippable(config.apiToken);
 
-            shippable.putAccountById(nconf.get("shiptest-github-owner:accountId"),
-              '', { defaultEmail : 'test-12345@google.co.in' },
+            shippable.putAccountById(
+              nconf.get("shiptest-github-owner:accountId"),
+              '', { defaultEmail : 'test-1234@google.co.in' },
               function(err) {
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: test-12345@google.co.in failed with error: %s',
+                    util.format(
+                      '\n- [ ] %s: test-1234@google.co.in fails with error: %s',
                       testSuite, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
@@ -344,11 +370,14 @@ describe('Edit email with valid and invalid email address',
             this.timeout(0);
             var shippable = new Shippable(config.apiToken);
 
-            shippable.putAccountById(nconf.get("shiptest-github-owner:accountId"),
+            shippable.putAccountById(
+              nconf.get("shiptest-github-owner:accountId"),
               '', { defaultEmail : 'plainaddress' },
               function(err) {
                 if (err) {
-                  logger.debug('Failed to update emailId Missing @ sign and domain: plainaddress');
+                  logger.debug(
+                    'Fails to update emailId Missing @ sign and domain: ' +
+                    'plainaddress');
                   return done();
                 } else {
                   isTestFailed = true;
@@ -369,16 +398,20 @@ describe('Edit email with valid and invalid email address',
             this.timeout(0);
             var shippable = new Shippable(config.apiToken);
 
-            shippable.putAccountById(nconf.get("shiptest-github-owner:accountId"),
+            shippable.putAccountById(
+              nconf.get("shiptest-github-owner:accountId"),
               '', { defaultEmail : 'test+testing@123.123.123.123' },
               function(err) {
                 if (err) {
-                  logger.debug('Failed to update emailId Missing @ sign and domain: test+testing@123.123.123.123');
+                  logger.warn(
+                    'Failed to update emailId Domain is invalid IP address: '+
+                    'test+testing@123.123.123.123');
                   return done();
                 } else {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: test+testing@123.123.123.123 test case failed',
+                    util.format(
+                      '\n- [ ] %s: test+testing@123.123.123.123 test case fail',
                       testSuite);
                   testCaseErrors.push(testCase);
                   assert.notEqual(err, null);
@@ -394,16 +427,20 @@ describe('Edit email with valid and invalid email address',
             this.timeout(0);
             var shippable = new Shippable(config.apiToken);
 
-            shippable.putAccountById(nconf.get("shiptest-github-owner:accountId"),
+            shippable.putAccountById(
+              nconf.get("shiptest-github-owner:accountId"),
               '', { defaultEmail : 'test+testing@[123.123.123.123]' },
               function(err) {
                 if (err) {
-                  logger.debug('Failed to update emailId Missing @ sign and domain: test+testing@[123.123.123.123]');
+                  logger.debug('Failed to update emailId' +
+                    'Square bracket around IP address: ' +
+                    'test+testing@[123.123.123.123]');
                   return done();
                 } else {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: test+testing@[123.123.123.123] test case failed',
+                    util.format(
+                      '\n- [ ] %s: test+testing@[123.123.123.123] test case failed',
                       testSuite);
                   testCaseErrors.push(testCase);
                   assert.notEqual(err, null);
