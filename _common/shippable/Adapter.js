@@ -414,6 +414,15 @@ ShippableAdapter.prototype.postVersion =
     );
   };
 
+ShippableAdapter.prototype.enableProjectById =
+  function (projectId, json, callback) {
+    this.post(
+      util.format('/projects/%s/enable', projectId),
+      json,
+      callback
+    );
+  };
+
 ShippableAdapter.prototype.encryptBySubscriptionId =
   function (subscriptionId, json, callback) {
     this.post(
