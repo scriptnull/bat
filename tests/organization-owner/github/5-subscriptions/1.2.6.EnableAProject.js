@@ -70,7 +70,7 @@ describe('Enable Project',
                   return done();
                 } else {
                   projectId = _.first(projects).id;
-
+                  console.log("id is::",projectId);
                   nconf.set('shiptest-GITHUB_ORG_1:projectId',projectId);
                   nconf.save(function (err) {
                     if (err)
