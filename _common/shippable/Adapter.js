@@ -1164,8 +1164,7 @@ function _performCall(bag, next) {
         }
         bag.res = res;
         var temp = {};
-        if (body.length === 344) {
-          console.log("bag***", bag.opts);
+        if (bag.opts.json.clearText) {
           temp.encryptText = body;
           body = temp;
         }
