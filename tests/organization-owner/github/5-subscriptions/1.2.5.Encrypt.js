@@ -140,6 +140,7 @@ function _encryptText(bag, next) {
       } else {
         console.log('Encrypted',encryptedText);
         bag.json.value = encryptedText;
+        console.log("bag.json is::",util.inspect(bag.json,{depth:null}));
         return next();
       }
     }
