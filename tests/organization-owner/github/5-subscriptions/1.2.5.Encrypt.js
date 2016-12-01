@@ -158,7 +158,7 @@ function _decryptText(bag, next) {
         return next();
       } else {
         console.log('Decrypted',decryptedText);
-        bag.decryptedText = decryptedText.encryptText;
+        bag.decryptedText = decryptedText.encryptText.value;
         return next();
       }
     }
