@@ -6,7 +6,7 @@ var chai = require('chai');
 var _ = require('underscore');
 var assert = chai.assert;
 var testSuiteNum = '1.';
-var testSuiteDesc = 'subscription settings encrypt';
+var testSuiteDesc = 'subscription settings - encrypt and decrypt';
 var adapter = require('../../../../_common/shippable/github/Adapter.js');
 var Shippable = require('../../../../_common/shippable/Adapter.js');
 
@@ -69,24 +69,8 @@ describe(testSuite,
                 _decryptText.bind(null, bag)
               ],
               function (err) {
-                if (err) {
+                if (err)
                   logger.error('Failed', err);
-                  isTestFailed = true;
-                  var testCase =
-                    util.format('\n- [ ] %s: %s failed with error: %s',
-                      testSuite, bag.testCase, err);
-                  testCaseErrors.push(testCase);
-                  assert.equal(err, null);
-                } else if (bag.decryptedText !== bag.body.clearText) {
-                  logger.error('Failed');
-                  isTestFailed = true;
-                  var testCase =
-                    util.format(
-                      '\n- [ ] %s: clearText and decrypted value not equal: %s',
-                      testSuite, bag.body.clearText, err);
-                  testCaseErrors.push(testCase);
-                  assert.equal(bag.decryptedText, bag.body.clearText);
-                }
                 else
                   logger.verbose('Successful');
 
@@ -136,6 +120,12 @@ function _encryptText(bag, next) {
     function(err, encryptedText) {
       if (err) {
         logger.warn('Encrypt failed for:', bag.body.clearText);
+        isTestFailed = true;
+        var testCase =
+          util.format('\n- [ ] %s: %s failed with error: %s',
+            testSuite, bag.testCase, err);
+        testCaseErrors.push(testCase);
+        assert.equal(err, null);
         return next();
       } else {
         bag.json.value = encryptedText.encryptText;
@@ -153,9 +143,25 @@ function _decryptText(bag, next) {
     function(err, decryptedText) {
       if (err) {
         logger.warn('Decrypt failed for:', bag.body.clearText);
+        isTestFailed = true;
+        var testCase =
+          util.format('\n- [ ] %s: %s failed with error: %s',
+            testSuite, bag.testCase, err);
+        testCaseErrors.push(testCase);
+        assert.equal(err, null);
         return next();
       } else {
         bag.decryptedText = decryptedText.encryptText.value;
+        if (bag.decryptedText !== bag.body.clearText) {
+          logger.error('Failed');
+          isTestFailed = true;
+          var testCase =
+            util.format(
+              '\n- [ ] %s: clearText and decrypted value not equal: %s',
+              testSuite, bag.body.clearText, err);
+          testCaseErrors.push(testCase);
+          assert.equal(bag.decryptedText, bag.body.clearText);
+        }
         return next();
       }
     }
