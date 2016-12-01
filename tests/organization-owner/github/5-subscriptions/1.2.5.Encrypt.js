@@ -139,7 +139,7 @@ function _encryptText(bag, next) {
         return next();
       } else {
         console.log('Encrypted',encryptedText);
-        bag.json.value = encryptedText;
+        bag.json.value = encryptedText.encryptText;
         console.log("bag.json is::",util.inspect(bag.json,{depth:null}));
         return next();
       }
@@ -158,7 +158,7 @@ function _decryptText(bag, next) {
         return next();
       } else {
         console.log('Decrypted',decryptedText);
-        bag.decryptedText = decryptedText;
+        bag.decryptedText = decryptedText.encryptText;
         return next();
       }
     }
