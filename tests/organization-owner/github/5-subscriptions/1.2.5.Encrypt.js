@@ -90,7 +90,7 @@ describe(testSuite,
                 else
                   logger.verbose('Successful');
 
-                return callback(err);
+                return done();
               }
             );
           }
