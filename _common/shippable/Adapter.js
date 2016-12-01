@@ -1044,7 +1044,7 @@ ShippableAdapter.prototype.get =
 
     async.series([
         _performCall.bind(null, bag),
-//        _parseBody.bind(null, bag)
+        _parseBody.bind(null, bag)
       ],
       function () {
         callback(bag.err, bag.parsedBody, bag.res);
@@ -1066,7 +1066,7 @@ ShippableAdapter.prototype.post =
 
     async.series([
         _performCall.bind(null, bag),
-//        _parseBody.bind(null, bag)
+        _parseBody.bind(null, bag)
       ],
       function () {
         callback(bag.err, bag.parsedBody, bag.res);
@@ -1088,7 +1088,7 @@ ShippableAdapter.prototype.put =
 
     async.series([
         _performCall.bind(null, bag),
-//        _parseBody.bind(null, bag)
+        _parseBody.bind(null, bag)
       ],
       function () {
         callback(bag.err, bag.parsedBody, bag.res);
@@ -1109,7 +1109,7 @@ ShippableAdapter.prototype.delete =
 
     async.series([
         _performCall.bind(null, bag),
-//        _parseBody.bind(null, bag)
+        _parseBody.bind(null, bag)
       ],
       function () {
         callback(bag.err, bag.parsedBody, bag.res);
@@ -1164,7 +1164,6 @@ function _performCall(bag, next) {
         }
         bag.res = res;
         bag.body = body;
-        bag.parsedBody = bag.body
         callback();
       }
     );
