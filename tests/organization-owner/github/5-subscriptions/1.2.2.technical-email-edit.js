@@ -33,7 +33,8 @@ describe('Edit email with valid and invalid email address in technical contact',
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: Get subscriptions, failed with error: %s',
+                    util.format(
+                      '\n- [ ] %s: Get subscriptions, failed with error: %s',
                       testSuiteDesc, name, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
@@ -65,7 +66,8 @@ describe('Edit email with valid and invalid email address in technical contact',
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: test@gmail.com failed with error: %s',
+                    util.format(
+                      '\n- [ ] %s: test@gmail.com failed with error: %s',
                       testSuite, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
@@ -89,7 +91,8 @@ describe('Edit email with valid and invalid email address in technical contact',
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: test.testt@gmail.com failed with error: %s',
+                    util.format(
+                      '\n- [ ] %s: test.testt@gmail.com failed with error: %s',
                       testSuite, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
@@ -113,7 +116,8 @@ describe('Edit email with valid and invalid email address in technical contact',
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: test@google.co.in failed with error: %s',
+                    util.format(
+                      '\n- [ ] %s: test@google.co.in failed with error: %s',
                       testSuite, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
@@ -137,7 +141,9 @@ describe('Edit email with valid and invalid email address in technical contact',
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: test+testing@google.co.in failed with error: %s',
+                    util.format(
+                      '\n- [ ] %s: test+testing@google.co.in failed with ' +
+                      'error: %s',
                       testSuite, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
@@ -161,7 +167,8 @@ describe('Edit email with valid and invalid email address in technical contact',
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: \"test"\@gmail.com failed with error: %s',
+                    util.format(
+                      '\n- [ ] %s: \"test"\@gmail.com failed with error: %s',
                       testSuite, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
@@ -185,7 +192,8 @@ describe('Edit email with valid and invalid email address in technical contact',
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: test12345@gmail.com failed with error: %s',
+                    util.format(
+                      '\n- [ ] %s: test12345@gmail.com failed with error: %s',
                       testSuite, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
@@ -209,7 +217,9 @@ describe('Edit email with valid and invalid email address in technical contact',
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: test12345@google-co.in failed with error: %s',
+                    util.format(
+                      '\n- [ ] %s: test12345@google-co.in failed with ' +
+                      'error: %s',
                       testSuite, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
@@ -233,7 +243,8 @@ describe('Edit email with valid and invalid email address in technical contact',
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: test_12345@yahoo.in failed with error: %s',
+                    util.format(
+                      '\n- [ ] %s: test_12345@yahoo.in failed with error: %s',
                       testSuite, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
@@ -257,7 +268,9 @@ describe('Edit email with valid and invalid email address in technical contact',
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: test_12345@rediff.mail failed with error: %s',
+                    util.format(
+                      '\n- [ ] %s: test_12345@rediff.mail failed ' +
+                      'with error: %s',
                       testSuite, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
@@ -281,7 +294,9 @@ describe('Edit email with valid and invalid email address in technical contact',
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: test_12345@google.co.in failed with error: %s',
+                    util.format(
+                      '\n- [ ] %s: test_12345@google.co.in failed ' +
+                      'with error: %s',
                       testSuite, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
@@ -305,7 +320,8 @@ describe('Edit email with valid and invalid email address in technical contact',
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: あいうえお@domain.com failed with error: %s',
+                    util.format(
+                      '\n- [ ] %s: あいうえお@domain.com failed with error: %s',
                       testSuite, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
@@ -329,7 +345,8 @@ describe('Edit email with valid and invalid email address in technical contact',
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: email@domain.web failed with error: %s',
+                    util.format(
+                      '\n- [ ] %s: email@domain.web failed with error: %s',
                       testSuite, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
@@ -353,7 +370,9 @@ describe('Edit email with valid and invalid email address in technical contact',
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: test-12345@google.co.in failed with error: %s',
+                    util.format(
+                      '\n- [ ] %s: test-12345@google.co.in failed with ' +
+                      'error: %s',
                       testSuite, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
@@ -381,7 +400,8 @@ describe('Edit email with valid and invalid email address in technical contact',
               { opsEmail : 'plainaddress' },
               function(err) {
                 if (err) {
-                  logger.debug('Failed to update emailId Missing @ sign and domain: plainaddress');
+                  logger.debug('Failed to update emailId ' +
+                    'Missing @ sign and domain: plainaddress');
                   return done();
                 } else {
                   isTestFailed = true;
@@ -406,12 +426,15 @@ describe('Edit email with valid and invalid email address in technical contact',
               { opsEmail : 'test+testing@123.123.123.123' },
               function(err) {
                 if (err) {
-                  logger.debug('Failed to update emailId Missing @ sign and domain: test+testing@123.123.123.123');
+                  logger.debug('Failed to update emailId ' +
+                    'Domain is invalid IP address: ' +
+                    'test+testing@123.123.123.123');
                   return done();
                 } else {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: test+testing@123.123.123.123 test case failed',
+                    util.format('\n- [ ] %s: ' +
+                      'test+testing@123.123.123.123 test case failed',
                       testSuite);
                   testCaseErrors.push(testCase);
                   assert.notEqual(err, null);
@@ -431,12 +454,16 @@ describe('Edit email with valid and invalid email address in technical contact',
               { opsEmail : 'test+testing@[123.123.123.123]' },
               function(err) {
                 if (err) {
-                  logger.debug('Failed to update emailId Missing @ sign and domain: test+testing@[123.123.123.123]');
+                  logger.debug('Failed to update emailId ' +
+                    'Square bracket around IP address: ' +
+                    'test+testing@[123.123.123.123]');
                   return done();
                 } else {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: test+testing@[123.123.123.123] test case failed',
+                    util.format(
+                      '\n- [ ] %s: ' +
+                      'test+testing@[123.123.123.123] test case failed',
                       testSuite);
                   testCaseErrors.push(testCase);
                   assert.notEqual(err, null);
@@ -456,7 +483,8 @@ describe('Edit email with valid and invalid email address in technical contact',
               { opsEmail : '#@%^%#$@#$@#.com' },
               function(err) {
                 if (err) {
-                  logger.debug('Failed to update emailId Garbage: #@%^%#$@#$@#.com');
+                  logger.debug(
+                    'Failed to update emailId Garbage: #@%^%#$@#$@#.com');
                   return done();
                 } else {
                   isTestFailed = true;
@@ -481,7 +509,8 @@ describe('Edit email with valid and invalid email address in technical contact',
               { opsEmail : '@domain.com' },
               function(err) {
                 if (err) {
-                  logger.debug('Failed to update emailId Missing username: @domain.com');
+                  logger.debug(
+                    'Failed to update emailId Missing username: @domain.com');
                   return done();
                 } else {
                   isTestFailed = true;
@@ -506,12 +535,16 @@ describe('Edit email with valid and invalid email address in technical contact',
               { opsEmail : 'Joe Smith <email@domain.com>' },
               function(err) {
                 if (err) {
-                  logger.debug('Failed to update emailId Encoded html within email is invalid: Joe Smith <email@domain.com>');
+                  logger.debug(
+                    'Failed to update emailId Encoded html within email is ' +
+                    'invalid: Joe Smith <email@domain.com>');
                   return done();
                 } else {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: Joe Smith <email@domain.com> test case failed',
+                    util.format(
+                      '\n- [ ] %s: ' +
+                      'Joe Smith <email@domain.com> test case failed',
                       testSuite);
                   testCaseErrors.push(testCase);
                   assert.notEqual(err, null);
@@ -531,7 +564,8 @@ describe('Edit email with valid and invalid email address in technical contact',
               { opsEmail : 'email.domain.com' },
               function(err) {
                 if (err) {
-                  logger.debug('Failed to update emailId Missing @: email.domain.com');
+                  logger.debug(
+                    'Failed to update emailId Missing @: email.domain.com');
                   return done();
                 } else {
                   isTestFailed = true;
@@ -556,12 +590,15 @@ describe('Edit email with valid and invalid email address in technical contact',
               { opsEmail : 'email@domain@domain.com' },
               function(err) {
                 if (err) {
-                  logger.debug('Failed to update emailId Two @ sign: email@domain@domain.com');
+                  logger.debug(
+                    'Failed to update emailId ' +
+                    'Two @ sign: email@domain@domain.com');
                   return done();
                 } else {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: email@domain@domain.com test case failed',
+                    util.format(
+                      '\n- [ ] %s: email@domain@domain.com test case failed',
                       testSuite);
                   testCaseErrors.push(testCase);
                   assert.notEqual(err, null);
@@ -581,12 +618,15 @@ describe('Edit email with valid and invalid email address in technical contact',
               { opsEmail : '.email@domain.com' },
               function(err) {
                 if (err) {
-                  logger.debug('Failed to update emailId Leading dot in address is not allowed: .email@domain.com');
+                  logger.debug(
+                    'Failed to update emailId ' +
+                    'Leading dot in address is not allowed: .email@domain.com');
                   return done();
                 } else {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: .email@domain.com test case failed',
+                    util.format(
+                      '\n- [ ] %s: .email@domain.com test case failed',
                       testSuite);
                   testCaseErrors.push(testCase);
                   assert.notEqual(err, null);
@@ -606,12 +646,15 @@ describe('Edit email with valid and invalid email address in technical contact',
               { opsEmail : 'email.@domain.com' },
               function(err) {
                 if (err) {
-                  logger.debug('Failed to update emailId Trailing dot in address is not allowed: email.@domain.com');
+                  logger.debug(
+                    'Failed to update emailId Trailing ' +
+                    'dot in address is not allowed: email.@domain.com');
                   return done();
                 } else {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: email.@domain.com test case failed',
+                    util.format(
+                      '\n- [ ] %s: email.@domain.com test case failed',
                       testSuite);
                   testCaseErrors.push(testCase);
                   assert.notEqual(err, null);
@@ -631,12 +674,15 @@ describe('Edit email with valid and invalid email address in technical contact',
               { opsEmail : 'email..email@domain.com' },
               function(err) {
                 if (err) {
-                  logger.debug('Failed to update emailId Multiple dots: email..email@domain.com');
+                  logger.debug(
+                    'Failed to update emailId Multiple dots: ' +
+                    'email..email@domain.com');
                   return done();
                 } else {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: email..email@domain.com test case failed',
+                    util.format(
+                      '\n- [ ] %s: email..email@domain.com test case failed',
                       testSuite);
                   testCaseErrors.push(testCase);
                   assert.notEqual(err, null);
@@ -656,12 +702,17 @@ describe('Edit email with valid and invalid email address in technical contact',
               { opsEmail : 'email@domain.com (Joe Smith)' },
               function(err) {
                 if (err) {
-                  logger.debug('Failed to update emailId Text followed email is not allowed: email@domain.com (Joe Smith)');
+                  logger.debug(
+                    'Failed to update emailId ' +
+                    'Text followed email is not allowed: ' +
+                    'email@domain.com (Joe Smith)');
                   return done();
                 } else {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: email@domain.com (Joe Smith) test case failed',
+                    util.format(
+                      '\n- [ ] %s: ' +
+                      'email@domain.com (Joe Smith) test case failed',
                       testSuite);
                   testCaseErrors.push(testCase);
                   assert.notEqual(err, null);
@@ -681,7 +732,9 @@ describe('Edit email with valid and invalid email address in technical contact',
               { opsEmail : 'email@domain' },
               function(err) {
                 if (err) {
-                  logger.debug('Failed to update emailId Missing top level domain (.com/.net/.org/etc): email@domain');
+                  logger.debug(
+                    'Failed to update emailId Missing top level domain ' +
+                    '(.com/.net/.org/etc): email@domain');
                   return done();
                 } else {
                   isTestFailed = true;
@@ -706,12 +759,16 @@ describe('Edit email with valid and invalid email address in technical contact',
               { opsEmail : 'email@-domain.com' },
               function(err) {
                 if (err) {
-                  logger.debug('Failed to update emailId Leading dash in front of domain is invalid: email@-domain.com');
+                  logger.debug(
+                    'Failed to update emailId ' +
+                    'Leading dash in front of domain is invalid: '+
+                    'email@-domain.com');
                   return done();
                 } else {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: email@-domain.com test case failed',
+                    util.format(
+                      '\n- [ ] %s: email@-domain.com test case failed',
                       testSuite);
                   testCaseErrors.push(testCase);
                   assert.notEqual(err, null);
@@ -731,12 +788,15 @@ describe('Edit email with valid and invalid email address in technical contact',
               { opsEmail : 'email@111.222.333.44444' },
               function(err) {
                 if (err) {
-                  logger.debug('Failed to update emailId Invalid IP format: email@111.222.333.44444');
+                  logger.debug(
+                    'Failed to update emailId Invalid IP format: ' +
+                    'email@111.222.333.44444');
                   return done();
                 } else {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: email@111.222.333.44444 test case failed',
+                    util.format(
+                      '\n- [ ] %s: email@111.222.333.44444 test case failed',
                       testSuite);
                   testCaseErrors.push(testCase);
                   assert.notEqual(err, null);
@@ -756,12 +816,15 @@ describe('Edit email with valid and invalid email address in technical contact',
               { opsEmail : 'email@domain..com' },
               function(err) {
                 if (err) {
-                  logger.debug('Failed to update emailId Invalid IP format: email@111.222.333.44444');
+                  logger.debug(
+                    'Failed to update emailId Invalid IP format: ' +
+                    'email@111.222.333.44444');
                   return done();
                 } else {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: email@111.222.333.44444 test case failed',
+                    util.format(
+                      '\n- [ ] %s: email@111.222.333.44444 test case failed',
                       testSuite);
                   testCaseErrors.push(testCase);
                   assert.notEqual(err, null);
@@ -781,9 +844,11 @@ describe('Edit email with valid and invalid email address in technical contact',
           function (done) {
             this.timeout(0);
             if (isTestFailed) {
-              var githubAdapter = new adapter(config.githubToken, config.githubUrl);
+              var githubAdapter =
+                new adapter(config.githubToken, config.githubUrl);
               var title = util.format('Failed test suite %s', testSuite);
-              var body = util.format('Failed test cases are:\n%s',testCaseErrors);
+              var body = util.format(
+                'Failed test cases are:\n%s',testCaseErrors);
               var data = {
                 title: title,
                 body: body
