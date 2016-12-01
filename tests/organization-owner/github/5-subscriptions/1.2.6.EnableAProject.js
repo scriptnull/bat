@@ -16,6 +16,7 @@ var testSuite = util.format('%s2 - %s', testSuiteNum,
 var isTestFailed = false;
 var testCaseErrors = [];
 var subscriptionId = '';
+var projectId = '';
 
 describe('Enable Project',
   function() {
@@ -68,13 +69,50 @@ describe('Enable Project',
                   assert.equal(err, null);
                   return done();
                 } else {
-                  console.log("number of projects is::",projects.length);
+                  projectId = _.first(projects).id;
+
+                  nconf.set('shiptest-GITHUB_ORG_1:projectId',projectId);
+                  nconf.save(function (err) {
+                    if (err)
+                      console.log("Failed");
+                    return done();
+                  });
+                }
+              }
+            );
+          }
+        );
+
+        it('Enable Project',
+          function (done) {
+            this.timeout(0);
+            var shippable = new Shippable(config.apiToken);
+
+            var body = {
+              projectId: projectId,
+              type: 'ci'
+            };
+
+            shippable.enableProjectById(projectId, body,
+              function (err) {
+                if (err) {
+                  isTestFailed = true;
+                  var testCase =
+                    util.format(
+                      '\n - [ ] %s Enable project id: %s failed with error: %s' +
+                      testSuiteDesc, projectId, err);
+                  testCaseErrors.push(testCase);
+                  assert.equal(err, null);
+                  return done();
+                } else {
+                  console.log("Enabled");
                   return done();
                 }
               }
             );
           }
         );
+
       }
     );
 
