@@ -20,7 +20,8 @@ describe(testSuite,
       function (done) {
         this.timeout(0);
         var shippable = new Shippable(config.apiToken);
-        shippable.forceSyncAccountById(nconf.get("shiptest-github-owner:accountId"),
+        shippable.forceSyncAccountById(
+          nconf.get("shiptest-github-owner:accountId"),
           function(err, res) {
             if (err) {
               var bag = {
