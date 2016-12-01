@@ -1178,6 +1178,7 @@ function _performCall(bag, next) {
           body = temp;
         }
         bag.body = body;
+        console.log("body is",bag.body);
         callback();
       }
     );
