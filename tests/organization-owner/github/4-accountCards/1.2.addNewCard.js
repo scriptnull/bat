@@ -10,7 +10,8 @@ var testSuiteNum = '1.';
 var testSuiteDesc = 'Add Account Cards';
 var adapter = require('../../../../_common/shippable/github/Adapter.js');
 var Shippable = require('../../../../_common/shippable/Adapter.js');
-var braintreeAdapter = require('../../../../_common/shippable/braintreeAdapter.js');
+var braintreeAdapter =
+  require('../../../../_common/shippable/braintreeAdapter.js');
 
 var testSuite = util.format('%s2 - %s', testSuiteNum,
   testSuiteDesc);
@@ -93,9 +94,11 @@ describe('Add Account Cards',
           function (done) {
             this.timeout(0);
             if (isTestFailed) {
-              var githubAdapter = new adapter(config.githubToken, config.githubUrl);
+              var githubAdapter =
+                new adapter(config.githubToken, config.githubUrl);
               var title = util.format('Failed test suite %s', testSuite);
-              var body = util.format('Failed test cases are:\n%s',testCaseErrors);
+              var body = util.format(
+                'Failed test cases are:\n%s',testCaseErrors);
               var data = {
                 title: title,
                 body: body
