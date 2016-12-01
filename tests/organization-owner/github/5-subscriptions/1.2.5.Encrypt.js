@@ -138,9 +138,7 @@ function _encryptText(bag, next) {
         logger.warn('Encrypt failed for:', bag.body.clearText);
         return next();
       } else {
-        console.log('Encrypted',encryptedText);
         bag.json.value = encryptedText.encryptText;
-        console.log("bag.json is::",util.inspect(bag.json,{depth:null}));
         return next();
       }
     }
@@ -157,7 +155,6 @@ function _decryptText(bag, next) {
         logger.warn('Decrypt failed for:', bag.body.clearText);
         return next();
       } else {
-        console.log('Decrypted',decryptedText);
         bag.decryptedText = decryptedText.encryptText.value;
         return next();
       }
