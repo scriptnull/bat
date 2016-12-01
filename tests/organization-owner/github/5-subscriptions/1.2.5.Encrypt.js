@@ -57,7 +57,9 @@ describe(testSuite,
               body: {
                 clearText : 'ThisIsToTestEncryptionOfJustAlphabets'
               },
-              json : {},
+              json : {
+                value : ''
+              },
               testCase : 'encrypt value with alphabets',
               decryptedText: ''
             };
@@ -137,7 +139,7 @@ function _encryptText(bag, next) {
         return next();
       } else {
         console.log('Encrypted',encryptedText);
-        bag.json = encryptedText.encryptText;
+        bag.json.value = encryptedText.encryptText;
         console.log("bag.json is::",util.inspect(bag.json,{depth:null}));
         return next();
       }
