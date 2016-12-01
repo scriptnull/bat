@@ -33,7 +33,8 @@ describe('Reset in subscription settings page',
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: Get subscriptions, failed with error: %s',
+                    util.format(
+                      '\n- [ ] %s: Get subscriptions, failed with error: %s',
                       testSuiteDesc, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
@@ -58,7 +59,9 @@ describe('Reset in subscription settings page',
                 if (err || !resetSub) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n - [ ] %s resetSubscriptionById, failed with error: %s',
+                    util.format(
+                      '\n - [ ] %s resetSubscriptionById, ' +
+                      'failed with error: %s',
                       testSuiteDesc, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
@@ -80,9 +83,11 @@ describe('Reset in subscription settings page',
           function (done) {
             this.timeout(0);
             if (isTestFailed) {
-              var githubAdapter = new adapter(config.githubToken, config.githubUrl);
+              var githubAdapter =
+                new adapter(config.githubToken, config.githubUrl);
               var title = util.format('Failed test suite %s', testSuite);
-              var body = util.format('Failed test cases are:\n%s',testCaseErrors);
+              var body = util.format(
+                'Failed test cases are:\n%s',testCaseErrors);
               var data = {
                 title: title,
                 body: body
