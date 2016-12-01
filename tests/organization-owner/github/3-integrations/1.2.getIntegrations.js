@@ -35,7 +35,8 @@ describe(testSuite,
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: Get List of AccountIntegartions failed with error: %s',
+                    util.format(
+                      '\n- [ ] %s: Get AccountIntegartions failed with error: %s',
                       testSuite, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
@@ -73,8 +74,9 @@ describe(testSuite,
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: Edit Gitlab Account Intgeration failed with error: %s',
-                      testSuite, err);
+                    util.format(
+                      '\n- [ ] %s: Edit Gitlab AccountIntgeration failed with' +
+                      'error: %s', testSuite, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
                   return done();
@@ -102,8 +104,9 @@ describe(testSuite,
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: Edit AWS Account Intgeration failed with error: %s',
-                      testSuite, err);
+                    util.format(
+                      '\n- [ ] %s: Edit AWS AccountIntgeration failed with' +
+                      'error: %s', testSuite, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
                   return done();
@@ -131,7 +134,8 @@ describe(testSuite,
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: Edit Amazon ECR Account Intgeration failed with error: %s',
+                    util.format(
+                      '\n- [ ] %s: Edit ECR AccountIntgeration failed with error: %s',
                       testSuite, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
@@ -160,7 +164,8 @@ describe(testSuite,
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: Edit ACS Account Intgeration failed with error: %s',
+                    util.format(
+                      '\n- [ ] %s: Edit ACS Intgeration failed with error: %s',
                       testSuite, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
@@ -179,7 +184,8 @@ describe(testSuite,
             this.timeout(0);
             var shippable = new Shippable(config.apiToken);
 
-            var body = _.findWhere(accountIntegrations, {name:"OrgOwner-bitbucket"});
+            var body = _.findWhere(accountIntegrations,
+                         {name:"OrgOwner-bitbucket"});
             __setFormJSONValue(body.formJSONValues, 'url', 'key');
 
             body.isValid = true;
@@ -189,7 +195,8 @@ describe(testSuite,
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: Edit bitbucket Account Intgeration failed with error: %s',
+                    util.format(
+                      '\n- [ ] %s: Edit bitbucket Intgeration failed with error: %s',
                       testSuite, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
@@ -208,7 +215,8 @@ describe(testSuite,
             this.timeout(0);
             var shippable = new Shippable(config.apiToken);
 
-            var body = _.findWhere(accountIntegrations, {name:"OrgOwner-ddc"});
+            var body = _.findWhere(accountIntegrations,
+                         {name:"OrgOwner-ddc"});
             __setFormJSONValue(body.formJSONValues, 'url', 'key');
 
             body.isValid = true;
@@ -218,7 +226,8 @@ describe(testSuite,
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: Edit ddc Account Intgeration failed with error: %s',
+                    util.format(
+                      '\n- [ ] %s: Edit ddc Intgeration failed with error: %s',
                       testSuite, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
@@ -237,7 +246,8 @@ describe(testSuite,
             this.timeout(0);
             var shippable = new Shippable(config.apiToken);
 
-            var body = _.findWhere(accountIntegrations, {name:"OrgOwner-docker"});
+            var body = _.findWhere(accountIntegrations,
+                         {name:"OrgOwner-docker"});
             __setFormJSONValue(body.formJSONValues, 'email', 'test@gmail.com');
 
             body.isValid = true;
@@ -247,7 +257,8 @@ describe(testSuite,
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: Edit docker Account Intgeration failed with error: %s',
+                    util.format(
+                      '\n- [ ] %s: Edit docker Intgeration failed with error: %s',
                       testSuite, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
@@ -266,7 +277,8 @@ describe(testSuite,
             this.timeout(0);
             var shippable = new Shippable(config.apiToken);
 
-            var body = _.findWhere(accountIntegrations, {name:"OrgOwner-Email"});
+            var body = _.findWhere(accountIntegrations,
+                         {name:"OrgOwner-Email"});
             __setFormJSONValue(body.formJSONValues, 'Email address', 'test');
 
             body.isValid = true;
@@ -276,7 +288,8 @@ describe(testSuite,
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: Edit Email Account Intgeration failed with error: %s',
+                    util.format(
+                      '\n- [ ] %s: Edit Email Intgeration failed with error: %s',
                       testSuite, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
@@ -295,7 +308,8 @@ describe(testSuite,
             this.timeout(0);
             var shippable = new Shippable(config.apiToken);
 
-            var body = _.findWhere(accountIntegrations, {name:"OrgOwner-event-trigger"});
+            var body = _.findWhere(accountIntegrations,
+                         {name:"OrgOwner-event-trigger"});
             __setFormJSONValue(body.formJSONValues, 'webhookURL', 'test');
 
             body.isValid = true;
@@ -305,8 +319,9 @@ describe(testSuite,
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: Edit event trigger Account Intgeration failed with error: %s',
-                      testSuite, err);
+                    util.format(
+                      '\n- [ ] %s: Edit event trigger Intgeration failed with'+
+                      'error: %s', testSuite, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
                   return done();
@@ -324,7 +339,8 @@ describe(testSuite,
             this.timeout(0);
             var shippable = new Shippable(config.apiToken);
 
-            var body = _.findWhere(accountIntegrations, {name:"OrgOwner-gcr"});
+            var body = _.findWhere(accountIntegrations,
+                         {name:"OrgOwner-gcr"});
             __setFormJSONValue(body.formJSONValues, 'JSON_key', 'test');
 
             body.isValid = true;
@@ -334,7 +350,8 @@ describe(testSuite,
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: Edit gcr Account Intgeration failed with error: %s',
+                    util.format(
+                      '\n- [ ] %s: Edit gcr Intgeration failed with error: %s',
                       testSuite, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
@@ -353,7 +370,8 @@ describe(testSuite,
             this.timeout(0);
             var shippable = new Shippable(config.apiToken);
 
-            var body = _.findWhere(accountIntegrations, {name:"OrgOwner-gke"});
+            var body = _.findWhere(accountIntegrations,
+                         {name:"OrgOwner-gke"});
             __setFormJSONValue(body.formJSONValues, 'JSON_key', 'test');
 
             body.isValid = true;
@@ -363,7 +381,8 @@ describe(testSuite,
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: Edit gke Account Intgeration failed with error: %s',
+                    util.format(
+                      '\n- [ ] %s: Edit gke Intgeration failed with error: %s',
                       testSuite, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
@@ -382,7 +401,8 @@ describe(testSuite,
             this.timeout(0);
             var shippable = new Shippable(config.apiToken);
 
-            var body = _.findWhere(accountIntegrations, {name:"OrgOwner-hipchat"});
+            var body = _.findWhere(accountIntegrations,
+                         {name:"OrgOwner-hipchat"});
             __setFormJSONValue(body.formJSONValues, 'token', 'test');
 
             body.isValid = true;
@@ -392,7 +412,8 @@ describe(testSuite,
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: Edit hipchat Account Intgeration failed with error: %s',
+                    util.format(
+                      '\n- [ ] %s: Edit hipchat Intgeration failed with error: %s',
                       testSuite, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
@@ -411,7 +432,8 @@ describe(testSuite,
             this.timeout(0);
             var shippable = new Shippable(config.apiToken);
 
-            var body = _.findWhere(accountIntegrations, {name:"OrgOwner-private-docker-registry"});
+            var body = _.findWhere(accountIntegrations,
+                         {name:"OrgOwner-private-docker-registry"});
             __setFormJSONValue(body.formJSONValues, 'url', 'test');
 
             body.isValid = true;
@@ -421,8 +443,9 @@ describe(testSuite,
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: Edit private docker registry Account Intgeration failed with error: %s',
-                      testSuite, err);
+                    util.format(
+                      '\n- [ ] %s: Edit private docker registry Intgeration ' +
+                      'failed with error: %s', testSuite, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
                   return done();
@@ -440,7 +463,8 @@ describe(testSuite,
             this.timeout(0);
             var shippable = new Shippable(config.apiToken);
 
-            var body = _.findWhere(accountIntegrations, {name:"OrgOwner-generic-webhook"});
+            var body = _.findWhere(accountIntegrations,
+                         {name:"OrgOwner-generic-webhook"});
             __setFormJSONValue(body.formJSONValues, 'webhookURL', 'testing');
 
             body.isValid = true;
@@ -450,8 +474,8 @@ describe(testSuite,
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: Edit generic webhook Account Intgeration failed with error: %s',
-                      testSuite, err);
+                    util.format('\n- [ ] %s: Edit generic webhook Intgeration' +
+                      'failed with error: %s', testSuite, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
                   return done();
@@ -469,7 +493,8 @@ describe(testSuite,
             this.timeout(0);
             var shippable = new Shippable(config.apiToken);
 
-            var body = _.findWhere(accountIntegrations, {name:"OrgOwner-slack"});
+            var body = _.findWhere(accountIntegrations,
+                         {name:"OrgOwner-slack"});
             __setFormJSONValue(body.formJSONValues, 'webhookURL', 'test');
 
             body.isValid = true;
@@ -479,7 +504,8 @@ describe(testSuite,
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: Edit slack Account Intgeration failed with error: %s',
+                    util.format(
+                      '\n- [ ] %s: Edit slack Intgeration failed with error: %s',
                       testSuite, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
@@ -498,7 +524,8 @@ describe(testSuite,
             this.timeout(0);
             var shippable = new Shippable(config.apiToken);
 
-            var body = _.findWhere(accountIntegrations, {name:"OrgOwner-AWS_IAM"});
+            var body = _.findWhere(accountIntegrations,
+                         {name:"OrgOwner-AWS_IAM"});
             __setFormJSONValue(body.formJSONValues, 'url', 'test');
 
             body.isValid = true;
@@ -508,7 +535,8 @@ describe(testSuite,
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: Edit AWS_IAM Account Intgeration failed with error: %s',
+                    util.format(
+                      '\n- [ ] %s: Edit AWS_IAM Intgeration failed with error: %s',
                       testSuite, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
@@ -527,7 +555,8 @@ describe(testSuite,
             this.timeout(0);
             var shippable = new Shippable(config.apiToken);
 
-            var body = _.findWhere(accountIntegrations, {name:"OrgOwner-Docker_Cloud"});
+            var body = _.findWhere(accountIntegrations,
+                         {name:"OrgOwner-Docker_Cloud"});
             __setFormJSONValue(body.formJSONValues, 'url', 'test');
 
             body.isValid = true;
@@ -537,7 +566,8 @@ describe(testSuite,
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: Edit Docker_Cloud Account Intgeration failed with error: %s',
+                    util.format(
+                      '\n- [ ] %s: Edit dcl Intgeration failed with error: %s',
                       testSuite, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
@@ -556,7 +586,8 @@ describe(testSuite,
             this.timeout(0);
             var shippable = new Shippable(config.apiToken);
 
-            var body = _.findWhere(accountIntegrations, {name:"OrgOwner-Docker_trusted_registry"});
+            var body = _.findWhere(accountIntegrations,
+                         {name:"OrgOwner-Docker_trusted_registry"});
             __setFormJSONValue(body.formJSONValues, 'url', 'test');
 
             body.isValid = true;
@@ -566,8 +597,8 @@ describe(testSuite,
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: Edit Docker_trusted_registry Account Intgeration failed with error: %s',
-                      testSuite, err);
+                    util.format('\n- [ ] %s: Edit Docker_trusted_registry ' +
+                      'Intgeration failed with error: %s', testSuite, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
                   return done();
@@ -585,7 +616,8 @@ describe(testSuite,
             this.timeout(0);
             var shippable = new Shippable(config.apiToken);
 
-            var body = _.findWhere(accountIntegrations, {name:"OrgOwner-Github-Enterprise"});
+            var body = _.findWhere(accountIntegrations,
+                         {name:"OrgOwner-Github-Enterprise"});
             __setFormJSONValue(body.formJSONValues, 'url', 'testing');
 
             body.isValid = true;
@@ -595,7 +627,8 @@ describe(testSuite,
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: Edit Github-Enterprise Account Intgeration failed with error: %s',
+                    util.format(
+                      '\n- [ ] %s: Edit Ghe Intgeration failed with error: %s',
                       testSuite, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
@@ -614,7 +647,8 @@ describe(testSuite,
             this.timeout(0);
             var shippable = new Shippable(config.apiToken);
 
-            var body = _.findWhere(accountIntegrations, {name:"OrgOwner-Joyent-Triton-Public-Cloud"});
+            var body = _.findWhere(accountIntegrations,
+                         {name:"OrgOwner-Joyent-Triton-Public-Cloud"});
             __setFormJSONValue(body.formJSONValues, 'url', 'testing');
 
             body.isValid = true;
@@ -624,8 +658,8 @@ describe(testSuite,
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: Edit Joyent-Triton-Public-Cloud Account Intgeration failed with error: %s',
-                      testSuite, err);
+                    util.format('\n- [ ] %s: Edit Joyent-Triton-Public-Cloud '+
+                      'Intgeration failed with error: %s', testSuite, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
                   return done();
@@ -643,7 +677,8 @@ describe(testSuite,
             this.timeout(0);
             var shippable = new Shippable(config.apiToken);
 
-            var body = _.findWhere(accountIntegrations, {name:"OrgOwner-PEM-Key"});
+            var body = _.findWhere(accountIntegrations,
+                         {name:"OrgOwner-PEM-Key"});
             __setFormJSONValue(body.formJSONValues, 'key', 'testing');
 
             body.isValid = true;
@@ -653,7 +688,8 @@ describe(testSuite,
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: Edit PEM-Key Account Intgeration failed with error: %s',
+                    util.format(
+                      '\n- [ ] %s: Edit PEM-Key Intgeration failed with error: %s',
                       testSuite, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
@@ -672,7 +708,8 @@ describe(testSuite,
             this.timeout(0);
             var shippable = new Shippable(config.apiToken);
 
-            var body = _.findWhere(accountIntegrations, {name:"OrgOwner-Quay.io"});
+            var body = _.findWhere(accountIntegrations,
+                         {name:"OrgOwner-Quay.io"});
             __setFormJSONValue(body.formJSONValues, 'url', 'testing');
 
             body.isValid = true;
@@ -682,7 +719,8 @@ describe(testSuite,
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: Edit Quay.io Account Intgeration failed with error: %s',
+                    util.format(
+                      '\n- [ ] %s: Edit Quay.io Intgeration failed with error: %s',
                       testSuite, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
@@ -701,7 +739,8 @@ describe(testSuite,
             this.timeout(0);
             var shippable = new Shippable(config.apiToken);
 
-            var body = _.findWhere(accountIntegrations, {name:"OrgOwner-SSH-Key"});
+            var body = _.findWhere(accountIntegrations,
+                         {name:"OrgOwner-SSH-Key"});
             __setFormJSONValue(body.formJSONValues, 'publicKey', 'testing');
 
             body.isValid = true;
@@ -711,7 +750,8 @@ describe(testSuite,
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: Edit SSH-Key Account Intgeration failed with error: %s',
+                    util.format(
+                      '\n- [ ] %s: Edit SSH-Key Intgeration failed with error: %s',
                       testSuite, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
@@ -740,7 +780,8 @@ describe(testSuite,
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: Get list of SubscriptionIntegrations failed with error: %s',
+                    util.format(
+                      '\n- [ ] %s: Get SubIntegrations failed with error: %s',
                       testSuite, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
@@ -777,7 +818,8 @@ describe(testSuite,
                     if (err) {
                       isTestFailed = true;
                       var testCase =
-                        util.format('\n- [ ] %s: Edit subscription Intgeration failed with error: %s',
+                        util.format(
+                          '\n- [ ] %s: Edit subIntgeration failed with error: %s',
                           testSuite, err);
                       testCaseErrors.push(testCase);
                       assert.equal(err, null);
@@ -815,8 +857,8 @@ describe(testSuite,
                     } else {
                       isTestFailed = true;
                       var testCase =
-                        util.format('\n- [ ] %s: delete AccountIntegrations With Dependencies failed',
-                          testSuite, accIntId);
+                        util.format('\n- [ ] %s: delete AccountIntegrations With '+
+                          'Dependencies failed', testSuite, accIntId);
                       testCaseErrors.push(testCase);
                       assert.notEqual(err, null);
                       return nextAccIntId();
@@ -849,7 +891,8 @@ describe(testSuite,
                     if (err && err.status !== 404) {
                       isTestFailed = true;
                       var testCase =
-                        util.format('\n- [ ] %s: delete SubscriptionIntegration for id: %s failed with error: %s',
+                        util.format('\n- [ ] %s: delete SubscriptionIntegration' +
+                          ' for id: %s failed with error: %s',
                           testSuite, accIntId, err);
                       testCaseErrors.push(testCase);
                       assert.equal(err, null);
@@ -885,7 +928,8 @@ describe(testSuite,
                     if (err && err.status !== 404) {
                       isTestFailed = true;
                       var testCase =
-                        util.format('\n- [ ] %s: delete AccountIntegration for id: %s failed with error: %s',
+                        util.format('\n- [ ] %s: delete AccountIntegration' +
+                          ' for id: %s failed with error: %s',
                           testSuite, accIntId, err);
                       testCaseErrors.push(testCase);
                       assert.equal(err, null);
@@ -913,9 +957,11 @@ describe(testSuite,
           function (done) {
             this.timeout(0);
             if (isTestFailed) {
-              var githubAdapter = new adapter(config.githubToken, config.githubUrl);
+              var githubAdapter =
+                new adapter(config.githubToken, config.githubUrl);
               var title = util.format('Failed test suite %s', testSuite);
-              var body = util.format('Failed test cases are:\n%s',testCaseErrors);
+              var body =
+                util.format('Failed test cases are:\n%s',testCaseErrors);
               var data = {
                 title: title,
                 body: body

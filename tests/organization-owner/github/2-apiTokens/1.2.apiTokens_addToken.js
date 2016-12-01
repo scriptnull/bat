@@ -13,6 +13,7 @@ var testSuite = util.format('%s2.accounts_AddToken - %s', testSuiteNum,
 
 var isTestFailed = false;
 var testCaseErrors = [];
+var ownerAccountId = nconf.get("shiptest-github-owner:accountId");
 
 describe('Add Tokens with different name',
   function () {
@@ -23,14 +24,16 @@ describe('Add Tokens with different name',
           function (done) {
             this.timeout(0);
             var shippable = new Shippable(config.apiToken);
-            var name = "Q6sW4LKREx20/Zw0g5Mpr6gJeZWzIsu2f6t3jJ4/sDGVu7PMWqFDv4KAGF97Tc9BE/5/LJ+D5SVSdHdY2oe7cwQrblqWA79riC8yS1c6Le27bGMjoqBSs7Opdd99C+SwdS1G1KDzq39eKXhXyoIM7q";
-            shippable.postAccountTokens(name, nconf.get("shiptest-github-owner:accountId"),
+            var name = "Q6sW4LKREx20/Zw0g5Mpr6gJeZWzIsu2f6t3jJ4/sDGVu7PMWqFD" +
+                         "v4KAGF97Tc9BE/5/LJ+D5SVSdHdY2oe7cwQrblqWA79riC8yS1c" +
+                         "6Le27bGMjoqBSs7Opdd99C+SwdS1G1KDzq39eKXhXyoIM7q";
+            shippable.postAccountTokens(name, ownerAccountId,
               function(err) {
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: Fails to add token with token name with 150 characters: %s',
-                      testSuite, name);
+                    util.format('\n- [ ] %s: Fails to add token with token' +
+                                ' name with 150 characters: %s', testSuite, name);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
                   return done();
@@ -47,19 +50,21 @@ describe('Add Tokens with different name',
           function (done) {
             this.timeout(0);
             var shippable = new Shippable(config.apiToken);
-            var name = "Q6sW4LKREx20/Zw0g5Mpr6gJeZWzIsu2f6t3jJ4/sDGVu7PMWqFDv4KAGF97Tc9BE/5/LJ+D5SVSdHdY2oe7cwQrblqWA79riC8yS1c6Le27bGMjoqBSs7Opdd99C+SwdS1G1KDzq39eKX";
-            shippable.postAccountTokens(name, nconf.get("shiptest-github-owner:accountId"),
+            var name = "Q6sW4LKREx20/Zw0g5Mpr6gJeZWzIsu2f6t3jJ4/sDGVu7PMWqFDv" +
+                         "4KAGF97Tc9BE/5/LJ+D5SVSdHdY2oe7cwQrblqWA79riC8yS1c6" +
+                         "Le27bGMjoqBSs7Opdd99C+SwdS1G1KDzq39eKX";
+            shippable.postAccountTokens(name, ownerAccountId,
               function(err) {
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: Fails to add token name with less than 150 characters %s',
-                      testSuite, name);
+                    util.format('\n- [ ] %s: Fails to add token name with less' +
+                                'than 150 characters %s',testSuite, name);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
                   return done();
                 } else {
-                  logger.debug('Adds token with token name with less than 150 characters');
+                  logger.debug('Adds token with name less than 150 characters');
                   return done();
                 }
               }
@@ -72,13 +77,13 @@ describe('Add Tokens with different name',
             this.timeout(0);
             var shippable = new Shippable(config.apiToken);
             var name = "abcABC";
-            shippable.postAccountTokens(name, nconf.get("shiptest-github-owner:accountId"),
+            shippable.postAccountTokens(name, ownerAccountId,
               function(err) {
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: Fails to add token with token name with a - z; A - Z;: %s',
-                      testSuite, name);
+                    util.format('\n- [ ] %s: Fails to add token with token' +
+                      'name with a - z; A - Z;: %s', testSuite, name);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
                   return done();
@@ -96,12 +101,13 @@ describe('Add Tokens with different name',
             this.timeout(0);
             var shippable = new Shippable(config.apiToken);
             var name = "1234567890";
-            shippable.postAccountTokens(name, nconf.get("shiptest-github-owner:accountId"),
+            shippable.postAccountTokens(name, ownerAccountId,
               function(err) {
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: Fails to add token with token name with numbers: %s',
+                    util.format(
+                      '\n- [ ] %s: Fails to add token name with numbers: %s',
                       testSuite, name);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
@@ -120,18 +126,19 @@ describe('Add Tokens with different name',
             this.timeout(0);
             var shippable = new Shippable(config.apiToken);
             var name = "!@#$%^&()";
-            shippable.postAccountTokens(name, nconf.get("shiptest-github-owner:accountId"),
+            shippable.postAccountTokens(name, ownerAccountId,
               function(err) {
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: Fails to add token with token name with special characters: %s',
+                    util.format(
+                      '\n- [ ] %s: Fails to add token name with special characters: %s',
                       testSuite, name);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
                   return done();
                 } else {
-                  logger.debug('Adds token with token name with special characters');
+                  logger.debug('Adds token name with special characters');
                   return done();
                 }
               }
@@ -144,18 +151,19 @@ describe('Add Tokens with different name',
             this.timeout(0);
             var shippable = new Shippable(config.apiToken);
             var name = "12345678qwertyuio";
-            shippable.postAccountTokens(name, nconf.get("shiptest-github-owner:accountId"),
+            shippable.postAccountTokens(name, ownerAccountId,
               function(err) {
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: Fails to add token with token name with Alphanumeric values: %s',
-                      testSuite, name);
+                    util.format('\n- [ ] %s: Fails to add token name with' +
+                      'Alphanumeric values: %s', testSuite, name);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
                   return done();
                 } else {
-                  logger.debug('Adds token with token name with Alphanumeric values');
+                  logger.debug(
+                    'Adds token with token name with Alphanumeric values');
                   return done();
                 }
               }
@@ -168,12 +176,13 @@ describe('Add Tokens with different name',
             this.timeout(0);
             var shippable = new Shippable(config.apiToken);
             var name = "  aa    bb  ccc";
-            shippable.postAccountTokens(name, nconf.get("shiptest-github-owner:accountId"),
+            shippable.postAccountTokens(name, ownerAccountId,
               function(err) {
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: Fails to add token with token name with blank spaces: %s',
+                    util.format(
+                      '\n- [ ] %s: Fails to add token name with blank spaces: %s',
                       testSuite, name);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
@@ -192,18 +201,20 @@ describe('Add Tokens with different name',
             this.timeout(0);
             var shippable = new Shippable(config.apiToken);
             var name = "@#test&*(123";
-            shippable.postAccountTokens(name, nconf.get("shiptest-github-owner:accountId"),
+            shippable.postAccountTokens(name, ownerAccountId,
               function(err) {
                 if (err) {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: Fails to add token with token name with special characters,numbers,alphabets: %s',
+                    util.format('\n- [ ] %s: Fails to add token name with' +
+                      'special characters,numbers,alphabets: %s',
                       testSuite, name);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
                   return done();
                 } else {
-                  logger.debug('Adds token with token name with special characters,numbers,alphabets');
+                  logger.debug(
+                    'Adds token name with special characters,numbers,alphabets');
                   return done();
                 }
               }
@@ -219,16 +230,20 @@ describe('Add Tokens with different name',
           function (done) {
             this.timeout(0);
             var shippable = new Shippable(config.apiToken);
-            var name = "Q6sW4LKREx20/Zw0g5Mpr6gJeZWzIsu2f6t3jJ4/sDGVu7PMWqFDv4KAGF97Tc9BE/5/LJ+D5SVSdHdY2oe7cwQrblqWA79riC8yS1c6Le27bGMjoqBSs7Opdd99C+SwdS1G1KDzq39eKXhXyoIM7q123456";
-            shippable.postAccountTokens(name, nconf.get("shiptest-github-owner:accountId"),
+            var name = "Q6sW4LKREx20/Zw0g5Mpr6gJeZWzIsu2f6t3jJ4/sDGVu7PMWqFD" +
+                       "v4KAGF97Tc9BE/5/LJ+D5SVSdHdY2oe7cwQrblqWA79riC8yS1c6L" +
+                       "e27bGMjoqBSs7Opdd99C+SwdS1G1KDzq39eKXhXyoIM7q123456";
+            shippable.postAccountTokens(name, ownerAccountId,
               function(err) {
                 if (err) {
-                  logger.debug('Fails to add token with token name with more than 150 characters');
+                  logger.debug(
+                    'Fails to add token name with more than 150 characters');
                   return done();
                 } else {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: Adds token with token name with more than 150 characters: %s',
+                    util.format('\n- [ ] %s: Adds token with token name '+
+                      'with more than 150 characters: %s',
                       testSuite, name);
                   testCaseErrors.push(testCase);
                   assert.notEqual(err, null);
@@ -243,15 +258,17 @@ describe('Add Tokens with different name',
             this.timeout(0);
             var shippable = new Shippable(config.apiToken);
             var name = "abcABC";
-            shippable.postAccountTokens(name, nconf.get("shiptest-github-owner:accountId"),
+            shippable.postAccountTokens(name, ownerAccountId,
               function(err) {
                 if (err) {
-                  logger.debug('Fails to add token with token name already exists');
+                  logger.debug(
+                    'Fails to add token with token name already exists');
                   return done();
                 } else {
                   isTestFailed = true;
                   var testCase =
-                    util.format('\n- [ ] %s: Adds token with token name already exists: %s',
+                    util.format(
+                      '\n- [ ] %s: Adds token with token name already exists: %s',
                       testSuite, name);
                   testCaseErrors.push(testCase);
                   assert.notEqual(err, null);
@@ -270,9 +287,11 @@ describe('Add Tokens with different name',
           function (done) {
             this.timeout(0);
             if (isTestFailed) {
-              var githubAdapter = new adapter(config.githubToken, config.githubUrl);
+              var githubAdapter =
+                new adapter(config.githubToken, config.githubUrl);
               var title = util.format('Failed test suite %s', testSuite);
-              var body = util.format('Failed test cases are:\n%s',testCaseErrors);
+              var body =
+                util.format('Failed test cases are:\n%s',testCaseErrors);
               var data = {
                 title: title,
                 body: body
