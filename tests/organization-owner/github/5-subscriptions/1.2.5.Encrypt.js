@@ -79,6 +79,227 @@ describe(testSuite,
             );
           }
         );
+
+        it('Enter encrypt value with numbers and encrypt',
+          function (done) {
+            this.timeout(0);
+
+            var bag = {
+              body: {
+                clearText : '123456789101123467890726467345563'
+              },
+              json : {
+                value : ''
+              },
+              testCase : 'encrypt value with numbers',
+              decryptedText: ''
+            };
+
+            async.series([
+                _encryptText.bind(null, bag),
+                _decryptText.bind(null, bag)
+              ],
+              function (err) {
+                if (err)
+                  logger.error('Failed', err);
+                else
+                  logger.verbose('Successful');
+
+                return done();
+              }
+            );
+          }
+        );
+
+        it('Enter encrypt value with alphanumeric and encrypt',
+          function (done) {
+            this.timeout(0);
+
+            var bag = {
+              body: {
+                clearText : 'abcdefghiklmnopqr1234767dhjf789'
+              },
+              json : {
+                value : ''
+              },
+              testCase : 'encrypt value with alphanumeric',
+              decryptedText: ''
+            };
+
+            async.series([
+                _encryptText.bind(null, bag),
+                _decryptText.bind(null, bag)
+              ],
+              function (err) {
+                if (err)
+                  logger.error('Failed', err);
+                else
+                  logger.verbose('Successful');
+
+                return done();
+              }
+            );
+          }
+        );
+
+        it('Enter encrypt with special characters and encrypt',
+          function (done) {
+            this.timeout(0);
+
+            var bag = {
+              body: {
+                clearText : '!@#$%^&()'
+              },
+              json : {
+                value : ''
+              },
+              testCase : 'encrypt value with special characters',
+              decryptedText: ''
+            };
+
+            async.series([
+                _encryptText.bind(null, bag),
+                _decryptText.bind(null, bag)
+              ],
+              function (err) {
+                if (err)
+                  logger.error('Failed', err);
+                else
+                  logger.verbose('Successful');
+
+                return done();
+              }
+            );
+          }
+        );
+
+        it('Enter encrypt value with blank spaces and encrypt',
+          function (done) {
+            this.timeout(0);
+
+            var bag = {
+              body: {
+                clearText : ' aa   bb  cc'
+              },
+              json : {
+                value : ''
+              },
+              testCase : 'encrypt value with blank spaces',
+              decryptedText: ''
+            };
+
+            async.series([
+                _encryptText.bind(null, bag),
+                _decryptText.bind(null, bag)
+              ],
+              function (err) {
+                if (err)
+                  logger.error('Failed', err);
+                else
+                  logger.verbose('Successful');
+
+                return done();
+              }
+            );
+          }
+        );
+
+        it('Encrypt value with special characters,numbers,alphabets and encrypt',
+          function (done) {
+            this.timeout(0);
+
+            var bag = {
+              body: {
+                clearText : '/@#test&*(123\|'
+              },
+              json : {
+                value : ''
+              },
+              testCase :
+                'encrypt value with special characters,numbers,alphabets',
+              decryptedText: ''
+            };
+
+            async.series([
+                _encryptText.bind(null, bag),
+                _decryptText.bind(null, bag)
+              ],
+              function (err) {
+                if (err)
+                  logger.error('Failed', err);
+                else
+                  logger.verbose('Successful');
+
+                return done();
+              }
+            );
+          }
+        );
+
+        it('Encrypt value with foo: fubu',
+          function (done) {
+            this.timeout(0);
+
+            var bag = {
+              body: {
+                clearText : 'foo:fubu'
+              },
+              json : {
+                value : ''
+              },
+              testCase :
+                'encrypt value with foo: fubu',
+              decryptedText: ''
+            };
+
+            async.series([
+                _encryptText.bind(null, bag),
+                _decryptText.bind(null, bag)
+              ],
+              function (err) {
+                if (err)
+                  logger.error('Failed', err);
+                else
+                  logger.verbose('Successful');
+
+                return done();
+              }
+            );
+          }
+        );
+
+        it('Encrypt value with foo= fubu',
+          function (done) {
+            this.timeout(0);
+
+            var bag = {
+              body: {
+                clearText : 'foo=fubu'
+              },
+              json : {
+                value : ''
+              },
+              testCase :
+                'encrypt value with foo= fubu',
+              decryptedText: ''
+            };
+
+            async.series([
+                _encryptText.bind(null, bag),
+                _decryptText.bind(null, bag)
+              ],
+              function (err) {
+                if (err)
+                  logger.error('Failed', err);
+                else
+                  logger.verbose('Successful');
+
+                return done();
+              }
+            );
+          }
+        );
+
       }
     );
 
