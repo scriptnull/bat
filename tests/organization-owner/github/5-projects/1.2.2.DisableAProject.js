@@ -32,7 +32,6 @@ describe('Disable Project',
             nconf.load();
             var projectId = nconf.get("shiptest-GITHUB_ORG_1:projectId");
             var shippable = new Shippable(config.apiToken);
-            console.log("projectId is",projectId," and object is ", nconf.get("shiptest-GITHUB_ORG_1"));
             var body = {
               projectId: projectId
             };
