@@ -31,7 +31,7 @@ describe('Enable Project',
             var shippable = new Shippable(config.apiToken);
 
             var body = {
-              projectId: projectId;
+              projectId: projectId
             };
 
             shippable.deleteProjectById(projectId, body,
