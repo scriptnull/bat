@@ -29,7 +29,7 @@ describe('Disable Project',
           function (done) {
             this.timeout(0);
             var shippable = new Shippable(config.apiToken);
-
+            console.log("projectId is",projectId);
             var body = {
               projectId: projectId
             };
