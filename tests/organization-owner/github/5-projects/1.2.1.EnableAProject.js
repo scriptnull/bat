@@ -93,7 +93,7 @@ describe('Enable Project',
               projectId: projectId,
               type: 'ci'
             };
-
+            console.log("projectId nconf is::",nconf.get("shiptest-GITHUB_ORG_1:projectId"));
             shippable.enableProjectById(projectId, body,
               function (err) {
                 if (err) {
