@@ -114,35 +114,6 @@ describe('Enable Project',
           }
         );
 
-        it('Disable Project',
-          function (done) {
-            this.timeout(0);
-            var shippable = new Shippable(config.apiToken);
-
-            var body = {
-              projectId: projectId
-            };
-
-            shippable.deleteProjectById(projectId, body,
-              function (err) {
-                if (err) {
-                  isTestFailed = true;
-                  var testCase =
-                    util.format(
-                      '\n - [ ] %s Disable project id: %s failed with error: %s' +
-                      testSuiteDesc, projectId, err);
-                  testCaseErrors.push(testCase);
-                  assert.equal(err, null);
-                  return done();
-                } else {
-                  console.log("Disabled");
-                  return done();
-                }
-              }
-            );
-          }
-        );
-
       }
     );
 
