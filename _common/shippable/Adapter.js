@@ -485,7 +485,7 @@ ShippableAdapter.prototype.syncProjectById =
 ShippableAdapter.prototype.forceSyncAccountById =
   function (accountId, callback) {
     this.get(
-      util.format('/accounts/%s/sync?force=true', accountId),
+      util.format('/accounts/%s?forceSync=true', accountId),
       callback
     );
   };
