@@ -18,7 +18,7 @@ var testCaseErrors = [];
 var subscriptionId = '';
 var projectId = nconf.get("shiptest-GITHUB_ORG_1:projectId");
 
-describe('Enable Project',
+describe('Disable Project',
   function() {
 
     describe(testSuite,
