@@ -23,34 +23,6 @@ describe('Reset in project settings page',
 
     describe(testSuite,
       function () {
-
-      /*  it('Organization-Owner-github-getSubscription',
-          function (done) {
-            this.timeout(0);
-         var shippable = new Shippable(config.apiToken);
-            var query = util.format('orgNames=%s',nconf.get("GITHUB_ORG_1"));
-            shippable.getSubscriptions(query,
-              function(err, subscriptions) {
-                if (err) {
-                  isTestFailed = true;
-                  var testCase =
-                    util.format(
-                      '\n- [ ] %s: Get subscriptions, failed with error: %s',
-                      testSuiteDesc, err);
-                  testCaseErrors.push(testCase);
-                  assert.equal(err, null);
-                  return done();
-                } else {
-                  if (subscriptions.status<200 || subscriptions.status>=299)
-                    logger.warn("status is::",subscriptions.status);
-                  subscriptionId = _.first(subscriptions).id;
-                  return done();
-                }
-              }
-            );
-          }
-        );*/
-
         it('Reset project from project settings pages',
           function (done) {
             this.timeout(0);
