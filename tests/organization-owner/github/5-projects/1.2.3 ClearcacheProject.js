@@ -15,7 +15,6 @@ var testSuite = util.format('%s2 - %s', testSuiteNum,
 
 var isTestFailed = false;
 var testCaseErrors = [];
-var subscriptionId = '';
 var projectId = '';
 
 describe('Clear Cache',
@@ -26,17 +25,17 @@ describe('Clear Cache',
        it('Clear Cache',
          function (done) {
            this.timeout(0);
-           var pathToJson = process.cwd() + '/tests/config.json';
+           var pathToJson = process.cwd() + '/config.json';
            nconf.argv().env().file({file: pathToJson});
            nconf.load();
            projectId = nconf.get("shiptest-GITHUB_ORG_1:projectId");
            var shippable = new Shippable(config.apiToken);
            var update = {
-  		     propertyBag: {
-  			   cacheTag: 0,
-  			   cacheResetDate: Date.now()
-  		}
-      }; 
+             propertyBag: {
+               cacheTag: 0,
+               cacheResetDate: Date.now()
+             }
+           };
             shippable.putProjectById(projectId, update,
               function (err) {
                 if (err) {
