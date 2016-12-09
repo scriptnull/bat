@@ -9,8 +9,10 @@ var testSuiteNum = '1.';
 var testSuiteDesc = 'Pause a Project';
 var adapter = require('../../../../_common/shippable/github/Adapter.js');
 var Shippable = require('../../../../_common/shippable/Adapter.js');
+
 var testSuite = util.format('%s2 - %s', testSuiteNum,
   testSuiteDesc);
+
 var isTestFailed = false;
 var testCaseErrors = [];
 var projectId = '';
@@ -20,40 +22,42 @@ describe('Pause Project',
 
     describe(testSuite,
       function () {
-        it('Pause A Project',
+
+
+        it('Pause Project',
           function (done) {
             this.timeout(0);
             var pathToJson = process.cwd() + '/config.json';
             nconf.argv().env().file({file: pathToJson});
             nconf.load();
+            projectId = nconf.get("shiptest-GITHUB_ORG_1:projectId");
             var shippable = new Shippable(config.apiToken);
             var update = {
               propertyBag: {
                 isPaused: true
               }
             };
-            projectId = nconf.get("shiptest-GITHUB_ORG_1:projectId");
             shippable.putProjectById(projectId, update,
               function (err) {
                 if (err) {
                   isTestFailed = true;
-                    var testCase =
-                      util.format(
+                  var testCase =
+                    util.format(
                       '\n - [ ] %s Pause project id: %s failed with error: %s' +
-                        testSuiteDesc, projectId, err);
-                    testCaseErrors.push(testCase);
+                      testSuiteDesc, projectId, err);
+                  testCaseErrors.push(testCase);
                   assert.equal(err, null);
-                return done();
-              } else {
-              console.log("Project is paused");
-              return done();
-               }
-             }
+                  return done();
+                } else {
+                  logger.debug("Project is paused");
+                  return done();
+                }
+              }
             );
           }
         );
 
-        it('Resume A Project',
+        it('Resume Project',
           function (done) {
             this.timeout(0);
             var shippable = new Shippable(config.apiToken);
@@ -66,18 +70,18 @@ describe('Pause Project',
               function (err) {
                 if (err) {
                   isTestFailed = true;
-                    var testCase =
-                      util.format(
+                  var testCase =
+                    util.format(
                       '\n - [ ] %s Resume project id: %s failed with error: %s' +
-                        testSuiteDesc, projectId, err);
-                    testCaseErrors.push(testCase);
+                      testSuiteDesc, projectId, err);
+                  testCaseErrors.push(testCase);
                   assert.equal(err, null);
-                return done();
-              } else {
-              console.log("Project is resumed");
-              return done();
-               }
-             }
+                  return done();
+                } else {
+                  logger.debug("Project is resumed");
+                  return done();
+                }
+              }
             );
           }
         );
