@@ -48,7 +48,7 @@ describe('Clear Cache',
                   assert.equal(err, null);
                   return done();
                 } else {
-                  console.log("Cache cleared");
+                  logger.debug("Cache cleared");
                   return done();
                 }
               }
