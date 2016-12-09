@@ -658,6 +658,16 @@ ShippableAdapter.prototype.postProjectAccounts =
     );
   };
 
+
+ShippableAdapter.prototype.resetProjectById =
+  function (projectId, callback) {
+    this.post(
+      util.format('/projects/%s/reset', projectId),
+      {},
+      callback
+    );
+  };
+
 ShippableAdapter.prototype.postResource =
   function (json, callback) {
     this.post(
