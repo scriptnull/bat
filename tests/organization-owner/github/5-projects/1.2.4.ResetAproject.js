@@ -26,10 +26,7 @@ describe('Reset in project settings page',
           function (done) {
             this.timeout(0);
             var pathToJson = process.cwd() + '/config.json';
-            nconf.argv().env().file({
-                file: pathToJson, format: nconf.formats.json
-              }
-            );
+            nconf.argv().env().file({file: pathToJson});
             nconf.load();
             var shippable = new Shippable(config.apiToken);
 
