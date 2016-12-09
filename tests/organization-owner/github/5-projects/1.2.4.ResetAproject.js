@@ -15,7 +15,6 @@ var testSuite = util.format('%s2 - %s', testSuiteNum,
 
 var isTestFailed = false;
 var testCaseErrors = [];
-var subscriptionId = '';
 var projectId= '';
 
 describe('Reset in project settings page',
@@ -26,7 +25,7 @@ describe('Reset in project settings page',
         it('Reset project from project settings pages',
           function (done) {
             this.timeout(0);
-            var pathToJson = process.cwd() + '/tests/config.json';
+            var pathToJson = process.cwd() + '/config.json';
             nconf.argv().env().file({
                 file: pathToJson, format: nconf.formats.json
               }
