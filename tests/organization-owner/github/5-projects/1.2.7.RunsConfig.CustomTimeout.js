@@ -83,67 +83,6 @@ describe('Custom Timeout',
           }
         );
 
-        /*it('Custom Timeout for invalid value ee',
-          function (done) {
-            this.timeout(0);
-            var shippable = new Shippable(config.apiToken);
-            var update = {
-              propertyBag: {
-                timeoutMS: 'ee'
-              }
-            };
-            shippable.putProjectById(projectId, update,
-              function (err) {
-                if (err) {
-                  logger.debug('Failed to update Custom Timeout with ee value');
-                  return done();
-                } else {
-                  isTestFailed = true;
-                  var testCase =
-                    util.format(
-                      '\n - [ ] %s Custom Timeout for valid value ee' +
-                      'projectId: %s failed with error: %s' +
-                      testSuiteDesc, projectId, err);
-                  testCaseErrors.push(testCase);
-                  assert.notEqual(err, null);
-                  return done();
-                }
-              }
-            );
-          }
-        );
-
-        it('Custom Timeout for invalid value 0',
-          function (done) {
-            this.timeout(0);
-            var shippable = new Shippable(config.apiToken);
-            var update = {
-              propertyBag: {
-                timeoutMS: 0
-              }
-            };
-            shippable.putProjectById(projectId, update,
-              function (err) {
-                if (err) {
-                  logger.debug('Failed to update Custom Timeout' +
-                    ' with 0 ms value');
-                  return done();
-                } else {
-                  isTestFailed = true;
-                  var testCase =
-                    util.format(
-                      '\n - [ ] %s Custom Timeout for valid value 0 ms' +
-                      'projectId: %s failed with error: %s' +
-                      testSuiteDesc, projectId, err);
-                  testCaseErrors.push(testCase);
-                  assert.notEqual(err, null);
-                  return done();
-                }
-              }
-            );
-          }
-        );*/
-
         it('Custom Timeout for invalid value 10000000 ms',
           function (done) {
             var shippable = new Shippable(config.apiToken);
