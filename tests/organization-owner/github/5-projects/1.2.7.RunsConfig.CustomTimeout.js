@@ -83,7 +83,7 @@ describe('Custom Timeout',
           }
         );
 
-        it('Custom Timeout for invalid value ee',
+        /*it('Custom Timeout for invalid value ee',
           function (done) {
             this.timeout(0);
             var shippable = new Shippable(config.apiToken);
@@ -142,7 +142,7 @@ describe('Custom Timeout',
               }
             );
           }
-        );
+        );*/
 
         it('Custom Timeout for invalid value 10000000 ms',
           function (done) {
