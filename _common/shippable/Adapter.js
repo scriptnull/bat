@@ -450,6 +450,15 @@ ShippableAdapter.prototype.decryptBySubscriptionId =
     );
   };
 
+ShippableAdapter.prototype.decryptByProjectId =
+  function (projectId, json, callback) {
+    this.post(
+      util.format('/projects/%s/decrypt', projectId),
+      json,
+      callback
+    );
+  };
+
 // jobDependencies
 ShippableAdapter.prototype.getJobDependencies =
   function (query, callback) {
