@@ -22,20 +22,20 @@ describe('Clear Cache',
     describe(testSuite,
       function () {
 
-       it('Clear Cache',
-         function (done) {
-           this.timeout(0);
-           var pathToJson = process.cwd() + '/config.json';
-           nconf.argv().env().file({file: pathToJson});
-           nconf.load();
-           projectId = nconf.get("shiptest-GITHUB_ORG_1:projectId");
-           var shippable = new Shippable(config.apiToken);
-           var update = {
-             propertyBag: {
-               cacheTag: 0,
-               cacheResetDate: Date.now()
-             }
-           };
+        it('Clear Cache',
+          function (done) {
+            this.timeout(0);
+            var pathToJson = process.cwd() + '/config.json';
+            nconf.argv().env().file({file: pathToJson});
+            nconf.load();
+            projectId = nconf.get("shiptest-GITHUB_ORG_1:projectId");
+            var shippable = new Shippable(config.apiToken);
+            var update = {
+              propertyBag: {
+                cacheTag: 0,
+                cacheResetDate: Date.now()
+              }
+            };
             shippable.putProjectById(projectId, update,
               function (err) {
                 if (err) {
@@ -89,7 +89,6 @@ describe('Clear Cache',
 
       }
     );
-    
   }
 );
 
