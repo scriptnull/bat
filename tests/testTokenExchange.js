@@ -50,7 +50,7 @@ describe('Get shippable token',
             } else {
               bag.body = body;
               token.apiToken = body.apiToken;
-              console.log("apiToken is::",token.apiToken);
+              console.log("body is::",body);
               return nextToken();
             }
           });
