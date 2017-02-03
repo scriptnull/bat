@@ -50,6 +50,7 @@ describe('Get shippable token',
             } else {
               bag.body = body;
               token.apiToken = body.apiToken;
+              console.log("apiToken is::",token.apiToken);
               return nextToken();
             }
           });
@@ -64,6 +65,7 @@ describe('Get shippable token',
 
     it('Should save tokens in config file',
       function (done) {
+        console.log("tokens.owner.apiToken is::",tokens.owner.apiToken);
         nconf.set('shiptest-github-owner:apiToken',tokens.owner.apiToken);
         nconf.set('shiptest-github-member:apiToken',tokens.member.apiToken);
         nconf.save(function (err) {
