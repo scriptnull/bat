@@ -88,10 +88,10 @@ describe('Add Integrations',
             var token = nconf.get("GITLAB_ACCESS_TOKEN");
             var url = "https://gitlab.com/api/v3";
             var body = {
-              "masterDisplayName": "GitLab",
-              "masterIntegrationId": "5728e13b3d93990c000fd8e4",
-              "masterName": "gitlab",
-              "masterType": "scm",
+              "masterDisplayName": "GitLab Credentials",
+              "masterIntegrationId": "574ee696d49b091400b71112",
+              "masterName": "gitlabCreds",
+              "masterType": "generic",
               "name": name,
               "formJSONValues": [
                 {
