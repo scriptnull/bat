@@ -65,7 +65,7 @@ describe(testSuite,
             var shippable = new Shippable(config.apiToken);
 
             var body = _.findWhere(accountIntegrations, {name:"OrgOwner-gitlab"});
-            __setFormJSONValue(body.formJSONValues, 'token', 'token');
+            __setFormJSONValue(body.formJSONValues, 'password', 'token');
 
             body.isValid = true;
 

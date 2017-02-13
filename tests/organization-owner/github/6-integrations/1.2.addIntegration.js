@@ -95,13 +95,17 @@ describe('Add Integrations',
               "name": name,
               "formJSONValues": [
                 {
-                  "label": "token",
+                  "label": "password",
                   "value": token
                 },
                 {
                   "label": "url",
                   "value": url
-                }
+                },
+                {
+                  "label": "username",
+                  "value": name
+                },
               ]
             };
             shippable.postAccountIntegration(body,
