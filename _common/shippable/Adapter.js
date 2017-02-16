@@ -52,6 +52,14 @@ function ShippableAdapter(token) {
 
  */
 
+ ShippableAdapter.prototype.cancelRunById =
+   function (runId, callback) {
+     this.get(
+       util.format('/runs/%s/cancel', runId),
+       callback
+     );
+   };
+
 ShippableAdapter.prototype.getAccountById =
   function (id, callback) {
     this.get(
@@ -122,6 +130,14 @@ ShippableAdapter.prototype.postAccountCardWithCardNonce =
     this.post(
       util.format('/accountCards'),
       json,
+      callback
+    );
+  };
+
+ShippableAdapter.prototype.getBranchStatusByProjectId =
+  function (projectId, query, callback) {
+    this.get(
+      util.format('/projects/%s/branchRunStatus?%s', projectId, query),
       callback
     );
   };
