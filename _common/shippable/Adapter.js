@@ -56,6 +56,7 @@ function ShippableAdapter(token) {
    function (runId, callback) {
      this.post(
        util.format('/runs/%s/cancel', runId),
+       {},
        callback
      );
    };
