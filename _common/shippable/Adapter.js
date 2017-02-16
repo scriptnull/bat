@@ -54,7 +54,7 @@ function ShippableAdapter(token) {
 
  ShippableAdapter.prototype.cancelRunById =
    function (runId, callback) {
-     this.get(
+     this.post(
        util.format('/runs/%s/cancel', runId),
        callback
      );
