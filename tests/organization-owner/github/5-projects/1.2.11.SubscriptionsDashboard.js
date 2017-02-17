@@ -16,6 +16,8 @@ var testSuite = util.format('%s2 - %s', testSuiteNum,
 var isTestFailed = false;
 var testCaseErrors = [];
 var subscriptionId = '';
+var run = {};
+var runId;
 
 describe('Subscriptions Dashboard',
   function () {
@@ -41,7 +43,6 @@ describe('Subscriptions Dashboard',
                   assert.equal(err, null);
                   return done();
                 } else {
-                  var run = {};
                   run = _.first(runs);
                   runId = run.id;
                   console.log('Fetched Run Status By SubscriptionId: '+ subscriptionId);
@@ -130,11 +131,12 @@ describe('Subscriptions Dashboard',
           }
         );
 
-        it('Get runById',
+        it('Get runs',
           function (done) {
             this.timeout(0);
             var shippable = new Shippable(config.apiToken);
-            shippable.getRunById(runId,
+            var query = util.format('runIds=%s',runId)
+            shippable.getRuns(query,
               function (err, res) {
                 if (err) {
                   isTestFailed = true;
