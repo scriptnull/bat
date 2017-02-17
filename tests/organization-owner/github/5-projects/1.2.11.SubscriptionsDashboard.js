@@ -18,6 +18,7 @@ var testCaseErrors = [];
 var subscriptionId = '';
 var run = {};
 var runId;
+var projects = {};
 
 describe('Subscriptions Dashboard',
   function () {
@@ -25,11 +26,37 @@ describe('Subscriptions Dashboard',
     describe(testSuite,
       function () {
 
+        it('Get Projects',
+          function (done) {
+            this.timeout(0);
+            var shippable = new Shippable(config.apiToken);
+            subscriptionId = nconf.get('shiptest-GITHUB_ORG_1:subscriptionId');
+            var query = 'subscriptionIds=' + subscriptionId;
+            shippable.getProjects(query,
+              function (err, projects) {
+                if (err) {
+                  isTestFailed = true;
+                  var testCase =
+                    util.format(
+                      '\n - [ ] %s get projects failed with error: %s for subscriptionId: %s' +
+                      testSuiteDesc, err, subscriptionId);
+                  testCaseErrors.push(testCase);
+                  assert.equal(err, null);
+                  return done();
+                } else {
+                  projects = projects;
+                  console.log('Fetched projects By SubscriptionId: '+ subscriptionId);
+                  return done();
+                }
+              }
+            );
+          }
+        );
+
         it('Get Run Status By SubscriptionId',
           function (done) {
             this.timeout(0);
             var shippable = new Shippable(config.apiToken);
-            subscriptionId = nconf.get("shiptest-GITHUB_ORG_1:subscriptionId");
             var query = 'type=ci&isGitTag=false';
             shippable.getRunStatusBySubscriptionId(subscriptionId, query,
               function (err, runs) {
@@ -37,7 +64,7 @@ describe('Subscriptions Dashboard',
                   isTestFailed = true;
                   var testCase =
                     util.format(
-                      '\n - [ ] %s get runs failed with error: %s for subscriptionId: %s' +
+                      '\n - [ ] %s get projects failed with error: %s for subscriptionId: %s' +
                       testSuiteDesc, err, subscriptionId);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
@@ -45,7 +72,7 @@ describe('Subscriptions Dashboard',
                 } else {
                   run = _.first(runs);
                   runId = run.id;
-                  console.log('Fetched Run Status By SubscriptionId: '+ subscriptionId);
+                  console.log('Fetched projects By SubscriptionId: '+ subscriptionId);
                   return done();
                 }
               }
@@ -57,7 +84,7 @@ describe('Subscriptions Dashboard',
           function (done) {
             this.timeout(0);
             var shippable = new Shippable(config.apiToken);
-            projectId = run.projectId;
+            var projectId = run.projectId;
             var payload = {
               projectId: projectId,
               branchName: run.branchName,
@@ -85,8 +112,9 @@ describe('Subscriptions Dashboard',
 
         it('Get inflight runs',
           function (done) {
-            var query = util.format('projectIds=%s&status=incomplete',
-              projectId);
+            var shippable = new Shippable(config.apiToken);
+            var query = util.format('type=ci&status=incomplete&subscriptionIds=',
+              subscriptionId);
             shippable.getRuns(query,
               function (err) {
                 if (err) {
@@ -94,8 +122,8 @@ describe('Subscriptions Dashboard',
                   var testCase =
                     util.format(
                       '\n - [ ] %s Getting inflight runs failed for ' +
-                      'projectId: %s failed with error: %s', testSuiteDesc,
-                      projectId, err);
+                      'subscriptionId: %s failed with error: %s', testSuiteDesc,
+                      subscriptionId, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
                   return done();
@@ -108,9 +136,70 @@ describe('Subscriptions Dashboard',
           }
         );
 
+        it('wireDeleteRunGetTop',
+          function (done) {
+            var shippable = new Shippable(config.apiToken);
+            var project = _.findWhere(projects, {id: run.projectId});
+            if (project.propertyBag && project.propertyBag.dashboardBranchSettings) {
+              var dashSettings = project.propertyBag.dashboardBranchSettings;
+              var query =util.format('&status=complete&' +
+                'limit=1&projectIds=%s&branch=%s', project.id,
+                  dashSettings.branchFilter.join(','));
+              shippable.getRuns(query,
+                function (err) {
+                  if (err) {
+                    isTestFailed = true;
+                    var testCase =
+                      util.format(
+                        '\n - [ ] %s wireDeleteRunGetTop failed for ' +
+                        'projectId: %s failed with error: %s', testSuiteDesc,
+                        project.id, err);
+                    testCaseErrors.push(testCase);
+                    assert.equal(err, null);
+                    return done();
+                  } else {
+                    console.log('wireDeleteRunGetTop successfull');
+                    return done();
+                  }
+                }
+              );
+            }
+          }
+        );
+
+        it('Put buildById',
+          function (done) {
+            if (!run.isRun) return done();
+            if (!runId) return done();
+            var shippable = new Shippable(config.apiToken);
+            var payload = {
+              statusCode: 4006
+            };
+            shippable.putBuildById(runId, payload,
+              function (err) {
+                if (err) {
+                  isTestFailed = true;
+                  var testCase =
+                    util.format(
+                      '\n - [ ] %s Cancelling run runId: %s failed with ' +
+                      'error: %s', testSuiteDesc, runId, err);
+                  testCaseErrors.push(testCase);
+                  assert.equal(err, null);
+                  return done();
+                } else {
+                  console.log('Successfully put buildById');
+                  return done();
+                }
+              }
+            );
+          }
+        );
+
         it('Cancel run',
           function (done) {
+            if (run.isRun) return done();
             if (!runId) return done();
+            var shippable = new Shippable(config.apiToken);
             shippable.cancelRunById(runId,
               function (err) {
                 if (err) {
@@ -131,11 +220,11 @@ describe('Subscriptions Dashboard',
           }
         );
 
-        it('Get runs',
+        it('Get runById',
           function (done) {
             this.timeout(0);
             var shippable = new Shippable(config.apiToken);
-            var query = util.format('runIds=%s',runId)
+            var query = util.format('runIds=%s',runId);
             shippable.getRuns(query,
               function (err, res) {
                 if (err) {
@@ -150,6 +239,33 @@ describe('Subscriptions Dashboard',
                 } else {
                   runId = res.id;
                   console.log('Fetched run by id for runId: runId');
+                }
+              }
+            );
+          }
+        );
+
+        it('Get Run Status By SubId',
+          function (done) {
+            this.timeout(0);
+            var shippable = new Shippable(config.apiToken);
+            var query = 'type=ci&isGitTag=false&status=complete';
+            shippable.getRunStatusBySubscriptionId(subscriptionId, query,
+              function (err, runs) {
+                if (err) {
+                  isTestFailed = true;
+                  var testCase =
+                    util.format(
+                      '\n - [ ] %s get runs status by subId failed with error: %s for subscriptionId: %s' +
+                      testSuiteDesc, err, subscriptionId);
+                  testCaseErrors.push(testCase);
+                  assert.equal(err, null);
+                  return done();
+                } else {
+                  run = _.first(runs);
+                  runId = run.id;
+                  console.log('Fetched Run Status By SubId: '+ subscriptionId);
+                  return done();
                 }
               }
             );
