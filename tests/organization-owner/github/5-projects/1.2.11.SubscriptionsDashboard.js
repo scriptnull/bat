@@ -169,7 +169,7 @@ describe('Subscriptions Dashboard',
 
         it('Put buildById',
           function (done) {
-            if (!run.isRun) return done();
+            if (run.isRun) return done();
             if (!runId) return done();
             var shippable = new Shippable(config.apiToken);
             var payload = {
@@ -197,7 +197,8 @@ describe('Subscriptions Dashboard',
 
         it('Cancel run',
           function (done) {
-            if (run.isRun) return done();
+            if (!run.isRun) return done();
+            if (run.statusCode === 30) return done();
             if (!runId) return done();
             var shippable = new Shippable(config.apiToken);
             shippable.cancelRunById(runId,
@@ -256,7 +257,8 @@ describe('Subscriptions Dashboard',
                   isTestFailed = true;
                   var testCase =
                     util.format(
-                      '\n - [ ] %s get runs status by subId failed with error: %s for subscriptionId: %s' +
+                      '\n - [ ] %s get runs status by subId failed with error: '+
+                      '%s for subscriptionId: %s' +
                       testSuiteDesc, err, subscriptionId);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
