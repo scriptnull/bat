@@ -59,8 +59,8 @@ describe('Project History',
         it('Get Runs',
           function (done) {
             this.timeout(0);
-            var query = util.format('type=ci&projectIds=%s&status=complete' +
-              '&limit=21&sortBy=createdAt,runNumber&sortOrder=-1,-1',
+            var query = util.format('projectIds=%s&status=complete' +
+              '&limit=21&sortBy=runNumber&sortOrder=-1&skip=0',
               projectId);
             shippable.getRuns(query,
               function(err, runs) {
