@@ -164,6 +164,9 @@ describe('Subscriptions Dashboard',
                   }
                 }
               );
+            } else {
+              console.log('Dashboard settings not found for projectId:' , project.id)
+              return done();
             }
           }
         );
@@ -240,7 +243,8 @@ describe('Subscriptions Dashboard',
                   return done();
                 } else {
                   runId = res.id;
-                  console.log('Fetched run by id for runId: runId');
+                  console.log('Fetched run by id for runId:', runId);
+                  return done();
                 }
               }
             );
