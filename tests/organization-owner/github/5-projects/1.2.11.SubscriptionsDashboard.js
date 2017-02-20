@@ -18,7 +18,7 @@ var testCaseErrors = [];
 var subscriptionId = '';
 var run = {};
 var runId;
-var projects = {};
+var projs = {};
 
 describe('Subscriptions Dashboard',
   function () {
@@ -44,7 +44,7 @@ describe('Subscriptions Dashboard',
                   assert.equal(err, null);
                   return done();
                 } else {
-                  projects = projects;
+                  projs = projects;
                   console.log('Fetched projects By SubscriptionId: '+ subscriptionId);
                   return done();
                 }
@@ -140,7 +140,7 @@ describe('Subscriptions Dashboard',
         it('wireDeleteRunGetTop',
           function (done) {
             var shippable = new Shippable(config.apiToken);
-            var project = _.findWhere(projects, {id: run.projectId});
+            var project = _.findWhere(projs, {id: run.projectId});
             if (project.propertyBag && project.propertyBag.dashboardBranchSettings) {
               var dashSettings = project.propertyBag.dashboardBranchSettings;
               var query =util.format('&status=complete&' +
