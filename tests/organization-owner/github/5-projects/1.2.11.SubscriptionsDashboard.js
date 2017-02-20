@@ -242,7 +242,7 @@ describe('Subscriptions Dashboard',
                   assert.equal(err, null);
                   return done();
                 } else {
-                  runId = res.id;
+                  runId = _.first(res).id;
                   console.log('Fetched run by id for runId:', runId);
                   return done();
                 }
