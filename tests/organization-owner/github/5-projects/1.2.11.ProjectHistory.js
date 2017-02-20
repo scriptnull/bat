@@ -114,7 +114,7 @@ describe('Project History',
         it('Get RunsById',
           function (done) {
             this.timeout(0);
-            var query = util.format('runIds=' + run.id);
+            var query = util.format('runIds=%s', run.id);
             shippable.getRuns(query,
               function(err, runs) {
                 if (err) {
