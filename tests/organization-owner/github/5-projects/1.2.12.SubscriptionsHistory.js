@@ -88,7 +88,7 @@ describe('Subscription History',
           function (done) {
             this.timeout(0);
             var query = util.format('type=ci&projectIds=%s&status=complete' +
-              '&limit=21&sortBy=createdAt,runNumber&sortOrder=-1,-1' +
+              '&limit=21&sortBy=createdAt,runNumber&sortOrder=-1,-1',
               projectId);
             shippable.getRuns(query,
               function(err, runs) {
