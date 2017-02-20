@@ -34,7 +34,7 @@ describe('Subscription History',
             nconf.argv().env().file({file: pathToJson});
             nconf.load();
             subscriptionId = nconf.get('shiptest-GITHUB_ORG_1:subscriptionId');
-            shippable = new Shippable(global.config.apiToken);
+            shippable = new Shippable(config.apiToken);
             shippable.getSubscriptionById(subscriptionId,
               function (err, sub) {
                 if (err) {
@@ -62,11 +62,10 @@ describe('Subscription History',
           function (done) {
             this.timeout(0);
             projectId = nconf.get('shiptest-GITHUB_ORG_1:projectId');
-            shippable = new Shippable(global.config.apiToken);
             shippable.getProjectById(projectId,
               function (err, proj) {
                 if (err) {
-                  isTestFailet  d = true;
+                  isTestFailed = true;
                   var testCase =
                     util.format(
                       '\n - [ ] %s Failed to get project for projectId:' +
@@ -88,9 +87,9 @@ describe('Subscription History',
         it('Get Runs',
           function (done) {
             this.timeout(0);
-            var shippable = new Shippable(config.apiToken);
             var query = util.format('type=ci&projectIds=%s&status=complete' +
-              nconf.get('shiptest-GITHUB_ORG_1:projectId'));
+              '&limit=21&sortBy=createdAt,runNumber&sortOrder=-1,-1' +
+              projectId);
             shippable.getRuns(query,
               function(err, runs) {
                 if (err) {
@@ -116,7 +115,6 @@ describe('Subscription History',
         it('Trigger new build request',
           function (done) {
             this.timeout(0);
-            shippable = new Shippable(global.config.apiToken);
             var payload = {
               runId: run.id
             };
@@ -134,7 +132,6 @@ describe('Subscription History',
                   return done();
                 } else {
                   console.log('Triggered new build with runId: ' + run.runId);
-                  runId = run.runId;
                   return done();
                 }
               }
@@ -145,8 +142,7 @@ describe('Subscription History',
         it('Get RunsById',
           function (done) {
             this.timeout(0);
-            var shippable = new Shippable(config.apiToken);
-            var query = util.format('runIds=' + runId);
+            var query = util.format('runIds=' + run.id);
             shippable.getRuns(query,
               function(err, runs) {
                 if (err) {
@@ -162,6 +158,7 @@ describe('Subscription History',
                   if (runs.status<200 || runs.status>=299)
                     logger.warn('status is::',runs.status);
                   run = _.first(runs);
+                  runId = run.id;
                   return done();
                 }
               }
@@ -172,8 +169,6 @@ describe('Subscription History',
         it('Delete Run',
           function (done) {
             this.timeout(0);
-            var shippable = new Shippable(config.apiToken);
-
             shippable.deleteRunById(runId,
               function (err) {
                 if (err) {
