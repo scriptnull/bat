@@ -44,7 +44,12 @@ describe('Enable Project',
                   if (subscriptions.status<200 || subscriptions.status>=299)
                     logger.warn("status is::",subscriptions.status);
                   subscriptionId = _.first(subscriptions).id;
-                  return done();
+                  nconf.set('shiptest-GITHUB_ORG_1:subscriptionId', subscriptionId);
+                  nconf.save(function (err) {
+                    if (err)
+                      console.log("Failed");
+                    return done();
+                  });
                 }
               }
             );

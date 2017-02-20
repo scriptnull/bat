@@ -294,6 +294,14 @@ ShippableAdapter.prototype.getRuns =
     );
   };
 
+ShippableAdapter.prototype.getRunStatusBySubscriptionId =
+  function (subscriptionId, query, callback) {
+    this.get(
+      util.format('/subscriptions/%s/runStatus?%s', subscriptionId, query),
+      callback
+    );
+  };
+
 ShippableAdapter.prototype.getSubscriptions =
   function (query, callback) {
     this.get(
