@@ -103,7 +103,7 @@ describe('Project History',
                   assert.equal(err, null);
                   return done();
                 } else {
-                  console.log('Triggered new build with runId: ' + run.runId);
+                  console.log('Triggered new build with runId: ' + run.id);
                   return done();
                 }
               }
