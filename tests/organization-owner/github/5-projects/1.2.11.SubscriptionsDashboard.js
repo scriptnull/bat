@@ -104,6 +104,7 @@ describe('Subscriptions Dashboard',
                 } else {
                   runId = msg.runId;
                   console.log('Triggered new build for projectId: '+ projectId);
+                  return done();
                 }
               }
             );
