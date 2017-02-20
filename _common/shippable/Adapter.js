@@ -294,6 +294,14 @@ ShippableAdapter.prototype.getRuns =
     );
   };
 
+ShippableAdapter.prototype.deleteRunById =
+  function (runId, callback) {
+    this.delete(
+      util.format('/runs/%s', runId),
+      callback
+    );
+  };
+
 ShippableAdapter.prototype.getRunStatusBySubscriptionId =
   function (subscriptionId, query, callback) {
     this.get(
