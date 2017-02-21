@@ -18,6 +18,7 @@ var testCaseErrors = [];
 var projectId = '';
 var branches = [];
 var shippable = '';
+var accountId = '';
 
 describe('Project RunsConfig',
   function () {
@@ -60,7 +61,7 @@ describe('Project RunsConfig',
             nconf.argv().env().file({file: pathToJson});
             nconf.load();
             projectId = nconf.get('shiptest-GITHUB_ORG_1:projectId');
-            accountId = nconf.get('shiptest-github-owner:accountId')
+            accountId = nconf.get('shiptest-github-owner:accountId');
             var update = {
               ownerAccountId: accountId,
               builderAccountId: accountId
