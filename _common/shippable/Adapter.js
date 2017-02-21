@@ -246,6 +246,14 @@ ShippableAdapter.prototype.getProjectById =
     );
   };
 
+ShippableAdapter.prototype.getProjectOwnerAccounts =
+  function (id, callback) {
+    this.get(
+      util.format('/projects/%s/owners', id),
+      callback
+    );
+  };
+
 ShippableAdapter.prototype.getProviderById =
   function (id, callback) {
     this.get(
