@@ -39,7 +39,7 @@ describe('ClearProjectTimeoutWorkflow',
                   var testCase =
                     util.format(
                       '\n - [ ] %s clearProjectTimeoutWorkflow ' +
-                      'projectId: %s failed with error: %s' +
+                      'projectId: %s failed with error: %s',
                       testSuiteDesc, projectId, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);

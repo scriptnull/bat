@@ -37,7 +37,7 @@ describe('Get ProjectOwnerAccounts',
                   var testCase =
                     util.format(
                       '\n - [ ] %s Get ProjectOwnerAccounts for ' +
-                      'projectId: %s failed with error: %s' +
+                      'projectId: %s failed with error: %s',
                       testSuiteDesc, projectId, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
