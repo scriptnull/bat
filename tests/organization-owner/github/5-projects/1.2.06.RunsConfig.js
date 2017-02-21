@@ -964,7 +964,7 @@ describe('Project RunsConfig',
           }
         );
       }
-
+    );
     describe('Should run after above test suites',
       function () {
 
