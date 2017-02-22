@@ -272,37 +272,6 @@ describe(testSuite,
           }
         );
 
-        it('Edit Email Account Intgeration',
-          function (done) {
-            this.timeout(0);
-            var shippable = new Shippable(config.apiToken);
-
-            var body = _.findWhere(accountIntegrations,
-                         {name:"OrgOwner-Email"});
-            __setFormJSONValue(body.formJSONValues, 'Email address', 'test');
-
-            body.isValid = true;
-
-            shippable.putAccountIntegration(body.id, body,
-              function(err, res) {
-                if (err) {
-                  isTestFailed = true;
-                  var testCase =
-                    util.format(
-                      '\n- [ ] %s: Edit Email Intgeration failed with error: %s',
-                      testSuite, err);
-                  testCaseErrors.push(testCase);
-                  assert.equal(err, null);
-                  return done();
-                } else {
-                  logger.debug('Edited Integration');
-                  return done();
-                }
-              }
-            );
-          }
-        );
-
         it('Edit event trigger Account Intgeration',
           function (done) {
             this.timeout(0);

@@ -399,45 +399,6 @@ describe('Add Integrations',
           }
         );
 
-        it('Add Email AccountIntegration',
-          function (done) {
-            this.timeout(0);
-            var shippable = new Shippable(config.apiToken);
-            var name = "OrgOwner-Email";
-            var body = {
-              "masterDisplayName": "Email",
-              "masterIntegrationId": "55816ffb4d96360c000ec6f3",
-              "masterName": "Email",
-              "masterType": "notification",
-              "name": name,
-              "formJSONValues": [
-                {
-                  "label": "Email address",
-                  "value": "asdas"
-                }
-              ]
-            };
-            shippable.postAccountIntegration(body,
-              function(err,res) {
-                if (err) {
-                  isTestFailed = true;
-                  var testCase =
-                    util.format(
-                      '\n- [ ] %s: Add Email integration failed with error: %s',
-                      testSuiteDesc, err);
-                  testCaseErrors.push(testCase);
-                  assert.equal(err, null);
-                  return done();
-                } else {
-                  logger.debug('Added integration');
-                  accountIntegrations.push(res);
-                  return done();
-                }
-              }
-            );
-          }
-        );
-
         it('Add event trigger AccountIntegration',
           function (done) {
             this.timeout(0);
