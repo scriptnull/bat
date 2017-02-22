@@ -31,7 +31,7 @@ function setupMS(params) {
 //  global.config.apiUrl = process.env.SHIPPABLE_API_URL;
 //  global.config.apiToken = process.env.SHIPPABLE_API_TOKEN;
 
-  global.config.apiUrl = 'https://rcapi.shippable.com/';
+  global.config.apiUrl = 'https://rcapi.shippable.com';
   global.config.apiToken = params.apiToken;
   global.config.githubUrl = 'https://api.github.com';
   global.config.githubToken = params.githubToken;
