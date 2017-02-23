@@ -82,7 +82,7 @@ describe('Home Dashboard',
                   return done();
                 } else {
                   project = _.first(projects);
-                  providerId = _.pluck(project, 'providerId');
+                  providerId = project.providerId;
                   branches = project.branches;
                   projectId = project.id;
                   console.log('Fetched projects successfully');
@@ -159,8 +159,10 @@ describe('Home Dashboard',
                   assert.equal(err, null);
                   return done();
                 } else {
-                  run = _.first(runs);
-                  runId = run.id;
+                  if (!_.isEmpty(runs)) {
+                    run = _.first(runs);
+                    runId = run.id;
+                  }
                   console.log('Inflight runs fetched');
                   return done();
                 }
