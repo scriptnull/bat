@@ -11,7 +11,7 @@ var adapter = require('../../../../_common/shippable/github/Adapter.js');
 var Shippable = require('../../../../_common/shippable/Adapter.js');
 
 var testSuite = util.format('%s2 - %s', testSuiteNum, testSuiteDesc);
-var shippable = new Shippable(config.apiToken);
+var shippable;
 var isTestFailed = false;
 var testCaseErrors = [];
 var runId;
@@ -29,6 +29,7 @@ describe('Runs Console',
             this.timeout(0);
             runId = nconf.get('shiptest-GITHUB_ORG_1:runId');
             var query = 'runIds=' + runId;
+            shippable = new Shippable(config.apiToken);
             shippable.getJobs(query,
               function (err, resJobs) {
                 if (err) {
