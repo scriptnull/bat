@@ -110,7 +110,6 @@ describe('Subscriptions Dashboard',
                       logger.debug('Failed');
                     return done();
                   });
-                  return done();
                 }
               }
             );
