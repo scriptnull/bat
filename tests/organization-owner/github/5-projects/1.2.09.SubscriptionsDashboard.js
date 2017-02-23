@@ -199,7 +199,7 @@ describe('Subscriptions Dashboard',
           }
         );
 
-        /*it('Cancel run',
+        it('Cancel run',
           function (done) {
             if (!run.isRun) return done();
             if (run.statusCode === 30) return done();
@@ -223,7 +223,7 @@ describe('Subscriptions Dashboard',
               }
             );
           }
-        );*/
+        );
 
         it('Get runById',
           function (done) {
