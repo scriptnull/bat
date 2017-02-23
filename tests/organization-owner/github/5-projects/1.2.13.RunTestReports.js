@@ -30,6 +30,7 @@ describe('Runs Tests',
         it('Get Jobs',
           function (done) {
             this.timeout(0);
+            var pathToJson = process.cwd() + '/config.json';
             nconf.argv().env().file({file: pathToJson});
             nconf.load();
             shippable = new Shippable(config.apiToken);
