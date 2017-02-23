@@ -81,7 +81,7 @@ describe(testSuite,
               },
               function (err) {
                 if (err)
-                  console.log("Failed");
+                  logger.debug("Failed");
                 return done();
               }
             );

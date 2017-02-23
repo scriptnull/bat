@@ -53,7 +53,7 @@ describe('Home Dashboard',
                   if (!_.isEmpty(projAccounts))
                     allowedProjectIds =
                       _.uniq(_.pluck(projAccounts, 'projectId'));
-                  console.log('ProjectAccounts fetched successfully');
+                  logger.debug('ProjectAccounts fetched successfully');
                   return done();
                 }
               }
@@ -85,7 +85,7 @@ describe('Home Dashboard',
                   providerId = project.providerId;
                   branches = project.branches;
                   projectId = project.id;
-                  console.log('Fetched projects successfully');
+                  logger.debug('Fetched projects successfully');
                   return done();
                 }
               }
@@ -108,7 +108,7 @@ describe('Home Dashboard',
                   assert.equal(err, null);
                   return done();
                 } else {
-                  console.log('Fetched provider successfully');
+                  logger.debug('Fetched provider successfully');
                   return done();
                 }
               }
@@ -132,7 +132,7 @@ describe('Home Dashboard',
                   assert.equal(err, null);
                   return done();
                 } else {
-                  console.log('Fetched Run Status By accountId: '+ accountId);
+                  logger.debug('Fetched Run Status By accountId: '+ accountId);
                   return done();
                 }
               }
@@ -163,7 +163,7 @@ describe('Home Dashboard',
                     run = _.first(runs);
                     runId = run.id;
                   }
-                  console.log('Inflight runs fetched');
+                  logger.debug('Inflight runs fetched');
                   return done();
                 }
               }
@@ -186,7 +186,7 @@ describe('Home Dashboard',
                   assert.equal(err, null);
                   return done();
                 } else {
-                  console.log('Run successfully cancelled');
+                  logger.debug('Run successfully cancelled');
                   return done();
                 }
               }
@@ -211,7 +211,7 @@ describe('Home Dashboard',
                   assert.equal(err, null);
                   return done();
                 } else {
-                  console.log('Run fetched');
+                  logger.debug('Run fetched');
                   return done();
                 }
               }
@@ -239,7 +239,7 @@ describe('Home Dashboard',
                   assert.equal(err, null);
                   return done();
                 } else {
-                  console.log('Runs fetched successfully');
+                  logger.debug('Runs fetched successfully');
                   return done();
                 }
               }
@@ -267,7 +267,7 @@ describe('Home Dashboard',
                   assert.equal(err, null);
                   return done();
                 } else {
-                  console.log('Runs fetched successfully');
+                  logger.debug('Runs fetched successfully');
                   return done();
                 }
               }

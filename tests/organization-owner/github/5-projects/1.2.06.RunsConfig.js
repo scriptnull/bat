@@ -812,7 +812,7 @@ describe('Project RunsConfig',
                   assert.equal(err, null);
                   return done();
                 } else {
-                  console.log('Get ProjectsById successful for : ' + projectId);
+                  logger.debug('Get ProjectsById successful for : ' + projectId);
                   branches = proj.branches;
                   return done();
                 }

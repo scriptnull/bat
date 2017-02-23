@@ -45,7 +45,7 @@ describe('Subscriptions Dashboard',
                   return done();
                 } else {
                   projs = projects;
-                  console.log('Fetched projects By SubscriptionId: '+ subscriptionId);
+                  logger.debug('Fetched projects By SubscriptionId: '+ subscriptionId);
                   return done();
                 }
               }
@@ -72,7 +72,7 @@ describe('Subscriptions Dashboard',
                 } else {
                   run = _.first(runs);
                   runId = run.id;
-                  console.log('Fetched projects By SubscriptionId: '+ subscriptionId);
+                  logger.debug('Fetched projects By SubscriptionId: '+ subscriptionId);
                   return done();
                 }
               }
@@ -103,7 +103,7 @@ describe('Subscriptions Dashboard',
                   return done();
                 } else {
                   runId = msg.runId;
-                  console.log('Triggered new build for projectId: '+ projectId);
+                  logger.debug('Triggered new build for projectId: '+ projectId);
                   return done();
                 }
               }
@@ -129,7 +129,7 @@ describe('Subscriptions Dashboard',
                   assert.equal(err, null);
                   return done();
                 } else {
-                  console.log('Inflight runs fetched');
+                  logger.debug('Inflight runs fetched');
                   return done();
                 }
               }
@@ -159,13 +159,13 @@ describe('Subscriptions Dashboard',
                     assert.equal(err, null);
                     return done();
                   } else {
-                    console.log('wireDeleteRunGetTop successfull');
+                    logger.debug('wireDeleteRunGetTop successfull');
                     return done();
                   }
                 }
               );
             } else {
-              console.log('Dashboard settings not found for projectId:' , project.id)
+              logger.debug('Dashboard settings not found for projectId:' , project.id)
               return done();
             }
           }
@@ -191,7 +191,7 @@ describe('Subscriptions Dashboard',
                   assert.equal(err, null);
                   return done();
                 } else {
-                  console.log('Successfully put buildById');
+                  logger.debug('Successfully put buildById');
                   return done();
                 }
               }
@@ -217,7 +217,7 @@ describe('Subscriptions Dashboard',
                   assert.equal(err, null);
                   return done();
                 } else {
-                  console.log('Run successfully cancelled');
+                  logger.debug('Run successfully cancelled');
                   return done();
                 }
               }
@@ -243,7 +243,7 @@ describe('Subscriptions Dashboard',
                   return done();
                 } else {
                   runId = _.first(res).id;
-                  console.log('Fetched run by id for runId:', runId);
+                  logger.debug('Fetched run by id for runId:', runId);
                   return done();
                 }
               }
@@ -271,7 +271,7 @@ describe('Subscriptions Dashboard',
                 } else {
                   run = _.first(runs);
                   runId = run.id;
-                  console.log('Fetched Run Status By SubId: '+ subscriptionId);
+                  logger.debug('Fetched Run Status By SubId: '+ subscriptionId);
                   return done();
                 }
               }
