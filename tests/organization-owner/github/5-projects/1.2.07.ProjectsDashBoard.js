@@ -74,7 +74,7 @@ describe('Projects Dashboard',
             );
           }
         );
-        it('Cancel run',
+        /*it('Cancel run',
           function (done) {
             if (!runId) return done();
             shippable.cancelRunById(runId,
@@ -95,7 +95,7 @@ describe('Projects Dashboard',
               }
             );
           }
-        );
+        );*/
         it('Get branch run status',
           function (done) {
             if (!runId) return done();
