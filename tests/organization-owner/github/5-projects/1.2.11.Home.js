@@ -159,9 +159,10 @@ describe('Home Dashboard',
                   assert.equal(err, null);
                   return done();
                 } else {
-                  if (!_.isEmpty(runs))
+                  if (!_.isEmpty(runs)) {
                     run = _.first(runs);
                     runId = run.id;
+                  }
                   console.log('Inflight runs fetched');
                   return done();
                 }
