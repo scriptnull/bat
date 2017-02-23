@@ -20,6 +20,7 @@ var testCaseErrors = [];
 var subscriptionId = '';
 var runId;
 var jobIds = [];
+var jobs;
 
 describe('Runs Tests',
   function () {
