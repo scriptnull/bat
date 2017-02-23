@@ -171,7 +171,7 @@ describe('Home Dashboard',
           }
         );
 
-        /*it('Cancel run',
+        it('Cancel run',
           function (done) {
             if (!runId) return done();
             shippable.cancelRunById(runId,
@@ -192,7 +192,7 @@ describe('Home Dashboard',
               }
             );
           }
-        );*/
+        );
 
         it('Get RunById',
           function (done) {
