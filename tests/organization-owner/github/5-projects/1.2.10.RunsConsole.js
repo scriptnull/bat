@@ -10,14 +10,13 @@ var testSuiteDesc = 'Runs Console';
 var adapter = require('../../../../_common/shippable/github/Adapter.js');
 var Shippable = require('../../../../_common/shippable/Adapter.js');
 
-var testSuite = util.format('%s2 - %s', testSuiteNum,
-  testSuiteDesc);
-
+var testSuite = util.format('%s2 - %s', testSuiteNum, testSuiteDesc);
+var shippable = new Shippable(config.apiToken);
 var isTestFailed = false;
 var testCaseErrors = [];
 var runId;
 var run;
-var jobs = {};
+var jobs = [];
 
 describe('Runs Console',
   function () {
@@ -28,11 +27,10 @@ describe('Runs Console',
         it('Get Jobs',
           function (done) {
             this.timeout(0);
-            var shippable = new Shippable(config.apiToken);
             runId = nconf.get('shiptest-GITHUB_ORG_1:runId');
             var query = 'runIds=' + runId;
             shippable.getJobs(query,
-              function (err, jobs) {
+              function (err, resJobs) {
                 if (err) {
                   isTestFailed = true;
                   var testCase =
@@ -43,7 +41,7 @@ describe('Runs Console',
                   assert.equal(err, null);
                   return done();
                 } else {
-                  jobs = jobs;
+                  jobs = resJobs;
                   console.log('Fetched jobs By RunId: '+ runId);
                   return done();
                 }
@@ -55,7 +53,6 @@ describe('Runs Console',
         it('Get JobConsoles By JobId',
           function (done) {
             this.timeout(0);
-            var shippable = new Shippable(config.apiToken);
             async.each(jobs,
               function(job, nextJob) {
                 shippable.getJobConsolesByJobId(job.id,
@@ -87,7 +84,6 @@ describe('Runs Console',
         it('Trigger New Build',
           function (done) {
             this.timeout(0);
-            var shippable = new Shippable(config.apiToken);
             var job = _.first(jobs);
             var projectId = job.projectId;
             var payload = {
@@ -125,7 +121,6 @@ describe('Runs Console',
         it('Get runById',
           function (done) {
             this.timeout(0);
-            var shippable = new Shippable(config.apiToken);
             var query = util.format('runIds=%s',runId);
             shippable.getRuns(query,
               function (err, res) {
@@ -153,7 +148,6 @@ describe('Runs Console',
             if (!run.isRun) return done();
             if (run.statusCode === 30) return done();
             if (!run.id) return done();
-            var shippable = new Shippable(config.apiToken);
             shippable.cancelRunById(run.id,
               function (err) {
                 if (err) {
