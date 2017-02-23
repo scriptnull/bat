@@ -63,7 +63,7 @@ describe(util.format('%s1 - %s', testSuiteNum, testSuiteDesc),
         nconf.set('shiptest-github-owner:systemCodes',systemCodes);
         nconf.save(function(err){
           if (err)
-            console.log("Failed");
+            logger.debug('Failed');
           return done();
         });
       }

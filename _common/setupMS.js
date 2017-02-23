@@ -16,7 +16,7 @@ function setupMS(params) {
 
   global.config.runMode = process.env.RUN_MODE;
 
-  global.config.logLevel = 'info';
+  global.config.logLevel = 'debug';
   if (config.runMode === 'dev')
     global.config.logLevel = 'debug';
   else if (config.runMode === 'beta')

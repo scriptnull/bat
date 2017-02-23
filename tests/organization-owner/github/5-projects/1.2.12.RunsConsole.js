@@ -42,7 +42,7 @@ describe('Runs Console',
                   return done();
                 } else {
                   jobs = resJobs;
-                  console.log('Fetched jobs By RunId: '+ runId);
+                  logger.debug('Fetched jobs By RunId: ' + runId);
                   return done();
                 }
               }
@@ -74,7 +74,7 @@ describe('Runs Console',
               },
               function (err) {
                 if (err)
-                  console.log('Failed');
+                  logger.debug('Failed');
                 return done();
               }
             );
@@ -104,11 +104,12 @@ describe('Runs Console',
                   return done();
                 } else {
                   runId = msg.runId;
-                  console.log('Triggered new build for projectId: '+ projectId);
+                  logger.debug('Triggered new build for projectId: ' +
+                    projectId);
                   nconf.set('shiptest-GITHUB_ORG_1:runId', runId);
                   nconf.save(function (err) {
                     if (err)
-                      console.log("Failed");
+                      logger.debug('Failed');
                     return done();
                   });
                   return done();
@@ -135,7 +136,7 @@ describe('Runs Console',
                   return done();
                 } else {
                   run = _.first(res);
-                  console.log('Fetched run by id for runId:', runId);
+                  logger.debug('Fetched run by id for runId: ' + runId);
                   return done();
                 }
               }
@@ -161,7 +162,7 @@ describe('Runs Console',
                   assert.equal(err, null);
                   return done();
                 } else {
-                  console.log('Run successfully cancelled');
+                  logger.debug('Run successfully cancelled');
                   return done();
                 }
               }
