@@ -35,7 +35,7 @@ describe('Runs Console',
                   isTestFailed = true;
                   var testCase =
                     util.format(
-                      '\n - [ ] %s get jobs failed with error: %s for runId: %s' +
+                      '\n - [ ] %s get jobs failed with error: %s for runId: %s',
                       testSuiteDesc, err, runId);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
@@ -98,7 +98,7 @@ describe('Runs Console',
                   var testCase =
                     util.format(
                       '\n - [ ] %s trigger new build failed for projectId: $s'+
-                      'with error: %s' + testSuiteDesc, projectId, err);
+                      'with error: %s', testSuiteDesc, projectId, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
                   return done();
@@ -129,7 +129,7 @@ describe('Runs Console',
                   var testCase =
                     util.format(
                        '\n - [ ] %s get runById failed for runId: $s'+
-                      'with error: %s' + testSuiteDesc, runId, err);
+                      'with error: %s', testSuiteDesc, runId, err);
                   testCaseErrors.push(testCase);
                   assert.equal(err, null);
                   return done();
@@ -146,7 +146,8 @@ describe('Runs Console',
         it('Cancel run',
           function (done) {
             if (!run.isRun) return done();
-            if (run.statusCode === 30) return done();
+            if (run.statusCode !== 0 || run.statusCode !== 10 ||
+              run.statusCode !== 20 ) return done();
             if (!run.id) return done();
             shippable.cancelRunById(run.id,
               function (err) {
