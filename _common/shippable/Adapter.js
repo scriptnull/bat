@@ -1125,6 +1125,14 @@ ShippableAdapter.prototype.deleteSystemNodeConsolesBySystemNodeId =
     );
   };
 
+ShippableAdapter.prototype.getJobTestReports =
+  function (query, callback) {
+    this.get(
+      util.format('/jobTestReports?%s', query),
+      callback
+    );
+  };
+
 ShippableAdapter.prototype.get =
   function (relativeUrl, callback) {
     var bag = {};
