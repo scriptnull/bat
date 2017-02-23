@@ -42,7 +42,7 @@ describe('Projects Dashboard',
                   assert.equal(err, null);
                   return done();
                 } else {
-                  console.log('Triggered new build with runId: ' + run.runId);
+                  logger.debug('Triggered new build with runId: ' + run.runId);
                   runId = run.runId;
                   return done();
                 }
@@ -67,7 +67,7 @@ describe('Projects Dashboard',
                   assert.equal(err, null);
                   return done();
                 } else {
-                  console.log('Inflight runs fetched');
+                  logger.debug('Inflight runs fetched');
                   return done();
                 }
               }
@@ -89,7 +89,7 @@ describe('Projects Dashboard',
                   assert.equal(err, null);
                   return done();
                 } else {
-                  console.log('Run successfully cancelled');
+                  logger.debug('Run successfully cancelled');
                   return done();
                 }
               }
@@ -113,7 +113,7 @@ describe('Projects Dashboard',
                   assert.equal(err, null);
                   return done();
                 } else {
-                  console.log('Branch run status successfully fetched');
+                  logger.debug('Branch run status successfully fetched');
                   return done();
                 }
               }
@@ -137,7 +137,7 @@ describe('Projects Dashboard',
                   assert.equal(err, null);
                   return done();
                 } else {
-                  console.log('Run fetched');
+                  logger.debug('Run fetched');
                   return done();
                 }
               }

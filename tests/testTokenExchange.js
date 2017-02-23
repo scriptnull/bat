@@ -1,12 +1,9 @@
 'use strict';
 
-var mocha = require('mocha');
 var nconf = require('nconf');
-var chai = require('chai');
 var async = require('async');
-
-var assert = chai.assert;
 var request = require('request');
+
 var bag = {};
 
 describe('Get shippable token',
@@ -20,15 +17,15 @@ describe('Get shippable token',
     );
     nconf.load();
     var tokens = {
-      "owner": {
-        "githubToken": nconf.get("GITHUB_ACCESS_TOKEN_OWNER"),
-        "bitbucketToken": nconf.get("BITBUCKET_ACCESS_TOKEN_OWNER"),
-        "apiToken": ""
+      owner: {
+        githubToken: nconf.get('GITHUB_ACCESS_TOKEN_OWNER'),
+        bitbucketToken: nconf.get('BITBUCKET_ACCESS_TOKEN_OWNER'),
+        apiToken: ''
       },
-      "member": {
-        "githubToken": nconf.get("GITHUB_ACCESS_TOKEN_MEMBER"),
-        "bitbucketToken": nconf.get("BITBUCKET_ACCESS_TOKEN_MEMBER"),
-        "apiToken": ""
+      member: {
+        githubToken: nconf.get('GITHUB_ACCESS_TOKEN_MEMBER'),
+        bitbucketToken: nconf.get('BITBUCKET_ACCESS_TOKEN_MEMBER'),
+        apiToken: ''
       }
     };
 
@@ -36,15 +33,16 @@ describe('Get shippable token',
       async.each(tokens,
         function(token, nextToken) {
           request({
-            url: nconf.get("API_URL") + '/accounts/auth/58a42b0007c7cf1300b9a828',
+            url: nconf.get('API_URL') +
+              '/accounts/auth/58a42b0007c7cf1300b9a828',
             method: 'POST',
             json: {
-              "accessToken": token.githubToken
+              accessToken: token.githubToken
             }
           },
           function (err, res, body) {
             if (err) {
-              console.log("Failed");
+              console.log('Failed');
               return nextToken(err);
             } else {
               bag.body = body;
@@ -55,7 +53,7 @@ describe('Get shippable token',
         },
         function (err) {
           if (err)
-            console.log("Failed");
+            console.log('Failed');
           return done();
         }
       );
@@ -67,7 +65,7 @@ describe('Get shippable token',
         nconf.set('shiptest-github-member:apiToken',tokens.member.apiToken);
         nconf.save(function (err) {
           if (err)
-            console.log("Failed");
+            console.log('Failed');
           return done();
         });
       }
