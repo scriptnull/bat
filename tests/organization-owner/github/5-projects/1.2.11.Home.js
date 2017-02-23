@@ -82,7 +82,7 @@ describe('Home Dashboard',
                   return done();
                 } else {
                   project = _.first(projects);
-                  providerId = _.pluck(project, 'providerId');
+                  providerId = project.providerId;
                   branches = project.branches;
                   projectId = project.id;
                   console.log('Fetched projects successfully');
