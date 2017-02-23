@@ -48,7 +48,7 @@ describe('Disable Project',
                   assert.equal(err, null);
                   return done();
                 } else {
-                  console.log("Disabled");
+                  logger.debug("Disabled");
                   return done();
                 }
               }

@@ -47,7 +47,7 @@ describe('Project History',
                   assert.equal(err, null);
                   return done();
                 } else {
-                  console.log('Get ProjectsById successful for : ' + projectId);
+                  logger.debug('Get ProjectsById successful for : ' + projectId);
                   projectId = proj.id;
                   return done();
                 }
@@ -103,7 +103,7 @@ describe('Project History',
                   assert.equal(err, null);
                   return done();
                 } else {
-                  console.log('Triggered new build with runId: ' + run.runId);
+                  logger.debug('Triggered new build with runId: ' + run.runId);
                   return done();
                 }
               }
@@ -153,7 +153,7 @@ describe('Project History',
                   assert.equal(err, null);
                   return done();
                 } else {
-                  console.log('Run Deleted');
+                  logger.debug('Run Deleted');
                   return done();
                 }
               }

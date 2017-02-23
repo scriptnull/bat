@@ -47,7 +47,7 @@ describe('Enable Project',
                   nconf.set('shiptest-GITHUB_ORG_1:subscriptionId', subscriptionId);
                   nconf.save(function (err) {
                     if (err)
-                      console.log("Failed");
+                      logger.debug("Failed");
                     return done();
                   });
                 }
@@ -80,7 +80,7 @@ describe('Enable Project',
                   nconf.set('shiptest-GITHUB_ORG_1:projectId',projectId);
                   nconf.save(function (err) {
                     if (err)
-                      console.log("Failed");
+                      logger.debug("Failed");
                     return done();
                   });
                 }
@@ -110,7 +110,7 @@ describe('Enable Project',
                   assert.equal(err, null);
                   return done();
                 } else {
-                  console.log("Enabled");
+                  logger.debug("Enabled");
                   return done();
                 }
               }

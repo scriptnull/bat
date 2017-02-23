@@ -75,7 +75,7 @@ describe('Add Account Cards',
                       testCaseErrors.push(testCase);
                       assert.equal(err, null);
                     } else {
-                      console.log('Res',res);
+                      logger.debug('Res',res);
                       logger.debug("Added Account Card");
                     }
                     return done();
