@@ -147,7 +147,7 @@ describe('Runs Console',
           }
         );
 
-        it('Cancel run',
+        /*it('Cancel run',
           function (done) {
             if (!run.isRun) return done();
             if (run.statusCode !== 0 || run.statusCode !== 10 ||
@@ -171,7 +171,7 @@ describe('Runs Console',
               }
             );
           }
-        );
+        );*/
 
       }
     );
