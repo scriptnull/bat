@@ -104,6 +104,12 @@ describe('Subscriptions Dashboard',
                 } else {
                   runId = msg.runId;
                   console.log('Triggered new build for projectId: '+ projectId);
+                  nconf.set('shiptest-GITHUB_ORG_1:runId', runId);
+                  nconf.save(function (err) {
+                    if (err)
+                      console.log("Failed");
+                    return done();
+                  });
                   return done();
                 }
               }

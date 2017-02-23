@@ -183,6 +183,14 @@ ShippableAdapter.prototype.getFilesByResourceId =
     );
   };
 
+ShippableAdapter.prototype.getJobConsolesByJobId =
+  function (jobId, callback) {
+    this.get(
+      util.format('/jobs/%s/consoles', jobId),
+      callback
+    );
+  };
+
 ShippableAdapter.prototype.getJobs =
   function (query, callback) {
     this.get(
