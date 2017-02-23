@@ -132,7 +132,12 @@ describe('Subscription History',
                   return done();
                 } else {
                   logger.debug('Triggered new build with runId: ' + run.runId);
-                  return done();
+                  nconf.set('shiptest-GITHUB_ORG_1:runId', run.runId);
+                  nconf.save(function (err) {
+                    if (err)
+                      logger.debug('Failed');
+                    return done();
+                  });
                 }
               }
             );
