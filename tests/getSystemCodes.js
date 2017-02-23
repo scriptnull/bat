@@ -47,9 +47,9 @@ describe(util.format('%s1 - %s', testSuiteNum, testSuiteDesc),
                 }
               );
             } else {
-              logger.debug("res is::", util.inspect(res,{depth:null}));
+              logger.debug("res is::", util.inspect(res, {depth:null}));
               if (res.status<200 || res.status>=299)
-                logger.warn("status is::",res.status);
+                logger.warn("status is::", res.status);
               systemCodes = res;
               return done();
             }
@@ -60,8 +60,8 @@ describe(util.format('%s1 - %s', testSuiteNum, testSuiteDesc),
 
     it('Should save systemConfigs to config file',
       function (done) {
-        nconf.set('shiptest-github-owner:systemCodes',systemCodes);
-        nconf.save(function(err){
+        nconf.set('shiptest-github-owner:systemCodes', systemCodes);
+        nconf.save(function(err) {
           if (err)
             logger.debug('Failed');
           return done();
@@ -81,7 +81,7 @@ function _createIssue(bag,next) {
   }
   githubAdapter.pushRespositoryIssue('deepikasl', 'VT1', data,
     function(err, res) {
-      logger.debug("response is::",res.status);
+      logger.debug("response is::", res.status);
       if (err)
         logger.warn("Creating Issue failed with error: ", err);
       return next();

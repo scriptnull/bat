@@ -122,7 +122,7 @@ describe('Runs Console',
         it('Get runById',
           function (done) {
             this.timeout(0);
-            var query = util.format('runIds=%s',runId);
+            var query = util.format('runIds=%s', runId);
             shippable.getRuns(query,
               function (err, res) {
                 if (err) {
@@ -183,7 +183,7 @@ describe('Runs Console',
                 new adapter(config.githubToken, config.githubUrl);
               var title = util.format('Failed test suite %s', testSuite);
               var body = util.format(
-                'Failed test cases are:\n%s',testCaseErrors);
+                'Failed test cases are:\n%s', testCaseErrors);
               var data = {
                 title: title,
                 body: body

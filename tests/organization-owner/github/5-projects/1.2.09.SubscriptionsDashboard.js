@@ -107,7 +107,7 @@ describe('Subscriptions Dashboard',
                   nconf.set('shiptest-GITHUB_ORG_1:runId', runId);
                   nconf.save(function (err) {
                     if (err)
-                      console.log("Failed");
+                      logger.debug('Failed');
                     return done();
                   });
                   return done();
