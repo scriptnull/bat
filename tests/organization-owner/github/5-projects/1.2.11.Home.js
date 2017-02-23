@@ -61,7 +61,7 @@ describe('Home Dashboard',
           }
         );
 
-        it('Get Projects',
+        it('Get Enabled Projects',
           function (done) {
             this.timeout(0);
             var query = 'autoBuild=true';
@@ -222,7 +222,7 @@ describe('Home Dashboard',
             var runFilter = 'all';
             var branchFilter = branches;
             var query = util.format('%sstatus=complete&' +
-            'limit=1&projectIds=%s&branch=%s', runFilter, projectId,
+              'limit=1&projectIds=%s&branch=%s', runFilter, projectId,
             branchFilter.join(','));
             shippable.getRuns(query,
               function (err, runs) {
@@ -250,7 +250,7 @@ describe('Home Dashboard',
             var runFilter = 'commit';
             var branchFilter = branches;
             var query = util.format('%sstatus=complete&' +
-            'limit=1&projectIds=%s&branch=%s', runFilter, projectId,
+              'limit=1&projectIds=%s&branch=%s', runFilter, projectId,
             branchFilter.join(','));
             shippable.getRuns(query,
               function (err, runs) {
