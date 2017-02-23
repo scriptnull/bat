@@ -19,7 +19,6 @@ setupTestEnv() {
   pushd $RES_REPO_STATE
   npm install
   npm run test-tokenExchange
-  npm run test-getSystemCodes
   npm run test-getAccounts
   npm run test-organizationOwner
   npm run test-deleteAccounts
