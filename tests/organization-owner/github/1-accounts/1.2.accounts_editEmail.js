@@ -5,7 +5,7 @@ var chai = require('chai');
 var util = require('util');
 
 var GithubAdapter = require('../../../../_common/shippable/github/Adapter.js');
-var Shippable = require('../../../../_common/shippable/Adapter.js');
+var ShippableAdapter = require('../../../../_common/shippable/Adapter.js');
 
 var assert = chai.assert;
 var testSuiteNum = '1.2';
@@ -24,7 +24,7 @@ describe('Edit email with valid and invalid email address',
         it('Edit email with valid email address',
           function (done) {
             this.timeout(0);
-            var shippable = new Shippable(global.config.apiToken);
+            var shippable = new ShippableAdapter(global.config.apiToken);
             shippable.putAccountById(
               nconf.get('shiptest-github-owner:accountId'),
               '', { defaultEmail : 'test@gmail.com' },
@@ -49,7 +49,7 @@ describe('Edit email with valid and invalid email address',
         it('Edit email contains dot in the address field',
           function (done) {
             this.timeout(0);
-            var shippable = new Shippable(global.config.apiToken);
+            var shippable = new ShippableAdapter(global.config.apiToken);
 
             shippable.putAccountById(
               nconf.get('shiptest-github-owner:accountId'),
@@ -75,7 +75,7 @@ describe('Edit email with valid and invalid email address',
         it('Edit Email contains dot with subdomain',
           function (done) {
             this.timeout(0);
-            var shippable = new Shippable(global.config.apiToken);
+            var shippable = new ShippableAdapter(global.config.apiToken);
 
             shippable.putAccountById(
               nconf.get('shiptest-github-owner:accountId'),
@@ -101,7 +101,7 @@ describe('Edit email with valid and invalid email address',
         it('Plus sign is considered valid character',
           function (done) {
             this.timeout(0);
-            var shippable = new Shippable(global.config.apiToken);
+            var shippable = new ShippableAdapter(global.config.apiToken);
 
             shippable.putAccountById(
               nconf.get('shiptest-github-owner:accountId'),
@@ -127,7 +127,7 @@ describe('Edit email with valid and invalid email address',
         it('Quotes around email is considered valid',
           function (done) {
             this.timeout(0);
-            var shippable = new Shippable(global.config.apiToken);
+            var shippable = new ShippableAdapter(global.config.apiToken);
 
             shippable.putAccountById(
               nconf.get('shiptest-github-owner:accountId'),
@@ -153,7 +153,7 @@ describe('Edit email with valid and invalid email address',
         it('Digits in address are valid',
           function (done) {
             this.timeout(0);
-            var shippable = new Shippable(global.config.apiToken);
+            var shippable = new ShippableAdapter(global.config.apiToken);
 
             shippable.putAccountById(
               nconf.get('shiptest-github-owner:accountId'),
@@ -179,7 +179,7 @@ describe('Edit email with valid and invalid email address',
         it('Dash in domain name is valid',
           function (done) {
             this.timeout(0);
-            var shippable = new Shippable(global.config.apiToken);
+            var shippable = new ShippableAdapter(global.config.apiToken);
 
             shippable.putAccountById(
               nconf.get('shiptest-github-owner:accountId'),
@@ -205,7 +205,7 @@ describe('Edit email with valid and invalid email address',
         it('Underscore in the address field is valid',
           function (done) {
             this.timeout(0);
-            var shippable = new Shippable(global.config.apiToken);
+            var shippable = new ShippableAdapter(global.config.apiToken);
 
             shippable.putAccountById(
               nconf.get('shiptest-github-owner:accountId'),
@@ -231,7 +231,7 @@ describe('Edit email with valid and invalid email address',
         it('.name is valid Top Level Domain name',
           function (done) {
             this.timeout(0);
-            var shippable = new Shippable(global.config.apiToken);
+            var shippable = new ShippableAdapter(global.config.apiToken);
 
             shippable.putAccountById(
               nconf.get('shiptest-github-owner:accountId'),
@@ -257,7 +257,7 @@ describe('Edit email with valid and invalid email address',
         it('Dot in Top Level Domain name also considered valid',
           function (done) {
             this.timeout(0);
-            var shippable = new Shippable(global.config.apiToken);
+            var shippable = new ShippableAdapter(global.config.apiToken);
 
             shippable.putAccountById(
               nconf.get('shiptest-github-owner:accountId'),
@@ -283,7 +283,7 @@ describe('Edit email with valid and invalid email address',
         it('Unicode char as address',
           function (done) {
             this.timeout(0);
-            var shippable = new Shippable(global.config.apiToken);
+            var shippable = new ShippableAdapter(global.config.apiToken);
 
             shippable.putAccountById(
               nconf.get('shiptest-github-owner:accountId'),
@@ -309,7 +309,7 @@ describe('Edit email with valid and invalid email address',
         it('.web is a valid top level domain',
           function (done) {
             this.timeout(0);
-            var shippable = new Shippable(global.config.apiToken);
+            var shippable = new ShippableAdapter(global.config.apiToken);
 
             shippable.putAccountById(
               nconf.get('shiptest-github-owner:accountId'),
@@ -335,7 +335,7 @@ describe('Edit email with valid and invalid email address',
         it('Dash in address field is valid',
           function (done) {
             this.timeout(0);
-            var shippable = new Shippable(global.config.apiToken);
+            var shippable = new ShippableAdapter(global.config.apiToken);
 
             shippable.putAccountById(
               nconf.get('shiptest-github-owner:accountId'),
@@ -367,7 +367,7 @@ describe('Edit email with valid and invalid email address',
         it('Missing @ sign and domain',
           function (done) {
             this.timeout(0);
-            var shippable = new Shippable(global.config.apiToken);
+            var shippable = new ShippableAdapter(global.config.apiToken);
 
             shippable.putAccountById(
               nconf.get('shiptest-github-owner:accountId'),
@@ -395,7 +395,7 @@ describe('Edit email with valid and invalid email address',
         it('Domain is invalid IP address',
           function (done) {
             this.timeout(0);
-            var shippable = new Shippable(global.config.apiToken);
+            var shippable = new ShippableAdapter(global.config.apiToken);
 
             shippable.putAccountById(
               nconf.get('shiptest-github-owner:accountId'),
@@ -424,7 +424,7 @@ describe('Edit email with valid and invalid email address',
         it('Square bracket around IP address is considered invalid',
           function (done) {
             this.timeout(0);
-            var shippable = new Shippable(global.config.apiToken);
+            var shippable = new ShippableAdapter(global.config.apiToken);
 
             shippable.putAccountById(
               nconf.get('shiptest-github-owner:accountId'),
@@ -454,7 +454,7 @@ describe('Edit email with valid and invalid email address',
         it('Garbage',
           function (done) {
             this.timeout(0);
-            var shippable = new Shippable(global.config.apiToken);
+            var shippable = new ShippableAdapter(global.config.apiToken);
 
             shippable.putAccountById(
               nconf.get('shiptest-github-owner:accountId'),
@@ -481,7 +481,7 @@ describe('Edit email with valid and invalid email address',
         it('Missing username',
           function (done) {
             this.timeout(0);
-            var shippable = new Shippable(global.config.apiToken);
+            var shippable = new ShippableAdapter(global.config.apiToken);
 
             shippable.putAccountById(
               nconf.get('shiptest-github-owner:accountId'),
@@ -508,7 +508,7 @@ describe('Edit email with valid and invalid email address',
         it('Encoded html within email is invalid',
           function (done) {
             this.timeout(0);
-            var shippable = new Shippable(global.config.apiToken);
+            var shippable = new ShippableAdapter(global.config.apiToken);
 
             shippable.putAccountById(
               nconf.get('shiptest-github-owner:accountId'),
@@ -536,7 +536,7 @@ describe('Edit email with valid and invalid email address',
         it('Missing @',
           function (done) {
             this.timeout(0);
-            var shippable = new Shippable(global.config.apiToken);
+            var shippable = new ShippableAdapter(global.config.apiToken);
 
             shippable.putAccountById(
               nconf.get('shiptest-github-owner:accountId'),
@@ -563,7 +563,7 @@ describe('Edit email with valid and invalid email address',
         it('Two @ sign',
           function (done) {
             this.timeout(0);
-            var shippable = new Shippable(global.config.apiToken);
+            var shippable = new ShippableAdapter(global.config.apiToken);
 
             shippable.putAccountById(
               nconf.get('shiptest-github-owner:accountId'),
@@ -591,7 +591,7 @@ describe('Edit email with valid and invalid email address',
         it('Leading dot in address is not allowed',
           function (done) {
             this.timeout(0);
-            var shippable = new Shippable(global.config.apiToken);
+            var shippable = new ShippableAdapter(global.config.apiToken);
 
             shippable.putAccountById(
               nconf.get('shiptest-github-owner:accountId'),
@@ -618,7 +618,7 @@ describe('Edit email with valid and invalid email address',
         it('Trailing dot in address is not allowed',
           function (done) {
             this.timeout(0);
-            var shippable = new Shippable(global.config.apiToken);
+            var shippable = new ShippableAdapter(global.config.apiToken);
 
             shippable.putAccountById(
               nconf.get('shiptest-github-owner:accountId'),
@@ -645,7 +645,7 @@ describe('Edit email with valid and invalid email address',
         it('Multiple dots',
           function (done) {
             this.timeout(0);
-            var shippable = new Shippable(global.config.apiToken);
+            var shippable = new ShippableAdapter(global.config.apiToken);
 
             shippable.putAccountById(
               nconf.get('shiptest-github-owner:accountId'),
@@ -673,7 +673,7 @@ describe('Edit email with valid and invalid email address',
         it('Text followed email is not allowed',
           function (done) {
             this.timeout(0);
-            var shippable = new Shippable(global.config.apiToken);
+            var shippable = new ShippableAdapter(global.config.apiToken);
 
             shippable.putAccountById(
               nconf.get('shiptest-github-owner:accountId'),
@@ -701,7 +701,7 @@ describe('Edit email with valid and invalid email address',
         it('Missing top level domain (.com/.net/.org/etc)',
           function (done) {
             this.timeout(0);
-            var shippable = new Shippable(global.config.apiToken);
+            var shippable = new ShippableAdapter(global.config.apiToken);
 
             shippable.putAccountById(
               nconf.get('shiptest-github-owner:accountId'),
@@ -728,7 +728,7 @@ describe('Edit email with valid and invalid email address',
         it('Leading dash in front of domain is invalid',
           function (done) {
             this.timeout(0);
-            var shippable = new Shippable(global.config.apiToken);
+            var shippable = new ShippableAdapter(global.config.apiToken);
 
             shippable.putAccountById(
               nconf.get('shiptest-github-owner:accountId'),
@@ -755,7 +755,7 @@ describe('Edit email with valid and invalid email address',
         it('Invalid IP format',
           function (done) {
             this.timeout(0);
-            var shippable = new Shippable(global.config.apiToken);
+            var shippable = new ShippableAdapter(global.config.apiToken);
 
             shippable.putAccountById(
               nconf.get('shiptest-github-owner:accountId'),
@@ -783,7 +783,7 @@ describe('Edit email with valid and invalid email address',
         it('Multiple dot in the domain portion is invalid',
           function (done) {
             this.timeout(0);
-            var shippable = new Shippable(global.config.apiToken);
+            var shippable = new ShippableAdapter(global.config.apiToken);
 
             shippable.putAccountById(
               nconf.get('shiptest-github-owner:accountId'),
@@ -815,7 +815,7 @@ describe('Edit email with valid and invalid email address',
         it('Edit email with actual email address',
           function (done) {
             this.timeout(0);
-            var shippable = new Shippable(global.config.apiToken);
+            var shippable = new ShippableAdapter(global.config.apiToken);
 
             shippable.putAccountById(
               nconf.get('shiptest-github-owner:accountId'),

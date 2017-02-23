@@ -1,15 +1,16 @@
 'use strict';
 
-var mocha = require('mocha');
 var nconf = require('nconf');
 var chai = require('chai');
-var _ = require('underscore');
+var async = require('async');
+var util = require('util');
+
+var GithubAdapter = require('../../../../_common/shippable/github/Adapter.js');
+var ShippableAdapter = require('../../../../_common/shippable/Adapter.js');
+
 var assert = chai.assert;
 var testSuiteNum = '1.';
 var testSuiteDesc = 'Sync Account for organization owner';
-var adapter = require('../../../../_common/shippable/github/Adapter.js');
-var Shippable = require('../../../../_common/shippable/Adapter.js');
-
 var testSuite = util.format('%s2_sync_accountByid - %s',
                   testSuiteNum, testSuiteDesc);
 
@@ -19,15 +20,15 @@ describe(testSuite,
     it('Sync Account for organization owner',
       function (done) {
         this.timeout(0);
-        var shippable = new Shippable(config.apiToken);
+        var shippable = new ShippableAdapter(global.config.apiToken);
         shippable.forceSyncAccountById(
-          nconf.get("shiptest-github-owner:accountId"),
+          nconf.get('shiptest-github-owner:accountId'),
           function(err, res) {
             if (err) {
               var bag = {
                 testSuite: testSuite,
                 error: err
-              }
+              };
               async.series([
                   _createIssue.bind(null, bag)
                 ],
@@ -44,7 +45,7 @@ describe(testSuite,
               );
             } else {
               if (res.status<200 || res.status>=299)
-                logger.warn("status is::",res.status);
+                logger.warn('status is::',res.status);
               return done();
             }
           }
@@ -55,18 +56,21 @@ describe(testSuite,
 );
 
 function _createIssue(bag,next) {
-  var githubAdapter = new adapter(config.githubToken, config.githubUrl);
+  var githubAdapter = new GithubAdapter(
+    global.config.githubToken,
+    global.config.githubUrl
+  );
   var title = util.format('Failed test case %s', bag.testSuite);
   var body = util.format('Failed with error: %s', bag.error);
   var data = {
     title: title,
     body: body
-  }
+  };
   githubAdapter.pushRespositoryIssue('deepikasl', 'VT1', data,
     function(err, res) {
-      logger.debug("response is::",res.status);
+      logger.debug('response is::',res.status);
       if (err)
-        logger.warn("Creating Issue failed with error: ", err);
+        logger.warn('Creating Issue failed with error: ', err);
       return next();
     }
   );
