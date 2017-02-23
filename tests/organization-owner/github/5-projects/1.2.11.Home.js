@@ -140,62 +140,6 @@ describe('Home Dashboard',
           }
         );
 
-        it('Get Runs',
-          function (done) {
-            var query = 'status=complete';
-            if (!_.isEmpty(allowedProjectIds))
-              query += util.format('&projectIds=%s',
-                allowedProjectIds.join(','));
-            shippable.getRuns(query,
-              function (err, runs) {
-                if (err) {
-                  isTestFailed = true;
-                  var testCase =
-                    util.format(
-                      '\n - [ ] %s Getting runs failed for ' +
-                      'projectId: %s failed with error: %s', testSuiteDesc,
-                      allowedProjectIds, err);
-                  testCaseErrors.push(testCase);
-                  assert.equal(err, null);
-                  return done();
-                } else {
-                  run = _.first(runs);
-                  runId = run.id;
-                  console.log('Runs fetched');
-                  return done();
-                }
-              }
-            );
-          }
-        );
-
-        it('Trigger new build request',
-          function (done) {
-            this.timeout(0);
-            var payload = {
-              runId: run.id
-            };
-            shippable.triggerNewBuildByProjectId(run.projectId, payload,
-              function (err, run) {
-                if (err) {
-                  isTestFailed = true;
-                  var testCase =
-                    util.format(
-                      '\n - [ ] %s Trigger new build request for projectId:' +
-                      ' %s failed with error: %s', testSuiteDesc, run.projectId,
-                      err);
-                  testCaseErrors.push(testCase);
-                  assert.equal(err, null);
-                  return done();
-                } else {
-                  console.log('Triggered new build with runId: ' + run.runId);
-                  return done();
-                }
-              }
-            );
-          }
-        );
-
         it('Get inflight runs',
           function (done) {
             var query = 'status=incomplete';
@@ -215,8 +159,9 @@ describe('Home Dashboard',
                   assert.equal(err, null);
                   return done();
                 } else {
-                  run = _.first(runs);
-                  runId = run.id;
+                  if (!_.isEmpty(runs))
+                    run = _.first(runs);
+                    runId = run.id;
                   console.log('Inflight runs fetched');
                   return done();
                 }
