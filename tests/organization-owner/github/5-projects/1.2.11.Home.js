@@ -223,7 +223,7 @@ describe('Home Dashboard',
             var branchFilter = branches;
             var query = util.format('%sstatus=complete&' +
               'limit=1&projectIds=%s&branch=%s', runFilter, projectId,
-            branchFilter.join(','));
+              branchFilter.join(','));
             shippable.getRuns(query,
               function (err, runs) {
                 if (err) {
@@ -251,7 +251,7 @@ describe('Home Dashboard',
             var branchFilter = branches;
             var query = util.format('%sstatus=complete&' +
               'limit=1&projectIds=%s&branch=%s', runFilter, projectId,
-            branchFilter.join(','));
+              branchFilter.join(','));
             shippable.getRuns(query,
               function (err, runs) {
                 if (err) {
