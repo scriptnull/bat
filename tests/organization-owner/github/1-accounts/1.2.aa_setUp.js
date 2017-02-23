@@ -1,13 +1,7 @@
 'use strict';
 
-var start = require('../../../../test.js');
-var mocha = require('mocha');
+var Start = require('../../../../test.js');
 var nconf = require('nconf');
-var chai = require('chai');
-
-var _ = require('underscore');
-
-var assert = chai.assert;
 
 describe('Setup for accounts',
   function () {
@@ -19,9 +13,10 @@ describe('Setup for accounts',
     it('Should start setup',
       function (done) {
         this.timeout(0);
-        start = new start(nconf.get("shiptest-github-owner:apiToken"),
-                  nconf.get("GITHUB_ACCESS_TOKEN_OWNER"));
-        logger.debug("setup is done");
+        // TODO: analyse Start and remove this block if not needed.
+        new Start(nconf.get('shiptest-github-owner:apiToken'),
+                  nconf.get('GITHUB_ACCESS_TOKEN_OWNER'));
+        logger.debug('setup is done');
         return done();
       }
     );
