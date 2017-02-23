@@ -239,7 +239,7 @@ describe('Home Dashboard',
                   assert.equal(err, null);
                   return done();
                 } else {
-                  logger.debug('Runs fetched successfully');
+                  logger.debug('Runs fetches successfully');
                   return done();
                 }
               }
