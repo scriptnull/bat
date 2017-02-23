@@ -116,7 +116,6 @@ describe('Runs Console',
                       logger.debug('Failed');
                     return done();
                   });
-                  return done();
                 }
               }
             );
